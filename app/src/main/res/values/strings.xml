@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SB</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mob_num">Mobile Number</string>
+    <string name="submit">Submit</string>
+    <string name="register">Register</string>
+    <string name="first_name_empty">First name cannot be empty.</string>
+    <string name="last_name_empty">Last name cannot be empty.</string>
+    <string name="mob_num_empty">Mobile number cannot be empty or less than 10 digits.</string>
+    <string name="title_activity_find_school">FindSchool</string>
+    <string name="enter_school_code">Enter your School Code to find your School</string>
+    <string name="enter_code_here">Enter code here</string>
+    <string name="search">Search</string>
+    <string name="enter">Enter</string>
+    <string name="title_activity_select_option">SelectOption</string>
+    <string name="classname">Class</string>
+    <string name="section">Section</string>
+    <string name="enter_otp">Enter the 6 digit OTP sent to the number.</string>
+    <string name="title_activity_home">HomeActivity</string>
+</resources>
