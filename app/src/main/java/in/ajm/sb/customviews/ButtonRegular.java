@@ -1,9 +1,11 @@
-package in.ajm.sb.helper;
+package in.ajm.sb.customviews;
 
 import android.content.Context;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.Button;
+
+import in.ajm.sb.helper.FontHelper;
 
 /**
  * Created by Himanshu Chouhan on 28/02/17.

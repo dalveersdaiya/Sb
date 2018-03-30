@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <in.ajm.sb.helper.TextViewBold
+    <in.ajm.sb.customviews.TextViewBold
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/classname"

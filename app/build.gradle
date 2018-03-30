@@ -5,7 +5,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "in.ajm.sb"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -32,4 +32,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile ('me.rishabhkhanna:RecyclerviewSwipeDrag:1.3.1') {
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }

@@ -13,7 +13,7 @@
 		app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
 		app:popupTheme="@style/AppTheme.PopupOverlay">
 
-		<in.ajm.sb.helper.TextViewMedium
+		<in.ajm.sb.customviews.TextViewMedium
 			android:id="@+id/toolbar_title"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

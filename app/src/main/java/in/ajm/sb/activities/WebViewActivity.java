@@ -1,4 +1,4 @@
-package com.org.besteverflatrate.activities;
+package in.ajm.sb.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,8 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.org.besteverflatrate.R;
-import com.org.besteverflatrate.helper.LogHelper;
+import in.ajm.sb.R;
 
 public class WebViewActivity extends BaseActivity
 {
@@ -99,7 +98,7 @@ public class WebViewActivity extends BaseActivity
 				hideLoader();
 			}
 		});
-		LogHelper.systemOutPrint(url);
+//		LogHelper.systemOutPrint(url);
 		webView.loadUrl(url);
 	}
 

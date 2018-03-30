@@ -1,13 +1,9 @@
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-
-import com.org.besteverflatrate.activities.InvoicePdfViewer;
-import com.org.besteverflatrate.activities.PrinterOptions;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -59,26 +55,26 @@ public class PDFHelper
 				{
 					if (title.equals("PRINTOPTION"))
 					{
-						Intent intent = new Intent(context, PrinterOptions.class);
-						intent.putExtra("OPENVIEW", "pdf");
-						intent.putExtra("filename", fileToSave.getAbsolutePath());
-						intent.putExtra("title", Title);
-						intent.putExtra("callid", callid);
-						intent.putExtra("org_id", org_id);
-						intent.putExtra("url", url);
-						intent.putExtra("PASTCALL_TYPE", call_type);
-						context.startActivity(intent);
+//						Intent intent = new Intent(context, PrinterOptions.class);
+//						intent.putExtra("OPENVIEW", "pdf");
+//						intent.putExtra("filename", fileToSave.getAbsolutePath());
+//						intent.putExtra("title", Title);
+//						intent.putExtra("callid", callid);
+//						intent.putExtra("org_id", org_id);
+//						intent.putExtra("url", url);
+//						intent.putExtra("PASTCALL_TYPE", call_type);
+//						context.startActivity(intent);
 					} else
 					{
-						Intent intent = new Intent(context, InvoicePdfViewer.class);
-						intent.putExtra("OPENVIEW", "pdf");
-						intent.putExtra("filename", fileToSave.getAbsolutePath());
-						intent.putExtra("title", Title);
-						intent.putExtra("callid", callid);
-						intent.putExtra("org_id", org_id);
-						intent.putExtra("url", url);
-						intent.putExtra("PASTCALL_TYPE", call_type);
-						context.startActivity(intent);
+//						Intent intent = new Intent(context, InvoicePdfViewer.class);
+//						intent.putExtra("OPENVIEW", "pdf");
+//						intent.putExtra("filename", fileToSave.getAbsolutePath());
+//						intent.putExtra("title", Title);
+//						intent.putExtra("callid", callid);
+//						intent.putExtra("org_id", org_id);
+//						intent.putExtra("url", url);
+//						intent.putExtra("PASTCALL_TYPE", call_type);
+//						context.startActivity(intent);
 					}
 				}
 			});
@@ -111,7 +107,7 @@ public class PDFHelper
 			progressDialog.dismiss();
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -139,28 +135,28 @@ public class PDFHelper
 					{
 						if (title.equals("PRINTOPTION"))
 						{
-							Intent intent = new Intent(context, PrinterOptions.class);
-							intent.putExtra("OPENVIEW", "pdf");
-							intent.putExtra("filename", fileToSave.getAbsolutePath());
-							intent.putExtra("title", title);
-							intent.putExtra("callid", callid);
-							intent.putExtra("org_id", org_id);
-							intent.putExtra("url", path);
-							intent.putExtra("title", title);
-							intent.putExtra("PASTCALL_TYPE", call_type);
-							context.startActivity(intent);
+//							Intent intent = new Intent(context, PrinterOptions.class);
+//							intent.putExtra("OPENVIEW", "pdf");
+//							intent.putExtra("filename", fileToSave.getAbsolutePath());
+//							intent.putExtra("title", title);
+//							intent.putExtra("callid", callid);
+//							intent.putExtra("org_id", org_id);
+//							intent.putExtra("url", path);
+//							intent.putExtra("title", title);
+//							intent.putExtra("PASTCALL_TYPE", call_type);
+//							context.startActivity(intent);
 						} else
 						{
-							Intent intent = new Intent(context, InvoicePdfViewer.class);
-							intent.putExtra("OPENVIEW", "pdf");
-							intent.putExtra("filename", fileToSave.getAbsolutePath());
-							intent.putExtra("title", title);
-							intent.putExtra("callid", callid);
-							intent.putExtra("org_id", org_id);
-							intent.putExtra("url", path);
-							intent.putExtra("title", title);
-							intent.putExtra("PASTCALL_TYPE", call_type);
-							context.startActivity(intent);
+//							Intent intent = new Intent(context, InvoicePdfViewer.class);
+//							intent.putExtra("OPENVIEW", "pdf");
+//							intent.putExtra("filename", fileToSave.getAbsolutePath());
+//							intent.putExtra("title", title);
+//							intent.putExtra("callid", callid);
+//							intent.putExtra("org_id", org_id);
+//							intent.putExtra("url", path);
+//							intent.putExtra("title", title);
+//							intent.putExtra("PASTCALL_TYPE", call_type);
+//							context.startActivity(intent);
 						}
 					}
 				});
@@ -199,7 +195,7 @@ public class PDFHelper
 				return fileToSave.getAbsolutePath();
 			} catch (Exception e)
 			{
-				LogHelper.printStackTrace(e);
+				e.printStackTrace();
 				fileToSave.delete();
 			}
 			return null;

@@ -4,7 +4,7 @@
     android:padding="10dp"
     android:layout_height="wrap_content">
 
-    <in.ajm.sb.helper.TextViewBold
+    <in.ajm.sb.customviews.TextViewBold
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="@string/enter_otp"/>
 
-    <in.ajm.sb.helper.EditTextRegular
+    <in.ajm.sb.customviews.EditTextRegular
         android:id="@+id/et_otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:maxLength="6"
         android:padding="5dp" />
 
-    <in.ajm.sb.helper.ButtonMedium
+    <in.ajm.sb.customviews.ButtonMedium
         android:id="@+id/button_submit"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"

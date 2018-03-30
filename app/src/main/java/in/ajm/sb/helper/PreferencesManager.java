@@ -1,4 +1,4 @@
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ import android.content.SharedPreferences.Editor;
 public class PreferencesManager
 {
 
-	private static String PREFS_NAME = "Jobi";
+	private static String PREFS_NAME = "Sb";
 
 	public static boolean hasPreference(Context context, String key)
 	{

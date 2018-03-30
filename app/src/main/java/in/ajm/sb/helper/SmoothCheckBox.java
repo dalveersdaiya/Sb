@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;

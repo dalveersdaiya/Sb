@@ -8,12 +8,6 @@
         <attr name="color_unchecked_stroke" format="color"/>
     </declare-styleable>
 
-    <declare-styleable name="RelativeTimeTextView">
-        <attr name="relative_time_prefix" format="string" />
-        <attr name="relative_time_suffix" format="string" />
-        <attr name="reference_time" format="string" />
-    </declare-styleable>
-
     <declare-styleable name="SwipeMenuLayout">
         <attr name="swipeEnable" format="boolean"/>
         <attr name="ios" format="boolean"/>

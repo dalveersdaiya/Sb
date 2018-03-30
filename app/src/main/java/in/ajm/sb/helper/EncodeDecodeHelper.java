@@ -1,4 +1,4 @@
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.util.Base64;
 
@@ -69,7 +69,7 @@ public class EncodeDecodeHelper
 				return bi.toString(RADIX);
 			} catch (Exception e)
 			{
-				LogHelper.printStackTrace(e);
+				e.printStackTrace();
 			}
 			return strToEncode;
 		}
@@ -81,7 +81,7 @@ public class EncodeDecodeHelper
 		{
 			return URLEncoder.encode(msg, "UTF-8");
 		}catch (UnsupportedEncodingException e){
-			LogHelper.printStackTrace(e);
+			e.printStackTrace();
 			return "";
 		}
 	}

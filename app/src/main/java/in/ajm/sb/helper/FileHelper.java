@@ -1,4 +1,4 @@
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -254,14 +254,14 @@ public class FileHelper
 						throw new FileNotFoundException("Unable to create external app directory");
 				}
 			} else if (preferExternal)
-				LogHelper.systemErrPrint("don't have permission to access writable storage. Please grant permission to write on external storage in AndroidManifest.xml");
+//				LogHelper.systemErrPrint("don't have permission to access writable storage. Please grant permission to write on external storage in AndroidManifest.xml");
 
 			if (rootDir == null)
 				rootDir = context.getFilesDir();
 
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+			e.printStackTrace();
 		}
 
 		return rootDir;
@@ -296,19 +296,21 @@ public class FileHelper
 			if (!appDir.exists())
 			{
 				if (!appDir.mkdirs())
-					LogHelper.systemErrPrint("Unable to create external app directory");
+//					LogHelper.systemErrPrint("Unable to create external app directory");
 				try
 				{
 					File noMediaFile = new File(appDir, ".nomedia");
-					if (!noMediaFile.createNewFile())
-						LogHelper.systemErrPrint("Can't create \".nomedia\" file in application external directory");
+					if (!noMediaFile.createNewFile()){
+
+					}
+//						LogHelper.systemErrPrint("Can't create \".nomedia\" file in application external directory");
 				} catch (IOException e)
 				{
-					LogHelper.systemErrPrint("Can't create \".nomedia\" file in application external directory");
+//					LogHelper.systemErrPrint("Can't create \".nomedia\" file in application external directory");
 				}
 			}
 		} else if (preferExternal)
-			LogHelper.systemErrPrint("don't have permission to access writable storage. Please grant permission to write on external storage in AndroidManifest.xml");
+//			LogHelper.systemErrPrint("don't have permission to access writable storage. Please grant permission to write on external storage in AndroidManifest.xml");
 
 		if (appDir == null)
 			appDir = context.getFilesDir();
@@ -316,7 +318,7 @@ public class FileHelper
 		if (appDir == null)
 		{
 			String appDirPath = context.getFilesDir().getPath() + context.getPackageName() + "/";
-			LogHelper.systemErrPrint("Can't define system app directory! '" + appDirPath + "' will be used.");
+//			LogHelper.systemErrPrint("Can't define system app directory! '" + appDirPath + "' will be used.");
 			appDir = new File(appDirPath);
 		}
 
@@ -345,7 +347,7 @@ public class FileHelper
 				return file.createNewFile();
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 		}
 		return false;
 	}
@@ -369,7 +371,7 @@ public class FileHelper
 			return true;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -406,7 +408,7 @@ public class FileHelper
 			return false;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -441,7 +443,7 @@ public class FileHelper
 			return false;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -469,7 +471,7 @@ public class FileHelper
 			}
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -492,7 +494,7 @@ public class FileHelper
 			return oldDir.exists() && oldDir.renameTo(newDir);
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -522,7 +524,7 @@ public class FileHelper
 			return destFile.getPath();
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+//			LogHelper.printStackTrace(e);
 			return null;
 		}
 
@@ -568,7 +570,7 @@ public class FileHelper
 				}
 			} catch (Exception e)
 			{
-				LogHelper.printStackTrace(e);
+//				LogHelper.printStackTrace(e);
 			} finally
 			{
 				if (inputChannel != null)
@@ -598,7 +600,7 @@ public class FileHelper
 			File dir = new File(getAppDirectory(context, preferExternal), dirName);
 			if (!dir.exists())
 			{
-				LogHelper.systemErrPrint("Directory \"" + dirName + "\" not found");
+//				LogHelper.systemErrPrint("Directory \"" + dirName + "\" not found");
 				if (!dir.mkdirs())
 					throw new FileNotFoundException("Could not able to create directory: " + dirName);
 			}
@@ -621,7 +623,7 @@ public class FileHelper
 			return true;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+	//		LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -644,7 +646,7 @@ public class FileHelper
 			return null;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+		//	LogHelper.printStackTrace(e);
 		}
 		return null;
 	}
@@ -683,7 +685,7 @@ public class FileHelper
 			return null;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+		//	LogHelper.printStackTrace(e);
 		}
 		return null;
 	}
@@ -701,7 +703,7 @@ public class FileHelper
 			File dir = new File(getAppDirectory(context, preferExternal), dirName);
 			if (!dir.exists())
 			{
-				LogHelper.systemErrPrint("Directory \"" + dirName + "\" not found");
+				//LogHelper.systemErrPrint("Directory \"" + dirName + "\" not found");
 				if (!dir.mkdirs())
 					throw new FileNotFoundException("Could not able to create directory: " + dirName);
 			}
@@ -720,7 +722,7 @@ public class FileHelper
 			return file.getPath();
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+		//	LogHelper.printStackTrace(e);
 			return null;
 		}
 	}
@@ -747,7 +749,7 @@ public class FileHelper
 			return true;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+			//LogHelper.printStackTrace(e);
 			return false;
 		}
 	}
@@ -837,7 +839,7 @@ public class FileHelper
 			return fileData;
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+		//	LogHelper.printStackTrace(e);
 			return null;
 		}
 	}
@@ -993,7 +995,7 @@ public class FileHelper
 			return sb.toString();
 		} catch (Exception e)
 		{
-			LogHelper.printStackTrace(e);
+		//	LogHelper.printStackTrace(e);
 			return null;
 		}
 	}

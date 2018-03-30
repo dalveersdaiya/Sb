@@ -1,4 +1,4 @@
-package com.org.besteverflatrate.helper;
+package in.ajm.sb.helper;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;

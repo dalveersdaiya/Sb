@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SB</string>
     <string name="first_name">First Name</string>
+    <string name="title_activity_web">WebActivity</string>
     <string name="last_name">Last Name</string>
     <string name="mob_num">Mobile Number</string>
     <string name="submit">Submit</string>
@@ -18,4 +19,8 @@
     <string name="section">Section</string>
     <string name="enter_otp">Enter the 6 digit OTP sent to the number.</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
