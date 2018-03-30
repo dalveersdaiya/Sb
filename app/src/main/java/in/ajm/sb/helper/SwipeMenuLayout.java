@@ -52,38 +52,30 @@ import in.ajm.sb.R;
  */
 public class SwipeMenuLayout extends ViewGroup {
     private static final String TAG = "zxt/SwipeMenuLayout";
-
+    //存储的是当前正在展开的View
+    private static SwipeMenuLayout mViewCache;
+    //防止多只手指一起滑我的flag 在每次down里判断， touch事件结束清空
+    private static boolean isTouching;
     private int mScaleTouchSlop;//为了处理单击事件的冲突
     private int mMaxVelocity;//计算滑动速度用
     private int mPointerId;//多点触摸只算第一根手指的速度
     private int mHeight;//自己的高度
     //右侧菜单宽度总和(最大滑动距离)
     private int mRightMenuWidths;
-
     //滑动判定临界值（右侧菜单宽度的40%） 手指抬起时，超过了展开，没超过收起menu
     private int mLimit;
-
     private View mContentView;//2016 11 13 add ，存储contentView(第一个View)
-
     //private Scroller mScroller;//以前item的滑动动画靠它做，现在用属性动画做
     //上一次的xy
     private PointF mLastP = new PointF();
     //2016 10 22 add , 仿QQ，侧滑菜单展开时，点击除侧滑菜单之外的区域，关闭侧滑菜单。
     //增加一个布尔值变量，dispatch函数里，每次down时，为true，move时判断，如果是滑动动作，设为false。
-    //在Intercept函数的up时，判断这个变量，如果仍为true 说明是点击事件，则关闭菜单。 
+    //在Intercept函数的up时，判断这个变量，如果仍为true 说明是点击事件，则关闭菜单。
     private boolean isUnMoved = true;
-
     //2016 11 03 add,判断手指起始落点，如果距离属于滑动了，就屏蔽一切点击事件。
     //up-down的坐标，判断是否是滑动，如果是，则屏蔽一切点击事件
     private PointF mFirstP = new PointF();
     private boolean isUserSwiped;
-
-    //存储的是当前正在展开的View
-    private static SwipeMenuLayout mViewCache;
-
-    //防止多只手指一起滑我的flag 在每次down里判断， touch事件结束清空
-    private static boolean isTouching;
-
     private VelocityTracker mVelocityTracker;//滑动速度变量
     private android.util.Log LogUtils;
 
@@ -103,6 +95,11 @@ public class SwipeMenuLayout extends ViewGroup {
      * 20160929add 左滑右滑的开关,默认左滑打开菜单
      */
     private boolean isLeftSwipe;
+    /**
+     * 平滑展开
+     */
+    private ValueAnimator mExpandAnim, mCloseAnim;
+    private boolean isExpand;//代表当前是否是展开状态 2016 11 03 add
 
     public SwipeMenuLayout(Context context) {
         this(context, null);
@@ -117,6 +114,15 @@ public class SwipeMenuLayout extends ViewGroup {
         init(context, attrs, defStyleAttr);
     }
 
+    /**
+     * 返回ViewCache
+     *
+     * @return
+     */
+    public static SwipeMenuLayout getViewCache() {
+        return mViewCache;
+    }
+
     public boolean isSwipeEnable() {
         return isSwipeEnable;
     }
@@ -129,7 +135,6 @@ public class SwipeMenuLayout extends ViewGroup {
     public void setSwipeEnable(boolean swipeEnable) {
         isSwipeEnable = swipeEnable;
     }
-
 
     public boolean isIos() {
         return isIos;
@@ -158,15 +163,6 @@ public class SwipeMenuLayout extends ViewGroup {
     public SwipeMenuLayout setLeftSwipe(boolean leftSwipe) {
         isLeftSwipe = leftSwipe;
         return this;
-    }
-
-    /**
-     * 返回ViewCache
-     *
-     * @return
-     */
-    public static SwipeMenuLayout getViewCache() {
-        return mViewCache;
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -490,13 +486,6 @@ public class SwipeMenuLayout extends ViewGroup {
         }
         return super.onInterceptTouchEvent(ev);
     }
-
-    /**
-     * 平滑展开
-     */
-    private ValueAnimator mExpandAnim, mCloseAnim;
-
-    private boolean isExpand;//代表当前是否是展开状态 2016 11 03 add
 
     public void smoothExpand() {
         //Log.d(TAG, "smoothExpand() called" + this);

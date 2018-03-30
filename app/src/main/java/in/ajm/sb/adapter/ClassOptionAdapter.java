@@ -14,7 +14,7 @@ import in.ajm.sb.data.ClassOptions;
 import in.ajm.sb.interfaces.OnClassItemClick;
 
 /**
- * Created by ajm on 26/03/18.
+ * Created by DSD on 26/03/18.
  */
 
 public class ClassOptionAdapter extends RecyclerView.Adapter<ClassOptionAdapter.Holder> {

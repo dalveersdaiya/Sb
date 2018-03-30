@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 
 /**
- * Created by ajm on 30/03/18.
+ * Created by DSD on 30/03/18.
  */
 
 public class ApiParams

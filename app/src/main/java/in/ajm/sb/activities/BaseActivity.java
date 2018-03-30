@@ -36,7 +36,7 @@ import in.ajm.sb.helper.PreferencesManager;
 import static in.ajm.sb.helper.PreferencesManager.getPreferenceByKey;
 
 /**
- * Created by ajm on 26/03/18.
+ * Created by DSD on 26/03/18.
  */
 
 public class BaseActivity extends AppCompatActivity {
@@ -405,4 +405,43 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Example call device api
+     *
+     * private void callApi()
+     {
+     String vesioncode = Build.VERSION.RELEASE;
+     String deviceType = Build.VERSION.SDK_INT + "";
+     HashMap<String, String> hashMap = new HashMap<>();
+     hashMap.put("push_token", PreferencesManager.getPreferenceByKey(LoginActivity.this, AppConfigs.PREFERENCE_PUSH_TOKEN));
+     try
+     {
+     if (Device.get().getUserId() == null && Device.get().getOrgId() == null)
+     {
+     hashMap.put("org_id", "");
+     hashMap.put("user_id", "");
+     } else
+     {
+     hashMap.put("org_id", Device.get().getOrgId());
+     hashMap.put("user_id", Device.get().getUserId());
+     }
+     } catch (Exception e)
+     {
+     hashMap.put("org_id", "");
+     hashMap.put("user_id", "");
+     }
+
+     hashMap.put("device_type", deviceType);
+     hashMap.put("device_os", "ANDROID");
+     hashMap.put("device_version", vesioncode);
+     hashMap.put("lat", "");
+     hashMap.put("lng", "");
+
+     ApiParams apiParams = new ApiParams();
+     apiParams.mHashMap = hashMap;
+     apiParams.orgId = getSelectedOrgId();
+     DeviceCaller.instance().post(LoginActivity.this, apiParams, this, ApiType.REGISTER);
+     }
+     */
 }

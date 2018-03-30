@@ -8,33 +8,28 @@ import android.widget.TextView;
 import in.ajm.sb.helper.FontHelper;
 
 /**
- * Created by Himanshu Chouhan on 27/09/16.
+ * Created by DSD on 27/09/16.
  */
 
-public class TextViewRegularlight extends TextView
-{
+public class TextViewRegularlight extends TextView {
 
-	public TextViewRegularlight(Context context, AttributeSet attrs, int defStyle)
-	{
-		super(context, attrs, defStyle);
-		init(context);
-	}
+    public TextViewRegularlight(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
+    }
 
-	public TextViewRegularlight(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-		init(context);
-	}
+    public TextViewRegularlight(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
 
-	public TextViewRegularlight(Context context)
-	{
-		super(context);
-		init(context);
-	}
+    public TextViewRegularlight(Context context) {
+        super(context);
+        init(context);
+    }
 
-	private void init(Context context)
-	{
-		setTypeface(FontHelper.getInstance(context).getRegularLight());
-		setPaintFlags(getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
-	}
+    private void init(Context context) {
+        setTypeface(FontHelper.getInstance(context).getRegularLight());
+        setPaintFlags(getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+    }
 }

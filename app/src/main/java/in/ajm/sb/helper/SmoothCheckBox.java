@@ -1,12 +1,12 @@
 /**
- *  * Copyright 2016 andy
- *
+ * * Copyright 2016 andy
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,7 +33,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
 
-import com.org.besteverflatrate.R;
+import in.ajm.sb.R;
 
 /**
  * Author : andy
@@ -43,16 +43,15 @@ import com.org.besteverflatrate.R;
  * Description : A custom CheckBox with animation for Android
  */
 
-public class SmoothCheckBox extends View implements Checkable
-{
+public class SmoothCheckBox extends View implements Checkable {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
 
-    private static final int COLOR_TICK      = Color.WHITE;
+    private static final int COLOR_TICK = Color.WHITE;
     private static final int COLOR_UNCHECKED = Color.WHITE;
-    private static final int COLOR_CHECKED   = Color.parseColor("#FB4846");
+    private static final int COLOR_CHECKED = Color.parseColor("#FB4846");
     private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
 
-    private static final int DEF_DRAW_SIZE     = 25;
+    private static final int DEF_DRAW_SIZE = 25;
     private static final int DEF_ANIM_DURATION = 300;
 
     private Paint mPaint, mTickPaint, mFloorPaint;
@@ -86,6 +85,21 @@ public class SmoothCheckBox extends View implements Checkable
     public SmoothCheckBox(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
+    }
+
+    private static int getGradientColor(int startColor, int endColor, float percent) {
+        int sr = (startColor & 0xff0000) >> 0x10;
+        int sg = (startColor & 0xff00) >> 0x8;
+        int sb = (startColor & 0xff);
+
+        int er = (endColor & 0xff0000) >> 0x10;
+        int eg = (endColor & 0xff00) >> 0x8;
+        int eb = (endColor & 0xff);
+
+        int cr = (int) (sr * (1 - percent) + er * percent);
+        int cg = (int) (sg * (1 - percent) + eg * percent);
+        int cb = (int) (sb * (1 - percent) + eb * percent);
+        return Color.argb(0xff, cr, cg, cb);
     }
 
     private void init(AttributeSet attrs) {
@@ -161,11 +175,6 @@ public class SmoothCheckBox extends View implements Checkable
     }
 
     @Override
-    public void toggle() {
-        this.setChecked(!isChecked());
-    }
-
-    @Override
     public void setChecked(boolean checked) {
         mChecked = checked;
         reset();
@@ -173,6 +182,11 @@ public class SmoothCheckBox extends View implements Checkable
         if (mListener != null) {
             mListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
         }
+    }
+
+    @Override
+    public void toggle() {
+        this.setChecked(!isChecked());
     }
 
     /**
@@ -396,21 +410,6 @@ public class SmoothCheckBox extends View implements Checkable
                 postInvalidate();
             }
         }, mAnimDuration);
-    }
-
-    private static int getGradientColor(int startColor, int endColor, float percent) {
-        int sr = (startColor & 0xff0000) >> 0x10;
-        int sg = (startColor & 0xff00) >> 0x8;
-        int sb = (startColor & 0xff);
-
-        int er = (endColor & 0xff0000) >> 0x10;
-        int eg = (endColor & 0xff00) >> 0x8;
-        int eb = (endColor & 0xff);
-
-        int cr = (int) (sr * (1 - percent) + er * percent);
-        int cg = (int) (sg * (1 - percent) + eg * percent);
-        int cb = (int) (sb * (1 - percent) + eb * percent);
-        return Color.argb(0xff, cr, cg, cb);
     }
 
     public void setOnCheckedChangeListener(OnCheckedChangeListener l) {

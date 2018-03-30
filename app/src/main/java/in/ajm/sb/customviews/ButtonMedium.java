@@ -8,7 +8,7 @@ import android.widget.Button;
 import in.ajm.sb.helper.FontHelper;
 
 /**
- * Created by Himanshu Chouhan on 28/02/17.
+ * Created by DSD on 28/02/17.
  */
 
 public class ButtonMedium extends Button {

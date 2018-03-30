@@ -14,7 +14,7 @@ import in.ajm.sb.data.SectionOptions;
 import in.ajm.sb.interfaces.OnSectionItemClick;
 
 /**
- * Created by ajm on 26/03/18.
+ * Created by DSD on 26/03/18.
  */
 
 public class SectionOptionAdapter extends RecyclerView.Adapter<SectionOptionAdapter.Holder> {

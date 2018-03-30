@@ -8,32 +8,27 @@ import android.widget.Button;
 import in.ajm.sb.helper.FontHelper;
 
 /**
- * Created by Himanshu Chouhan on 28/02/17.
+ * Created by DSD on 28/02/17.
  */
 
-public class ButtonBold extends Button
-{
-	public ButtonBold(Context context, AttributeSet attrs, int defStyle)
-	{
-		super(context, attrs, defStyle);
-		init(context);
-	}
+public class ButtonBold extends Button {
+    public ButtonBold(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
+    }
 
-	public ButtonBold(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-		init(context);
-	}
+    public ButtonBold(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
 
-	public ButtonBold(Context context)
-	{
-		super(context);
-		init(context);
-	}
+    public ButtonBold(Context context) {
+        super(context);
+        init(context);
+    }
 
-	private void init(Context context)
-	{
-		setTypeface(FontHelper.getInstance(context).getBoldFont());
-		setPaintFlags(getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
-	}
+    private void init(Context context) {
+        setTypeface(FontHelper.getInstance(context).getBoldFont());
+        setPaintFlags(getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+    }
 }

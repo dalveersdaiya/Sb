@@ -8,7 +8,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Created by ajm on 06/10/17.
+ * Created by DSD on 06/10/17.
  */
 
 public class DoubleTypeAdapter extends TypeAdapter<Double>
