@@ -34,6 +34,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+
 import in.ajm.sb.R;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.CustomSpanClass;
@@ -190,6 +194,40 @@ public class BaseActivity extends AppCompatActivity {
             }
             //the method we have create in activity
             applyFontToMenuItem(mi, typeface);
+        }
+    }
+
+    /**
+     * More Effective way for option showAsAction = Always
+     * @param staticTypefaceFieldName
+     * @param newTypeface
+     */
+    public static void replaceFont(String staticTypefaceFieldName,
+                                   final Typeface newTypeface) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Map<String, Typeface> newMap = new HashMap<String, Typeface>();
+            newMap.put("sans-serif", newTypeface);
+            try {
+                final Field staticField = Typeface.class
+                        .getDeclaredField("sSystemFontMap");
+                staticField.setAccessible(true);
+                staticField.set(null, newMap);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                final Field staticField = Typeface.class
+                        .getDeclaredField(staticTypefaceFieldName);
+                staticField.setAccessible(true);
+                staticField.set(null, newTypeface);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- you should set typeface which you want to override with TypefaceUtil -->
+        <!--<item name="android:typeface">serif</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -62,6 +62,9 @@ public class SchoolBook extends Application {
 //                .build();
 //        Realm.setDefaultConfiguration(realmConfig);
 
+
+//        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Mark Simonson - Proxima Nova Alt Regular-webfont.ttf");
+
         Realm.init(this);
 
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
