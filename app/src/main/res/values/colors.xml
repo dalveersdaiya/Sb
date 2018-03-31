@@ -5,6 +5,11 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="backgroundEditText">#5cffffff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="app_blue">#651FFF</color>
+
 
     <color name="md_red_50">#FFEBEE</color>
     <color name="md_red_100">#FFCDD2</color>
