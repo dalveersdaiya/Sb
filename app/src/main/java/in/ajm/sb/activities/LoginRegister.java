@@ -6,6 +6,7 @@ import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import in.ajm.sb.R;
 import in.ajm.sb.fragments.BottomSheetAddOtp;
@@ -17,6 +18,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
     EditText etLastname;
     EditText etMobileNumber;
     Button buttonSubmit;
+    RelativeLayout root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         setContentView(R.layout.login_register_activity);
         viewByIds();
         applyClickListeners();
+        setFocuslistener();
 
     }
 
@@ -32,7 +35,26 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         etLastname = (EditText) findViewById(R.id.et_lastName);
         etMobileNumber = (EditText) findViewById(R.id.et_mob_number);
         buttonSubmit = (Button) findViewById(R.id.button_submit);
+        root = findViewById(R.id.root);
 
+    }
+
+    View.OnFocusChangeListener focuslistener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (hasFocus) {
+                animateOnFocus(v, root);
+            } else {
+                animateOnFocusLost(v, root);
+            }
+        }
+    };
+
+
+    public void setFocuslistener(){
+        etFirstName.setOnFocusChangeListener(focuslistener);
+        etLastname.setOnFocusChangeListener(focuslistener);
+        etMobileNumber.setOnFocusChangeListener(focuslistener);
     }
 
     public void applyClickListeners() {

@@ -1,5 +1,7 @@
 package in.ajm.sb.activities;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,11 +9,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Spannable;
@@ -23,6 +28,8 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -404,6 +411,143 @@ public class BaseActivity extends AppCompatActivity {
                 return mSource.subSequence(start, end); // Return default
             }
         }
+    }
+
+    public void animateOnFocus(View v, ViewGroup rootLayout) {
+        final CardView first_container = (CardView) v.getParent();
+        final CardView second_container = (CardView) first_container.getParent();
+
+        final int first_curr_radius = (int) getResources().getDimension(R.dimen.first_card_radius);
+        final int first_target_radius = (int) getResources().getDimension(R.dimen.first_card_radius_on_focus);
+
+        final int second_curr_radius = (int) getResources().getDimension(R.dimen.second_card_radius);
+        final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
+
+        final int first_curr_color = ContextCompat.getColor(this, android.R.color.transparent);
+        final int first_target_color = ((ColorDrawable) rootLayout.getBackground()).getColor();
+
+        final int second_curr_color = ContextCompat.getColor(this, R.color.backgroundEditText);
+        final int second_target_color = ContextCompat.getColor(this, android.R.color.white);
+
+        ValueAnimator first_anim = new ValueAnimator();
+        first_anim.setIntValues(first_curr_color, first_target_color);
+        first_anim.setEvaluator(new ArgbEvaluator());
+        first_anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                first_container.setCardBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+
+        ValueAnimator second_anim = new ValueAnimator();
+        second_anim.setIntValues(second_curr_color, second_target_color);
+        second_anim.setEvaluator(new ArgbEvaluator());
+        second_anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                second_container.setCardBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+
+        Animation a = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                int diff_radius = first_curr_radius - first_target_radius;
+                int radius = first_target_radius + (int) (diff_radius - (diff_radius * interpolatedTime));
+
+                first_container.setRadius(radius);
+                first_container.requestLayout();
+
+                diff_radius = second_curr_radius - second_target_radius;
+                radius = second_target_radius + (int) (diff_radius - (diff_radius * interpolatedTime));
+
+                second_container.setRadius(radius);
+                second_container.requestLayout();
+
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        a.setDuration(200);
+        first_anim.setDuration(200);
+        second_anim.setDuration(200);
+
+        first_anim.start();
+        second_anim.start();
+        first_container.startAnimation(a);
+    }
+
+    public  void animateOnFocusLost(View v, ViewGroup rootLayout) {
+        final CardView first_container = (CardView) v.getParent();
+        final CardView second_container = (CardView) first_container.getParent();
+
+        final int first_curr_radius = (int) getResources().getDimension(R.dimen.first_card_radius_on_focus);
+        final int first_target_radius = (int) getResources().getDimension(R.dimen.first_card_radius);
+
+        final int second_curr_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
+        final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius);
+
+        final int first_curr_color = ((ColorDrawable) rootLayout.getBackground()).getColor();
+        final int first_target_color = ContextCompat.getColor(this, android.R.color.transparent);
+
+        final int second_curr_color = ContextCompat.getColor(this, android.R.color.white);
+        final int second_target_color = ContextCompat.getColor(this, R.color.backgroundEditText);
+
+        ValueAnimator first_anim = new ValueAnimator();
+        first_anim.setIntValues(first_curr_color, first_target_color);
+        first_anim.setEvaluator(new ArgbEvaluator());
+        first_anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                first_container.setCardBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+
+        ValueAnimator second_anim = new ValueAnimator();
+        second_anim.setIntValues(second_curr_color, second_target_color);
+        second_anim.setEvaluator(new ArgbEvaluator());
+        second_anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                second_container.setCardBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+
+        Animation a = new Animation() {
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                int diff_radius = first_curr_radius - first_target_radius;
+                int radius = first_target_radius + (int) (diff_radius - (diff_radius * interpolatedTime));
+
+                first_container.setRadius(radius);
+                first_container.requestLayout();
+
+                diff_radius = second_curr_radius - second_target_radius;
+                radius = second_target_radius + (int) (diff_radius - (diff_radius * interpolatedTime));
+
+                second_container.setRadius(radius);
+                second_container.requestLayout();
+
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        a.setDuration(200);
+        first_anim.setDuration(200);
+        second_anim.setDuration(200);
+
+        first_anim.start();
+        second_anim.start();
+        first_container.startAnimation(a);
+
     }
 
     /**
