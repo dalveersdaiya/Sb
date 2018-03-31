@@ -1,5 +1,6 @@
 package in.ajm.sb.activities;
 
+import android.Manifest;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.app.ProgressDialog;
@@ -7,12 +8,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Vibrator;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -35,10 +39,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import in.ajm.sb.R;
+import in.ajm.sb.customviews.ElasticAction;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.CustomSpanClass;
 import in.ajm.sb.helper.FontHelper;
@@ -52,10 +59,12 @@ import static in.ajm.sb.helper.PreferencesManager.getPreferenceByKey;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     Context context = this;
     private TextView toolbarTitleTxtView;
     private int len = 0;
     private ProgressDialog dialog;
+    Vibrator vibrator;
 
     public static String getUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
@@ -63,6 +72,41 @@ public class BaseActivity extends AppCompatActivity {
 
     public static String getLoggedInUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_LOGGEDIN_USER_ID);
+    }
+
+    /**
+     * More Effective way for option showAs
+     *
+     * @param staticTypefaceFieldName
+     * @param newTypeface
+     */
+    public static void replaceFont(String staticTypefaceFieldName,
+                                   final Typeface newTypeface) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Map<String, Typeface> newMap = new HashMap<String, Typeface>();
+            newMap.put("sans-serif", newTypeface);
+            try {
+                final Field staticField = Typeface.class
+                        .getDeclaredField("sSystemFontMap");
+                staticField.setAccessible(true);
+                staticField.set(null, newMap);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                final Field staticField = Typeface.class
+                        .getDeclaredField(staticTypefaceFieldName);
+                staticField.setAccessible(true);
+                staticField.set(null, newTypeface);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void showDialog(Context context, String message, DialogInterface.OnClickListener onPositiveClick) {
@@ -194,40 +238,6 @@ public class BaseActivity extends AppCompatActivity {
             }
             //the method we have create in activity
             applyFontToMenuItem(mi, typeface);
-        }
-    }
-
-    /**
-     * More Effective way for option showAsAction = Always
-     * @param staticTypefaceFieldName
-     * @param newTypeface
-     */
-    public static void replaceFont(String staticTypefaceFieldName,
-                                   final Typeface newTypeface) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            Map<String, Typeface> newMap = new HashMap<String, Typeface>();
-            newMap.put("sans-serif", newTypeface);
-            try {
-                final Field staticField = Typeface.class
-                        .getDeclaredField("sSystemFontMap");
-                staticField.setAccessible(true);
-                staticField.set(null, newMap);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                final Field staticField = Typeface.class
-                        .getDeclaredField(staticTypefaceFieldName);
-                staticField.setAccessible(true);
-                staticField.set(null, newTypeface);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -424,33 +434,6 @@ public class BaseActivity extends AppCompatActivity {
             dialog.dismiss();
     }
 
-    public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
-        @Override
-        public CharSequence getTransformation(CharSequence source, View view) {
-            return new PasswordCharSequence(source);
-        }
-
-        private class PasswordCharSequence implements CharSequence {
-            private CharSequence mSource;
-
-            public PasswordCharSequence(CharSequence source) {
-                mSource = source; // Store char sequence
-            }
-
-            public char charAt(int index) {
-                return '*'; // This is the important part
-            }
-
-            public int length() {
-                return mSource.length(); // Return default
-            }
-
-            public CharSequence subSequence(int start, int end) {
-                return mSource.subSequence(start, end); // Return default
-            }
-        }
-    }
-
     public void animateOnFocus(View v, ViewGroup rootLayout) {
         final CardView first_container = (CardView) v.getParent();
         final CardView second_container = (CardView) first_container.getParent();
@@ -519,7 +502,7 @@ public class BaseActivity extends AppCompatActivity {
         first_container.startAnimation(a);
     }
 
-    public  void animateOnFocusLost(View v, ViewGroup rootLayout) {
+    public void animateOnFocusLost(View v, ViewGroup rootLayout) {
         final CardView first_container = (CardView) v.getParent();
         final CardView second_container = (CardView) first_container.getParent();
 
@@ -590,40 +573,103 @@ public class BaseActivity extends AppCompatActivity {
 
     /**
      * Example call device api
-     *
+     * <p>
      * private void callApi()
-     {
-     String vesioncode = Build.VERSION.RELEASE;
-     String deviceType = Build.VERSION.SDK_INT + "";
-     HashMap<String, String> hashMap = new HashMap<>();
-     hashMap.put("push_token", PreferencesManager.getPreferenceByKey(LoginActivity.this, AppConfigs.PREFERENCE_PUSH_TOKEN));
-     try
-     {
-     if (Device.get().getUserId() == null && Device.get().getOrgId() == null)
-     {
-     hashMap.put("org_id", "");
-     hashMap.put("user_id", "");
-     } else
-     {
-     hashMap.put("org_id", Device.get().getOrgId());
-     hashMap.put("user_id", Device.get().getUserId());
-     }
-     } catch (Exception e)
-     {
-     hashMap.put("org_id", "");
-     hashMap.put("user_id", "");
-     }
+     * {
+     * String vesioncode = Build.VERSION.RELEASE;
+     * String deviceType = Build.VERSION.SDK_INT + "";
+     * HashMap<String, String> hashMap = new HashMap<>();
+     * hashMap.put("push_token", PreferencesManager.getPreferenceByKey(LoginActivity.this, AppConfigs.PREFERENCE_PUSH_TOKEN));
+     * try
+     * {
+     * if (Device.get().getUserId() == null && Device.get().getOrgId() == null)
+     * {
+     * hashMap.put("org_id", "");
+     * hashMap.put("user_id", "");
+     * } else
+     * {
+     * hashMap.put("org_id", Device.get().getOrgId());
+     * hashMap.put("user_id", Device.get().getUserId());
+     * }
+     * } catch (Exception e)
+     * {
+     * hashMap.put("org_id", "");
+     * hashMap.put("user_id", "");
+     * }
+     * <p>
+     * hashMap.put("device_type", deviceType);
+     * hashMap.put("device_os", "ANDROID");
+     * hashMap.put("device_version", vesioncode);
+     * hashMap.put("lat", "");
+     * hashMap.put("lng", "");
+     * <p>
+     * ApiParams apiParams = new ApiParams();
+     * apiParams.mHashMap = hashMap;
+     * apiParams.orgId = getSelectedOrgId();
+     * DeviceCaller.instance().post(LoginActivity.this, apiParams, this, ApiType.REGISTER);
+     * }
+     */
 
-     hashMap.put("device_type", deviceType);
-     hashMap.put("device_os", "ANDROID");
-     hashMap.put("device_version", vesioncode);
-     hashMap.put("lat", "");
-     hashMap.put("lng", "");
+    public boolean checkAndRequestPermissions() {
+        int permissionSendMessage = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS);
+        int receiveSMS = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
+        int readSMS = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (receiveSMS != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.RECEIVE_MMS);
+        }
+        if (readSMS != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_SMS);
+        }
+        if (permissionSendMessage != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.SEND_SMS);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this,
+                    listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
+                    REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
+    }
 
-     ApiParams apiParams = new ApiParams();
-     apiParams.mHashMap = hashMap;
-     apiParams.orgId = getSelectedOrgId();
-     DeviceCaller.instance().post(LoginActivity.this, apiParams, this, ApiType.REGISTER);
-     }
+    public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
+        @Override
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return new PasswordCharSequence(source);
+        }
+
+        private class PasswordCharSequence implements CharSequence {
+            private CharSequence mSource;
+
+            public PasswordCharSequence(CharSequence source) {
+                mSource = source; // Store char sequence
+            }
+
+            public char charAt(int index) {
+                return '*'; // This is the important part
+            }
+
+            public int length() {
+                return mSource.length(); // Return default
+            }
+
+            public CharSequence subSequence(int start, int end) {
+                return mSource.subSequence(start, end); // Return default
+            }
+        }
+    }
+
+    public void setElasticAction(ViewGroup anyView, float scaleXY, int duration, boolean wannaVibrate) {
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        ElasticAction.doAction(anyView, duration, scaleXY, scaleXY);
+        if (wannaVibrate) {
+            vibrator.vibrate(50);
+        }
+    }
+
+    /**
+     * NOTE : To get sms verification you use SMSVerify API by Google you can also use this lib https://github.com/stfalcon-studio/SmsVerifyCatcher
      */
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import in.ajm.sb.R;
+import in.ajm.sb.broadcastreceivers.NetworkStateReceiver;
 
 
 public class SplashActivity extends AppCompatActivity {

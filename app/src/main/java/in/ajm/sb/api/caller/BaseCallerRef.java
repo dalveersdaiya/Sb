@@ -49,7 +49,8 @@ public abstract class BaseCallerRef {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         okHttpClientBuilder.readTimeout(120, TimeUnit.SECONDS);
         okHttpClientBuilder.connectTimeout(120, TimeUnit.SECONDS);
-//
+
+//        HACK : This if condition lets you check the Build Type
 //        if (!BuildConfig.FLAVOR.equals("live") && BuildConfig.DEBUG) {
 //            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
 //            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -24,4 +24,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="beta_ver">Beta Version</string>
+    <string name="no_internet">Internet not available</string>
+    <string name="internet_on">Internet available.</string>
 </resources>
