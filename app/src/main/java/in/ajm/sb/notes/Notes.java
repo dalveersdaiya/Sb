@@ -3,6 +3,7 @@ package in.ajm.sb.notes;
 public class Notes {
     /**
      * //    Hack : How to use SmS Verify catcher
+     * NOTE : To get sms verification you use SMSVerify API by Google
      *
      * public class MainActivity extends AppCompatActivity {
      private SmsVerifyCatcher smsVerifyCatcher;
@@ -70,5 +71,45 @@ public class Notes {
      *
      */
 
+//    **************
+
+    /**
+     * Example call device api
+     * <p>
+     * private void callApi()
+     * {
+     * String vesioncode = Build.VERSION.RELEASE;
+     * String deviceType = Build.VERSION.SDK_INT + "";
+     * HashMap<String, String> hashMap = new HashMap<>();
+     * hashMap.put("push_token", PreferencesManager.getPreferenceByKey(LoginActivity.this, AppConfigs.PREFERENCE_PUSH_TOKEN));
+     * try
+     * {
+     * if (Device.get().getUserId() == null && Device.get().getOrgId() == null)
+     * {
+     * hashMap.put("org_id", "");
+     * hashMap.put("user_id", "");
+     * } else
+     * {
+     * hashMap.put("org_id", Device.get().getOrgId());
+     * hashMap.put("user_id", Device.get().getUserId());
+     * }
+     * } catch (Exception e)
+     * {
+     * hashMap.put("org_id", "");
+     * hashMap.put("user_id", "");
+     * }
+     * <p>
+     * hashMap.put("device_type", deviceType);
+     * hashMap.put("device_os", "ANDROID");
+     * hashMap.put("device_version", vesioncode);
+     * hashMap.put("lat", "");
+     * hashMap.put("lng", "");
+     * <p>
+     * ApiParams apiParams = new ApiParams();
+     * apiParams.mHashMap = hashMap;
+     * apiParams.orgId = getSelectedOrgId();
+     * DeviceCaller.instance().post(LoginActivity.this, apiParams, this, ApiType.REGISTER);
+     * }
+     */
 
 }

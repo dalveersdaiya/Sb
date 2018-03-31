@@ -48,8 +48,13 @@ import in.ajm.sb.R;
 import in.ajm.sb.customviews.ElasticAction;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.CustomSpanClass;
+import in.ajm.sb.helper.FileHelper;
 import in.ajm.sb.helper.FontHelper;
+import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.helper.PreferencesManager;
+import in.ajm.sb.helper.recorder.AudioRecorder;
+import in.ajm.sb.helper.recorder.AudioRecorderBuilder;
+import in.ajm.sb.helper.recorder.RecordingButton;
 
 import static in.ajm.sb.helper.PreferencesManager.getPreferenceByKey;
 
@@ -61,10 +66,13 @@ public class BaseActivity extends AppCompatActivity {
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     Context context = this;
+    Vibrator vibrator;
     private TextView toolbarTitleTxtView;
     private int len = 0;
     private ProgressDialog dialog;
-    Vibrator vibrator;
+    private AudioRecorder recorder;
+    private boolean didRecording = false;
+    private RecordingButton imgBtn_recording;
 
     public static String getUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
@@ -571,44 +579,6 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Example call device api
-     * <p>
-     * private void callApi()
-     * {
-     * String vesioncode = Build.VERSION.RELEASE;
-     * String deviceType = Build.VERSION.SDK_INT + "";
-     * HashMap<String, String> hashMap = new HashMap<>();
-     * hashMap.put("push_token", PreferencesManager.getPreferenceByKey(LoginActivity.this, AppConfigs.PREFERENCE_PUSH_TOKEN));
-     * try
-     * {
-     * if (Device.get().getUserId() == null && Device.get().getOrgId() == null)
-     * {
-     * hashMap.put("org_id", "");
-     * hashMap.put("user_id", "");
-     * } else
-     * {
-     * hashMap.put("org_id", Device.get().getOrgId());
-     * hashMap.put("user_id", Device.get().getUserId());
-     * }
-     * } catch (Exception e)
-     * {
-     * hashMap.put("org_id", "");
-     * hashMap.put("user_id", "");
-     * }
-     * <p>
-     * hashMap.put("device_type", deviceType);
-     * hashMap.put("device_os", "ANDROID");
-     * hashMap.put("device_version", vesioncode);
-     * hashMap.put("lat", "");
-     * hashMap.put("lng", "");
-     * <p>
-     * ApiParams apiParams = new ApiParams();
-     * apiParams.mHashMap = hashMap;
-     * apiParams.orgId = getSelectedOrgId();
-     * DeviceCaller.instance().post(LoginActivity.this, apiParams, this, ApiType.REGISTER);
-     * }
-     */
 
     public boolean checkAndRequestPermissions() {
         int permissionSendMessage = ContextCompat.checkSelfPermission(this,
@@ -632,6 +602,99 @@ public class BaseActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public void setElasticAction(ViewGroup anyView, float scaleXY, int duration, boolean wannaVibrate) {
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        ElasticAction.doAction(anyView, duration, scaleXY, scaleXY);
+        if (wannaVibrate) {
+            vibrator.vibrate(50);
+        }
+    }
+
+    private void startRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording, String parentDirName) {
+        try {
+            imgBtn_recording.setVisibility(View.GONE);
+            boolean status = FileHelper.createNewFile(context, parentDirName, "audio.m4a", true, true);
+            if (status) {
+                if (recorder == null) {
+                    String filePath = FileHelper.getDirOrFilePath(context, parentDirName, "audio.m4a", true);
+                    recorder = AudioRecorderBuilder.with(context)
+                            .fileName(filePath == null ? "" : filePath)
+                            .config(AudioRecorder.MediaRecorderConfig.DEFAULT)
+                            .loggable()
+                            .build();
+                }
+
+                if (recorder != null) {
+                    recorder.start(new AudioRecorder.OnStartListener() {
+                        @Override
+                        public void onStarted() {
+                            didRecording = true;
+                            imgBtn_recording.setVisibility(View.VISIBLE);
+                            imgBtn_recording.startAnimation();
+                            imgBtn_recording.setImageResource(R.drawable.ic_pause_circle_outline_black_24dp);
+                        }
+
+                        @Override
+                        public void onException(Exception e) {
+                            didRecording = false;
+                            imgBtn_recording.setVisibility(View.GONE);
+                        }
+                    });
+                }
+            }
+        } catch (Exception e) {
+            LoggerCustom.printStackTrace(e);
+            didRecording = false;
+            imgBtn_recording.setVisibility(View.GONE);
+        }
+    }
+
+    private void cancelRecoding(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
+        if (recorder != null && recorder.isRecording()) {
+            recorder.pause(new AudioRecorder.OnPauseListener() {
+                @Override
+                public void onPaused(String activeRecordFileName) {
+                    didRecording = false;
+                    imgBtn_recording.setVisibility(View.VISIBLE);
+                    imgBtn_recording.stopAnimation();
+                    imgBtn_recording.setImageResource(R.drawable.ic_mic_black_24dp);
+                }
+
+                @Override
+                public void onException(Exception e) {
+                    didRecording = false;
+                    imgBtn_recording.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
+    private void pauseRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
+        if (recorder != null && recorder.isRecording()) {
+            recorder.pause(new AudioRecorder.OnPauseListener() {
+                @Override
+                public void onPaused(String activeRecordFileName) {
+                    didRecording = false;
+                    imgBtn_recording.setVisibility(View.VISIBLE);
+                    imgBtn_recording.stopAnimation();
+                    imgBtn_recording.setImageResource(R.drawable.ic_mic_black_24dp);
+                }
+
+                @Override
+                public void onException(Exception e) {
+                    didRecording = false;
+                    imgBtn_recording.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
+    public void setRecorderOnDestroy(AudioRecorder recorder) {
+        didRecording = false;
+        if (recorder != null && recorder.isRecording())
+            recorder.cancel(null);
     }
 
     public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
@@ -661,15 +724,22 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void setElasticAction(ViewGroup anyView, float scaleXY, int duration, boolean wannaVibrate) {
-        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        ElasticAction.doAction(anyView, duration, scaleXY, scaleXY);
-        if (wannaVibrate) {
-            vibrator.vibrate(50);
+    private class RecodingBtnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (recorder != null) {
+                if (recorder.isRecording()) {
+
+                }
+//                    pauseRecording();
+                else {
+
+                }
+//                    startRecording();
+            } else {
+//                startRecording();
+            }
         }
     }
 
-    /**
-     * NOTE : To get sms verification you use SMSVerify API by Google you can also use this lib https://github.com/stfalcon-studio/SmsVerifyCatcher
-     */
 }
