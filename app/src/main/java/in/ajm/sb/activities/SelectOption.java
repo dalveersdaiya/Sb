@@ -2,7 +2,6 @@ package in.ajm.sb.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -18,7 +17,7 @@ import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.interfaces.OnClassItemClick;
 import in.ajm.sb.interfaces.OnSectionItemClick;
 
-public class SelectOption extends AppCompatActivity implements OnClassItemClick, OnSectionItemClick {
+public class SelectOption extends BaseActivity implements OnClassItemClick, OnSectionItemClick {
     RecyclerView recyclerViewoptions;
     List<ClassOptions> classOptionsList = new ArrayList<>();
     ClassOptionAdapter classOptionAdapter;
@@ -28,7 +27,7 @@ public class SelectOption extends AppCompatActivity implements OnClassItemClick,
     SectionOptionAdapter sectionOptionAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_option);
         getIntentValues();

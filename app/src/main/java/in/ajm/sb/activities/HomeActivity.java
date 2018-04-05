@@ -3,18 +3,17 @@ package in.ajm.sb.activities;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 
 import in.ajm.sb.R;
 import in.ajm.sb.broadcastreceivers.NetWorkStateReceiver;
 
-public class HomeActivity extends AppCompatActivity implements NetWorkStateReceiver.NetworkStateReceiverListener {
+public class HomeActivity extends BaseActivity implements NetWorkStateReceiver.NetworkStateReceiverListener {
 
 
     private NetWorkStateReceiver networkStateReceiver;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         viewByIds();
