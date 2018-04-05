@@ -15,7 +15,7 @@ public class SplashActivity extends BaseActivity {
     TextView tvAppText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkForTheme(this);
         setContentView(R.layout.activity_splash);

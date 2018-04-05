@@ -6,16 +6,20 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-public class NetworkStateReceiver extends BroadcastReceiver {
+/**
+ * Created by dalveersinghdaiya on 04/11/16.
+ */
 
-    protected Set<NetworkStateReceiverListener> listeners;
+public class NetWorkStateReceiver extends BroadcastReceiver {
+
+    protected List<NetworkStateReceiverListener> listeners;
     protected Boolean connected;
 
-    public NetworkStateReceiver() {
-        listeners = new HashSet<NetworkStateReceiverListener>();
+    public NetWorkStateReceiver() {
+        listeners = new ArrayList<NetworkStateReceiverListener>();
         connected = null;
     }
 

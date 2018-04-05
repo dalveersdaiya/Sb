@@ -6,12 +6,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 
 import in.ajm.sb.R;
-import in.ajm.sb.broadcastreceivers.NetworkStateReceiver;
+import in.ajm.sb.broadcastreceivers.NetWorkStateReceiver;
 
-public class HomeActivity extends AppCompatActivity implements NetworkStateReceiver.NetworkStateReceiverListener {
+public class HomeActivity extends AppCompatActivity implements NetWorkStateReceiver.NetworkStateReceiverListener {
 
 
-    private NetworkStateReceiver networkStateReceiver;
+    private NetWorkStateReceiver networkStateReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements NetworkStateRecei
     }
 
     public void setNetworkStateReceiver() {
-        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver = new NetWorkStateReceiver();
         networkStateReceiver.addListener(this);
         this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
     }

@@ -95,6 +95,13 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".broadcastreceivers.NetWorkStateReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <!--<activity-->
             <!--android:name="com.yalantis.ucrop.UCropActivity"-->
             <!--android:screenOrientation="portrait"-->
