@@ -1,0 +1,472 @@
+<resources>
+
+    <!--TODO : Changing the grammar-->
+
+    <string name="app_name">Vracto</string>
+
+    <!--First Page-->
+    <string name="signintocompany">Sign in to your company</string>
+    <string name="termscondition">Terms &amp; Conditions</string>
+    <string name="createnewcompany">Create new company</string>
+    <string name="privacypolicy">Privacy policy</string>
+    <string name="yourcompanname">Your company name</string>
+
+    <!--Login-->
+    <string name="loginwith_email">Login with Email</string>
+    <string name="loginwith_google">Login with Google</string>
+    <string name="loginwith_github">Login with Github</string>
+    <string name="automaticlink">Get automatic link</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_youremail">Your Email</string>
+    <string name="hint_emailverify">Email verify</string>
+    <string name="hint_password">Password</string>
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg">Enter name</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_url">Enter valid url</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="err_emailverify">Enter 6 digit code</string>
+    <string name="message_email">Check your email to get automatic link.</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_forgotpassword">Forgot password</string>
+    <string name="err_msg_passwordmatch">Password does not match</string>
+
+    <string name="title_activity_task_detail">TaskDetail</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus sed nulla faucibus commodo. Donec iaculis pretium facilisis. Praesent rutrum varius arcu, sed viverra ipsum malesuada id. Suspendisse nec mauris eleifend, maximus elit et, venenatis quam. Duis at maximus nisi, a congue sapien. Curabitur facilisis at nisi vitae vulputate. Phasellus vel orci et massa scelerisque ultrices. Morbi eget ipsum porttitor arcu volutpat convallis. Pellentesque velit libero, interdum sed consequat at, eleifend et nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed convallis massa imperdiet, consectetur lectus sodales, finibus velit. Donec quis tortor vel quam porta hendrerit. Vivamus vitae consectetur orci, sed feugiat turpis.</string>
+
+    <string name="expand">View more</string>
+    <string name="collapse">View less</string>
+
+    //pop up menu
+
+    <!--Task pop menu-->
+    <string name="changetasktype">Change task type</string>
+    <string name="delete">Delete</string>
+    <string name="assignto">Assign to</string>
+    <string name="delivered">Delivered</string>
+
+
+    <!--Task Detail screen-->
+    <string name="task_settings">Setting</string>
+    <string name="task_description">Description :</string>
+    <string name="changetype">- Change task type</string>
+    <string name="tasktype">Task type</string>
+    <string name="archivetask">Archive Task</string>
+
+    <string name="e_starttime">Expected start time</string>
+    <string name="e_endtime">Expected end time</string>
+    <string name="a_starttime">Actual start time</string>
+    <string name="a_endtime">Actual end time</string>
+    <string name="title_activity_knowledge_base_detail">KnowledgeBase detail</string>
+    <string name="type_your_message">Type message</string>
+
+
+    <!--HomePAge-->
+    <string name="noproject_message">Create a project to experience the excellence of our product.</string>
+    <string name="projecthint">Enter project name</string>
+    <!--<string name="termsandconditon">Terms &amp; Conditions</string>-->
+
+
+    <!--Company Url Screen-->
+    <string name="company_url_message">The Company name already exists. Please enter another company name.</string>
+
+    <!--Forgot password-->
+    <string name="forgotpassword">Forgot password</string>
+
+
+    <string name="continue__with_google">Continue with Google</string>
+    <string name="continue__with_github">Continue with Github</string>
+    <string name="or">Or</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="have_an_account">Have an account?</string>
+
+    <string name="github">GitHub</string>
+
+
+    <!--network error-->
+    <string name="api_error">Unable to establish connection with server. Please try again later...</string>
+    <string name="api_error400">Invalid Request. Please try again...</string>
+    <string name="api_error404">User not found. Please try another user...</string>
+    <string name="api_error404422">Invalid credentials. Please try another user...</string>
+    <string name="not_network_available">No internet connection.</string>
+
+    <!--Profile-->
+    <string name="edit">EDIT</string>
+    <string name="f_name">First name</string>
+    <string name="l_name">Last name</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_project_member">ProjectMember</string>
+    <string name="edit_menu">Edit</string>
+    <string name="copy">Copy</string>
+    <string name="info">Info</string>
+    <string name="delete_menu">Delete</string>
+
+    <!--Projectmember-->
+    <string name="add_user">Add</string>
+    <string name="projectmembertitle">PROJECT MEMBER</string>
+    <string name="compabermembertitle">COMPANY MEMBER</string>
+    <string name="usertitle">ADD USER</string>
+    <string name="admin">ADMIN</string>
+    <string name="memberp">MEMBER</string>
+    <string name="client">CLIENT</string>
+
+    <!--Company-->
+    <string name="companyname">Company name</string>
+    <string name="title_activity_project_info">ProjectInfoActivity</string>
+    <string name="title_activity_first_page_email_address">FirstPageEmailAddress</string>
+
+    <!--New Design-->
+    <!--First page-->
+    <string name="first_page">We suggest using your work email if you \'re creating a team for your business, department or project.</string>
+    <string name="google_button_text">Google accounts</string>
+    <string name="next_button_text">Next</string>
+    <string name="edittext_hint">Email address</string>
+
+    <!--Second PAge-->
+    <string name="resend_button_text">Resend code</string>
+
+    <!--Third Page-->
+    <string name="editext_hint_companyname">Name your company</string>
+    <string name="third_page">We\'ll use this to name your company. You can always change it later.</string>
+
+    <!--Fourth Page-->
+    <string name="fourthpage">This is the address that you and your company member will use to sign in to Vracto.</string>
+    <string name="url_hint_first">https://</string>
+    <string name="url_hint_sec">company-name</string>
+    <string name="url_hint_third">.vracto.com</string>
+    <string name="url_validation_errorxist">The company doesn\'t exist. Please try again.</string>
+    <string name="url_validation_alreadyexist">Already signed in.</string>
+    <string name="url_validation_error">We\'ve tried the following URLs, but they were unavailable:</string>
+    <string name="url_api">Good news! Your company name is available as a Vracto URL. Feel free to change it, if you like.</string>
+    <string name="url_api_exsit">We\'ve pre-filled an available option(but feel free to change it) .The following URL is unavailable:</string>
+
+    <!--Fifth page-->
+    <string name="username_hint">Username</string>
+    <string name="fifth_page">Username must be all lowercase. It cannot be longer than 21 characters and can only contain letters, numbers, periods, hyphens and underscores.</string>
+
+    <!--Sixth page-->
+    <string name="password_hint">Password</string>
+    <string name="sixth_page">Password must be at least 6 characters long, and can\'t be things like password, 123456 or abcdef.</string>
+    <string name="agree_message">By tapping I agree, you understand and agree to the Contract on behalf our Terms &amp; Conditions and our Privacy Policy.</string>
+    <string name="agree_text">I AGREE</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+
+    <!--Signin first-->
+    <string name="company_url">Company URL</string>
+    <string name="text">This is the address you use to sign in to Vracto.</string>
+    <string name="button_text_reminder">Send reminder</string>
+    <string name="reset_password">Reset password</string>
+    <string name="quick_login">Quick Login</string>
+    <string name="password_text">Your password for company</string>
+
+    <!--Reset password-->
+    <string name="emailsent">Sent! Check your email</string>
+    <string name="password_is_not_valid">Password is not valid</string>
+    <string name="title_activity_terms_and_condition">TermsAndCondition</string>
+    <string name="accept">Accept</string>
+    <string name="no_accept">Not accept</string>
+    <string name="add_new_kb">New knowledgebase</string>
+    <string name="project_txt">Project</string>
+    <string name="search">Search</string>
+    <string name="select_org_name">Select Organization</string>
+    <!--<string name="click_to_continue">click to continue </string>-->
+
+    <string name="company_listtitle">Company list</string>
+    <string name="reminder">Accounts reminder</string>
+    <!--More-->
+    <string name="status">Set a status</string>
+    <string name="activity">Activity</string>
+    <string name="snooze">Snooze</string>
+    <string name="settingmore">Settings</string>
+    <string name="pinnedtask">Pinned task</string>
+
+    <string name="loding">Loading...</string>
+    <string name="title_activity_setting_avtivity">SettingAvtivity</string>
+
+
+    <!--Setting page-->
+    <string name="editprofile">Edit profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="donotdistrub">Do not disturb</string>
+    <string name="pushnotification">Push notifications</string>
+    <string name="sendfeedback">Send feedback</string>
+    <string name="signout">Sign out of</string>
+
+
+
+    <string name="language_c">Language</string>
+    <string name="setlanguage_c">Set language</string>
+    <string name="language_english_c">English</string>
+    <string name="language_hindi_c">Hindi</string>
+
+
+    <string name="theme">Theme</string>
+    <string name="theme_c">Theme</string>
+
+    <string name="enter_description">Enter description</string>
+    <string name="description">Description</string>
+    <string name="enter_kb_name">Please enter your knowledge base name</string>
+
+    <!--Logout-->
+    <string name="delete_text">Do you want to delete</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="signout_message">Are you sure you would like to sign out?</string>
+    <string name="signout_button">SIGN OUT</string>
+    <string name="signout_cancel">CANCEL</string>
+    <string name="signout_title"><b>Sign out</b></string>
+    <string name="exit"><b>Exit app</b></string>
+    <string name="exitgroup"><b>Exit</b></string>
+    <string name="linl_expire_msg">Sorry, link is expired</string>
+    <string name="login_text">Login</string>
+    <string name="signup_text">Sign up</string>
+    <string name="not_registered_msg">Your device didn’t get registered when you started the app for the first time, as internet was not enabled at that time. To get your device registered click on Ok and start again.</string>
+
+    <!--Chat list option menu-->
+    <string name="recent">RECENT</string>
+    <string name="group">GROUP</string>
+    <string name="directmsg">DIRECT MESSAGES</string>
+    <string name="title_activity_task_member">TaskMember</string>
+
+    <!--TaskMember-->
+    <string name="taskmember">TASK MEMBER</string>
+    <string name="emptylist_taskmember">Empty task member list</string>
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="taskmemberuseralreadyexit">Task member already exists</string>
+
+    <string name="empty_user">Empty user list</string>
+
+    <string name="activate">ACTIVATE</string>
+    <string name="deactivate">DEACTIVATE</string>
+    <string name="user_deactivated">User is deactivated</string>
+    <string name="projectmemberuseralreadyexit">Project member already exists</string>
+    <string name="task_not_found">Task not found</string>
+    <string name="member_not_exist">Member does not exist</string>
+
+    <string name="uploading_image">Uploading image...</string>
+    <string name="error_in_uploading_image">Error In uploading image...</string>
+
+    <string name="multiple_task">Add multiple task</string>
+    <string name="file_format_not_supported">File format not supported</string>
+    <string name="file_not_found">File not found</string>
+    <string name="title_activity_edit_plan">Edit plan</string>
+    <string name="title_activity_payment">Payment</string>
+    <string name="kb_not_found">Knowledgebase not found</string>
+    <string name="empty_chatList">Empty chat list</string>
+    <string name="empty_commentList">Empty comment list</string>
+    <string name="exit_group_message">You can\'t send message to this group because you\'r no longer a participant.</string>
+
+    <!--New Strings -->
+    <string name="this_comment_has_been_removed">This comment has been removed.</string>
+    <string name="exit_">Exit</string>
+    <string name="empty_user_list">Empty user list</string>
+    <string name="selected_values">Selected : </string>
+    <string name="direct_message">Direct message</string>
+    <string name="new_group">New group</string>
+    <string name="empty_group_list">Empty group list</string>
+    <!--<string name="springy_head">Springy Heads</string>-->
+    <!--<string name="click_to_configure">Click to configure</string>-->
+    <string name="attach">Attach</string>
+    <string name="edit_message_from">Edit message from</string>
+    <string name="remove">Remove</string>
+    <string name="test_company">test.vracto.com</string>
+    <string name="plan">Plan</string>
+    <string name="organisation">Organisation</string>
+    <string name="add_type">Add Type</string>
+    <string name="for_necessary_permissions">Allow chat module to get necessary permissions.</string>
+    <string name="are_u_sure">Are you sure?</string>
+    <string name="deleting_the_type">Deleting the type will delete all associated tasks and relevant data!</string>
+    <string name="credit_card">Credit card</string>
+    <string name="saved_card">Saved card</string>
+    <string name="comment">Comment</string>
+    <string name="knowledgebase">KnowledgeBase</string>
+    <string name="not_create_chat">Not create chat</string>
+    <string name="group_admin">Group \n admin</string>
+    <string name="company_domain">.vracto.com</string>
+    <string name="deactivated">Deactivated</string>
+    <string name="like">Like</string>
+    <string name="love">Love</string>
+    <string name="haha">Haha</string>
+    <string name="cry">Cry</string>
+    <string name="angry">Angry</string>
+    <string name="wow">Wow</string>
+    <string name="add_users">Add user</string>
+    <string name="select_existing_user">Select existing user</string>
+    <string name="remaining">Remaining</string>
+    <string name="group_member">Group member</string>
+    <string name="expiry_date">Expiry date</string>
+    <string name="deleting_the_attachment">Deleting the attachment!</string>
+    <string name="new_">New</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="completed">Completed</string>
+    <string name="on_going">On Going</string>
+    <string name="closed">Closed</string>
+    <string name="board">Board</string>
+    <string name="title">Title</string>
+    <string name="project">Project</string>
+    <string name="company">Company</string>
+    <string name="task_name">Task name</string>
+    <string name="view_more">View more</string>
+    <string name="timing">Timing</string>
+    <string name="now_playing">Now playing</string>
+    <string name="now_playing_">Now playing...</string>
+    <string name="seek_bw">Backward</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+
+    <string name="forward">Forward</string>
+    <string name="track_start_time">00:00:00</string>
+    <string name="team_member">Team member</string>
+    <string name="member_type">Member type</string>
+    <string name="group_name">Group name</string>
+    <string name="android_developers">Android developers</string>
+    <string name="random_text_line">I have sent you the required details you asked me to sent. </string>
+    <string name="ago">ago</string>
+    <string name="after">after</string>
+    <string name="before">before</string>
+    <string name="min_ago">2 min ago</string>
+    <string name="new_task">New task</string>
+    <string name="file">File</string>
+    <string name="delete_group">Delete group</string>
+    <string name="exit_group">Exit group</string>
+    <string name="payment">Payment</string>
+    <string name="name">Name</string>
+    <string name="random_text">Random text</string>
+    <string name="file_name">File name</string>
+    <string name="one">1</string>
+    <string name="sending">Sending</string>
+    <string name="sending_">Sending...</string>
+    <string name="sent">Sent</string>
+    <string name="read">Read</string>
+    <string name="user">User</string>
+    <string name="read_by">Read by</string>
+    <string name="remaining_two">Remaining 2</string>
+    <string name="delivered_to">Delivered to</string>
+    <string name="add_member">Add member</string>
+    <string name="edit_message_from_">Edit message from User name at 1:00PM</string>
+    <string name="bug">Bug</string>
+    <string name="update_project">Update project</string>
+    <string name="member_type_">Member type</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="request_password">Request password</string>
+    <string name="previous_password">Previous password</string>
+    <string name="create_project">Create project</string>
+    <string name="create">Create</string>
+    <string name="select_member">Select member</string>
+    <string name="assign">Assign</string>
+    <string name="cvc">CVC</string>
+    <string name="postal_code_">Postal code</string>
+    <string name="card_number">Card number</string>
+    <string name="expiry_date_">Card number</string>
+    <string name="mmy_yy">MM/YY</string>
+    <string name="random_date">31,July 2018</string>
+    <string name="take_photo">Take photo</string>
+    <string name="select_photo">Select photo</string>
+    <string name="select_company">Select company</string>
+    <string name="wanna_exit">Want to exit?</string>
+    <string name="add_task">Add task</string>
+    <string name="random_group_member">You, Dev &amp; 2 others</string>
+    <string name="search_">Search...</string>
+    <string name="material_title">Material title</string>
+    <string name="message">Message</string>
+    <string name="no_recent_chats">No recent chat</string>
+    <string name="please_enter_name">Please enter name </string>
+    <string name="offline">Offline</string>
+    <string name="connecting">Connecting</string>
+    <string name="connecting_">Connecting...</string>
+    <string name="current_plan">Current plan :</string>
+    <string name="free">Free</string>
+    <string name="paid">Paid</string>
+    <string name="lorem_ipsum_short">Lorem ipsum is lorem ipsum</string>
+    <string name="expiring_notice">Visa 4242 expiring on 21/07/2018</string>
+    <string name="task">Task</string>
+
+    <string name="at">at</string>
+    <string name="we_have_sent_code">We\'ve sent a six-digit confirmation code to</string>
+    <string name="enter_it_here">Enter it here to confirm your email address.</string>
+    <string name="we_have_sent_an_email">We sent an email to </string>
+    <string name="it_has_instructions">It has instructions on getting started.</string>
+    <string name="that_will_help">That will help you reset your password.</string>
+    <string name="vracto_lower_case">vracto</string>
+    <string name="please_enter_task_name">Please enter your task name</string>
+    <string name="push_notification">Push notification: </string>
+    <string name="task_member">Task member</string>
+    <string name="is_deactivated">is deactivated.</string>
+    <string name="you_in_brackets">(you)</string>
+    <string name="you">you</string>
+    <string name="wiki">Wiki</string>
+    <string name="please_wait_downloading">Please wait... \nDownloading</string>
+    <string name="exp_our_chat_feature">Experience our chat module!! Just click on allow and get necessary permissions. Its a one time process.</string>
+    <string name="enable_chat_feature">You can enable the chat feature later, anytime!!</string>
+
+    <string name="photo">Photo</string>
+    <string name="attachment">Attachment</string>
+
+    <string name="copy_text">Text copied</string>
+    <string name="copy_url">Url copied</string>
+    <string name="retrieving_previous_chat">Retrieving previous messages</string>
+    <string name="retrieving_previous_comments">Retrieving previous comments</string>
+    <string name="add_kb">Knowledgebase</string>
+    <string name="add_taskmember">Member</string>
+    <string name="add_attachmentt">Attachment</string>
+    <string name="add_comment">Add comment</string>
+    <string name="added">added </string>
+
+    <string name="done">DONE</string>
+    <string name="new_group_error">Select at least two members.</string>
+
+    <string name="select_theme">Select Theme</string>
+
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="purple">Purple</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="orange">Orange</string>
+    <string name="pink">Pink</string>
+    <string name="cyan">Cyan</string>
+    <string name="brown">Brown</string>
+    <string name="teal">Teal</string>
+    <string name="black">Black</string>
+    <string name="white">White</string>
+    <string name="default_theme">Default</string>
+
+    <string name="red_theme">Red</string>
+    <string name="green_theme">Green</string>
+    <string name="purple_theme">Purple</string>
+    <string name="blue_theme">Blue</string>
+    <string name="yellow_theme">Yellow</string>
+    <string name="orange_theme">Orange</string>
+    <string name="pink_theme">Pink</string>
+    <string name="cyan_theme">Cyan</string>
+    <string name="brown_theme">Brown</string>
+    <string name="teal_theme">Teal</string>
+    <string name="black_theme">Black</string>
+    <string name="white_theme">White</string>
+    <string name="default_theme_theme">Default</string>
+
+
+    <string name="language">Language</string>
+    <string name="setlanguage">Set language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_french">French</string>
+    <string name="language_german">German</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_mandarin">Mandarin</string>
+    <string name="language_cantonese">Cantonese</string>
+    <string name="language_spanish">Spanish</string>
+
+    <string name="add_multiple_kb">Add multiple knowledgebase</string>
+    <string name="add_multiple">Add multiple</string>
+    <string name="load_more">Load more</string>
+    <string name="add_knowledgebase">Add knowledgebase</string>
+
+</resources>

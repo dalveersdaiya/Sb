@@ -26,4 +26,56 @@
     <string name="beta_ver">Beta Version</string>
     <string name="no_internet">Internet not available</string>
     <string name="internet_on">Internet available.</string>
+
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="purple">Purple</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="orange">Orange</string>
+    <string name="pink">Pink</string>
+    <string name="cyan">Cyan</string>
+    <string name="brown">Brown</string>
+    <string name="teal">Teal</string>
+    <string name="black">Black</string>
+    <string name="white">White</string>
+    <string name="default_theme">Default</string>
+    <string name="select_theme">Select Theme</string>
+
+    <string name="red_theme">Red</string>
+    <string name="green_theme">Green</string>
+    <string name="purple_theme">Purple</string>
+    <string name="blue_theme">Blue</string>
+    <string name="yellow_theme">Yellow</string>
+    <string name="orange_theme">Orange</string>
+    <string name="pink_theme">Pink</string>
+    <string name="cyan_theme">Cyan</string>
+    <string name="brown_theme">Brown</string>
+    <string name="teal_theme">Teal</string>
+    <string name="black_theme">Black</string>
+    <string name="white_theme">White</string>
+    <string name="default_theme_theme">Default</string>
+
+
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="setlanguage">Set language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_french">French</string>
+    <string name="language_german">German</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_mandarin">Mandarin</string>
+    <string name="language_cantonese">Cantonese</string>
+    <string name="language_spanish">Spanish</string>
+
+    <string name="language_c">Language</string>
+
+    <string name="setlanguage_c">Set language</string>
+    <string name="language_english_c">English</string>
+    <string name="language_hindi_c">Hindi</string>
+
+    <string name="theme_c">Theme</string>
 </resources>
