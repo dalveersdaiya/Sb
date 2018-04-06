@@ -58,7 +58,7 @@ public class ClassOptionAdapter extends RecyclerView.Adapter<ClassOptionAdapter.
         }
 
         public void setItem(ClassOptions classOptions) {
-            tv_option_title.setText("Select Class");
+            tv_option_title.setText(context.getResources().getString(R.string.select_class));
             tv_option_title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

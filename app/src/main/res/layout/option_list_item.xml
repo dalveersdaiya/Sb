@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:text="@string/classname"
         android:gravity="center"
-        android:padding="5dp"
+        android:textSize="14sp"
+        android:padding="10dp"
         android:id="@+id/tv_option_title"/>
 
 </LinearLayout>

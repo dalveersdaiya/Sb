@@ -1,16 +1,25 @@
 <resources>
     <declare-styleable name="SmoothCheckBox">
-        <attr name="duration" format="integer"/>
-        <attr name="stroke_width" format="dimension"/>
-        <attr name="color_tick" format="color"/>
-        <attr name="color_checked" format="color"/>
-        <attr name="color_unchecked" format="color"/>
-        <attr name="color_unchecked_stroke" format="color"/>
+        <attr name="duration" format="integer" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_tick" format="color" />
+        <attr name="color_checked" format="color" />
+        <attr name="color_unchecked" format="color" />
+        <attr name="color_unchecked_stroke" format="color" />
     </declare-styleable>
 
     <declare-styleable name="SwipeMenuLayout">
-        <attr name="swipeEnable" format="boolean"/>
-        <attr name="ios" format="boolean"/>
-        <attr name="leftSwipe" format="boolean"/>
+        <attr name="swipeEnable" format="boolean" />
+        <attr name="ios" format="boolean" />
+        <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
+
+
+    <!--<HACK : My Theme colors-->
+    <attr name="my_text_color" format="reference|color" />
+    <attr name="my_text_color_inverse" format="reference|color" />
+    <attr name="my_theme_light" format="reference|color" />
+    <attr name="myColorAccent" format="reference|color" />.
+    <attr name="myColorPrimaryDark" format="reference|color" />
+    <attr name="myColorPrimary" format="reference|color" />
 </resources>

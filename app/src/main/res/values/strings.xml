@@ -17,7 +17,7 @@
     <string name="title_activity_select_option">SelectOption</string>
     <string name="classname">Class</string>
     <string name="section">Section</string>
-    <string name="enter_otp">Enter the 6 digit OTP sent to the number.</string>
+    <string name="enter_otp">Enter the 6 digit OTP sent to the mobile number.</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
@@ -78,4 +78,15 @@
     <string name="language_hindi_c">Hindi</string>
 
     <string name="theme_c">Theme</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--New Additions-->
+    <string name="select_language">Select Language</string>
+    <string name="selected_theme">Selected Theme</string>
+    <string name="selected_language">Selected Language</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="select_class">Select Class</string>
+    <string name="select_section">Select Section</string>
 </resources>

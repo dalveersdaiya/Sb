@@ -1,8 +1,10 @@
 package in.ajm.sb.activities;
 
 import android.Manifest;
+import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,34 +14,46 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Vibrator;
 import android.support.annotation.ColorInt;
 import android.support.annotation.IdRes;
+import android.support.transition.Transition;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.transition.Slide;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -75,13 +89,15 @@ public class BaseActivity extends LocalizationActivity {
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     Context context = this;
     Vibrator vibrator;
+    ValueAnimator animator;
+    MaterialDialog materialDialog;
+    Toolbar toolbar;
     private TextView toolbarTitleTxtView;
     private int len = 0;
     private ProgressDialog dialog;
     private AudioRecorder recorder;
     private boolean didRecording = false;
     private RecordingButton imgBtn_recording;
-    MaterialDialog materialDialog;
 
     public static String getUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
@@ -164,10 +180,10 @@ public class BaseActivity extends LocalizationActivity {
     }
 
     void setupToolBar(String title) {
-        setupToolBar(title, new View.OnClickListener() {
+        setupToolBar(title, false, new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                finish();
+            public void onClick(View v) {
+//                Do nothing
             }
         });
     }
@@ -185,16 +201,6 @@ public class BaseActivity extends LocalizationActivity {
         setupToolBar(title, true, onClickListener);
     }
 
-    void setToolBarTitle(String title) {
-        if (toolbarTitleTxtView != null) {
-            if (title != null) {
-                toolbarTitleTxtView.setText(title);
-                toolbarTitleTxtView.setVisibility(View.VISIBLE);
-            } else {
-                toolbarTitleTxtView.setVisibility(View.GONE);
-            }
-        }
-    }
 
     private void setupToolBar(String title, boolean showNavigationBtn, View.OnClickListener onClickListener) {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -209,11 +215,60 @@ public class BaseActivity extends LocalizationActivity {
             toolbarTitleTxtView.setVisibility(View.GONE);
         }
 
-        toolbar.setNavigationOnClickListener(onClickListener);
         if (!showNavigationBtn) {
             toolbar.setNavigationIcon(null);
             toolbar.setNavigationOnClickListener(null);
+        } else {
+            final ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayUseLogoEnabled(true);
+            Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
+            drawable = DrawableCompat.wrap(drawable);
+            actionBar.setHomeAsUpIndicator(drawable);
+            DrawableCompat.setTint(drawable, getOppositeColor(context));
+            toolbar.setNavigationOnClickListener(onClickListener);
         }
+    }
+
+    public void addBackButton(Context context) {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayUseLogoEnabled(true);
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
+        drawable = DrawableCompat.wrap(drawable);
+        actionBar.setHomeAsUpIndicator(drawable);
+        DrawableCompat.setTint(drawable, getOppositeColor(context));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    public void addBackButton(Context context, String title) {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayUseLogoEnabled(true);
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
+        drawable = DrawableCompat.wrap(drawable);
+        actionBar.setHomeAsUpIndicator(drawable);
+        DrawableCompat.setTint(drawable, getOppositeColor(context));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     public void disableEnableControls(ViewGroup vg, boolean enable) {
@@ -462,10 +517,10 @@ public class BaseActivity extends LocalizationActivity {
         final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
 
         final int first_curr_color = ContextCompat.getColor(this, android.R.color.transparent);
-        final int first_target_color = ((ColorDrawable) rootLayout.getBackground()).getColor();
+        final int first_target_color = getAccentColor(this);
 
-        final int second_curr_color = ContextCompat.getColor(this, R.color.backgroundEditText);
-        final int second_target_color = ContextCompat.getColor(this, android.R.color.white);
+        final int second_curr_color = getAccentColor(this);
+        final int second_target_color = getAccentColor(this);
 
         ValueAnimator first_anim = new ValueAnimator();
         first_anim.setIntValues(first_curr_color, first_target_color);
@@ -529,11 +584,11 @@ public class BaseActivity extends LocalizationActivity {
         final int second_curr_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
         final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius);
 
-        final int first_curr_color = ((ColorDrawable) rootLayout.getBackground()).getColor();
+        final int first_curr_color = getAccentColor(this);
         final int first_target_color = ContextCompat.getColor(this, android.R.color.transparent);
 
-        final int second_curr_color = ContextCompat.getColor(this, android.R.color.white);
-        final int second_target_color = ContextCompat.getColor(this, R.color.backgroundEditText);
+        final int second_curr_color = getAccentColor(this);
+        final int second_target_color = getAccentColor(this);
 
         ValueAnimator first_anim = new ValueAnimator();
         first_anim.setIntValues(first_curr_color, first_target_color);
@@ -743,6 +798,236 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
+    public int getAccentColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorPrimary(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorPrimaryDark(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorFromTheme(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    /*White*/
+    public int getOppositeColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    /*Black*/
+    public int getTextColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void setupWindowAnimations() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Transition transition;
+            Slide slideTransition = new Slide();
+            slideTransition.setSlideEdge(Gravity.BOTTOM);
+            slideTransition.setDuration(300);
+            Slide slideTransition1 = new Slide();
+            slideTransition1.setSlideEdge(Gravity.BOTTOM);
+            slideTransition1.setDuration(300);
+            getWindow().setEnterTransition(slideTransition);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void setupWindowAnimationss() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            Transition transition;
+            Slide slideTransition = new Slide();
+            slideTransition.excludeTarget(android.R.id.statusBarBackground, false);
+            slideTransition.setSlideEdge(Gravity.RIGHT);
+            slideTransition.setDuration(300);
+            Slide slideTransition2 = new Slide();
+            slideTransition2.setSlideEdge(Gravity.LEFT);
+            slideTransition2.setDuration(300);
+            getWindow().setEnterTransition(slideTransition);
+            getWindow().setExitTransition(slideTransition2);
+        }
+    }
+
+    public float dpToPixels(int dp, Context context) {
+        return dp * (context.getResources().getDisplayMetrics().density);
+    }
+
+    public void showAddBButton(ImageButton addtypebutton) {
+
+        addtypebutton.setVisibility(View.VISIBLE);
+        addtypebutton.animate().translationX(0 - dpToPixels(0, this)).setInterpolator(new DecelerateInterpolator()).setDuration(200).start();
+
+    }
+
+    public void hideAddButton(boolean delay, final ImageButton addtypebutton) {
+
+        long duration = 0;
+        if (delay) {
+            duration = 250;
+        }
+
+        addtypebutton.animate().translationX(addtypebutton.getBottom() + dpToPixels(5, this)).setInterpolator
+                (new AccelerateInterpolator()).setDuration(duration).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+
+                addtypebutton.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        }).start();
+
+    }
+
+    private void hideAddButton(ImageButton addtypebutton) {
+        hideAddButton(false, addtypebutton);
+    }
+
+    public void recyclerScroll(RecyclerView recyclerviewType, final ImageButton addtypebutton) {
+        recyclerviewType.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dx > 0 || dx < 0 && addtypebutton.isShown()) {
+                    hideAddButton(addtypebutton);
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    showAddBButton(addtypebutton);
+                }
+
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+    }
+
+
+    public void showKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    public void expandingView(final ViewGroup viewGroup) {
+        viewGroup.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                viewGroup.getViewTreeObserver().removeOnPreDrawListener(this);
+//                    linearLayout.setVisibility(View.GONE);
+                final int widthSpec = View.MeasureSpec.makeMeasureSpec(
+                        0, View.MeasureSpec.UNSPECIFIED);
+                final int heightSpec = View.MeasureSpec
+                        .makeMeasureSpec(0,
+                                View.MeasureSpec.UNSPECIFIED);
+                viewGroup.measure(widthSpec, heightSpec);
+
+                animator = slideAnimator(0,
+                        viewGroup.getMeasuredHeight(), viewGroup);
+                return true;
+            }
+        });
+    }
+
+    public void expand(int duration, ViewGroup viewGroup) {
+        animator.setDuration(duration);
+        viewGroup.setVisibility(View.VISIBLE);
+        animator.start();
+    }
+
+    private void collapse(int duration, final ViewGroup viewGroup) {
+        animator.setDuration(duration);
+        int finalHeight = viewGroup.getHeight();
+
+        ValueAnimator mAnimator = slideAnimator(finalHeight, 0, viewGroup);
+
+        mAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                // Height=0, but it set visibility to GONE
+                viewGroup.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onAnimationStart(Animator animator) {
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+            }
+        });
+
+        mAnimator.start();
+    }
+
+    private ValueAnimator slideAnimator(int start, int end, final ViewGroup viewGroup) {
+
+        ValueAnimator animator = ValueAnimator.ofInt(start, end);
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                // Update Height
+                int value = (Integer) valueAnimator.getAnimatedValue();
+
+                ViewGroup.LayoutParams layoutParams = viewGroup
+                        .getLayoutParams();
+                layoutParams.height = value;
+                viewGroup.setLayoutParams(layoutParams);
+            }
+        });
+        return animator;
+    }
+
+
     public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
         @Override
         public CharSequence getTransformation(CharSequence source, View view) {
@@ -788,83 +1073,6 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    public int getAccentColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-    public int getColorPrimary(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-    public int getColorPrimaryDark(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-
-    public int getColorFromTheme(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.color, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-
-    /*White*/
-    public int getOppositeColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.textColorSearchUrl, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-    /*Black*/
-    public int getTextColor(Context context) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorError, typedValue, true);
-        @ColorInt int color = typedValue.data;
-        return color;
-    }
-
-
-//    private void setlanguagetext() {
-//        if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_english))) {
-//            selected_language.setText("English");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_hindi))) {
-//            selected_language.setText("हिंदी");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_japanese))) {
-//            selected_language.setText("日本語");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_french))) {
-//            selected_language.setText("français");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_german))) {
-//            selected_language.setText("Deutsche");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_portuguese))) {
-//            selected_language.setText("Português");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_russian))) {
-//            selected_language.setText("русский");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_mandarin))) {
-//            selected_language.setText("普通话");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_cantonese))) {
-//            selected_language.setText("廣東話");
-//        } else if (PreferencesManager.getString(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_spanish))) {
-//            selected_language.setText("Español");
-//        }
-//    }
-
     public void setLanguagedialog(final Context context, final TextView selectedLanguage) {
         materialDialog = new MaterialDialog(context);
         materialDialog.setCanceledOnTouchOutside(true);
@@ -893,25 +1101,25 @@ public class BaseActivity extends LocalizationActivity {
         radio_btn_cantonese.setTag(getResources().getString(R.string.language_cantonese));
         radio_btn_spanish.setTag(getResources().getString(R.string.language_spanish));
 
-        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_english))) {
+        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_english))) {
             radio_btn_english.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_hindi))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_hindi))) {
             radio_btn_hindi.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_japanese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_japanese))) {
             radio_btn_japanese.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_french))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_french))) {
             radio_btn_french.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_german))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_german))) {
             radio_btn_german.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_portuguese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_portuguese))) {
             radio_btn_portuguese.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_russian))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_russian))) {
             radio_btn_russian.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_mandarin))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_mandarin))) {
             radio_btn_mandarin.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_cantonese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_cantonese))) {
             radio_btn_cantonese.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_spanish))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_spanish))) {
             radio_btn_spanish.setChecked(true);
         }
 
@@ -960,45 +1168,45 @@ public class BaseActivity extends LocalizationActivity {
                 PreferencesManager.setPreferenceBooleanByKey(context, "SETUI_LANGUAGE", true);
                 int selectedmemberId = radioGroup.getCheckedRadioButtonId();
                 RadioButton selectedbutton = (RadioButton) view.findViewById(selectedmemberId);
-                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(selectedbutton.getTag().toString())) {
+                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(selectedbutton.getTag().toString())) {
                     if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_english))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_english));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_english));
                         setLanguage("en");
                         selectedLanguage.setText("English");
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_hindi))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_hindi));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_hindi));
                         setLanguage("hi");
                         selectedLanguage.setText("हिंदी");
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_japanese))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_japanese));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_japanese));
                         setLanguage("ja");
                         selectedLanguage.setText(radio_btn_japanese.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_french))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_french));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_french));
                         setLanguage("fr");
                         selectedLanguage.setText(radio_btn_french.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_german))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_german));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_german));
                         setLanguage("de");
                         selectedLanguage.setText(radio_btn_german.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_portuguese))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_portuguese));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_portuguese));
                         setLanguage("pt");
                         selectedLanguage.setText(radio_btn_portuguese.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_russian))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_russian));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_russian));
                         setLanguage("ru");
                         selectedLanguage.setText(radio_btn_russian.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_mandarin))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_mandarin));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_mandarin));
                         setLanguage("zh");
                         selectedLanguage.setText(radio_btn_mandarin.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_cantonese))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_cantonese));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_cantonese));
                         setLanguage("zho");
                         selectedLanguage.setText(radio_btn_cantonese.getText().toString());
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.language_spanish))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language) , getResources().getString(R.string.language_spanish));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.language), getResources().getString(R.string.language_spanish));
                         setLanguage("es");
                         selectedLanguage.setText(radio_btn_spanish.getText().toString());
                     }
@@ -1055,31 +1263,31 @@ public class BaseActivity extends LocalizationActivity {
         radio_btn_white.setTag(getResources().getString(R.string.white));
         radio_btn_black.setTag(getResources().getString(R.string.black));
 
-        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.default_theme))) {
+        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.default_theme))) {
             radio_btn_default.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.blue))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.blue))) {
             radio_btn_blue.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.red))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.red))) {
             radio_btn_red.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.yellow))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.yellow))) {
             radio_btn_yellow.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.teal))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.teal))) {
             radio_btn_teal.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.green))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.green))) {
             radio_btn_green.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.brown))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.brown))) {
             radio_btn_brown.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.purple))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.purple))) {
             radio_btn_purple.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.pink))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.pink))) {
             radio_btn_pink.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.orange))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.orange))) {
             radio_btn_orange.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.cyan))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.cyan))) {
             radio_btn_cyan.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.white))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.white))) {
             radio_btn_white.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).contains(getResources().getString(R.string.black))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.black))) {
             radio_btn_black.setChecked(true);
         }
 
@@ -1135,33 +1343,33 @@ public class BaseActivity extends LocalizationActivity {
                 int selectedmemberId = radioGroup.getCheckedRadioButtonId();
                 RadioButton selectedbutton = (RadioButton) view.findViewById(selectedmemberId);
 
-                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme) ).equals(selectedbutton.getTag().toString())) {
+                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).equals(selectedbutton.getTag().toString())) {
                     if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.default_theme))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.default_theme));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.default_theme));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.blue))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.blue));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.blue));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.red))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.red));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.red));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.yellow))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.yellow));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.yellow));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.teal))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.teal));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.teal));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.green))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.green));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.green));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.brown))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.brown));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.brown));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.purple))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.purple));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.purple));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.pink))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.pink));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.pink));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.orange))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.orange));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.orange));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.cyan))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.cyan));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.cyan));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.white))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.white));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.white));
                     } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.black))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme) , getResources().getString(R.string.black));
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.black));
                     }
                     PreferencesManager.setPreferenceBooleanByKey(context, "setTheme", true);
                     recreate();
@@ -1179,5 +1387,6 @@ public class BaseActivity extends LocalizationActivity {
         });
         materialDialog.show();
     }
+
 
 }

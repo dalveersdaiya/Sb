@@ -17,9 +17,11 @@ public class FindSchool extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForTheme(this);
         setContentView(R.layout.activity_find_school);
         viewById();
         applyClicklisteners();
+        setupToolBar(getResources().getString(R.string.app_name), true);
     }
 
     public void viewById(){

@@ -29,6 +29,7 @@ public class WebViewActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForTheme(this);
         setContentView(R.layout.activity_web_view);
         getDeviceTypes();
 

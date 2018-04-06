@@ -2,7 +2,7 @@
 
     <!--TODO : Changing the grammar-->
 
-    <string name="app_name">Vracto</string>
+    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">Sign in to your company</string>
@@ -468,5 +468,31 @@
     <string name="add_multiple">Add multiple</string>
     <string name="load_more">Load more</string>
     <string name="add_knowledgebase">Add knowledgebase</string>
+
+    <string name="select_language">Selected Language</string>
+    <string name="selected_theme">Selected Theme</string>
+    <string name="selected_language">Selected Language</string>
+    <string name="settings">Settings</string>
+
+    <string name="classname">Class</string>
+    <string name="section">Section</string>
+    <string name="enter_otp">Enter the 6 digit OTP sent to the mobile number.</string>
+    <string name="select_class">Select Class</string>
+    <string name="select_section">Select Section</string>
+
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mob_num">Mobile Number</string>
+    <string name="submit">Submit</string>
+    <string name="register">Register</string>
+    <string name="first_name_empty">First name cannot be empty.</string>
+    <string name="last_name_empty">Last name cannot be empty.</string>
+    <string name="mob_num_empty">Mobile number cannot be empty or less than 10 digits.</string>
+    <string name="enter_school_code">Enter your School Code to find your School</string>
+    <string name="enter_code_here">Enter code here</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_internet">Internet not available</string>
+    <string name="internet_on">Internet available.</string>
 
 </resources>

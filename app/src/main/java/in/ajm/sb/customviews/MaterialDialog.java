@@ -27,12 +27,11 @@ import in.ajm.sb.R;
 /**
  * Created by drakeet on 9/28/14.
  */
-public class MaterialDialog
-{
+public class MaterialDialog {
 
     private final static int BUTTON_BOTTOM = 9;
     private final static int BUTTON_TOP = 9;
-
+    View.OnClickListener pListener, nListener;
     private boolean mCancel;
     private Context mContext;
     private AlertDialog mAlertDialog;
@@ -53,7 +52,6 @@ public class MaterialDialog
     private DialogInterface.OnDismissListener mOnDismissListener;
     private int pId = -1, nId = -1;
     private String pText, nText;
-    View.OnClickListener pListener, nListener;
 
 
     public MaterialDialog(Context context) {
@@ -61,7 +59,9 @@ public class MaterialDialog
 
     }
 
-
+    private static boolean isLollipop() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
 
     public void show() {
         if (!mHasShow) {
@@ -72,7 +72,6 @@ public class MaterialDialog
         mHasShow = true;
     }
 
-
     public MaterialDialog setView(View view) {
         mView = view;
         if (mBuilder != null) {
@@ -80,7 +79,6 @@ public class MaterialDialog
         }
         return this;
     }
-
 
     public MaterialDialog setContentView(View view) {
         mMessageContentView = view;
@@ -90,7 +88,6 @@ public class MaterialDialog
         }
         return this;
     }
-
 
     /**
      * Set a custom view resource to be the contents of the dialog.
@@ -106,7 +103,6 @@ public class MaterialDialog
         return this;
     }
 
-
     public MaterialDialog setBackground(Drawable drawable) {
         mBackgroundDrawable = drawable;
         if (mBuilder != null) {
@@ -114,7 +110,6 @@ public class MaterialDialog
         }
         return this;
     }
-
 
     public MaterialDialog setBackgroundResource(int resId) {
         mBackgroundResId = resId;
@@ -124,22 +119,14 @@ public class MaterialDialog
         return this;
     }
 
-
     public void dismiss() {
         mAlertDialog.dismiss();
     }
-
 
     private int dip2px(float dpValue) {
         final float scale = mContext.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
-
-
-    private static boolean isLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    }
-
 
     public MaterialDialog setTitle(int resId) {
         mTitleResId = resId;
@@ -222,7 +209,7 @@ public class MaterialDialog
      * already set.
      *
      * @param cancel Whether the dialog should be canceled when touched outside
-     * the window OR pressed the back key.
+     *               the window OR pressed the back key.
      */
     public MaterialDialog setCanceledOnTouchOutside(boolean cancel) {
         this.mCancel = cancel;
@@ -238,7 +225,28 @@ public class MaterialDialog
         return this;
     }
 
+    private boolean isNullOrEmpty(String nText) {
+        return nText == null || nText.isEmpty();
+    }
 
+    private void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
 
     private class Builder {
 
@@ -256,17 +264,17 @@ public class MaterialDialog
             mAlertDialog.show();
 
             mAlertDialog.getWindow()
-                        .clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-                                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+                    .clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                            WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             mAlertDialog.getWindow()
-                        .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_MASK_STATE);
+                    .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_MASK_STATE);
 
             mAlertDialogWindow = mAlertDialog.getWindow();
             mAlertDialogWindow.setBackgroundDrawable(
                     new ColorDrawable(Color.TRANSPARENT));
 
             View contentView = LayoutInflater.from(mContext)
-                                             .inflate(R.layout.layout_material_dialog, null);
+                    .inflate(R.layout.layout_material_dialog, null);
             contentView.setFocusable(true);
             contentView.setFocusableInTouchMode(true);
 
@@ -446,7 +454,8 @@ public class MaterialDialog
             view.setLayoutParams(layoutParams);
 
             view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override public void onFocusChange(View v, boolean hasFocus) {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
                     mAlertDialogWindow.setSoftInputMode(
                             WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                     // show imm
@@ -520,7 +529,7 @@ public class MaterialDialog
             // Not setting this to the other content view because user has defined their own
             // layout params, and we don't want to overwrite those.
             LayoutInflater.from(mMessageContentRoot.getContext())
-                          .inflate(layoutResId, mMessageContentRoot);
+                    .inflate(layoutResId, mMessageContentRoot);
         }
 
 
@@ -542,31 +551,6 @@ public class MaterialDialog
             mAlertDialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
             mAlertDialog.setCancelable(canceledOnTouchOutside);
         }
-    }
-
-
-    private boolean isNullOrEmpty(String nText) {
-        return nText == null || nText.isEmpty();
-    }
-
-
-    private void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) {
-            // pre-condition
-            return;
-        }
-
-        int totalHeight = 0;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            View listItem = listAdapter.getView(i, null, listView);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
-        }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
     }
 }
 

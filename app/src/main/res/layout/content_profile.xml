@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="in.ajm.sb.activities.HomeActivity"
-    tools:showIn="@layout/activity_home">
+    tools:context="in.ajm.sb.activities.Profile"
+    tools:showIn="@layout/activity_profile">
 
     <in.ajm.sb.customviews.ButtonRegular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.Button"
-        android:text="@string/profile"
+        android:text="@string/settings"
         android:layout_centerInParent="true"
         android:id="@+id/button_test"/>
 

@@ -41,7 +41,7 @@
 
     <in.ajm.sb.customviews.ButtonRegular
         android:id="@+id/button_search"
-        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

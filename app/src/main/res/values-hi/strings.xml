@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vracto</string>
+    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">अपनी कंपनी में साइन इन करें</string>
@@ -469,5 +469,32 @@
     <string name="add_multiple">एकाधिक जोड़ें</string>
     <string name="load_more">और लोड करें</string>
     <string name="add_knowledgebase">नॉलेजबेस जोड़ें</string>
+
+    <string name="select_language">भाषा चुनिए</string>
+    <string name="selected_theme">चयनित थीम</string>
+    <string name="selected_language">चयनित भाषा</string>
+    <string name="settings">सेटिंग्स</string>
+
+    <string name="classname">कक्षा</string>
+    <string name="section">अनुभाग</string>
+    <string name="enter_otp">मोबाइल नंबर पर भेजे गए 6 अंकों के ओटीपी दर्ज करें</string>
+    <string name="select_class">कक्षा चुनिए</string>
+    <string name="select_section">अनुभाग चुनिए</string>
+
+    <string name="first_name">पहला नाम</string>
+    <string name="last_name">अंतिम नाम</string>
+    <string name="mob_num">Mobile Number</string>
+    <string name="submit">मोबाइल नंबर</string>
+    <string name="register">रजिस्टर</string>
+    <string name="first_name_empty">पहला नाम रिक्त नहीं हो सकता</string>
+    <string name="last_name_empty">अंतिम नाम रिक्त नहीं हो सकता।</string>
+    <string name="mob_num_empty">मोबाइल नंबर खाली या 10 अंकों से कम नहीं हो सकता।</string>
+    <string name="enter_school_code">अपने स्कूल को खोजने के लिए अपना स्कूल कोड दर्ज करें</string>
+    <string name="enter_code_here">यहाँ कोड दर्ज करें</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="no_internet">इंटरनेट उपलब्ध नहीं है</string>
+    <string name="internet_on">इंटरनेट उपलब्ध है</string>
+
 
 </resources>

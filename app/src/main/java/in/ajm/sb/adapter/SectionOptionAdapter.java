@@ -58,7 +58,7 @@ public class SectionOptionAdapter extends RecyclerView.Adapter<SectionOptionAdap
         }
 
         public void setItem(SectionOptions sectionOptions) {
-            tv_option_title.setText("Select Section");
+            tv_option_title.setText(context.getResources().getString(R.string.select_section));
             tv_option_title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

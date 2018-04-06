@@ -11,7 +11,7 @@
 
     <item android:bottom="6dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/card_background"/>
+            <solid android:color="?attr/my_text_color"/>
             <corners android:radius="3dp"/>
         </shape>
     </item>

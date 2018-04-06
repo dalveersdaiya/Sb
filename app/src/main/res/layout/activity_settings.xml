@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.ajm.sb.activities.FindSchool">
+    tools:context="in.ajm.sb.activities.Settings">
 
     <include layout="@layout/toolbar" />
 
-    <include layout="@layout/content_find_school" />
+    <include layout="@layout/content_settings" />
 
 
 </android.support.design.widget.CoordinatorLayout>

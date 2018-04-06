@@ -28,6 +28,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForTheme(this);
         setContentView(R.layout.login_register_activity);
         viewByIds();
         applyClickListeners();

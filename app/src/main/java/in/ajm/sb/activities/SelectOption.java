@@ -29,6 +29,7 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForTheme(this);
         setContentView(R.layout.activity_select_option);
         getIntentValues();
         viewByIds();
@@ -37,6 +38,7 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
         }else{
             setRecyclerViewoptionsForSections();
         }
+        setupToolBar(getResources().getString(R.string.app_name), true);
 
     }
 
