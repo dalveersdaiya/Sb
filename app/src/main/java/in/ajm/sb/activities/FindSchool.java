@@ -21,7 +21,7 @@ public class FindSchool extends BaseActivity {
         setContentView(R.layout.activity_find_school);
         viewById();
         applyClicklisteners();
-        setupToolBar(getResources().getString(R.string.app_name), true);
+        setupToolBar(getResources().getString(R.string.find_school), true);
     }
 
     public void viewById(){

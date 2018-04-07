@@ -494,5 +494,13 @@
     <string name="no">No</string>
     <string name="no_internet">Internet not available</string>
     <string name="internet_on">Internet available.</string>
+    <string name="find_school">Find School</string>
+    <string name="home_page">Home</string>
+
+    <string name="parent">Parent</string>
+    <string name="teacher">Teacher</string>
+    <string name="student">Student</string>
+    <string name="school_admin">School Admin</string>
+    <string name="select_user_type">Select user type</string>
 
 </resources>

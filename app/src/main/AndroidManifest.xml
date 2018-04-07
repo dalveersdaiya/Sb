@@ -64,24 +64,24 @@
         </activity>
         <activity
             android:name=".activities.LoginRegister"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.FindSchool"
             android:label="@string/title_activity_find_school"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.SelectOption"
             android:label="@string/title_activity_select_option"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.WebViewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_web"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
 
         <receiver android:name=".broadcastreceivers.ReadSmsOtp">
             <intent-filter>
@@ -103,16 +103,20 @@
         <!-- <activity -->
         <!-- android:name="com.yalantis.ucrop.UCropActivity" -->
         <!-- android:screenOrientation="portrait" -->
-        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"/> -->
+        <!-- android:theme="@style/Theme.AppCompat.Light"/> -->
 
         <activity
             android:name=".activities.Profile"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.Settings"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.SelectUserType"
+            android:label="@string/title_activity_select_user_type"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

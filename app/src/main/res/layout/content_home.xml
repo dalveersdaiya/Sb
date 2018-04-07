@@ -9,11 +9,20 @@
     tools:showIn="@layout/activity_home">
 
     <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.Button"
-        android:text="@string/profile"
         android:layout_centerInParent="true"
-        android:id="@+id/button_test"/>
+        android:text="@string/profile"
+        android:theme="@style/AppTheme.Button" />
+
+    <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_test"
+        android:layout_centerInParent="true"
+        android:text="@string/settings"
+        android:theme="@style/AppTheme.Button" />
 
 </RelativeLayout>

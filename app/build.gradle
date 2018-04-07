@@ -19,6 +19,30 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file('/Users/ajm/Documents/Repository DSD/SB/app/sbapp.jks')
+            storePassword "123456"
+            keyAlias "sbisdsd"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file('/Users/ajm/Documents/Repository DSD/SB/app/sbapp.jks')
+            storePassword "123456"
+            keyAlias "sbisdsd"
+            keyPassword "123456"
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,11 +55,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-//        release {
-//            shrinkResources false
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
     flavorDimensions "default"
     productFlavors {

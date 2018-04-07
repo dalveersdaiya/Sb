@@ -14,6 +14,7 @@ public class HomeActivity extends BaseActivity implements NetWorkStateReceiver.N
 
 
     Button buttonOpenSettings;
+    Button buttonOpenProfile;
     private NetWorkStateReceiver networkStateReceiver;
 
     @Override
@@ -24,19 +25,28 @@ public class HomeActivity extends BaseActivity implements NetWorkStateReceiver.N
         viewByIds();
         applyClickListeners();
         setNetworkStateReceiver();
-        setupToolBar(getResources().getString(R.string.app_name), true);
+        setupToolBar(getResources().getString(R.string.home_page), true);
     }
 
     public void viewByIds() {
-        buttonOpenSettings = findViewById(R.id.button_test);
+        buttonOpenProfile = findViewById(R.id.button_test);
+        buttonOpenSettings = findViewById(R.id.button_setting);
 
     }
 
     public void applyClickListeners() {
-        buttonOpenSettings.setOnClickListener(new View.OnClickListener() {
+        buttonOpenProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, Profile.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonOpenSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Settings.class);
                 startActivity(intent);
             }
         });

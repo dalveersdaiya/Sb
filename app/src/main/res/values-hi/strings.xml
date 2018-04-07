@@ -194,8 +194,6 @@
     <string name="signout">साइन आउट करें</string>
 
 
-
-
     <string name="language_c">भाषा</string>
     <string name="setlanguage_c">भाषा सेट करें</string>
     <string name="language_english_c">अंग्रेज़ी</string>
@@ -203,7 +201,6 @@
     <string name="enter_description">विवरण दर्ज करें</string>
     <string name="description">विवरण</string>
     <string name="enter_kb_name">कृपया अपना नॉलेज बेस नाम दर्ज करें</string>
-
 
 
     <!--Logout-->
@@ -448,8 +445,6 @@
     <string name="theme">Theme</string>
 
 
-
-
     <string name="theme_c">थीम</string>
     <string name="red_theme">लाल</string>
     <string name="green_theme">हरा</string>
@@ -483,8 +478,8 @@
 
     <string name="first_name">पहला नाम</string>
     <string name="last_name">अंतिम नाम</string>
-    <string name="mob_num">Mobile Number</string>
-    <string name="submit">मोबाइल नंबर</string>
+    <string name="mob_num">मोबाइल नंबर</string>
+    <string name="submit">जमा करें</string>
     <string name="register">रजिस्टर</string>
     <string name="first_name_empty">पहला नाम रिक्त नहीं हो सकता</string>
     <string name="last_name_empty">अंतिम नाम रिक्त नहीं हो सकता।</string>
@@ -495,6 +490,14 @@
     <string name="no">नहीं</string>
     <string name="no_internet">इंटरनेट उपलब्ध नहीं है</string>
     <string name="internet_on">इंटरनेट उपलब्ध है</string>
+    <string name="find_school">स्कूल खोजें</string>
+    <string name="home_page">होम पेज</string>
+
+    <string name="parent">माता-पिता</string>
+    <string name="teacher">शिक्षक/शिक्षिका</string>
+    <string name="student">विद्यार्थी</string>
+    <string name="school_admin">स्कूल एडमिन</string>
+    <string name="select_user_type">उपयोगकर्ता प्रकार चुनें</string>
 
 
 </resources>

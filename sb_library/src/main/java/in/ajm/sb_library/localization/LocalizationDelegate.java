@@ -1,10 +1,10 @@
 package in.ajm.sb_library.localization;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ public class LocalizationDelegate {
     // Prepare default language.
     private String currentLanguage = LanguageSetting.getDefaultLanguage();
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private final List<OnLocaleChangedListener> localeChangedListeners = new ArrayList<>();
 
-    public LocalizationDelegate(Activity activity) {
+    public LocalizationDelegate(AppCompatActivity activity) {
         this.activity = activity;
     }
 

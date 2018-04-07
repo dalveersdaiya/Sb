@@ -35,10 +35,12 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
         viewByIds();
         if(optionType == AppConfigs.REQUEST_CODE_SELECT_CLASS){
             setRecyclerViewoptions();
+            setupToolBar(getResources().getString(R.string.select_class), true);
         }else{
             setRecyclerViewoptionsForSections();
+            setupToolBar(getResources().getString(R.string.select_section), true);
         }
-        setupToolBar(getResources().getString(R.string.app_name), true);
+
 
     }
 
@@ -73,15 +75,6 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
     public void viewByIds() {
         recyclerViewoptions = (RecyclerView) findViewById(R.id.recycler_view);
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-//            if(requestCode == AppConfigs.REQUEST_CODE_SELECT_CLASS)
-//            setRecyclerViewoptionsForSections();
-//        }
-//    }
 
     @Override
     public void onClassItemClicked() {

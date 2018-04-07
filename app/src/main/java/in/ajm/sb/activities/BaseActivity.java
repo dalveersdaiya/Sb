@@ -1027,55 +1027,171 @@ public class BaseActivity extends LocalizationActivity {
         return animator;
     }
 
+    public void setThemeSelectionDialog(final Context context) {
 
-    public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
-        @Override
-        public CharSequence getTransformation(CharSequence source, View view) {
-            return new PasswordCharSequence(source);
+        final AlertDialog.Builder materialDialog = new AlertDialog.Builder(context);
+        materialDialog.setCancelable(true);
+        materialDialog.setTitle(getResources().getString(R.string.select_theme));
+        final View view = LayoutInflater.from(context).inflate(R.layout.theme_layout, null);
+        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
+
+        final RadioButton radio_btn_default = (RadioButton) view.findViewById(R.id.radio_btn_default);
+        final RadioButton radio_btn_blue = (RadioButton) view.findViewById(R.id.radio_btn_blue);
+        final RadioButton radio_btn_red = (RadioButton) view.findViewById(R.id.radio_btn_red);
+        final RadioButton radio_btn_yellow = (RadioButton) view.findViewById(R.id.radio_btn_yellow);
+        final RadioButton radio_btn_teal = (RadioButton) view.findViewById(R.id.radio_btn_teal);
+        final RadioButton radio_btn_green = (RadioButton) view.findViewById(R.id.radio_btn_green);
+        final RadioButton radio_btn_purple = (RadioButton) view.findViewById(R.id.radio_btn_purple);
+        final RadioButton radio_btn_pink = (RadioButton) view.findViewById(R.id.radio_btn_pink);
+        final RadioButton radio_btn_orange = (RadioButton) view.findViewById(R.id.radio_btn_orange);
+        final RadioButton radio_btn_cyan = (RadioButton) view.findViewById(R.id.radio_btn_cyan);
+        final RadioButton radio_btn_brown = (RadioButton) view.findViewById(R.id.radio_btn_brown);
+        final RadioButton radio_btn_white = (RadioButton) view.findViewById(R.id.radio_btn_white);
+        final RadioButton radio_btn_black = (RadioButton) view.findViewById(R.id.radio_btn_black);
+
+        radio_btn_default.setTag(getResources().getString(R.string.default_theme));
+        radio_btn_blue.setTag(getResources().getString(R.string.blue));
+        radio_btn_red.setTag(getResources().getString(R.string.red));
+        radio_btn_yellow.setTag(getResources().getString(R.string.yellow));
+        radio_btn_teal.setTag(getResources().getString(R.string.teal));
+        radio_btn_green.setTag(getResources().getString(R.string.green));
+        radio_btn_brown.setTag(getResources().getString(R.string.brown));
+        radio_btn_purple.setTag(getResources().getString(R.string.purple));
+        radio_btn_pink.setTag(getResources().getString(R.string.pink));
+        radio_btn_orange.setTag(getResources().getString(R.string.orange));
+        radio_btn_cyan.setTag(getResources().getString(R.string.cyan));
+        radio_btn_white.setTag(getResources().getString(R.string.white));
+        radio_btn_black.setTag(getResources().getString(R.string.black));
+
+        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.default_theme))) {
+            radio_btn_default.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.blue))) {
+            radio_btn_blue.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.red))) {
+            radio_btn_red.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.yellow))) {
+            radio_btn_yellow.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.teal))) {
+            radio_btn_teal.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.green))) {
+            radio_btn_green.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.brown))) {
+            radio_btn_brown.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.purple))) {
+            radio_btn_purple.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.pink))) {
+            radio_btn_pink.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.orange))) {
+            radio_btn_orange.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.cyan))) {
+            radio_btn_cyan.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.white))) {
+            radio_btn_white.setChecked(true);
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.black))) {
+            radio_btn_black.setChecked(true);
         }
 
-        private class PasswordCharSequence implements CharSequence {
-            private CharSequence mSource;
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.radio_btn_default) {
+                    radio_btn_default.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_blue) {
+                    radio_btn_blue.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_red) {
+                    radio_btn_red.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_yellow) {
+                    radio_btn_yellow.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_teal) {
 
-            public PasswordCharSequence(CharSequence source) {
-                mSource = source; // Store char sequence
-            }
+                    radio_btn_teal.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_green) {
 
-            public char charAt(int index) {
-                return '*'; // This is the important part
-            }
+                    radio_btn_green.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_brown) {
 
-            public int length() {
-                return mSource.length(); // Return default
-            }
+                    radio_btn_brown.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_purple) {
 
-            public CharSequence subSequence(int start, int end) {
-                return mSource.subSequence(start, end); // Return default
-            }
-        }
-    }
+                    radio_btn_purple.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_pink) {
 
-    private class RecodingBtnClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            if (recorder != null) {
-                if (recorder.isRecording()) {
+                    radio_btn_pink.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_orange) {
 
+                    radio_btn_orange.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_cyan) {
+
+                    radio_btn_cyan.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_white) {
+
+                    radio_btn_white.setChecked(true);
+                } else if (checkedId == R.id.radio_btn_black) {
+
+                    radio_btn_black.setChecked(true);
                 }
-//                    pauseRecording();
-                else {
-
-                }
-//                    startRecording();
-            } else {
-//                startRecording();
             }
-        }
+        });
+
+        materialDialog.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int selectedmemberId = radioGroup.getCheckedRadioButtonId();
+                RadioButton selectedbutton = (RadioButton) view.findViewById(selectedmemberId);
+                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).equals(selectedbutton.getTag().toString())) {
+                    if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.default_theme))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.default_theme));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.blue))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.blue));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.red))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.red));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.yellow))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.yellow));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.teal))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.teal));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.green))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.green));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.brown))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.brown));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.purple))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.purple));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.pink))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.pink));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.orange))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.orange));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.cyan))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.cyan));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.white))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.white));
+                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.black))) {
+                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.black));
+                    }
+                    PreferencesManager.setPreferenceBooleanByKey(context, "setTheme", true);
+                    recreate();
+                }
+                dialog.dismiss();
+            }
+        });
+
+        materialDialog.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        materialDialog.setView(view);
+
+        AlertDialog dialog = materialDialog.create();
+        dialog.show();
     }
 
     public void setLanguagedialog(final Context context, final TextView selectedLanguage) {
-        materialDialog = new MaterialDialog(context);
-        materialDialog.setCanceledOnTouchOutside(true);
+
+        final AlertDialog.Builder materialDialog = new AlertDialog.Builder(context);
+        materialDialog.setCancelable(true);
+        materialDialog.setTitle(getResources().getString(R.string.select_language));
+
         materialDialog.setTitle(getResources().getString(R.string.setlanguage_c));
         final View view = LayoutInflater.from(context).inflate(R.layout.language_layout, null);
         final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
@@ -1161,10 +1277,10 @@ public class BaseActivity extends LocalizationActivity {
 
             }
         });
-        materialDialog.setContentView(view);
-        materialDialog.setPositiveButton(getResources().getString(R.string.ok), new View.OnClickListener() {
+        materialDialog.setView(view);
+        materialDialog.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 PreferencesManager.setPreferenceBooleanByKey(context, "SETUI_LANGUAGE", true);
                 int selectedmemberId = radioGroup.getCheckedRadioButtonId();
                 RadioButton selectedbutton = (RadioButton) view.findViewById(selectedmemberId);
@@ -1213,179 +1329,64 @@ public class BaseActivity extends LocalizationActivity {
                     PreferencesManager.setPreferenceBooleanByKey(context, "setTheme", true);
                     recreate();
                 }
-                materialDialog.dismiss();
-
-
+                dialog.dismiss();
             }
         });
-        materialDialog.setNegativeButton(getResources().getString(R.string.cancel), new View.OnClickListener() {
+
+        materialDialog.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                materialDialog.dismiss();
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
             }
         });
-        materialDialog.show();
+
+        AlertDialog dialog = materialDialog.create();
+        dialog.show();
     }
 
-    public void setThemeSelectionDialog(final Context context) {
-        materialDialog = new MaterialDialog(context);
-        materialDialog.setCanceledOnTouchOutside(true);
-        materialDialog.setTitle(getResources().getString(R.string.select_theme));
-        final View view = LayoutInflater.from(context).inflate(R.layout.theme_layout, null);
-        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
-
-        final RadioButton radio_btn_default = (RadioButton) view.findViewById(R.id.radio_btn_default);
-        final RadioButton radio_btn_blue = (RadioButton) view.findViewById(R.id.radio_btn_blue);
-        final RadioButton radio_btn_red = (RadioButton) view.findViewById(R.id.radio_btn_red);
-        final RadioButton radio_btn_yellow = (RadioButton) view.findViewById(R.id.radio_btn_yellow);
-        final RadioButton radio_btn_teal = (RadioButton) view.findViewById(R.id.radio_btn_teal);
-        final RadioButton radio_btn_green = (RadioButton) view.findViewById(R.id.radio_btn_green);
-        final RadioButton radio_btn_purple = (RadioButton) view.findViewById(R.id.radio_btn_purple);
-        final RadioButton radio_btn_pink = (RadioButton) view.findViewById(R.id.radio_btn_pink);
-        final RadioButton radio_btn_orange = (RadioButton) view.findViewById(R.id.radio_btn_orange);
-        final RadioButton radio_btn_cyan = (RadioButton) view.findViewById(R.id.radio_btn_cyan);
-        final RadioButton radio_btn_brown = (RadioButton) view.findViewById(R.id.radio_btn_brown);
-        final RadioButton radio_btn_white = (RadioButton) view.findViewById(R.id.radio_btn_white);
-        final RadioButton radio_btn_black = (RadioButton) view.findViewById(R.id.radio_btn_black);
-
-        radio_btn_default.setTag(getResources().getString(R.string.default_theme));
-        radio_btn_blue.setTag(getResources().getString(R.string.blue));
-        radio_btn_red.setTag(getResources().getString(R.string.red));
-        radio_btn_yellow.setTag(getResources().getString(R.string.yellow));
-        radio_btn_teal.setTag(getResources().getString(R.string.teal));
-        radio_btn_green.setTag(getResources().getString(R.string.green));
-        radio_btn_brown.setTag(getResources().getString(R.string.brown));
-        radio_btn_purple.setTag(getResources().getString(R.string.purple));
-        radio_btn_pink.setTag(getResources().getString(R.string.pink));
-        radio_btn_orange.setTag(getResources().getString(R.string.orange));
-        radio_btn_cyan.setTag(getResources().getString(R.string.cyan));
-        radio_btn_white.setTag(getResources().getString(R.string.white));
-        radio_btn_black.setTag(getResources().getString(R.string.black));
-
-        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.default_theme))) {
-            radio_btn_default.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.blue))) {
-            radio_btn_blue.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.red))) {
-            radio_btn_red.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.yellow))) {
-            radio_btn_yellow.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.teal))) {
-            radio_btn_teal.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.green))) {
-            radio_btn_green.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.brown))) {
-            radio_btn_brown.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.purple))) {
-            radio_btn_purple.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.pink))) {
-            radio_btn_pink.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.orange))) {
-            radio_btn_orange.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.cyan))) {
-            radio_btn_cyan.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.white))) {
-            radio_btn_white.setChecked(true);
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).contains(getResources().getString(R.string.black))) {
-            radio_btn_black.setChecked(true);
+    public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
+        @Override
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return new PasswordCharSequence(source);
         }
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if (checkedId == R.id.radio_btn_default) {
+        private class PasswordCharSequence implements CharSequence {
+            private CharSequence mSource;
 
-                    radio_btn_default.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_blue) {
-                    radio_btn_blue.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_red) {
-                    radio_btn_red.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_yellow) {
-                    radio_btn_yellow.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_teal) {
+            public PasswordCharSequence(CharSequence source) {
+                mSource = source; // Store char sequence
+            }
 
-                    radio_btn_teal.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_green) {
+            public char charAt(int index) {
+                return '*'; // This is the important part
+            }
 
-                    radio_btn_green.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_brown) {
+            public int length() {
+                return mSource.length(); // Return default
+            }
 
-                    radio_btn_brown.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_purple) {
+            public CharSequence subSequence(int start, int end) {
+                return mSource.subSequence(start, end); // Return default
+            }
+        }
+    }
 
-                    radio_btn_purple.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_pink) {
+    private class RecodingBtnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (recorder != null) {
+                if (recorder.isRecording()) {
 
-                    radio_btn_pink.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_orange) {
-
-                    radio_btn_orange.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_cyan) {
-
-                    radio_btn_cyan.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_white) {
-
-                    radio_btn_white.setChecked(true);
-                } else if (checkedId == R.id.radio_btn_black) {
-
-                    radio_btn_black.setChecked(true);
                 }
-            }
-        });
+//                    pauseRecording();
+                else {
 
-
-        materialDialog.setContentView(view);
-        materialDialog.setPositiveButton(getResources().getString(R.string.ok), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int selectedmemberId = radioGroup.getCheckedRadioButtonId();
-                RadioButton selectedbutton = (RadioButton) view.findViewById(selectedmemberId);
-
-                if (!PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.theme)).equals(selectedbutton.getTag().toString())) {
-                    if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.default_theme))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.default_theme));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.blue))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.blue));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.red))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.red));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.yellow))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.yellow));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.teal))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.teal));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.green))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.green));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.brown))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.brown));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.purple))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.purple));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.pink))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.pink));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.orange))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.orange));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.cyan))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.cyan));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.white))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.white));
-                    } else if (selectedbutton.getTag().toString().equals(getResources().getString(R.string.black))) {
-                        PreferencesManager.setPreferenceByKey(context, getResources().getString(R.string.theme), getResources().getString(R.string.black));
-                    }
-                    PreferencesManager.setPreferenceBooleanByKey(context, "setTheme", true);
-                    recreate();
                 }
-                materialDialog.dismiss();
-
+//                    startRecording();
+            } else {
+//                startRecording();
             }
-        });
-        materialDialog.setNegativeButton(getResources().getString(R.string.cancel), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                materialDialog.dismiss();
-            }
-        });
-        materialDialog.show();
+        }
     }
 
 

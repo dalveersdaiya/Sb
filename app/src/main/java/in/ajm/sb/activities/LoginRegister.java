@@ -81,7 +81,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
 
     @Override
     public void onClickOtp() {
-        Intent intent = new Intent(LoginRegister.this, FindSchool.class);
+        Intent intent = new Intent(LoginRegister.this, SelectUserType.class);
         startActivity(intent);
     }
 

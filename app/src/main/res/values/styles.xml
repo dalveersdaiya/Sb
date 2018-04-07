@@ -20,7 +20,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
+        </item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
         <item name="colorBackgroundFloating">@color/colorAccentShaded</item>
@@ -42,8 +43,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
 
 
     <!--CUSTOM THEMES-->
@@ -354,24 +353,20 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBarOverlay">true</item>
 
-        <item name="colorPrimaryDark">@color/white_hex_15</item>
-        <item name="colorPrimary">@color/white_overlay</item>
-        <item name="colorAccent">@color/white_hex_6</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white_hex_15</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white_hex_15
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
         </item>
-        <item name="colorControlNormal">@color/white_hex_15</item>
 
-        <item name="my_theme_light">@color/white_hex_5</item>
-        <item name="colorControlActivated">@color/white_hex_13</item>
-        <item name="colorBackgroundFloating">@color/white_hex_7</item>
-        <item name="colorButtonNormal">@color/white_hex_9</item>
-        <!--<item name="colorForeground">@color/white_hex_5</item>-->
-        <item name="my_text_color">@color/black_hex_15</item>
-        <item name="my_text_color_inverse">@color/black_hex_15</item>
-        <item name="myColorPrimaryDark">@color/white_hex_15</item>
-        <item name="myColorPrimary">@color/white_overlay</item>
-        <item name="myColorAccent">@color/white_hex_6</item>
+        <item name="my_theme_light">@color/colorAccentLight</item>
+        <item name="colorBackgroundFloating">@color/colorAccentShaded</item>
+        <item name="my_text_color_inverse">@color/colorAccentLight</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="myColorAccent">@color/colorAccent</item>
+        <item name="myColorPrimaryDark">@color/colorPrimary</item>
+        <item name="myColorPrimary">@color/colorPrimary</item>
     </style>
 
     <style name="ActionButton">

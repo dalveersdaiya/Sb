@@ -23,7 +23,7 @@ public class Settings extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_settings);
         viewByIds();
         applyClickListeners();
-        setupToolBar(getResources().getString(R.string.app_name), true);
+        setupToolBar(getResources().getString(R.string.settings), true);
         setlanguagetext(tv_selected_language);
     }
 
@@ -33,8 +33,6 @@ public class Settings extends BaseActivity implements View.OnClickListener {
         button_select_theme = findViewById(R.id.button_select_theme);
         tv_selected_theme = findViewById(R.id.tv_selected_theme);
         tv_selected_language = findViewById(R.id.tv_selected_language);
-
-
     }
 
     public void applyClickListeners() {
@@ -57,26 +55,26 @@ public class Settings extends BaseActivity implements View.OnClickListener {
         }
     }
 
-        private void setlanguagetext(TextView selected_language) {
-        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_english))) {
+    private void setlanguagetext(TextView selected_language) {
+        if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_english))) {
             selected_language.setText("English");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_hindi))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_hindi))) {
             selected_language.setText("हिंदी");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_japanese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_japanese))) {
             selected_language.setText("日本語");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_french))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_french))) {
             selected_language.setText("français");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_german))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_german))) {
             selected_language.setText("Deutsche");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_portuguese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_portuguese))) {
             selected_language.setText("Português");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_russian))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_russian))) {
             selected_language.setText("русский");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_mandarin))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_mandarin))) {
             selected_language.setText("普通话");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_cantonese))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_cantonese))) {
             selected_language.setText("廣東話");
-        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language) ).equals(getResources().getString(R.string.language_spanish))) {
+        } else if (PreferencesManager.getPreferenceByKey(context, getResources().getString(R.string.language)).equals(getResources().getString(R.string.language_spanish))) {
             selected_language.setText("Español");
         }
     }

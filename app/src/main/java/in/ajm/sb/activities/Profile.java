@@ -18,7 +18,7 @@ public class Profile extends BaseActivity {
         setContentView(R.layout.activity_profile);
         viewByIds();
         applyClickListeners();
-        setupToolBar(getResources().getString(R.string.app_name), true);
+        setupToolBar(getResources().getString(R.string.profile), true);
 
     }
 
