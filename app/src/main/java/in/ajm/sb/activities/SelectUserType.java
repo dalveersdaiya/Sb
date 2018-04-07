@@ -27,6 +27,7 @@ public class SelectUserType extends BaseActivity implements OnUserTypeSelected {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForTheme(this);
         setContentView(R.layout.activity_select_user_type);
         viewByIds();
 

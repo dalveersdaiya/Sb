@@ -31,7 +31,7 @@ public class SplashActivity extends BaseActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
-        }, 1200);
+        }, 1500);
     }
 
     public void viewById() {
