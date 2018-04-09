@@ -507,6 +507,8 @@
     <string name="switch_user">उपयोगकर्ता बदलें</string>
     <string name="current_user">तात्कालिक प्रयोगकर्ता</string>
     <string name="switch_">बदलें</string>
+    <string name="share">शेयर</string>
+    <string name="send">भेजें</string>
 
 
 </resources>

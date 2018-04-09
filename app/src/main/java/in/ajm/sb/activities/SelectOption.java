@@ -86,7 +86,7 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
 
     @Override
     public void onSectionItemClicked() {
-        Intent intent = new Intent(SelectOption.this, HomeActivity.class);
+        Intent intent = new Intent(SelectOption.this, HomeTestActivity.class);
         startActivity(intent);
     }
 }

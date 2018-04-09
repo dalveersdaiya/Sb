@@ -179,7 +179,7 @@ public class BaseActivity extends LocalizationActivity {
         alert11.show();
     }
 
-    void setupToolBar(String title) {
+    public void setupToolBar(String title) {
         setupToolBar(title, false, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +188,7 @@ public class BaseActivity extends LocalizationActivity {
         });
     }
 
-    void setupToolBar(String title, boolean showNavigationBtn) {
+    public void setupToolBar(String title, boolean showNavigationBtn) {
         setupToolBar(title, showNavigationBtn, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,12 +197,12 @@ public class BaseActivity extends LocalizationActivity {
         });
     }
 
-    void setupToolBar(String title, View.OnClickListener onClickListener) {
+    public void setupToolBar(String title, View.OnClickListener onClickListener) {
         setupToolBar(title, true, onClickListener);
     }
 
 
-    private void setupToolBar(String title, boolean showNavigationBtn, View.OnClickListener onClickListener) {
+    public void setupToolBar(String title, boolean showNavigationBtn, View.OnClickListener onClickListener) {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -1394,6 +1394,23 @@ public class BaseActivity extends LocalizationActivity {
             return (float) Math.round(r * 100.0f) / 100.0f;
         } catch (Exception e) {
             return 0.00f;
+        }
+    }
+
+    public void setTypeFaceForMenuItemsForActionSingle(Menu menu, Context context) {
+        Typeface typeface = FontHelper.getInstance(context).getRegularFont();
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem mi = menu.getItem(i);
+            //for applying a font to subMenu ...
+            SubMenu subMenu = mi.getSubMenu();
+            if (subMenu != null && subMenu.size() > 0) {
+                for (int j = 0; j < subMenu.size(); j++) {
+                    MenuItem subMenuItem = subMenu.getItem(j);
+                    replaceFont(subMenuItem.getTitle().toString(), typeface);
+                }
+            }
+            //the method we have create in activity
+            replaceFont(mi.getTitle().toString(), typeface);
         }
     }
 

@@ -14,6 +14,7 @@ public class AppConfigs {
     public static String PREFERENCE_USER_ID = "USER_ID";
     public static String PREFERENCE_LOGGEDIN_USER_ID = "LOGGEDIN_USER_ID";
     public static String PREFERENCE_ORG_ID = "ORGID";
+    public static String PREFERENCE_AUTH = "AUTH";
 
     public static int getVersionCode(Context context) {
         PackageManager pm = context.getPackageManager();
