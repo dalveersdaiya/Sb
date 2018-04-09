@@ -100,4 +100,14 @@
     <string name="school_admin">School Admin</string>
     <string name="select_user_type">Select user type</string>
     <string name="title_activity_test">TEst</string>
+    <string name="name">Name</string>
+    <string name="overall_record">Over all record</string>
+    <string name="monthly_record">Monthly record</string>
+    <string name="yearly_record">Yearly record</string>
+    <string name="academic_performance">Academic performance</string>
+    <string name="sports_performance">Sports performance</string>
+    <string name="switch_user">Switch user</string>
+    <string name="current_user">Current user</string>
+    <string name="switch_">Switch</string>
+    <string name="add_user">Add</string>
 </resources>

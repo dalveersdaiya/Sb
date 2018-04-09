@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="?android:selectableItemBackground"
+    android:padding="10dp"
     android:layout_height="wrap_content">
 
     <in.ajm.sb.customviews.TextViewBold
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/classname"
         android:gravity="center"
         android:textSize="14sp"
-        android:padding="10dp"
+        android:layout_gravity="center"
         android:id="@+id/tv_option_title"/>
 
 </LinearLayout>

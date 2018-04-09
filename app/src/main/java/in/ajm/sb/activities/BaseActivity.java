@@ -1132,6 +1132,7 @@ public class BaseActivity extends LocalizationActivity {
                 }
             }
         });
+        materialDialog.setView(view);
 
         materialDialog.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
@@ -1180,7 +1181,6 @@ public class BaseActivity extends LocalizationActivity {
             }
         });
 
-        materialDialog.setView(view);
 
         AlertDialog dialog = materialDialog.create();
         dialog.show();
@@ -1192,7 +1192,6 @@ public class BaseActivity extends LocalizationActivity {
         materialDialog.setCancelable(true);
         materialDialog.setTitle(getResources().getString(R.string.select_language));
 
-        materialDialog.setTitle(getResources().getString(R.string.setlanguage_c));
         final View view = LayoutInflater.from(context).inflate(R.layout.language_layout, null);
         final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
         final RadioButton radio_btn_english = (RadioButton) view.findViewById(R.id.radio_btn_english);
@@ -1386,6 +1385,15 @@ public class BaseActivity extends LocalizationActivity {
             } else {
 //                startRecording();
             }
+        }
+    }
+
+    public float calculateValue(int total, int value) {
+        try {
+            float r = ((value * 100) / total);
+            return (float) Math.round(r * 100.0f) / 100.0f;
+        } catch (Exception e) {
+            return 0.00f;
         }
     }
 

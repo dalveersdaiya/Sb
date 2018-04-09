@@ -14,6 +14,20 @@
         <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="CheckText">
+        <attr name="custom_text" format="string" />
+        <attr name="custom_hint" format="string" />
+        <attr name="custom_checked_icon" format="reference" />
+        <attr name="custom_edit_icon" format="reference" />
+        <attr name="custom_cancel_icon" format="reference" />
+        <attr name="custom_textcolor" format="color|reference" />
+        <attr name="tint_color" format="reference|color" />
+        <attr name="custom_hintcolor" format="color|reference" />
+        <attr name="custom_text_size" format="dimension" />
+        <attr name="custom_image_height" format="dimension" />
+        <attr name="custom_image_width" format="dimension" />
+    </declare-styleable>
+
 
     <!--<HACK : My Theme colors-->
     <attr name="my_text_color" format="reference|color" />
@@ -22,4 +36,6 @@
     <attr name="myColorAccent" format="reference|color" />.
     <attr name="myColorPrimaryDark" format="reference|color" />
     <attr name="myColorPrimary" format="reference|color" />
+
+
 </resources>

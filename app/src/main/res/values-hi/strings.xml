@@ -498,6 +498,15 @@
     <string name="student">विद्यार्थी</string>
     <string name="school_admin">स्कूल एडमिन</string>
     <string name="select_user_type">उपयोगकर्ता प्रकार चुनें</string>
+    <string name="overall_record">सभी रिकॉर्ड पर</string>
+    <string name="monthly_record">मासिक रिकॉर्ड</string>
+    <string name="yearly_record">वार्षिक रिकॉर्ड</string>
+    <string name="academic_performance">शैक्षिक प्रदर्शन</string>
+    <string name="sports_performance">खेल के प्रदर्शन</string>
+    <string name="performance_in_other">सह पाठ्यक्रम गतिविधियां</string>
+    <string name="switch_user">उपयोगकर्ता बदलें</string>
+    <string name="current_user">तात्कालिक प्रयोगकर्ता</string>
+    <string name="switch_">बदलें</string>
 
 
 </resources>

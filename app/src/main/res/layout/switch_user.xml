@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/my_text_color"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:id="@+id/recycler_selected_user"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="right"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <in.ajm.sb.customviews.ButtonRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_user"
+            android:id="@+id/button_add_user"
+            android:theme="@style/AppTheme.Button"
+            />
+        <in.ajm.sb.customviews.ButtonRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:id="@+id/button_cancel"
+            android:theme="@style/AppTheme.Button"
+            />
+        <in.ajm.sb.customviews.ButtonRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:id="@+id/button_ok"
+            android:theme="@style/AppTheme.Button"
+            />
+    </LinearLayout>
+
+</LinearLayout>

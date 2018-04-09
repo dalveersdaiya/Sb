@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -53,16 +54,18 @@ public class UserTypeAdapter extends RecyclerView.Adapter<UserTypeAdapter.Holder
     public class Holder extends RecyclerView.ViewHolder {
         TextView tv_option_title;
         ImageView iv_user_image;
+        LinearLayout root;
 
         public Holder(View itemView) {
             super(itemView);
             tv_option_title = (TextView) itemView.findViewById(R.id.tv_user_title);
             iv_user_image = itemView.findViewById(R.id.image_user);
+            root = (LinearLayout) itemView;
         }
 
         public void setItem(final UserTypeData userTypeData) {
             tv_option_title.setText(userTypeData.getUserName());
-            tv_option_title.setOnClickListener(new View.OnClickListener() {
+            root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onUserTypeSelected.userTypeSelected(getAdapterPosition(), userTypeData.getUserName());

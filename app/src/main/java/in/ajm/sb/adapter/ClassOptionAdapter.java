@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -51,15 +52,17 @@ public class ClassOptionAdapter extends RecyclerView.Adapter<ClassOptionAdapter.
 
     public class Holder extends RecyclerView.ViewHolder {
         TextView tv_option_title;
+        LinearLayout root;
 
         public Holder(View itemView) {
             super(itemView);
             tv_option_title = (TextView) itemView.findViewById(R.id.tv_option_title);
+            root = (LinearLayout) itemView;
         }
 
         public void setItem(ClassOptions classOptions) {
             tv_option_title.setText(context.getResources().getString(R.string.select_class));
-            tv_option_title.setOnClickListener(new View.OnClickListener() {
+            root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClassItemClick.onClassItemClicked();
