@@ -226,7 +226,7 @@ public class BaseActivity extends LocalizationActivity {
             Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
             drawable = DrawableCompat.wrap(drawable);
             actionBar.setHomeAsUpIndicator(drawable);
-            DrawableCompat.setTint(drawable, getOppositeColor(context));
+            DrawableCompat.setTint(drawable, getTextColor(context));
             toolbar.setNavigationOnClickListener(onClickListener);
         }
     }
@@ -242,7 +242,7 @@ public class BaseActivity extends LocalizationActivity {
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
         drawable = DrawableCompat.wrap(drawable);
         actionBar.setHomeAsUpIndicator(drawable);
-        DrawableCompat.setTint(drawable, getOppositeColor(context));
+        DrawableCompat.setTint(drawable, getTextColor(context));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,7 +262,7 @@ public class BaseActivity extends LocalizationActivity {
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_keyboard_backspace_black_24dp, null);
         drawable = DrawableCompat.wrap(drawable);
         actionBar.setHomeAsUpIndicator(drawable);
-        DrawableCompat.setTint(drawable, getOppositeColor(context));
+        DrawableCompat.setTint(drawable, getTextColor(context));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -822,10 +822,10 @@ public class BaseActivity extends LocalizationActivity {
         return color;
     }
 
-    public int getColorFromTheme(Context context) {
+    public int getColorMyThemelight(Context context) {
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        theme.resolveAttribute(R.attr.my_theme_light, typedValue, true);
         @ColorInt int color = typedValue.data;
         return color;
     }
@@ -834,7 +834,7 @@ public class BaseActivity extends LocalizationActivity {
     public int getOppositeColor(Context context) {
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        theme.resolveAttribute(R.attr.my_text_color_inverse, typedValue, true);
         @ColorInt int color = typedValue.data;
         return color;
     }
@@ -1343,6 +1343,32 @@ public class BaseActivity extends LocalizationActivity {
         dialog.show();
     }
 
+    public float calculateValue(int total, int value) {
+        try {
+            float r = ((value * 100) / total);
+            return (float) Math.round(r * 100.0f) / 100.0f;
+        } catch (Exception e) {
+            return 0.00f;
+        }
+    }
+
+    public void setTypeFaceForMenuItemsForActionSingle(Menu menu, Context context) {
+        Typeface typeface = FontHelper.getInstance(context).getRegularFont();
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem mi = menu.getItem(i);
+            //for applying a font to subMenu ...
+            SubMenu subMenu = mi.getSubMenu();
+            if (subMenu != null && subMenu.size() > 0) {
+                for (int j = 0; j < subMenu.size(); j++) {
+                    MenuItem subMenuItem = subMenu.getItem(j);
+                    replaceFont(subMenuItem.getTitle().toString(), typeface);
+                }
+            }
+            //the method we have create in activity
+            replaceFont(mi.getTitle().toString(), typeface);
+        }
+    }
+
     public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
         @Override
         public CharSequence getTransformation(CharSequence source, View view) {
@@ -1385,32 +1411,6 @@ public class BaseActivity extends LocalizationActivity {
             } else {
 //                startRecording();
             }
-        }
-    }
-
-    public float calculateValue(int total, int value) {
-        try {
-            float r = ((value * 100) / total);
-            return (float) Math.round(r * 100.0f) / 100.0f;
-        } catch (Exception e) {
-            return 0.00f;
-        }
-    }
-
-    public void setTypeFaceForMenuItemsForActionSingle(Menu menu, Context context) {
-        Typeface typeface = FontHelper.getInstance(context).getRegularFont();
-        for (int i = 0; i < menu.size(); i++) {
-            MenuItem mi = menu.getItem(i);
-            //for applying a font to subMenu ...
-            SubMenu subMenu = mi.getSubMenu();
-            if (subMenu != null && subMenu.size() > 0) {
-                for (int j = 0; j < subMenu.size(); j++) {
-                    MenuItem subMenuItem = subMenu.getItem(j);
-                    replaceFont(subMenuItem.getTitle().toString(), typeface);
-                }
-            }
-            //the method we have create in activity
-            replaceFont(mi.getTitle().toString(), typeface);
         }
     }
 

@@ -17,6 +17,7 @@ import java.util.List;
 import in.ajm.sb.R;
 import in.ajm.sb.adapter.SwitchUserAdapter;
 import in.ajm.sb.data.User;
+import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.PreferencesManager;
 import in.ajm.sb.interfaces.OnUserSwitched;
 
@@ -67,10 +68,16 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         setupToolBar(getResources().getString(R.string.settings), true, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(context, HomeTestActivity.class);
-               startActivity(intent);
+               moveToHomeActivity();
             }
         });
+    }
+
+    public void moveToHomeActivity(){
+            Intent intent = new Intent(Settings.this, HomeTestActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(AppConfigs.USER_TYPE, 01);
+            startActivity(intent);
     }
 
     @Override

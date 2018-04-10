@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:padding="10dp"
+    android:background="?attr/my_text_color"
     android:layout_height="wrap_content">
 
     <in.ajm.sb.customviews.TextViewBold
@@ -21,6 +22,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:inputType="number"
+        android:hint="******"
         android:layout_marginTop="20dp"
         android:maxLength="6"
         android:padding="5dp" />

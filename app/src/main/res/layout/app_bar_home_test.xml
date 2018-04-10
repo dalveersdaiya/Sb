@@ -6,10 +6,38 @@
     android:layout_height="match_parent"
     tools:context="in.ajm.sb.activities.HomeTestActivity">
 
-    <include layout="@layout/toolbar_for_home" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title=""
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            <in.ajm.sb.customviews.TextViewMedium
+                android:id="@+id/toolbar_title_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/app_name"
+                android:textColor="?attr/my_text_color"
+                android:textSize="16sp" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_home_test" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>

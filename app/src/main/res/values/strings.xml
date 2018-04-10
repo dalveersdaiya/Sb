@@ -119,4 +119,29 @@
     <string name="action_settings">Settings</string>
     <string name="share">Share</string>
     <string name="send">Send</string>
+    <string name="year">Year</string>
+    <string name="m_marks">Max Marks</string>
+    <string name="result">Result</string>
+    <string name="school">School</string>
+    <string name="today">Today</string>
+    <string name="this_day">This day</string>
+    <string name="this_unit_test">This unit test</string>
+    <string name="half_yearly">This day</string>
+    <string name="yearly">This day</string>
+    <string name="want_to_see_more_of">Want to see more of %1$s\'s performance?</string>
+    <string name="communicate">Communicate</string>
+    <string name="wanna_exit_app">Want to exit the app?</string>
+    <string name="enter_enrollment">Enter school enrollment number of student to verify student\'s identity.</string>
+    <string name="enter_student_aadhar">Enter student\'s Aadhar number.</string>
+    <string name="not_mandatory">Not mandatory</string>
+    <string name="enrollment_num">Enrollment number</string>
+    <string name="aadhar_num">Aadhar number</string>
+    <string name="teacher_pin">Teacher pin</string>
+    <string name="school_passphrase">School passphrase</string>
+    <string name="enter_your_aadhar">Enter your Aadhar number.</string>
+    <string name="enter_details">Enter your details to verify your identity.</string>
+    <string name="under_construction">Under construction</string>
+    <string name="enter_school">Enter school</string>
+    <string name="add_school">Add school</string>
+
 </resources>

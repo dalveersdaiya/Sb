@@ -62,7 +62,7 @@ public class BottomSheetAddOtp extends BottomSheetDialogFragment implements View
         viewById(contentView);
         applyClickListeners();
         dialog.setContentView(contentView);
-//        setDialogBorder(dialog);
+        setDialogBorder(dialog);
 
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = params.getBehavior();

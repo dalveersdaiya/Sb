@@ -15,6 +15,13 @@ public class AppConfigs {
     public static String PREFERENCE_LOGGEDIN_USER_ID = "LOGGEDIN_USER_ID";
     public static String PREFERENCE_ORG_ID = "ORGID";
     public static String PREFERENCE_AUTH = "AUTH";
+    public static String USER_TYPE = "USER_TYPE";
+    public static String OPTION_TYPE = "OPTION_TYPE";
+    public static int STUDENT_TYPE = 03;
+    public static int TEACHER_TYPE = 02;
+    public static int PARENT_TYPE = 01;
+    public static int SCHOOL_ADMIN_TYPE = 04;
+
 
     public static int getVersionCode(Context context) {
         PackageManager pm = context.getPackageManager();
@@ -31,7 +38,8 @@ public class AppConfigs {
         try {
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             return pi.versionName;
-        } catch (PackageManager.NameNotFoundException ex) {}
+        } catch (PackageManager.NameNotFoundException ex) {
+        }
         return "";
     }
 }

@@ -22,6 +22,7 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
     List<ClassOptions> classOptionsList = new ArrayList<>();
     ClassOptionAdapter classOptionAdapter;
     int optionType;
+    int userType;
 
     List<SectionOptions> sectionOptionsList = new ArrayList<>();
     SectionOptionAdapter sectionOptionAdapter;
@@ -33,19 +34,19 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
         setContentView(R.layout.activity_select_option);
         getIntentValues();
         viewByIds();
-        if(optionType == AppConfigs.REQUEST_CODE_SELECT_CLASS){
+        if (optionType == AppConfigs.REQUEST_CODE_SELECT_CLASS) {
             setRecyclerViewoptions();
             setupToolBar(getResources().getString(R.string.select_class), true);
-        }else{
+        } else {
             setRecyclerViewoptionsForSections();
             setupToolBar(getResources().getString(R.string.select_section), true);
         }
 
-
     }
 
     public void getIntentValues() {
-        optionType = getIntent().getExtras().getInt("option_type", 101);
+        optionType = getIntent().getExtras().getInt(AppConfigs.OPTION_TYPE, 101);
+        userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, 01);
     }
 
     public void setRecyclerViewoptions() {
@@ -80,13 +81,22 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
     public void onClassItemClicked() {
         Intent intent = new Intent(this, SelectOption.class);
         setResult(RESULT_OK, intent);
-        intent.putExtra("option_type", AppConfigs.REQUEST_CODE_SELECT_SECTION);
+        intent.putExtra(AppConfigs.OPTION_TYPE, AppConfigs.REQUEST_CODE_SELECT_SECTION);
+        intent.putExtra(AppConfigs.USER_TYPE, userType);
         startActivity(intent);
     }
 
     @Override
     public void onSectionItemClicked() {
+        moveToHome();
+    }
+
+    public void moveToHome() {
         Intent intent = new Intent(SelectOption.this, HomeTestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(AppConfigs.USER_TYPE, userType);
         startActivity(intent);
     }
+
+
 }

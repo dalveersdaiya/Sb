@@ -64,17 +64,21 @@
         </activity>
         <activity
             android:name=".activities.LoginRegister"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.FindSchool"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_find_school"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.SelectOption"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_select_option"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.HomeActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity
@@ -107,18 +111,22 @@
 
         <activity
             android:name=".activities.Profile"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.Settings"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.SelectUserType"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_select_user_type"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.HomeTestActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_home_test"
             android:theme="@style/AppTheme"></activity>
     </application>

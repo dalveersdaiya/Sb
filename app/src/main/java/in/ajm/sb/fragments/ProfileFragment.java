@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import in.ajm.sb.R;
-import in.ajm.sb.activities.BaseActivity;
+import in.ajm.sb.activities.HomeTestActivity;
 import in.ajm.sb.helper.GeneralHelper;
 import in.ajm.sb_library.charts.FitChart;
 import in.ajm.sb_library.charts.FitChartValue;
@@ -35,7 +35,7 @@ public class ProfileFragment extends BaseFragment{
         setRetainInstance(true);
         viewByIds(v);
         applyClickListeners();
-        ((BaseActivity)getActivity()).setupToolBar(getResources().getString(R.string.profile));
+        ((HomeTestActivity)getActivity()).setHomePageTitle(getResources().getString(R.string.profile));
         setFitChartValues();
         new Handler().postDelayed(new Runnable() {
             @Override

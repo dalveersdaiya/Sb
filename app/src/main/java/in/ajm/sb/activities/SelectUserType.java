@@ -11,6 +11,7 @@ import java.util.List;
 import in.ajm.sb.R;
 import in.ajm.sb.adapter.UserTypeAdapter;
 import in.ajm.sb.data.UserTypeData;
+import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.interfaces.OnUserTypeSelected;
 
 public class SelectUserType extends BaseActivity implements OnUserTypeSelected {
@@ -20,7 +21,7 @@ public class SelectUserType extends BaseActivity implements OnUserTypeSelected {
     UserTypeAdapter userTypeAdapter;
 //    String[] userTypeArray;
 
-        String[] userTypeArray = new String[]{};
+    String[] userTypeArray = new String[]{};
 //    String[] userTypeArray = new String[]{getResources().getString(R.string.parent), getResources().getString(R.string.teacher),
 //            getResources().getString(R.string.student), getResources().getString(R.string.school_admin)};
 
@@ -60,7 +61,12 @@ public class SelectUserType extends BaseActivity implements OnUserTypeSelected {
 
     @Override
     public void userTypeSelected(int pos, String type) {
+        openFindSchool(pos);
+    }
+
+    public void openFindSchool(int pos) {
         Intent intent = new Intent(SelectUserType.this, FindSchool.class);
+        intent.putExtra(AppConfigs.USER_TYPE, pos + 1);
         startActivity(intent);
     }
 }

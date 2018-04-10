@@ -16,6 +16,7 @@ import java.util.List;
 
 import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
+import in.ajm.sb.activities.HomeTestActivity;
 import in.ajm.sb.adapter.SwitchUserAdapter;
 import in.ajm.sb.data.User;
 import in.ajm.sb.helper.PreferencesManager;
@@ -46,7 +47,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
         setRetainInstance(true);
         viewByIds(v);
         applyClickListeners();
-        ((BaseActivity)getActivity()).setupToolBar(getResources().getString(R.string.settings));
+        ((HomeTestActivity)getActivity()).setHomePageTitle(getResources().getString(R.string.settings));
         setlanguagetext(tv_selected_language);
         setSelectedTheme(tv_selected_theme);
         return v;

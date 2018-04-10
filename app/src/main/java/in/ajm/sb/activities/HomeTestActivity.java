@@ -1,5 +1,6 @@
 package in.ajm.sb.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
 
 import java.util.Stack;
 
@@ -22,14 +23,16 @@ import in.ajm.sb.broadcastreceivers.NetWorkStateReceiver;
 import in.ajm.sb.fragments.HomeFragment;
 import in.ajm.sb.fragments.ProfileFragment;
 import in.ajm.sb.fragments.SettingsFragment;
+import in.ajm.sb.helper.AppConfigs;
 
 public class HomeTestActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NetWorkStateReceiver.NetworkStateReceiverListener {
 
-
     Toolbar toolbar;
     DrawerLayout drawer;
     NavigationView navigationView;
+    TextView textViewTitleHome;
+    int userType = 01;
     private NetWorkStateReceiver networkStateReceiver;
     private Stack<Fragment> fragmentstack;
     private Fragment fragment;
@@ -43,22 +46,31 @@ public class HomeTestActivity extends BaseActivity
         applyClickListeners();
         setUpDrawer();
         setNetworkStateReceiver();
-        opennewFragment(new HomeFragment(), true, savedInstanceState);
+        getIntentValues();
+        openNewFragment(new HomeFragment(), true, savedInstanceState);
+        setHomePageTitle(getResources().getString(R.string.home_page));
+        setUserCredentials();
+    }
+
+    public void setHomePageTitle(String title) {
+        textViewTitleHome.setText(title);
     }
 
 
     public void setUpDrawer() {
-        setupToolBar(getResources().getString(R.string.home_page), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
-            }
-        });
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setTitle("");
+        toolbar.setSubtitle("");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void getIntentValues() {
+        userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
     }
 
     @Override
@@ -95,23 +107,28 @@ public class HomeTestActivity extends BaseActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_profile) {
-            Bundle bundle = new Bundle();
-            bundle.putString("org_id", getSelectedOrgId());
-            opennewFragment(new ProfileFragment(), true, bundle);
+            if (fragment.getClass() != ProfileFragment.class) {
+                Bundle bundle = new Bundle();
+                bundle.putString("org_id", getSelectedOrgId());
+                openNewFragment(new ProfileFragment(), true, bundle);
+            }
+
 
         } else if (id == R.id.nav_home) {
-            Bundle bundle = new Bundle();
-            bundle.putString("org_id", getSelectedOrgId());
-            opennewFragment(new HomeFragment(), true, bundle);
-
+            if (fragment.getClass() != HomeFragment.class) {
+                Bundle bundle = new Bundle();
+                bundle.putString("org_id", getSelectedOrgId());
+                openNewFragment(new HomeFragment(), true, bundle);
+            }
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     public void viewByIds() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_home);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        textViewTitleHome = findViewById(R.id.toolbar_title_home);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         setTypeFaceForMenuItems(navigationView.getMenu(), this);
         fragmentstack = new Stack<>();
@@ -121,6 +138,7 @@ public class HomeTestActivity extends BaseActivity
     public void applyClickListeners() {
 
     }
+
 
     public void onDestroy() {
         super.onDestroy();
@@ -148,10 +166,10 @@ public class HomeTestActivity extends BaseActivity
         Snackbar.make(findViewById(android.R.id.content), "Internet not available", Snackbar.LENGTH_SHORT).show();
     }
 
-    private void opennewFragment(Fragment f, boolean savedinstack, Bundle bundle) {
+    public void openNewFragment(Fragment f, boolean savedinstack, Bundle bundle) {
         if (savedinstack) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.empty, R.anim.empty);
+            ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
             fragmentstack.push(fragment);
             f.setArguments(bundle);
             ft.replace(R.id.frame, f);
@@ -159,7 +177,7 @@ public class HomeTestActivity extends BaseActivity
             ft.commitAllowingStateLoss();
         } else {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.empty, R.anim.empty);
+            ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
             f.setArguments(bundle);
             ft.replace(R.id.frame, f);
             ft.commitAllowingStateLoss();
@@ -174,7 +192,7 @@ public class HomeTestActivity extends BaseActivity
 //            setBottomBarUI("mycall");//TODO : here
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.empty, R.anim.empty);
+        ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.frame, fragment);
         ft.commitAllowingStateLoss();
     }
@@ -188,16 +206,31 @@ public class HomeTestActivity extends BaseActivity
         } else {
             try {
                 if (fragmentstack.size() < 0) {
-                    super.onBackPressed();
+                    showDialog(context, getResources().getString(R.string.wanna_exit_app), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
 
                 } else {
                     back();
                 }
 
             } catch (Exception e) {
-                super.onBackPressed();
+                showDialog(context, getResources().getString(R.string.wanna_exit_app), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
             }
 
         }
+    }
+
+    // TODO: 10/04/18 Rectify this
+    public void setUserCredentials() {
+        setUserId("UserID" + userType);
     }
 }

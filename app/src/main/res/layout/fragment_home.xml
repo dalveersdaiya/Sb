@@ -2,13 +2,165 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <in.ajm.sb.customviews.TextViewRegular
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/home_page" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_bottom_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <in.ajm.sb.customviews.TextViewBold
+                    android:id="@+id/tv_selected_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/school"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="16sp" />
+
+                <in.ajm.sb.customviews.TextViewBold
+                    android:id="@+id/tv_current_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/year"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <in.ajm.sb.customviews.TextViewBold
+                    android:id="@+id/tv_current_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/classname"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="16sp" />
+
+                <in.ajm.sb.customviews.TextViewBold
+                    android:id="@+id/tv_current_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/section"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <in.ajm.sb.customviews.TextViewBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/tv_this_day"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_day"
+                android:textColor="?attr/colorAccent"
+                android:textSize="16sp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_todays"
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/accent_border"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:padding="5dp" />
+
+            <in.ajm.sb.customviews.TextViewBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_this_unit_test"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_unit_test"
+                android:textColor="?attr/colorAccent"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_unit_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/accent_border"
+                android:nestedScrollingEnabled="false"
+                android:padding="5dp" />
+
+            <in.ajm.sb.customviews.TextViewBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_this_half_year"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/half_yearly"
+                android:textColor="?attr/colorAccent"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_half_yearly"
+                android:layout_width="match_parent"
+                android:background="@drawable/accent_border"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone"
+                android:padding="5dp" />
+
+            <in.ajm.sb.customviews.TextViewBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/tv_this_year"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_unit_test"
+                android:textColor="?attr/colorAccent"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_yearly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/accent_border"
+                android:visibility="gone"
+                android:nestedScrollingEnabled="false"
+                android:padding="5dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

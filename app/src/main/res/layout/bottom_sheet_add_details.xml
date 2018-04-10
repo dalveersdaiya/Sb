@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="?attr/my_text_color"
+    android:padding="10dp">
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/tv_header"
+        android:gravity="center"
+        android:textColor="?attr/colorAccent"
+        android:padding="10dp"
+        android:text="@string/enter_enrollment"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <in.ajm.sb.customviews.EditTextRegular
+        android:id="@+id/et_enrollment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="?attr/colorAccent"
+        android:textColorHint="?attr/my_theme_light"
+        android:background="@drawable/accent_border"
+        android:gravity="center"
+        android:hint="@string/enrollment_num"
+        android:inputType="number"
+        android:maxLength="18"
+        android:padding="5dp" />
+
+    <in.ajm.sb.customviews.EditTextRegular
+        android:id="@+id/et_teacher_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/accent_border"
+        android:textColor="?attr/colorAccent"
+        android:textColorHint="?attr/my_theme_light"
+        android:gravity="center"
+        android:hint="@string/teacher_pin"
+        android:inputType="number"
+        android:maxLength="8"
+        android:padding="5dp" />
+
+
+    <in.ajm.sb.customviews.EditTextRegular
+        android:id="@+id/et_school_passphrase"
+        android:layout_width="match_parent"
+        android:background="@drawable/accent_border"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="?attr/colorAccent"
+        android:textColorHint="?attr/my_theme_light"
+        android:hint="@string/school_passphrase"
+        android:inputType="number"
+        android:maxLength="8"
+        android:padding="5dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <in.ajm.sb.customviews.EditTextRegular
+            android:id="@+id/et_aadhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/accent_border"
+            android:layout_marginTop="20dp"
+            android:textColor="?attr/colorAccent"
+            android:textColorHint="?attr/my_theme_light"
+            android:gravity="center"
+            android:hint="@string/aadhar_num"
+            android:inputType="number"
+            android:maxLength="14"
+            android:padding="5dp" />
+
+        <in.ajm.sb.customviews.TextViewMedium
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/et_aadhar"
+            android:layout_below="@+id/et_aadhar"
+            android:layout_marginRight="5dp"
+            android:padding="2dp"
+            android:text="@string/not_mandatory"
+            android:textColor="?attr/colorAccent"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <in.ajm.sb.customviews.ButtonMedium
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:text="@string/submit"
+        android:theme="@style/AppTheme.Button" />
+
+
+</LinearLayout>

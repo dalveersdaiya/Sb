@@ -509,6 +509,28 @@
     <string name="switch_">बदलें</string>
     <string name="share">शेयर</string>
     <string name="send">भेजें</string>
-
-
+    <string name="year">वर्ष</string>
+    <string name="m_marks">अधिकतम</string>
+    <string name="result">परिणाम</string>
+    <string name="school">स्कूल</string>
+    <string name="today">आज</string>
+    <string name="this_day">आज के दिन</string>
+    <string name="this_unit_test">इस इकाई परीक्षण</string>
+    <string name="half_yearly">अर्धवार्षिक</string>
+    <string name="yearly">वार्षिक</string>
+    <string name="want_to_see_more_of">%1$s\ के प्रदर्शन के बारे में अधिक देखना चाहते हैं??</string>
+    <string name="communicate">संवाद</string>
+    <string name="wanna_exit_app">ऐप से बाहर निकलना चाहते हैं?</string>
+    <string name="enter_enrollment">छात्र की पहचान को सत्यापित करने के लिए स्कूल नामांकन संख्या दर्ज करें</string>
+    <string name="enter_student_aadhar">छात्र की आधार संख्या दर्ज करें।</string>
+    <string name="not_mandatory">अनिवार्य नहीं</string>
+    <string name="enrollment_num">नामांकन संख्या</string>
+    <string name="aadhar_num">आधार नंबर</string>
+    <string name="teacher_pin">शिक्षक/शिक्षिका पिन</string>
+    <string name="school_passphrase">स्कूल पिन</string>
+    <string name="enter_your_aadhar">अपना आधार नंबर डालें</string>
+    <string name="enter_details">अपनी पहचान सत्यापित करने के लिए अपना विवरण दर्ज करें।</string>
+    <string name="under_construction">निर्माणाधीन</string>
+    <string name="enter_school">स्कूल दर्ज करें</string>
+    <string name="add_school">स्कूल जोड़ें</string>
 </resources>

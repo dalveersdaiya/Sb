@@ -7,10 +7,13 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import in.ajm.sb.R;
 import in.ajm.sb.fragments.BottomSheetAddOtp;
@@ -24,6 +27,25 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
     EditText etMobileNumber;
     Button buttonSubmit;
     RelativeLayout root;
+    View.OnFocusChangeListener focuslistener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (hasFocus) {
+                animateOnFocus(v, root);
+            } else {
+                animateOnFocusLost(v, root);
+            }
+        }
+    };
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equalsIgnoreCase("otp")) {
+                final String message = intent.getStringExtra("message");
+                LoggerCustom.logD("Daiya", message);
+            }
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,19 +58,9 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         if (checkAndRequestPermissions()) {
             // carry on the normal flow, as the case of  permissions  granted.
         }
+        setEditorAction(etMobileNumber);
 
     }
-
-    View.OnFocusChangeListener focuslistener = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (hasFocus) {
-                animateOnFocus(v, root);
-            } else {
-                animateOnFocusLost(v, root);
-            }
-        }
-    };
 
     public void viewByIds() {
         etFirstName = (EditText) findViewById(R.id.et_first_name);
@@ -117,16 +129,6 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         LoggerCustom.logD("Daiya", string);
     }
 
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equalsIgnoreCase("otp")) {
-                final String message = intent.getStringExtra("message");
-                LoggerCustom.logD("Daiya", message);
-            }
-        }
-    };
-
     @Override
     public void onResume() {
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("otp"));
@@ -137,6 +139,19 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
     public void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+
+    public void setEditorAction(EditText editText) {
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    checkForEmptyForm();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 
