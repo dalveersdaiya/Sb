@@ -2,11 +2,13 @@ package in.ajm.sb.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -19,9 +21,10 @@ import in.ajm.sb.R;
 import in.ajm.sb.activities.HomeTestActivity;
 import in.ajm.sb.adapter.HomeTodayAdapter;
 import in.ajm.sb.data.HomeTodayData;
+import in.ajm.sb.helper.LayoutToImageConverter;
 import in.ajm.sb.interfaces.OnThisDayItemClicked;
 
-public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
+public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, View.OnClickListener, LayoutToImageConverter.OnLayoutCaptured {
 
     TextView tvCurrentYear;
     TextView tv_selected_school;
@@ -31,6 +34,8 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
     TextView tv_this_unit_test;
     TextView tv_this_half_year;
     TextView tv_this_year;
+    ImageView iv_share_this_day;
+    TextView tv_user_name;
     Context context;
 
 
@@ -58,8 +63,9 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
         ((HomeTestActivity) getActivity()).setHomePageTitle(getResources().getString(R.string.home_page));
         viewByIds(v);
         setUi();
-        setRecyclerViewToday();
+        setRecyclerViewToday(false);
         setRecyclerViewUnitTest();
+        applyClickListeners();
         return v;
     }
 
@@ -81,6 +87,12 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
         linearLayoutManagerHalfYearly = new LinearLayoutManager(context);
         linearLayoutManagerUnitTest = new LinearLayoutManager(context);
         linearLayoutManagerYearly = new LinearLayoutManager(context);
+        iv_share_this_day = view.findViewById(R.id.iv_share_this_day);
+        tv_user_name = view.findViewById(R.id.tv_user_name);
+    }
+
+    public void applyClickListeners() {
+        iv_share_this_day.setOnClickListener(this);
     }
 
     public void setUi() {
@@ -92,7 +104,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
         tv_this_day.setText(context.getResources().getString(R.string.this_day) + "(" + todayDate + ")");
     }
 
-    public void setRecyclerViewToday() {
+    public void setRecyclerViewToday(boolean showScreenShotInfo) {
         recyclerViewToday.setHasFixedSize(true);
         recyclerViewToday.setLayoutManager(linearLayoutManagerToday);
         todayDataList = new ArrayList<>();
@@ -103,13 +115,20 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
             } else {
                 homeTodayData.setPersonal(false);
             }
+            homeTodayData.setUserName(tv_user_name.getText().toString());
+            homeTodayData.setSchoolName(tv_selected_school.getText().toString());
+            homeTodayData.setClassname(tv_current_class.getText().toString());
+            homeTodayData.setSection(tv_current_section.getText().toString());
+            homeTodayData.setDate(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
+            homeTodayData.setCurrentYear(tvCurrentYear.getText().toString());
             homeTodayData.setUserId(i + "");
             homeTodayData.setResult(9 + i + "");
             homeTodayData.setTotalMarks(30 + "");
             homeTodayData.setUserName(context.getResources().getString(R.string.current_user) + " " + i);
+
             todayDataList.add(homeTodayData);
         }
-        homeTodayAdapter = new HomeTodayAdapter(context, todayDataList, this);
+        homeTodayAdapter = new HomeTodayAdapter(context, todayDataList, this, showScreenShotInfo);
         recyclerViewToday.setAdapter(homeTodayAdapter);
 
 
@@ -132,12 +151,13 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
             homeTodayData.setUserName(context.getResources().getString(R.string.current_user) + " " + i);
             todayDataList.add(homeTodayData);
         }
-        homeTodayAdapter = new HomeTodayAdapter(context, todayDataList, this);
+        homeTodayAdapter = new HomeTodayAdapter(context, todayDataList, this, false);
         recyclerViewUnitTest.setAdapter(homeTodayAdapter);
 
     }
 
     public void setRecyclerViewHalfYearly() {
+
 
     }
 
@@ -150,5 +170,37 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked {
         Bundle bundle = new Bundle();
         bundle.putString("org_id", getSelectedOrgId());
         ((HomeTestActivity) getActivity()).openNewFragment(new ProfileFragment(), true, bundle);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_share_this_day:
+//                shareLayoutImage(recyclerViewToday);
+                setRecyclerViewToday(true);
+                shareLayoutImage(recyclerViewToday);
+                break;
+
+        }
+    }
+
+    private void shareLayoutImage(final RecyclerView recyclerView) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+            }
+        },500);
+        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, recyclerView);
+        layoutToImageConverter.setOnLayoutCapturedListener(HomeFragment.this);
+        layoutToImageConverter.shareLayoutImage(getResources().getString(R.string.share_result), tv_this_day.getText().toString());
+
+    }
+
+
+    @Override
+    public void screenshotCaptured() {
+        setRecyclerViewToday(false);
     }
 }

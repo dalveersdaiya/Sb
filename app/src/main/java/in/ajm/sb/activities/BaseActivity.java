@@ -13,6 +13,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -52,6 +53,7 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -71,6 +73,7 @@ import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.CustomSpanClass;
 import in.ajm.sb.helper.FileHelper;
 import in.ajm.sb.helper.FontHelper;
+import in.ajm.sb.helper.LayoutToImageConverter;
 import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.helper.PreferencesManager;
 import in.ajm.sb.helper.recorder.AudioRecorder;
@@ -142,6 +145,8 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
+
+
     public void showDialog(Context context, String message, DialogInterface.OnClickListener onPositiveClick) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage(message);
@@ -158,8 +163,9 @@ public class BaseActivity extends LocalizationActivity {
                     }
                 });
 
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+        AlertDialog dialog = builder1.create();
+        dialog.show();
+        setTypeFaceForDialog(dialog);
     }
 
     public void showAlertBox(Context context, String message) {
@@ -175,8 +181,9 @@ public class BaseActivity extends LocalizationActivity {
                     }
                 });
 
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+        AlertDialog dialog = builder1.create();
+        dialog.show();
+        setTypeFaceForDialog(dialog);
     }
 
     public void setupToolBar(String title) {
@@ -978,7 +985,7 @@ public class BaseActivity extends LocalizationActivity {
         animator.start();
     }
 
-    private void collapse(int duration, final ViewGroup viewGroup) {
+    public void collapse(int duration, final ViewGroup viewGroup) {
         animator.setDuration(duration);
         int finalHeight = viewGroup.getHeight();
 
@@ -1184,6 +1191,7 @@ public class BaseActivity extends LocalizationActivity {
 
         AlertDialog dialog = materialDialog.create();
         dialog.show();
+        setTypeFaceForDialog(dialog);
     }
 
     public void setLanguagedialog(final Context context, final TextView selectedLanguage) {
@@ -1341,6 +1349,7 @@ public class BaseActivity extends LocalizationActivity {
 
         AlertDialog dialog = materialDialog.create();
         dialog.show();
+        setTypeFaceForDialog(dialog);
     }
 
     public float calculateValue(int total, int value) {
@@ -1412,6 +1421,23 @@ public class BaseActivity extends LocalizationActivity {
 //                startRecording();
             }
         }
+    }
+
+    public void setTypeFaceForDialog(AlertDialog dialog){
+        TextView textView = (TextView) dialog.getWindow().findViewById(android.R.id.message);
+        TextView alertTitle = (TextView) dialog.getWindow().findViewById(R.id.alertTitle);
+        Button button1 = (Button) dialog.getWindow().findViewById(android.R.id.button1);
+        Button button2 = (Button) dialog.getWindow().findViewById(android.R.id.button2);
+        textView.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        alertTitle.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        button1.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        button2.setTypeface(FontHelper.getInstance(context).getRegularFont());
+    }
+
+
+    public Bitmap getImageBitmapFromLayout(View view){
+        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, view);
+        return layoutToImageConverter.getImageFromLayout();
     }
 
 

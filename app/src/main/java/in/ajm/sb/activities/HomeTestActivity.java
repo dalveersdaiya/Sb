@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -24,6 +23,7 @@ import in.ajm.sb.fragments.HomeFragment;
 import in.ajm.sb.fragments.ProfileFragment;
 import in.ajm.sb.fragments.SettingsFragment;
 import in.ajm.sb.helper.AppConfigs;
+import in.ajm.sb.helper.LoggerCustom;
 
 public class HomeTestActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NetWorkStateReceiver.NetworkStateReceiverListener {
@@ -36,6 +36,7 @@ public class HomeTestActivity extends BaseActivity
     private NetWorkStateReceiver networkStateReceiver;
     private Stack<Fragment> fragmentstack;
     private Fragment fragment;
+    String current_fragment = "HomeFragment.class";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,11 @@ public class HomeTestActivity extends BaseActivity
         setUpDrawer();
         setNetworkStateReceiver();
         getIntentValues();
-        openNewFragment(new HomeFragment(), true, savedInstanceState);
+        if(current_fragment.contains("HomeFragment")){
+            openNewFragment(new HomeFragment(), true, savedInstanceState);
+        }else{
+            openNewFragment(new ProfileFragment(), true, savedInstanceState);
+        }
         setHomePageTitle(getResources().getString(R.string.home_page));
         setUserCredentials();
     }
@@ -71,6 +76,7 @@ public class HomeTestActivity extends BaseActivity
 
     public void getIntentValues() {
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
+        current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
     }
 
     @Override
@@ -103,19 +109,15 @@ public class HomeTestActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_settings) {
-            Intent intent = new Intent(HomeTestActivity.this, Settings.class);
-            startActivity(intent);
-
+            openSettings();
         } else if (id == R.id.nav_profile) {
-            if (fragment.getClass() != ProfileFragment.class) {
+            if (!current_fragment.contains("ProfileFragment")) {
                 Bundle bundle = new Bundle();
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new ProfileFragment(), true, bundle);
             }
-
-
         } else if (id == R.id.nav_home) {
-            if (fragment.getClass() != HomeFragment.class) {
+            if (!current_fragment.contains("HomeFragment")) {
                 Bundle bundle = new Bundle();
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new HomeFragment(), true, bundle);
@@ -139,6 +141,12 @@ public class HomeTestActivity extends BaseActivity
 
     }
 
+    public void openSettings(){
+        Intent intent = new Intent(HomeTestActivity.this, Settings.class);
+        intent.putExtra("current_fragment", current_fragment);
+        startActivity(intent);
+    }
+
 
     public void onDestroy() {
         super.onDestroy();
@@ -158,12 +166,10 @@ public class HomeTestActivity extends BaseActivity
 
     @Override
     public void networkAvailable() {
-        Snackbar.make(findViewById(android.R.id.content), "Internet available", Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void networkUnavailable() {
-        Snackbar.make(findViewById(android.R.id.content), "Internet not available", Snackbar.LENGTH_SHORT).show();
     }
 
     public void openNewFragment(Fragment f, boolean savedinstack, Bundle bundle) {
@@ -182,24 +188,26 @@ public class HomeTestActivity extends BaseActivity
             ft.replace(R.id.frame, f);
             ft.commitAllowingStateLoss();
         }
+        current_fragment = f.toString();
     }
 
     private void back() {
         fragment = fragmentstack.pop();
         if (fragment.getClass() == SettingsFragment.class) {
-//            setBottomBarUI("dashboard");
         } else if (fragment.getClass() == ProfileFragment.class) {
-//            setBottomBarUI("mycall");//TODO : here
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.frame, fragment);
         ft.commitAllowingStateLoss();
+        LoggerCustom.logD("Daiya", "back " +fragment.getClass().toString());
     }
+
 
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -212,7 +220,6 @@ public class HomeTestActivity extends BaseActivity
                             finish();
                         }
                     });
-
                 } else {
                     back();
                 }

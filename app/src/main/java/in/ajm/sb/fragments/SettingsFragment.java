@@ -213,4 +213,9 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
         isEdited = true;
         selectedPosition = pos;
     }
+
+    @Override
+    public void onUserAddClicked() {
+
+    }
 }

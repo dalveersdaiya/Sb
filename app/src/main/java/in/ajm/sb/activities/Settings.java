@@ -3,10 +3,8 @@ package in.ajm.sb.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,13 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.ajm.sb.R;
-import in.ajm.sb.adapter.SwitchUserAdapter;
 import in.ajm.sb.data.User;
+import in.ajm.sb.fragments.BottomSheetSwitchUser;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.PreferencesManager;
-import in.ajm.sb.interfaces.OnUserSwitched;
+import in.ajm.sb.interfaces.OnUserChanged;
 
-public class Settings extends BaseActivity implements View.OnClickListener, OnUserSwitched {
+public class Settings extends BaseActivity implements View.OnClickListener, OnUserChanged {
+
     Button button_select_theme;
     Button button_select_language;
     Button button_switch_user;
@@ -34,6 +33,8 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     User user;
     boolean isEdited = false;
     int selectedPosition = 0;
+    int userType = 01;
+    String current_fragment = "HomeFragment.class";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,16 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         setContentView(R.layout.activity_settings);
         viewByIds();
         applyClickListeners();
-
+        getIntentValues();
         setlanguagetext(tv_selected_language);
         setSelectedTheme(tv_selected_theme);
+        setTitle(getResources().getString(R.string.switch_user));
         setUi();
+    }
+
+    public void getIntentValues() {
+        userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
+        current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
     }
 
     public void viewByIds() {
@@ -64,20 +71,21 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         button_switch_user.setOnClickListener(this);
     }
 
-    public void setUi(){
+    public void setUi() {
         setupToolBar(getResources().getString(R.string.settings), true, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               moveToHomeActivity();
+                moveToHomeActivity();
             }
         });
     }
 
-    public void moveToHomeActivity(){
-            Intent intent = new Intent(Settings.this, HomeTestActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra(AppConfigs.USER_TYPE, 01);
-            startActivity(intent);
+    public void moveToHomeActivity() {
+        Intent intent = new Intent(Settings.this, HomeTestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(AppConfigs.USER_TYPE, 01);
+        intent.putExtra("current_fragment", current_fragment);
+        startActivity(intent);
     }
 
     @Override
@@ -90,12 +98,18 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
                 setThemeSelectionDialog(context);
                 break;
             case R.id.button_switch_user:
-                setSwitchUserDialog(context, isEdited);
+//                setSwitchUserDialog(context, isEdited);
+                openBottomSheetSwitchUser();
                 break;
             default:
                 break;
 
         }
+    }
+
+    public void openBottomSheetSwitchUser() {
+        BottomSheetDialogFragment bottomSheetDialogFragment = new BottomSheetSwitchUser(this, isEdited, selectedPosition);
+        bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
     }
 
     private void setlanguagetext(TextView selected_language) {
@@ -154,74 +168,10 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         }
     }
 
-    public void setSwitchUserDialog(Context context, boolean isEdited) {
-        final AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-        builder1.setMessage(getResources().getString(R.string.switch_user));
-        builder1.setCancelable(true);
-        final View view = LayoutInflater.from(context).inflate(R.layout.switch_user, null);
-        Button buttonAddUser = view.findViewById(R.id.button_add_user);
-        Button buttonCancel = view.findViewById(R.id.button_cancel);
-        Button buttonOk = view.findViewById(R.id.button_ok);
-
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_selected_user);
-        userList = new ArrayList<>();
-
-        for (int i = 0; i < 2; i++) {
-            user = new User();
-            user.setUserName(getResources().getString(R.string.current_user) + " " + i);
-            user.setUserId(i + "");
-            if (isEdited) {
-                if (i == selectedPosition) {
-                    user.setSelected(true);
-                } else {
-                    user.setSelected(false);
-                }
-            } else {
-                if (i == 0) {
-                    user.setSelected(true);
-                } else {
-                    user.setSelected(false);
-                }
-            }
-            userList.add(user);
-        }
-
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        SwitchUserAdapter switchUserAdapter = new SwitchUserAdapter(context, userList, this);
-        recyclerView.setAdapter(switchUserAdapter);
-
-        builder1.setView(view);
-        alert11 = builder1.create();
-
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert11.dismiss();
-            }
-        });
-        buttonAddUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert11.dismiss();
-            }
-        });
-        buttonOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert11.dismiss();
-            }
-        });
-
-
-        alert11.show();
-    }
-
-
     @Override
-    public void onUserSwitched(int pos, String id) {
+    public void onUserSwitched(int pos, String id, String userName) {
         isEdited = true;
         selectedPosition = pos;
+        tv_current_user.setText(userName);
     }
 }

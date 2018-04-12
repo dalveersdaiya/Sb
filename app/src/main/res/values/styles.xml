@@ -24,7 +24,6 @@
         </item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
-        <item name="colorBackgroundFloating">@color/colorAccentShaded</item>
         <item name="my_text_color_inverse">@color/colorAccentLight</item>
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="myColorAccent">@color/colorAccent</item>
@@ -57,14 +56,8 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/black_hex_15</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/black_hex_15
         </item>
-        <item name="colorControlNormal">@color/black_hex_15</item>
 
         <item name="my_theme_light">@color/black_hex_4</item>
-        <item name="colorControlActivated">@color/black_hex_13</item>
-        <item name="colorBackgroundFloating">@color/black_hex_8</item>
-        <item name="colorButtonNormal">@color/black_hex_10</item>
-        <item name="android:cacheColorHint">@color/black_hex_8</item>
-        <!--<item name="colorForeground">@color/black_hex_4</item>-->
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="myColorPrimaryDark">@color/black_hex_15</item>
@@ -83,13 +76,8 @@
         <item name="colorAccent">@color/red_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/red_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/red_900</item>
-        <item name="colorControlNormal">@color/red_900</item>
 
         <item name="my_theme_light">@color/red_200</item>
-        <item name="colorControlActivated">@color/red_800</item>
-        <item name="colorBackgroundFloating">@color/red_200</item>
-        <item name="colorButtonNormal">@color/red_600</item>
-        <!--<item name="colorForeground">@color/red_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/red_900</item>
@@ -107,13 +95,8 @@
         <item name="colorAccent">@color/green_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/green_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/green_900</item>
-        <item name="colorControlNormal">@color/green_900</item>
 
         <item name="my_theme_light">@color/green_200</item>
-        <item name="colorControlActivated">@color/green_800</item>
-        <item name="colorBackgroundFloating">@color/green_200</item>
-        <item name="colorButtonNormal">@color/green_600</item>
-        <!--<item name="colorForeground">@color/green_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/green_900</item>
@@ -132,13 +115,8 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_purple_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_purple_900
         </item>
-        <item name="colorControlNormal">@color/deep_purple_900</item>
 
         <item name="my_theme_light">@color/deep_purple_200</item>
-        <item name="colorControlActivated">@color/deep_purple_800</item>
-        <item name="colorBackgroundFloating">@color/deep_purple_200</item>
-        <item name="colorButtonNormal">@color/deep_purple_600</item>
-        <!--<item name="colorForeground">@color/deep_purple_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/deep_purple_900</item>
@@ -158,13 +136,8 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/light_blue_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/light_blue_900
         </item>
-        <item name="colorControlNormal">@color/light_blue_900</item>
 
         <item name="my_theme_light">@color/light_blue_200</item>
-        <item name="colorControlActivated">@color/light_blue_800</item>
-        <item name="colorBackgroundFloating">@color/light_blue_200</item>
-        <item name="colorButtonNormal">@color/light_blue_600</item>
-        <!--<item name="colorForeground">@color/light_blue_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/light_blue_900</item>
@@ -183,13 +156,8 @@
         <item name="colorAccent">@color/yellow_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/yellow_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/yellow_900</item>
-        <item name="colorControlNormal">@color/yellow_900</item>
 
         <item name="my_theme_light">@color/yellow_200</item>
-        <item name="colorControlActivated">@color/yellow_800</item>
-        <item name="colorBackgroundFloating">@color/yellow_200</item>
-        <item name="colorButtonNormal">@color/yellow_600</item>
-        <!--<item name="colorForeground">@color/yellow_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/yellow_900</item>
@@ -210,13 +178,8 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_orange_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_orange_900
         </item>
-        <item name="colorControlNormal">@color/deep_orange_900</item>
 
         <item name="my_theme_light">@color/deep_orange_200</item>
-        <item name="colorControlActivated">@color/deep_orange_800</item>
-        <item name="colorBackgroundFloating">@color/deep_orange_200</item>
-        <item name="colorButtonNormal">@color/deep_orange_600</item>
-        <!--<item name="colorForeground">@color/deep_orange_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/deep_orange_900</item>
@@ -236,13 +199,8 @@
         <item name="colorAccent">@color/pink_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/pink_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/pink_900</item>
-        <item name="colorControlNormal">@color/pink_900</item>
 
         <item name="my_theme_light">@color/pink_200</item>
-        <item name="colorControlActivated">@color/pink_800</item>
-        <item name="colorBackgroundFloating">@color/pink_200</item>
-        <item name="colorButtonNormal">@color/pink_600</item>
-        <!--<item name="colorForeground">@color/pink_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/pink_900</item>
@@ -260,13 +218,8 @@
         <item name="colorAccent">@color/cyan_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/cyan_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/cyan_900</item>
-        <item name="colorControlNormal">@color/cyan_900</item>
 
         <item name="my_theme_light">@color/cyan_200</item>
-        <item name="colorControlActivated">@color/cyan_800</item>
-        <item name="colorBackgroundFloating">@color/cyan_200</item>
-        <item name="colorButtonNormal">@color/cyan_600</item>
-        <!--<item name="colorForeground">@color/cyan_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/cyan_900</item>
@@ -284,13 +237,8 @@
         <item name="colorAccent">@color/brown_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/brown_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/brown_900</item>
-        <item name="colorControlNormal">@color/brown_900</item>
 
         <item name="my_theme_light">@color/brown_200</item>
-        <item name="colorControlActivated">@color/brown_800</item>
-        <item name="colorBackgroundFloating">@color/brown_200</item>
-        <item name="colorButtonNormal">@color/brown_600</item>
-        <!--<item name="colorForeground">@color/brown_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/brown_900</item>
@@ -309,13 +257,8 @@
         <item name="colorAccent">@color/teal_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/teal_900</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/teal_900</item>
-        <item name="colorControlNormal">@color/teal_900</item>
 
         <item name="my_theme_light">@color/teal_200</item>
-        <item name="colorControlActivated">@color/teal_800</item>
-        <item name="colorBackgroundFloating">@color/teal_200</item>
-        <item name="colorButtonNormal">@color/teal_600</item>
-        <!--<item name="colorForeground">@color/teal_50</item>-->
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/teal_900</item>
@@ -334,13 +277,8 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white_hex_15</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white_hex_15
         </item>
-        <item name="colorControlNormal">@color/white_hex_15</item>
 
         <item name="my_theme_light">@color/white_hex_5</item>
-        <item name="colorControlActivated">@color/white_hex_13</item>
-        <item name="colorBackgroundFloating">@color/white_hex_7</item>
-        <item name="colorButtonNormal">@color/white_hex_9</item>
-        <!--<item name="colorForeground">@color/white_hex_5</item>-->
         <item name="my_text_color">@color/black_hex_15</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="myColorPrimaryDark">@color/white_hex_15</item>
@@ -361,7 +299,6 @@
         </item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
-        <item name="colorBackgroundFloating">@color/colorAccentShaded</item>
         <item name="my_text_color_inverse">@color/colorAccentLight</item>
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="myColorAccent">@color/colorAccent</item>

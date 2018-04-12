@@ -15,6 +15,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <in.ajm.sb.customviews.TextViewBold
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/current_user"
+                android:textColor="?attr/colorAccent"
+                android:textSize="16sp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,6 +63,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
+
                 <in.ajm.sb.customviews.TextViewBold
                     android:id="@+id/tv_current_class"
                     android:layout_width="wrap_content"
@@ -78,31 +91,49 @@
 
             </LinearLayout>
 
-            <in.ajm.sb.customviews.TextViewBold
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/tv_this_day"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/this_day"
-                android:textColor="?attr/colorAccent"
-                android:textSize="16sp" />
+                android:layout_gravity="center">
+
+                <in.ajm.sb.customviews.TextViewBold
+                    android:id="@+id/tv_this_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/this_day"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/iv_share_this_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:background="?android:selectableItemBackground"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_share_white_18dp"
+                    android:tint="?attr/colorAccent" />
+            </RelativeLayout>
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_todays"
                 android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/accent_border"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/accent_border_white_bg"
                 android:nestedScrollingEnabled="false"
                 android:padding="5dp" />
 
             <in.ajm.sb.customviews.TextViewBold
+                android:id="@+id/tv_this_unit_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_this_unit_test"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="10dp"
@@ -115,14 +146,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/accent_border"
+                android:background="@drawable/accent_border_white_bg"
                 android:nestedScrollingEnabled="false"
                 android:padding="5dp" />
 
             <in.ajm.sb.customviews.TextViewBold
+                android:id="@+id/tv_this_half_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_this_half_year"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="10dp"
@@ -134,17 +165,17 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_half_yearly"
                 android:layout_width="match_parent"
-                android:background="@drawable/accent_border"
                 android:layout_height="wrap_content"
+                android:background="@drawable/accent_border_white_bg"
                 android:nestedScrollingEnabled="false"
-                android:visibility="gone"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:visibility="gone" />
 
             <in.ajm.sb.customviews.TextViewBold
+                android:id="@+id/tv_this_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/tv_this_year"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/this_unit_test"
@@ -156,10 +187,10 @@
                 android:id="@+id/recycler_view_yearly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/accent_border"
-                android:visibility="gone"
+                android:background="@drawable/accent_border_white_bg"
                 android:nestedScrollingEnabled="false"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:visibility="gone" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

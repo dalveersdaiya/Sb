@@ -6,4 +6,5 @@ package in.ajm.sb.interfaces;
 
 public interface OnUserSwitched {
     void onUserSwitched(int pos, String id);
+    void onUserAddClicked();
 }

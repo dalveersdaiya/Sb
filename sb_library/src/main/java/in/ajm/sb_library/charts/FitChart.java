@@ -36,6 +36,7 @@ import android.graphics.RectF;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,7 +51,7 @@ public class FitChart extends View {
     static final int DEFAULT_MIN_VALUE = 0;
     static final int DEFAULT_MAX_VALUE = 100;
     static final int START_ANGLE = -90;
-    static final int ANIMATION_DURATION = 0;
+    static final int ANIMATION_DURATION = 500;
     static final float INITIAL_ANIMATION_PROGRESS = 0.0f;
     static final float MAXIMUM_SWEEP_ANGLE = 360f;
     static final int DESIGN_MODE_SWEEP_ANGLE = 216;
@@ -289,7 +290,7 @@ public class FitChart extends View {
         ObjectAnimator animator = ObjectAnimator.ofFloat(this, "animationSeek", 0.0f, 1.0f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(ANIMATION_DURATION);
-//        animatorSet.setInterpolator(new DecelerateInterpolator());
+        animatorSet.setInterpolator(new DecelerateInterpolator());
         animatorSet.setTarget(this);
         animatorSet.play(animator);
         animatorSet.start();

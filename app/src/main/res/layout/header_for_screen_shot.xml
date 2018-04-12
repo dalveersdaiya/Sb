@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_screen_shot_info"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/current_user"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_selected_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/school"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_current_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/year"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_current_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/classname"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_current_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/section"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_this_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/this_day"
+            android:textColor="?attr/colorAccent"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/colorAccent"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_student_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical|left"
+            android:text="@string/name" />
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_total_marks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:paddingLeft="5dp"
+            android:gravity="center"
+            android:text="@string/m_marks" />
+
+        <in.ajm.sb.customviews.TextViewBold
+            android:id="@+id/tv_result_marks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:paddingLeft="5dp"
+            android:gravity="center"
+            android:text="@string/result" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -10,6 +10,51 @@ public class HomeTodayData {
     boolean isPersonal;
     String totalMarks;
     String result;
+    String currentYear;
+    String SchoolName;
+    String classname;
+    String section;
+    String date;
+
+    public String getCurrentYear() {
+        return currentYear;
+    }
+
+    public void setCurrentYear(String currentYear) {
+        this.currentYear = currentYear;
+    }
+
+    public String getSchoolName() {
+        return SchoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        SchoolName = schoolName;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public boolean isPersonal() {
         return isPersonal;

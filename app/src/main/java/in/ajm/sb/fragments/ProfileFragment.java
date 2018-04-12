@@ -44,7 +44,7 @@ public class ProfileFragment extends BaseFragment{
                 setChart(values, fitChartMonthly);
                 setChart(values, fitChartOverAll);
             }
-        }, 2000);
+        }, 1000);
 
 
         return v;
