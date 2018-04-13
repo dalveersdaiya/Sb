@@ -1,10 +1,12 @@
 package in.ajm.sb.fragments;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -177,8 +179,15 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
         switch (v.getId()) {
             case R.id.iv_share_this_day:
 //                shareLayoutImage(recyclerViewToday);
-                setRecyclerViewToday(true);
-                shareLayoutImage(recyclerViewToday);
+                if (!isReadStoragePermissionGranted()) {
+                    return;
+                } else if (!isWriteStoragePermissionGranted()) {
+                    return;
+                } else {
+                    setRecyclerViewToday(true);
+                    shareLayoutImage(recyclerViewToday);
+                }
+
                 break;
 
         }
@@ -191,7 +200,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
 
 
             }
-        },500);
+        }, 500);
         LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, recyclerView);
         layoutToImageConverter.setOnLayoutCapturedListener(HomeFragment.this);
         layoutToImageConverter.shareLayoutImage(getResources().getString(R.string.share_result), tv_this_day.getText().toString());
@@ -202,5 +211,33 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
     @Override
     public void screenshotCaptured() {
         setRecyclerViewToday(false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 2:
+                Log.d(TAG, "External storage2");
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
+                    //resume tasks needing this permission
+//                    downloadPdfFile();
+                } else {
+//                    progress.dismiss();
+                }
+                break;
+
+            case 3:
+                Log.d(TAG, "External storage1");
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
+                    //resume tasks needing this permission
+//                    SharePdfFile();
+                } else {
+//                    progress.dismiss();
+                }
+                break;
+        }
     }
 }
