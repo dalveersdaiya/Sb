@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 public class AppConfigs {
     public static int REQUEST_CODE_SELECT_CLASS = 101;
     public static int REQUEST_CODE_SELECT_SECTION = 102;
+    public static int REQUEST_CODE_IMAGE_PICKER = 10;
     public static String PREFERENCE_USER_ID = "USER_ID";
     public static String PREFERENCE_LOGGEDIN_USER_ID = "LOGGEDIN_USER_ID";
     public static String PREFERENCE_ORG_ID = "ORGID";

@@ -13,12 +13,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -65,23 +63,23 @@
         </activity>
         <activity
             android:name=".activities.LoginRegister"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.FindSchool"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_find_school"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.SelectOption"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_select_option"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.HomeActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.WebViewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -112,24 +110,28 @@
 
         <activity
             android:name=".activities.Profile"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.Settings"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.SelectUserType"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_select_user_type"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.HomeTestActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:label="@string/title_activity_home_test"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>

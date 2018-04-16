@@ -23,6 +23,7 @@
                 android:layout_height="180dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
+                android:background="?android:selectableItemBackground"
                 android:src="@drawable/dp"
                 android:tint="?attr/my_theme_light" />
 

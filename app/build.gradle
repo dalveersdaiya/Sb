@@ -126,6 +126,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
     implementation project(':sb_library')
+    implementation project(':ucrop')
     implementation 'com.googlecode.mp4parser:isoparser:1.0.2'
     implementation 'com.itextpdf:itextg:5.5.9'
+//    implementation 'com.github.yalantis:ucrop:2.2.2'
+    implementation 'gun0912.ted:tedpermission:1.0.3'
+    implementation 'com.github.Mariovc:ImagePicker:1.2.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

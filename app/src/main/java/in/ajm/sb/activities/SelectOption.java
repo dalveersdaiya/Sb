@@ -11,6 +11,7 @@ import java.util.List;
 import in.ajm.sb.R;
 import in.ajm.sb.adapter.ClassOptionAdapter;
 import in.ajm.sb.adapter.SectionOptionAdapter;
+import in.ajm.sb.api.model.UserCredentials;
 import in.ajm.sb.data.ClassOptions;
 import in.ajm.sb.data.SectionOptions;
 import in.ajm.sb.helper.AppConfigs;
@@ -95,7 +96,18 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
         Intent intent = new Intent(SelectOption.this, HomeTestActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AppConfigs.USER_TYPE, userType);
+        setRandomData(AppConfigs.PREFERENCE_USER_ID, String.valueOf(userType));
         startActivity(intent);
+    }
+
+    public void setRandomData(String userId, String userType) {
+        UserCredentials userCredentials = new UserCredentials();
+        userCredentials.setSelected(true);
+        userCredentials.setUserId(userId);
+        userCredentials.setUserImage("file:///storage/emulated/0/Android/data/in.ajm.sb.beta/temp/42A91CDCCFA4455587AC1FC276A186D5.jpg");
+        userCredentials.setUserType(userType);
+        commitAndCloseRealmTransaction(userCredentials);
+
     }
 
 

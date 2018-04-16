@@ -2,16 +2,24 @@ package in.ajm.sb.fragments;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.TypedValue;
 
+import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.PreferencesManager;
+import io.realm.Realm;
+import io.realm.RealmObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +27,11 @@ import in.ajm.sb.helper.PreferencesManager;
 public class BaseFragment extends Fragment {
 
     public String TAG = "Daiya";
+    public String APPNAME = "sb";
+    Context context = ((BaseActivity)getActivity());
+    Realm realm;
+
+
     public BaseFragment() {
     }
 
@@ -106,6 +119,90 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    public void beginRealmTransaction() {
+        realm = Realm.getDefaultInstance();
+        if (!realm.isInTransaction())
+            realm.beginTransaction();
+    }
 
+    public void commitAndCloseRealmTransaction(RealmObject object) {
+        realm.copyToRealmOrUpdate(object);
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+    }
+
+    public void commitRealmTransaction() {
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+    }
+
+    public void closeRealmTransaction() {
+        if (!realm.isClosed())
+            realm.close();
+    }
+
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public int getAccentColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorPrimary(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorPrimaryDark(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    public int getColorMyThemelight(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_theme_light, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    /*White*/
+    public int getOppositeColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_text_color_inverse, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+
+    /*Black*/
+    public int getTextColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.my_text_color, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
 
 }

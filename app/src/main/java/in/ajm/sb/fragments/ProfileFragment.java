@@ -1,6 +1,12 @@
 package in.ajm.sb.fragments;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -8,26 +14,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+import com.mvc.imagepicker.ImagePicker;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
+import com.yalantis.ucrop.UCrop;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import in.ajm.sb.R;
 import in.ajm.sb.activities.HomeTestActivity;
+import in.ajm.sb.api.model.UserCredentials;
+import in.ajm.sb.customviews.CircularImageView;
+import in.ajm.sb.helper.AppConfigs;
+import in.ajm.sb.helper.FileHelper;
 import in.ajm.sb.helper.GeneralHelper;
+import in.ajm.sb.helper.LoggerCustom;
+import in.ajm.sb.helper.StringHelper;
 import in.ajm.sb_library.charts.FitChart;
 import in.ajm.sb_library.charts.FitChartValue;
 
-public class ProfileFragment extends BaseFragment{
+import static in.ajm.sb.helper.AppConfigs.PREFERENCE_USER_ID;
+import static in.ajm.sb.helper.AppConfigs.REQUEST_CODE_IMAGE_PICKER;
+
+public class ProfileFragment extends BaseFragment implements View.OnClickListener {
+
     FitChart fitChartMonthly;
     FitChart fitChartYearly;
     FitChart fitChartOverAll;
     Collection<FitChartValue> values;
     Point point;
-    
+    CircularImageView civ_user_image;
+    Context context;
+    UserCredentials userCredentials;
 
     public ProfileFragment() {
         super();
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +62,12 @@ public class ProfileFragment extends BaseFragment{
         setRetainInstance(true);
         viewByIds(v);
         applyClickListeners();
-        ((HomeTestActivity)getActivity()).setHomePageTitle(getResources().getString(R.string.profile));
+        ((HomeTestActivity) getActivity()).setHomePageTitle(getResources().getString(R.string.app_name));
+        setUi();
+        return v;
+    }
+
+    public void setUi() {
         setFitChartValues();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -46,14 +78,23 @@ public class ProfileFragment extends BaseFragment{
             }
         }, 1000);
 
+        userCredentials = UserCredentials.getByUserId(PREFERENCE_USER_ID);
+        if(userCredentials != null){
+            Picasso.with(getContext())
+                    .load(userCredentials.getUserImage())
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .noPlaceholder()
+                    .into(civ_user_image);
 
-        return v;
+        }
     }
 
     public void viewByIds(View view) {
+        context = getActivity();
         fitChartMonthly = view.findViewById(R.id.fitChart_monthly);
         fitChartYearly = view.findViewById(R.id.fitChart_yearly);
         fitChartOverAll = view.findViewById(R.id.fitChart_over_all);
+        civ_user_image = view.findViewById(R.id.civ_user_image);
         point = GeneralHelper.getInstance(getActivity()).getScreenSize();
         setLayoutParamsForChart(fitChartMonthly);
         setLayoutParamsForChart(fitChartYearly);
@@ -62,7 +103,7 @@ public class ProfileFragment extends BaseFragment{
     }
 
     public void applyClickListeners() {
-
+        civ_user_image.setOnClickListener(this);
     }
 
     private void setChart(Collection<FitChartValue> values, FitChart fitChart) {
@@ -85,4 +126,93 @@ public class ProfileFragment extends BaseFragment{
         layoutParams.height = point.x / 3;
         fitChart.setLayoutParams(layoutParams);
     }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.civ_user_image:
+                chooseImagePicker();
+                break;
+        }
+    }
+
+    private void chooseImagePicker() {
+        new TedPermission(getContext())
+                .setPermissionListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        ImagePicker.pickImage(ProfileFragment.this, REQUEST_CODE_IMAGE_PICKER);
+                    }
+
+                    @Override
+                    public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
+                    }
+                })
+                .setDeniedMessage(getStringRes(R.string.permission_required))
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_IMAGE_PICKER) {
+            Bitmap bitmap = ImagePicker.getImageFromResult(getContext(), requestCode, resultCode, data);
+            if (bitmap != null) {
+                final String imgPath = FileHelper.saveImageToDirectory(getContext(), "temp", StringHelper.uniqueId() + ".jpg", bitmap, true);
+                String destFilePath = FileHelper.getAppDirectory(getContext(), true).getPath() + File.separator + "temp" + File.separator + StringHelper.uniqueId() + ".jpg";
+                cropImage(imgPath, destFilePath);
+                LoggerCustom.logD(TAG, imgPath + "\n" + destFilePath);
+            }
+        } else if (requestCode == UCrop.REQUEST_CROP) {
+            if (resultCode == Activity.RESULT_OK) {
+                final Uri resultUri = UCrop.getOutput(data);
+//                callimageUploadApi(String.valueOf(resultUri));
+                setImageInDbAndShow(resultUri);
+                LoggerCustom.logD(TAG, resultUri.toString());
+            } else if (resultCode == UCrop.RESULT_ERROR) {
+                LoggerCustom.logD(TAG, "Error occurred");
+                final Throwable cropError = UCrop.getError(data);
+                LoggerCustom.printStackTrace(cropError);
+            }
+        }
+    }
+
+    private void cropImage(String srcFilePath, String destFilePath) {
+        UCrop.Options options = new UCrop.Options();
+        options.setStatusBarColor(getColorPrimaryDark(context));
+        options.setToolbarColor(getColorPrimary(context));
+        options.setActiveWidgetColor(getAccentColor(context));
+        options.setShowCropFrame(true);
+        options.setCircleDimmedLayer(true);
+        options.setFreeStyleCropEnabled(true);
+
+        UCrop.of(Uri.fromFile(new File(srcFilePath)), Uri.fromFile(new File(destFilePath)))
+                .withAspectRatio(2, 2)
+                .withMaxResultSize(512, 512).
+                withOptions(options)
+                .start(context, this);
+    }
+
+    public void setImageInDbAndShow(Uri resultUri) {
+        LoggerCustom.logD(TAG, resultUri.toString());
+        userCredentials = UserCredentials.getByUserId(AppConfigs.PREFERENCE_USER_ID);
+        try{
+            beginRealmTransaction();
+            userCredentials.setUserImage(resultUri.toString());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        commitAndCloseRealmTransaction(userCredentials);
+        Picasso.with(getContext())
+                .load(userCredentials.getUserImage())
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .noPlaceholder()
+                .into(civ_user_image);
+    }
+
+
 }

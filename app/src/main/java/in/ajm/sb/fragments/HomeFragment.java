@@ -38,12 +38,11 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
     TextView tv_this_year;
     ImageView iv_share_this_day;
     TextView tv_user_name;
-    Context context;
-
-
     RecyclerView recyclerViewUnitTest;
     RecyclerView recyclerViewHalfYearly;
     RecyclerView recyclerViewYearly;
+
+    Context context;
 
     List<HomeTodayData> todayDataList;
     HomeTodayAdapter homeTodayAdapter;
@@ -53,7 +52,6 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
     LinearLayoutManager linearLayoutManagerHalfYearly;
     LinearLayoutManager linearLayoutManagerYearly;
 
-
     public HomeFragment() {
         super();
     }
@@ -62,7 +60,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, null);
         setRetainInstance(true);
-        ((HomeTestActivity) getActivity()).setHomePageTitle(getResources().getString(R.string.home_page));
+        ((HomeTestActivity) getActivity()).setHomePageTitle(getResources().getString(R.string.app_name));
         viewByIds(v);
         setUi();
         setRecyclerViewToday(false);

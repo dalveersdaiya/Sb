@@ -1,1 +1,1 @@
-include ':app', ':sb_library'
+include ':app', ':sb_library', ':ucrop'

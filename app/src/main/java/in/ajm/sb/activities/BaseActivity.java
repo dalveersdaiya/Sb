@@ -81,6 +81,8 @@ import in.ajm.sb.helper.recorder.AudioRecorder;
 import in.ajm.sb.helper.recorder.AudioRecorderBuilder;
 import in.ajm.sb.helper.recorder.RecordingButton;
 import in.ajm.sb_library.localization.LocalizationActivity;
+import io.realm.Realm;
+import io.realm.RealmObject;
 
 import static in.ajm.sb.helper.PreferencesManager.getPreferenceByKey;
 
@@ -91,18 +93,20 @@ import static in.ajm.sb.helper.PreferencesManager.getPreferenceByKey;
 public class BaseActivity extends LocalizationActivity {
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    public String TAG = "Daiya";
+    public String APPNAME = "sb";
     Context context = this;
     Vibrator vibrator;
     ValueAnimator animator;
     MaterialDialog materialDialog;
     Toolbar toolbar;
+    Realm realm;
     private TextView toolbarTitleTxtView;
     private int len = 0;
     private ProgressDialog dialog;
     private AudioRecorder recorder;
     private boolean didRecording = false;
     private RecordingButton imgBtn_recording;
-    public String TAG = "Daiya";
 
     public static String getUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
@@ -147,7 +151,17 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
 
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
 
     public void showDialog(Context context, String message, DialogInterface.OnClickListener onPositiveClick) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
@@ -209,7 +223,6 @@ public class BaseActivity extends LocalizationActivity {
     public void setupToolBar(String title, View.OnClickListener onClickListener) {
         setupToolBar(title, true, onClickListener);
     }
-
 
     public void setupToolBar(String title, boolean showNavigationBtn, View.OnClickListener onClickListener) {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -652,7 +665,6 @@ public class BaseActivity extends LocalizationActivity {
 
     }
 
-
     public boolean checkAndRequestPermissions() {
         int permissionSendMessage = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS);
@@ -954,7 +966,6 @@ public class BaseActivity extends LocalizationActivity {
             }
         });
     }
-
 
     public void showKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -1380,6 +1391,82 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
+    public void setTypeFaceForDialog(AlertDialog dialog) {
+        TextView textView = (TextView) dialog.getWindow().findViewById(android.R.id.message);
+        TextView alertTitle = (TextView) dialog.getWindow().findViewById(R.id.alertTitle);
+        Button button1 = (Button) dialog.getWindow().findViewById(android.R.id.button1);
+        Button button2 = (Button) dialog.getWindow().findViewById(android.R.id.button2);
+        textView.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        alertTitle.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        button1.setTypeface(FontHelper.getInstance(context).getRegularFont());
+        button2.setTypeface(FontHelper.getInstance(context).getRegularFont());
+    }
+
+    public Bitmap getImageBitmapFromLayout(View view) {
+        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, view);
+        return layoutToImageConverter.getImageFromLayout();
+    }
+
+    public boolean isReadStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG, "Permission is granted1");
+                return true;
+            } else {
+
+                Log.v(TAG, "Permission is revoked1");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted1");
+            return true;
+        }
+    }
+
+    public boolean isWriteStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG, "Permission is granted2");
+                return true;
+            } else {
+
+                Log.v(TAG, "Permission is revoked2");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted2");
+            return true;
+        }
+    }
+
+    public void beginRealmTransaction() {
+        realm = Realm.getDefaultInstance();
+        if (!realm.isInTransaction())
+            realm.beginTransaction();
+    }
+
+    public void commitAndCloseRealmTransaction(RealmObject object) {
+        realm.copyToRealmOrUpdate(object);
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+    }
+
+    public void commitRealmTransaction() {
+        if (realm.isInTransaction())
+            realm.commitTransaction();
+    }
+
+    public void closeRealmTransaction() {
+        if (!realm.isClosed())
+            realm.close();
+    }
+
     public class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
         @Override
         public CharSequence getTransformation(CharSequence source, View view) {
@@ -1424,61 +1511,4 @@ public class BaseActivity extends LocalizationActivity {
             }
         }
     }
-
-    public void setTypeFaceForDialog(AlertDialog dialog){
-        TextView textView = (TextView) dialog.getWindow().findViewById(android.R.id.message);
-        TextView alertTitle = (TextView) dialog.getWindow().findViewById(R.id.alertTitle);
-        Button button1 = (Button) dialog.getWindow().findViewById(android.R.id.button1);
-        Button button2 = (Button) dialog.getWindow().findViewById(android.R.id.button2);
-        textView.setTypeface(FontHelper.getInstance(context).getRegularFont());
-        alertTitle.setTypeface(FontHelper.getInstance(context).getRegularFont());
-        button1.setTypeface(FontHelper.getInstance(context).getRegularFont());
-        button2.setTypeface(FontHelper.getInstance(context).getRegularFont());
-    }
-
-
-    public Bitmap getImageBitmapFromLayout(View view){
-        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, view);
-        return layoutToImageConverter.getImageFromLayout();
-    }
-
-    public  boolean isReadStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted1");
-                return true;
-            } else {
-
-                Log.v(TAG,"Permission is revoked1");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted1");
-            return true;
-        }
-    }
-
-    public  boolean isWriteStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted2");
-                return true;
-            } else {
-
-                Log.v(TAG,"Permission is revoked2");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted2");
-            return true;
-        }
-    }
-
-
 }

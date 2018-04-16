@@ -6,9 +6,11 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import java.util.Stack;
 
 import in.ajm.sb.R;
+import in.ajm.sb.adapter.ViewPagerAdapter;
 import in.ajm.sb.broadcastreceivers.NetWorkStateReceiver;
 import in.ajm.sb.fragments.HomeFragment;
 import in.ajm.sb.fragments.ProfileFragment;
@@ -34,11 +37,13 @@ public class HomeTestActivity extends BaseActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     TextView textViewTitleHome;
-    int userType = 01;
+    public int userType = 01;
+    String current_fragment = "HomeFragment.class";
     private NetWorkStateReceiver networkStateReceiver;
     private Stack<Fragment> fragmentstack;
     private Fragment fragment;
-    String current_fragment = "HomeFragment.class";
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,13 +55,26 @@ public class HomeTestActivity extends BaseActivity
         setUpDrawer();
         setNetworkStateReceiver();
         getIntentValues();
-        if(current_fragment.contains("HomeFragment")){
+        if (current_fragment.contains("HomeFragment")) {
             openNewFragment(new HomeFragment(), true, savedInstanceState);
-        }else{
+        } else {
             openNewFragment(new ProfileFragment(), true, savedInstanceState);
         }
         setHomePageTitle(getResources().getString(R.string.home_page));
         setUserCredentials();
+        setUpViewPager();
+
+    }
+
+    public void setUpViewPager() {
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(), getResources().getString(R.string.home_page));
+        adapter.addFragment(new ProfileFragment(), getResources().getString(R.string.profile));
+        viewPager.setAdapter(adapter);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     public void setHomePageTitle(String title) {
@@ -80,6 +98,8 @@ public class HomeTestActivity extends BaseActivity
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
         current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,12 +138,14 @@ public class HomeTestActivity extends BaseActivity
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new ProfileFragment(), true, bundle);
             }
+            viewPager.setCurrentItem(1);
         } else if (id == R.id.nav_home) {
             if (!current_fragment.contains("HomeFragment")) {
                 Bundle bundle = new Bundle();
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new HomeFragment(), true, bundle);
             }
+            viewPager.setCurrentItem(0);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -143,7 +165,7 @@ public class HomeTestActivity extends BaseActivity
 
     }
 
-    public void openSettings(){
+    public void openSettings() {
         Intent intent = new Intent(HomeTestActivity.this, Settings.class);
         intent.putExtra("current_fragment", current_fragment);
         startActivity(intent);
@@ -202,9 +224,8 @@ public class HomeTestActivity extends BaseActivity
         ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.frame, fragment);
         ft.commitAllowingStateLoss();
-        LoggerCustom.logD("Daiya", "back " +fragment.getClass().toString());
+        LoggerCustom.logD("Daiya", "back " + fragment.getClass().toString());
     }
-
 
 
     @Override
@@ -249,22 +270,22 @@ public class HomeTestActivity extends BaseActivity
         switch (requestCode) {
             case 2:
                 Log.d(TAG, "External storage2");
-                if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
 //                    downloadPdfFile();
-                }else{
+                } else {
 //                    progress.dismiss();
                 }
                 break;
 
             case 3:
                 Log.d(TAG, "External storage1");
-                if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
 //                    SharePdfFile();
-                }else{
+                } else {
 //                    progress.dismiss();
                 }
                 break;

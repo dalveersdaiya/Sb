@@ -174,4 +174,6 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         selectedPosition = pos;
         tv_current_user.setText(userName);
     }
+
+
 }
