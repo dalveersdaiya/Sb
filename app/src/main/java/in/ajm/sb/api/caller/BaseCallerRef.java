@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
+import in.ajm.sb.Urls;
 import in.ajm.sb.adapter.DoubleTypeAdapter;
 import in.ajm.sb.adapter.FloatTypeAdapter;
 import in.ajm.sb.adapter.IntegerTypeAdapter;
@@ -19,6 +20,7 @@ import in.ajm.sb.adapter.LongTypeAdapter;
 import in.ajm.sb.api.callback.APICallback;
 import in.ajm.sb.api.enums.ApiType;
 import in.ajm.sb.api.params.ApiParams;
+import in.ajm.sb.helper.StringHelper;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -60,7 +62,7 @@ public abstract class BaseCallerRef {
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Urls.API_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();
@@ -106,9 +108,9 @@ public abstract class BaseCallerRef {
     private void addDefaultParams(Context context, HashMap<String, String> hashMap) {
         if (hashMap == null)
             hashMap = new HashMap<>();
-//        hashMap.put("api_version", Urls.API_VERSION_PARAM);
+        hashMap.put("api_version", Urls.API_VERSION_PARAM);
         hashMap.put("platform", "Android");
-//        hashMap.put("device_id", StringHelper.getDeviceId(context));
+        hashMap.put("device_id", StringHelper.getDeviceId(context));
     }
 
     public void get(Context context, ApiParams apiParams, APICallback callback, ApiType apiType) {

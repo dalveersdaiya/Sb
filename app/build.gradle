@@ -86,6 +86,8 @@ android {
             versionNameSuffix ".${versionDebug}.beta"
         }
         live {
+            applicationIdSuffix ".live"
+            versionNameSuffix ".${versionDebug}.live"
         }
     }
     android.applicationVariants.all { variant ->
