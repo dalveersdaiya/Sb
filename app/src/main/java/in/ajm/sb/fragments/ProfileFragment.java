@@ -138,7 +138,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void chooseImagePicker() {
-        new TedPermission(getContext())
+        new TedPermission(context)
+                .setDeniedMessage(getStringRes(R.string.permission_required))
                 .setPermissionListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted() {
@@ -150,8 +151,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
                     }
                 })
-                .setDeniedMessage(getStringRes(R.string.permission_required))
-                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.INTERNET)
                 .check();
     }
 
@@ -199,13 +199,15 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     public void setImageInDbAndShow(Uri resultUri) {
         LoggerCustom.logD(TAG, resultUri.toString());
         userCredentials = UserCredentials.getByUserId(AppConfigs.PREFERENCE_USER_ID);
+        beginRealmTransaction();
         try{
-            beginRealmTransaction();
+
             userCredentials.setUserImage(resultUri.toString());
 
         }catch (Exception e){
             e.printStackTrace();
         }
+        realm.copyToRealmOrUpdate(userCredentials);
         commitAndCloseRealmTransaction(userCredentials);
         Picasso.with(getContext())
                 .load(userCredentials.getUserImage())

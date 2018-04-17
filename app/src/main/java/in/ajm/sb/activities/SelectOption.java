@@ -101,6 +101,7 @@ public class SelectOption extends BaseActivity implements OnClassItemClick, OnSe
     }
 
     public void setRandomData(String userId, String userType) {
+        beginRealmTransaction();
         UserCredentials userCredentials = new UserCredentials();
         userCredentials.setSelected(true);
         userCredentials.setUserId(userId);

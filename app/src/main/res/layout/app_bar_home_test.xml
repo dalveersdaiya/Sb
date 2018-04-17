@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/app_bar_main"
     tools:context="in.ajm.sb.activities.HomeTestActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -17,6 +18,7 @@
             android:layout_height="?android:actionBarSize"
             android:background="?attr/colorPrimary"
             app:title=""
+            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
 

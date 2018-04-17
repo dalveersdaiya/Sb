@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -29,16 +32,18 @@ import in.ajm.sb.fragments.ProfileFragment;
 import in.ajm.sb.fragments.SettingsFragment;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.LoggerCustom;
+import in.ajm.sb.helper.SlideMenuHelper;
 
 public class HomeTestActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NetWorkStateReceiver.NetworkStateReceiverListener {
 
+    public int userType = 01;
     Toolbar toolbar;
     DrawerLayout drawer;
     NavigationView navigationView;
     TextView textViewTitleHome;
-    public int userType = 01;
     String current_fragment = "HomeFragment.class";
+    CoordinatorLayout app_bar_main;
     private NetWorkStateReceiver networkStateReceiver;
     private Stack<Fragment> fragmentstack;
     private Fragment fragment;
@@ -60,9 +65,24 @@ public class HomeTestActivity extends BaseActivity
         } else {
             openNewFragment(new ProfileFragment(), true, savedInstanceState);
         }
-        setHomePageTitle(getResources().getString(R.string.home_page));
+        setHomePageTitle(getResources().getString(R.string.app_name));
         setUserCredentials();
         setUpViewPager();
+
+    }
+
+    public void viewByIds() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar_home);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        textViewTitleHome = findViewById(R.id.toolbar_title_home);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        setTypeFaceForMenuItems(navigationView.getMenu(), this);
+        fragmentstack = new Stack<>();
+        app_bar_main = findViewById(R.id.app_bar_main);
+
+    }
+
+    public void applyClickListeners() {
 
     }
 
@@ -91,6 +111,27 @@ public class HomeTestActivity extends BaseActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                SlideMenuHelper.setSlideMenu(drawerView, slideOffset, app_bar_main);
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -98,7 +139,6 @@ public class HomeTestActivity extends BaseActivity
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
         current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
     }
-
 
 
     @Override
@@ -151,19 +191,6 @@ public class HomeTestActivity extends BaseActivity
         return true;
     }
 
-    public void viewByIds() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar_home);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        textViewTitleHome = findViewById(R.id.toolbar_title_home);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        setTypeFaceForMenuItems(navigationView.getMenu(), this);
-        fragmentstack = new Stack<>();
-
-    }
-
-    public void applyClickListeners() {
-
-    }
 
     public void openSettings() {
         Intent intent = new Intent(HomeTestActivity.this, Settings.class);
