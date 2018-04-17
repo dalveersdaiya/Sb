@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">登錄您的公司</string>

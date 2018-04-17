@@ -92,8 +92,8 @@ public class HomeTestActivity extends BaseActivity
         adapter.addFragment(new HomeFragment(), getResources().getString(R.string.home_page));
         adapter.addFragment(new ProfileFragment(), getResources().getString(R.string.profile));
         viewPager.setAdapter(adapter);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+        setTypeFaceForTabLayout(tabLayout);
         tabLayout.setupWithViewPager(viewPager);
     }
 

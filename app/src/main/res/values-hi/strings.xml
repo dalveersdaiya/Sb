@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">अपनी कंपनी में साइन इन करें</string>

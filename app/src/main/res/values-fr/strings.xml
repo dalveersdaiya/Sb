@@ -2,7 +2,6 @@
 <resources>
     <!--TODO : Changing the grammar-->
 
-    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">Connectez-vous à votre compagnie</string>

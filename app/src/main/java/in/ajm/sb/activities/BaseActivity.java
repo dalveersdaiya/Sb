@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Vibrator;
 import android.support.annotation.ColorInt;
 import android.support.annotation.IdRes;
+import android.support.design.widget.TabLayout;
 import android.support.transition.Transition;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -1409,6 +1410,21 @@ public class BaseActivity extends LocalizationActivity {
         alertTitle.setTypeface(FontHelper.getInstance(context).getRegularFont());
         button1.setTypeface(FontHelper.getInstance(context).getRegularFont());
         button2.setTypeface(FontHelper.getInstance(context).getRegularFont());
+    }
+
+    public void setTypeFaceForTabLayout(TabLayout tabLayout) {
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    ((TextView) tabViewChild).setTypeface(FontHelper.getInstance(this).getBoldFont(), Typeface.NORMAL);
+                }
+            }
+        }
     }
 
     public Bitmap getImageBitmapFromLayout(View view) {

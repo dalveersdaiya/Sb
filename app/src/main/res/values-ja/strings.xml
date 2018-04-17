@@ -3,7 +3,6 @@
     <!--TODO : Changing the grammar-->
 
     <!-- japnise country language code-->
-    <string name="app_name">SB</string>
 
     <!--First Page-->
     <string name="signintocompany">あなたの会社にサインインする</string>

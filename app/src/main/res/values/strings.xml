@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">SB</string>
     <string name="first_name">First Name</string>
     <string name="title_activity_web">WebActivity</string>
     <string name="last_name">Last Name</string>
