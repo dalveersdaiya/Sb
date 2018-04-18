@@ -24,6 +24,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     Button button_select_theme;
     Button button_select_language;
     Button button_switch_user;
+    Button button_test_new;
     TextView tv_selected_theme;
     TextView tv_current_user;
     TextView tv_selected_language;
@@ -63,12 +64,14 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         tv_current_user = findViewById(R.id.tv_current_user);
         tv_selected_theme = findViewById(R.id.tv_selected_theme);
         tv_selected_language = findViewById(R.id.tv_selected_language);
+        button_test_new = findViewById(R.id.button_test_new);
     }
 
     public void applyClickListeners() {
         button_select_theme.setOnClickListener(this);
         button_select_language.setOnClickListener(this);
         button_switch_user.setOnClickListener(this);
+        button_test_new.setOnClickListener(this);
     }
 
     public void setUi() {
@@ -98,8 +101,10 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
                 setThemeSelectionDialog(context);
                 break;
             case R.id.button_switch_user:
-//                setSwitchUserDialog(context, isEdited);
                 openBottomSheetSwitchUser();
+                break;
+            case R.id.button_test_new:
+                openTestActivity();
                 break;
             default:
                 break;
@@ -173,6 +178,11 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         isEdited = true;
         selectedPosition = pos;
         tv_current_user.setText(userName);
+    }
+
+    public void openTestActivity(){
+        Intent intent = new Intent(this, ChipTestActivity.class);
+        startActivity(intent);
     }
 
 

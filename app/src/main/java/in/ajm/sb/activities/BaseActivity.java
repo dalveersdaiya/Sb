@@ -673,6 +673,8 @@ public class BaseActivity extends LocalizationActivity {
         int readSMS = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
         int writeStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int useCamera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int readContacts = ContextCompat.checkSelfPermission(this, Manifest.permission_group.CONTACTS);
+
         List<String> listPermissionsNeeded = new ArrayList<>();
 
         if (receiveSMS != PackageManager.PERMISSION_GRANTED) {
@@ -689,6 +691,9 @@ public class BaseActivity extends LocalizationActivity {
         }
         if (useCamera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (readContacts != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
         }
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this,

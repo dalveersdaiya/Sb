@@ -18,6 +18,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -128,6 +130,7 @@
             android:label="@string/title_activity_home_test"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".activities.ChipTestActivity"></activity>
     </application>
 
 </manifest>

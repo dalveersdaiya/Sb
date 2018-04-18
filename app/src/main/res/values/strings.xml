@@ -148,5 +148,6 @@
     <string name="add_photo">Add Photo</string>
     <string name="unable_to_upload">Unable to upload selected file.</string>
     <string name="permission_required">Permission is required.</string>
+    <string name="test">Test</string>
 
 </resources>

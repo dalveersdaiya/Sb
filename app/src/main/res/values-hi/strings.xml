@@ -536,4 +536,5 @@
     <string name="add_photo">तस्वीर दर्ज करें</string>
     <string name="unable_to_upload">चयनित फ़ाइल अपलोड करने में असमर्थ</string>
     <string name="permission_required">अनुमति आवश्यक है।</string>
+    <string name="test">परीक्षण</string>
 </resources>
