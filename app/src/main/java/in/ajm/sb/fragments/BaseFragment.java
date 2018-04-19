@@ -28,8 +28,8 @@ public class BaseFragment extends Fragment {
 
     public String TAG = "Daiya";
     public String APPNAME = "sb";
-    Context context = ((BaseActivity)getActivity());
-    Realm realm;
+    public  Context context = ((BaseActivity)getActivity());
+    public  Realm realm;
 
 
     public BaseFragment() {
@@ -47,29 +47,29 @@ public class BaseFragment extends Fragment {
         return "";
     }
 
-    String getSelectedOrgId() {
+    public  String getSelectedOrgId() {
         return PreferencesManager.getPreferenceByKey(getContext(), AppConfigs.PREFERENCE_ORG_ID);
     }
 
-    String getAuth() {
+    public String getAuth() {
         return PreferencesManager.getPreferenceByKey(getContext(), AppConfigs.PREFERENCE_AUTH);
     }
 
-    String getUserId() {
+    public String getUserId() {
         if (getContext() != null) {
             return BaseActivity.getUserId(getContext());
         }
         return "0";
     }
 
-    String getLoggedInUserId() {
+    public String getLoggedInUserId() {
         if (getContext() != null) {
             return BaseActivity.getLoggedInUserId(getContext());
         }
         return "0";
     }
 
-    void showLoader() {
+    public void showLoader() {
         if (getActivity() != null) {
             ((BaseActivity) getActivity()).showLoader();
         }

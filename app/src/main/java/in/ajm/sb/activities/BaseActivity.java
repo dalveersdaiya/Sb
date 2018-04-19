@@ -96,12 +96,12 @@ public class BaseActivity extends LocalizationActivity {
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     public String TAG = "Daiya";
     public String APPNAME = "sb";
-    Context context = this;
-    Vibrator vibrator;
-    ValueAnimator animator;
-    MaterialDialog materialDialog;
-    Toolbar toolbar;
-    Realm realm;
+    public Context context = this;
+    public Vibrator vibrator;
+    public ValueAnimator animator;
+    public MaterialDialog materialDialog;
+    public Toolbar toolbar;
+    public  Realm realm;
     private TextView toolbarTitleTxtView;
     private int len = 0;
     private ProgressDialog dialog;
@@ -217,6 +217,20 @@ public class BaseActivity extends LocalizationActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+    public void setupToolBar(String title, boolean showNavigationBtn, final boolean finishCurrent) {
+        setupToolBar(title, showNavigationBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(finishCurrent){
+                    finish();
+                }else{
+                    onBackPressed();
+                }
+
             }
         });
     }
@@ -342,7 +356,7 @@ public class BaseActivity extends LocalizationActivity {
         mi.setTitle(mNewTitle);
     }
 
-    String getDeviceTypes() {
+    public String getDeviceTypes() {
         boolean status = (getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
@@ -423,7 +437,7 @@ public class BaseActivity extends LocalizationActivity {
         return str;
     }
 
-    boolean isNetworkAvailable() {
+    public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
@@ -472,7 +486,7 @@ public class BaseActivity extends LocalizationActivity {
         });
     }
 
-    String[] splitName(String nameStr) {
+    public String[] splitName(String nameStr) {
         int firstSpace = nameStr.indexOf(" ");
         if (firstSpace != -1) {
             String firstName = nameStr.substring(0, firstSpace);
@@ -498,7 +512,7 @@ public class BaseActivity extends LocalizationActivity {
         onBackPressed();
     }
 
-    String getSelectedOrgId() {
+    public String getSelectedOrgId() {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_ORG_ID);
     }
 
@@ -712,7 +726,7 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    private void startRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording, String parentDirName) {
+    public void startRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording, String parentDirName) {
         try {
             imgBtn_recording.setVisibility(View.GONE);
             boolean status = FileHelper.createNewFile(context, parentDirName, "audio.m4a", true, true);
@@ -751,7 +765,7 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    private void cancelRecoding(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
+    public void cancelRecoding(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
         if (recorder != null && recorder.isRecording()) {
             recorder.pause(new AudioRecorder.OnPauseListener() {
                 @Override
@@ -771,7 +785,7 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    private void pauseRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
+    public void pauseRecording(AudioRecorder recorder, final RecordingButton imgBtn_recording) {
         if (recorder != null && recorder.isRecording()) {
             recorder.pause(new AudioRecorder.OnPauseListener() {
                 @Override
@@ -958,7 +972,7 @@ public class BaseActivity extends LocalizationActivity {
 
     }
 
-    private void hideAddButton(ImageButton addtypebutton) {
+    public void hideAddButton(ImageButton addtypebutton) {
         hideAddButton(false, addtypebutton);
     }
 
@@ -1043,7 +1057,7 @@ public class BaseActivity extends LocalizationActivity {
         mAnimator.start();
     }
 
-    private ValueAnimator slideAnimator(int start, int end, final ViewGroup viewGroup) {
+    public ValueAnimator slideAnimator(int start, int end, final ViewGroup viewGroup) {
 
         ValueAnimator animator = ValueAnimator.ofInt(start, end);
 
@@ -1524,7 +1538,7 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    private class RecodingBtnClickListener implements View.OnClickListener {
+    public class RecodingBtnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             if (recorder != null) {

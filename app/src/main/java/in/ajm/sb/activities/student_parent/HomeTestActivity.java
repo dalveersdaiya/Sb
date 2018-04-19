@@ -1,4 +1,4 @@
-package in.ajm.sb.activities;
+package in.ajm.sb.activities.student_parent;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,11 +25,13 @@ import android.widget.TextView;
 import java.util.Stack;
 
 import in.ajm.sb.R;
+import in.ajm.sb.activities.BaseActivity;
+import in.ajm.sb.activities.Settings;
 import in.ajm.sb.adapter.ViewPagerAdapter;
 import in.ajm.sb.broadcastreceivers.NetWorkStateReceiver;
-import in.ajm.sb.fragments.HomeFragment;
-import in.ajm.sb.fragments.ProfileFragment;
-import in.ajm.sb.fragments.SettingsFragment;
+import in.ajm.sb.fragments.parent_student.HomeFragment;
+import in.ajm.sb.fragments.parent_student.ProfileFragment;
+import in.ajm.sb.fragments.parent_student.SettingsFragment;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.helper.SlideMenuHelper;

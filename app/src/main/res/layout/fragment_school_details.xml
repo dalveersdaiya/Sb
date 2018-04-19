@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<in.ajm.sb_library.fragment_transaction.SlidingRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/accent_border_light_accent_bg"
+    android:layout_margin="5dp">
+
+
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:id="@+id/tv_selected_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:textColor="?attr/colorAccent"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="@string/school_info"
+        android:textSize="16sp" />
+
+
+
+</in.ajm.sb_library.fragment_transaction.SlidingRelativeLayout>

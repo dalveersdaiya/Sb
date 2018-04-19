@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import in.ajm.sb.R;
+import in.ajm.sb.application.SchoolBook;
+import in.ajm.sb.data.User;
 import in.ajm.sb.fragments.BottomSheetAddOtp;
 import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.interfaces.OnClickOtp;
@@ -121,6 +123,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         } else {
             isValid = true;
             openOtpBottomSheet();
+            setUserData(etFirstName.getText().toString(), etLastname.getText().toString(), etMobileNumber.getText().toString());
         }
         return isValid;
     }
@@ -152,6 +155,15 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
                 return false;
             }
         });
+    }
+
+    public void setUserData(String firstName, String lastName, String mobileNum){
+        User user = new User();
+        user.setUserName(firstName + " " + lastName);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUserId(firstName +lastName+ mobileNum);
+        ((SchoolBook)getApplication()).setUser(user);
     }
 
 

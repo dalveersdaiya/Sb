@@ -1,4 +1,4 @@
-package in.ajm.sb.fragments;
+package in.ajm.sb.fragments.parent_student;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -20,9 +20,10 @@ import java.util.List;
 import java.util.Locale;
 
 import in.ajm.sb.R;
-import in.ajm.sb.activities.HomeTestActivity;
+import in.ajm.sb.activities.student_parent.HomeTestActivity;
 import in.ajm.sb.adapter.HomeTodayAdapter;
 import in.ajm.sb.data.HomeTodayData;
+import in.ajm.sb.fragments.BaseFragment;
 import in.ajm.sb.helper.LayoutToImageConverter;
 import in.ajm.sb.interfaces.OnThisDayItemClicked;
 

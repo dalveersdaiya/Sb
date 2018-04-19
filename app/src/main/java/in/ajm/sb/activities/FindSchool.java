@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import in.ajm.sb.R;
+import in.ajm.sb.application.SchoolBook;
+import in.ajm.sb.data.User;
 import in.ajm.sb.fragments.BottomSheetAddDetails;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.interfaces.OnClickSubmitDetails;
@@ -17,6 +19,7 @@ public class FindSchool extends BaseActivity implements OnClickSubmitDetails {
     EditText etCode;
     Button buttonSearch;
     int userType = 01;
+    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class FindSchool extends BaseActivity implements OnClickSubmitDetails {
             setupToolBar(getResources().getString(R.string.find_school), true);
         }else if(userType == AppConfigs.SCHOOL_ADMIN_TYPE){
             setupToolBar(getResources().getString(R.string.add_school), true);
+            buttonSearch.setText(getResources().getString(R.string.add_school));
         }
 
     }
@@ -49,13 +53,19 @@ public class FindSchool extends BaseActivity implements OnClickSubmitDetails {
 
     public void getIntentValues() {
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, 01);
+        user = ((SchoolBook)getApplication()).getUser();
     }
 
     public void applyClickListeners() {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openOtpBottomSheet(userType);
+
+                if(userType == AppConfigs.SCHOOL_ADMIN_TYPE){
+
+                }else{
+                    openOtpBottomSheet(userType);
+                }
             }
         });
     }
@@ -72,6 +82,8 @@ public class FindSchool extends BaseActivity implements OnClickSubmitDetails {
         intent.putExtra(AppConfigs.USER_TYPE, userType);
         startActivity(intent);
     }
+
+
 
     @Override
     public void onClickSubmitStudentParent(String enrollmentNumber, String aadharNumber, int userType) {

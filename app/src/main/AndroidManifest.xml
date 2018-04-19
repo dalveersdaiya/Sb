@@ -18,8 +18,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -126,11 +126,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.HomeTestActivity"
+            android:name=".activities.student_parent.HomeTestActivity"
             android:label="@string/title_activity_home_test"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".activities.ChipTestActivity"></activity>
+        <activity android:name=".activities.ChipTestActivity" />
+        <activity
+            android:name=".activities.school.SchoolDetails"
+            android:label="@string/title_activity_school_details"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package in.ajm.sb.fragments;
+package in.ajm.sb.fragments.parent_student;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,9 +16,10 @@ import java.util.List;
 
 import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
-import in.ajm.sb.activities.HomeTestActivity;
+import in.ajm.sb.activities.student_parent.HomeTestActivity;
 import in.ajm.sb.adapter.SwitchUserAdapter;
 import in.ajm.sb.data.User;
+import in.ajm.sb.fragments.BaseFragment;
 import in.ajm.sb.helper.PreferencesManager;
 import in.ajm.sb.interfaces.OnUserSwitched;
 

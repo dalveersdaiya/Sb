@@ -8,6 +8,42 @@ public class User {
     String userName;
     String userId;
     boolean isSelected;
+    String firstName;
+    String lastName;
+    String mobileumber;
+    int userType;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMobileumber() {
+        return mobileumber;
+    }
+
+    public void setMobileumber(String mobileumber) {
+        this.mobileumber = mobileumber;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
 
     public boolean isSelected() {
         return isSelected;

@@ -31,4 +31,10 @@
     <dimen name="chip_label_text_size">13sp</dimen>
     <dimen name="chip_title_text_size">16sp</dimen>
     <dimen name="chip_open_elevation">8dp</dimen>
+
+    <integer name="card_flip_time_full">300</integer>
+    <integer name="card_flip_time_half">150</integer>
+    <integer name="slide_up_down_duration">200</integer>
+    <integer name="half_slide_up_down_duration">150</integer>
+    <integer name="slide_up_down_final_value">150</integer>
 </resources>

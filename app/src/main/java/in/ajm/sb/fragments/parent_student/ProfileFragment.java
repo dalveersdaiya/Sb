@@ -1,4 +1,4 @@
-package in.ajm.sb.fragments;
+package in.ajm.sb.fragments.parent_student;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,9 +26,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import in.ajm.sb.R;
-import in.ajm.sb.activities.HomeTestActivity;
+import in.ajm.sb.activities.student_parent.HomeTestActivity;
 import in.ajm.sb.api.model.UserCredentials;
 import in.ajm.sb.customviews.CircularImageView;
+import in.ajm.sb.fragments.BaseFragment;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.FileHelper;
 import in.ajm.sb.helper.GeneralHelper;

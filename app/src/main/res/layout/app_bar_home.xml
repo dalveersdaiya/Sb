@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.ajm.sb.activities.HomeTestActivity">
+    tools:context="in.ajm.sb.activities.student_parent.HomeTestActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

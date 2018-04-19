@@ -15,14 +15,13 @@ import in.ajm.sb_library.chips.ContactChip;
 import in.ajm.sb_library.chips.ContactLoadingActivity;
 import in.ajm.sb_library.particle.ParticlesDrawable;
 
-public class ChipTestActivity extends ContactLoadingActivity
-        implements ContactOnChipAdapter.OnContactClickListener {
+public class ChipTestActivity extends ContactLoadingActivity implements ContactOnChipAdapter.OnContactClickListener {
 
     LinearLayout linearLayoutRoot;
-    private ContactOnChipAdapter contactAdapter;
-    private ChipsInputLayout chipsInput;
     ParticlesDrawable mDrawable;
     RecyclerView recycler;
+    private ContactOnChipAdapter contactAdapter;
+    private ChipsInputLayout chipsInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +33,14 @@ public class ChipTestActivity extends ContactLoadingActivity
         setRecycler();
     }
 
-    public void setRecycler(){
+    public void setRecycler() {
         this.contactAdapter = new ContactOnChipAdapter(this);
         recycler = (RecyclerView) findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(contactAdapter);
     }
 
-    public void viewById(){
+    public void viewById() {
         this.chipsInput = (ChipsInputLayout) findViewById(R.id.chips_input);
         linearLayoutRoot = (LinearLayout) findViewById(R.id.root);
     }

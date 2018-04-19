@@ -3,6 +3,7 @@ package in.ajm.sb.application;
 import android.app.Application;
 
 import in.ajm.sb.BuildConfig;
+import in.ajm.sb.data.User;
 import in.ajm.sb.helper.PreferencesManager;
 import io.realm.DynamicRealm;
 import io.realm.Realm;
@@ -20,6 +21,15 @@ public class SchoolBook extends Application {
     private static final int REALM_DB_VERSION = 14;
     private static final int OLD_REALM_DB_VERSION = 11;
 
+    User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     RealmMigration migration = new RealmMigration() {
         @Override
