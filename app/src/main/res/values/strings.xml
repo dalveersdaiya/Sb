@@ -204,7 +204,8 @@
     <string name="principal">Principal</string>
     <string name="permission">Permission</string>
     <string name="hint_email">Email</string>
-    <!--<string name="pe"></string>-->
+    <string name="add_address">Add address</string>
+    <string name="empty_alert">%1$s cannot be empty.</string>
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->

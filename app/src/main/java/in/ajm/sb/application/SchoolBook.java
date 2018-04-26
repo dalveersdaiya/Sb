@@ -3,6 +3,7 @@ package in.ajm.sb.application;
 import android.app.Application;
 
 import in.ajm.sb.BuildConfig;
+import in.ajm.sb.data.LocationObject;
 import in.ajm.sb.data.User;
 import in.ajm.sb.helper.PreferencesManager;
 import io.realm.DynamicRealm;
@@ -22,6 +23,7 @@ public class SchoolBook extends Application {
     private static final int OLD_REALM_DB_VERSION = 11;
 
     User user;
+    LocationObject locationObject;
 
     public User getUser() {
         return user;
@@ -29,6 +31,14 @@ public class SchoolBook extends Application {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public LocationObject getLocationObject() {
+        return locationObject;
+    }
+
+    public void setLocationObject(LocationObject locationObject) {
+        this.locationObject = locationObject;
     }
 
     RealmMigration migration = new RealmMigration() {

@@ -594,4 +594,6 @@
     <string name="manager">Manager</string>
     <string name="principal">Principal</string>
     <string name="permission">Permission</string>
+    <string name="add_address">Add address</string>
+    <string name="empty_alert">%1$s cannot be empty.</string>
 </resources>

@@ -162,6 +162,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         user.setUserName(firstName + " " + lastName);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setMobileumber(mobileNum);
         user.setUserId(firstName +lastName+ mobileNum);
         ((SchoolBook)getApplication()).setUser(user);
     }

@@ -589,4 +589,6 @@
     <string name="manager">मैनेजर</string>
     <string name="principal">प्रधान अध्यापक</string>
     <string name="permission">अनुमति</string>
+    <string name="add_address">पता जोड़ें</string>
+    <string name="empty_alert">%1$s रिक्त नहीं हो सकता</string>
 </resources>

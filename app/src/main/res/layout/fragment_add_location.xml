@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<in.ajm.sb_library.fragment_transaction.SlidingRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/accent_border_light_accent_bg">
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:id="@+id/tv_add_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/add_address"
+        android:textColor="?attr/colorAccent"
+        android:textSize="16sp" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_submit"
+        android:layout_below="@+id/tv_personal_info"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/linear_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="0px"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+
+            <in.ajm.sb.customviews.EditTextRegular
+                android:id="@+id/et_address"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="@string/address"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/et_lastName"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="?attr/my_text_color"
+                android:textColorHint="?attr/my_text_color" />
+
+            <in.ajm.sb.customviews.EditTextRegular
+                android:id="@+id/et_city"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="@string/city"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/et_mob_number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="?attr/my_text_color"
+                android:textColorHint="?attr/my_text_color" />
+
+            <in.ajm.sb.customviews.EditTextRegular
+                android:id="@+id/et_state"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="@string/state"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/et_mob_number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="?attr/my_text_color"
+                android:textColorHint="?attr/my_text_color" />
+
+            <in.ajm.sb.customviews.EditTextRegular
+                android:id="@+id/et_country"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="@string/country"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/et_mob_number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="?attr/my_text_color"
+                android:textColorHint="?attr/my_text_color" />
+
+
+            <in.ajm.sb.customviews.EditTextRegular
+                android:id="@+id/et_zip_code"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="@string/zip_code"
+                android:imeOptions="actionNext"
+                android:inputType="numberSigned"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="?attr/my_text_color"
+                android:textColorHint="?attr/my_text_color" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/submit"
+        android:theme="@style/AppTheme.Button" />
+
+
+</in.ajm.sb_library.fragment_transaction.SlidingRelativeLayout>

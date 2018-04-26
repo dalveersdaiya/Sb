@@ -48,7 +48,19 @@ public class SchoolDetails extends BaseActivity {
             FragmentManager fm = getFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             FragmentTransactionExtended fragmentTransactionExtended = new FragmentTransactionExtended(this, fragmentTransaction, firstFragment, secondFragment, R.id.fragment_place);
-            fragmentTransactionExtended.addTransition(10);
+            fragmentTransactionExtended.addTransition(FragmentTransactionExtended.GLIDE);
+            fragmentTransactionExtended.commit();
+        }else{
+            getFragmentManager().popBackStack();
+        }
+    }
+
+    public void changeFragment(Fragment firstFragment, Fragment secondFragment, int fragmentAnimationType) {
+        if (getFragmentManager().getBackStackEntryCount()==0) {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            FragmentTransactionExtended fragmentTransactionExtended = new FragmentTransactionExtended(this, fragmentTransaction, firstFragment, secondFragment, R.id.fragment_place);
+            fragmentTransactionExtended.addTransition(fragmentAnimationType);
             fragmentTransactionExtended.commit();
         }else{
             getFragmentManager().popBackStack();
