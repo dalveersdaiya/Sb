@@ -1,6 +1,7 @@
 package in.ajm.sb.fragments.school;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
 import in.ajm.sb.activities.school.SchoolDetails;
@@ -18,11 +21,16 @@ import in.ajm.sb.application.SchoolBook;
 import in.ajm.sb.customviews.CircularImageView;
 import in.ajm.sb.data.LocationObject;
 import in.ajm.sb.data.User;
+import in.ajm.sb.helper.AppConfigs;
+import in.ajm.sb.helper.DateTimeHelper;
 import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.helper.StringHelper;
+import in.ajm.sb_library.daiyadatetimepicker.date.DatePickerDialog;
+import in.ajm.sb_library.daiyadatetimepicker.time.RadialPickerLayout;
+import in.ajm.sb_library.daiyadatetimepicker.time.TimePickerDialog;
 import in.ajm.sb_library.fragment_transaction.FragmentTransactionExtended;
 
-public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener {
+public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     Button buttonSubmit;
     CircularImageView civUserImage;
@@ -43,6 +51,8 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
     EditText etPanNum;
     User user;
     LocationObject locationObject;
+    private Calendar startDateCalendar = Calendar.getInstance();
+    private Calendar endDateCalendar = Calendar.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,7 +67,7 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         setUi();
     }
 
-    public void findViewById(View view) {
+    private void findViewById(View view) {
         buttonSubmit = view.findViewById(R.id.button_submit);
         civUserImage = view.findViewById(R.id.civ_user_image);
         etFirstName = view.findViewById(R.id.et_first_name);
@@ -77,7 +87,7 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         etPanNum = view.findViewById(R.id.et_pan_num);
     }
 
-    public void setUi() {
+    private void setUi() {
         user = ((SchoolBook) getActivity().getApplication()).getUser();
         etFirstName.setText(user.getFirstName());
         etLastName.setText(user.getLastName());
@@ -85,7 +95,7 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         tvAddress.setText(getAddressData());
     }
 
-    public void applyClickListeners() {
+    private void applyClickListeners() {
         buttonSubmit.setOnClickListener(this);
         tvDob.setOnClickListener(this);
         tvAddress.setOnClickListener(this);
@@ -106,11 +116,22 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
                 break;
             case R.id.tv_dob:
                 ((BaseActivity)getActivity()).hideKeyboard();
+                setMyDateTime();
                 break;
         }
     }
 
-    public void initiateLocationObject(String address) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        TimePickerDialog tpd = (TimePickerDialog) getFragmentManager().findFragmentByTag("Timepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) getFragmentManager().findFragmentByTag("Datepickerdialog");
+
+        if (tpd != null) tpd.setOnTimeSetListener(this);
+        if (dpd != null) dpd.setOnDateSetListener(this);
+    }
+
+    private void initiateLocationObject(String address) {
         LocationObject locationObject = new LocationObject();
         if (!StringHelper.isEmpty(address) && !address.equalsIgnoreCase(getString(R.string.address))) {
             try {
@@ -132,7 +153,7 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         ((SchoolBook) getActivity().getApplication()).setLocationObject(locationObject);
     }
 
-    public String getAddressData() {
+    private String getAddressData() {
         String address = getString(R.string.address);
         locationObject = ((SchoolBook) getActivity().getApplication()).getLocationObject();
         if (locationObject != null) {
@@ -141,8 +162,83 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         return address;
     }
 
-    public void setUserValues() {
+    private void setUserValues() {
         user.setEmail(etEmail.getText().toString());
         ((SchoolBook) getActivity().getApplication()).setUser(user);
+    }
+
+    private void setMyDateTime() {
+        Calendar now = Calendar.getInstance();
+        final DatePickerDialog dpd = DatePickerDialog.newInstance(
+                this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.setThemeDark(false);
+        dpd.vibrate(true);
+        dpd.dismissOnPause(true);
+        dpd.setTitle("Choose a new Date and Time\nto reschedule the Call");
+        dpd.showYearPickerFirst(false);
+        dpd.setAccentColor(((BaseActivity)getActivity()).getAccentColor(getActivity()));
+        dpd.setCancelText(getString(R.string.cancel));
+        dpd.setMinDate(now);
+        dpd.show(getActivity().getFragmentManager(), "Datepickerdialog");
+    }
+
+    private void setMyTime() {
+        Calendar now = Calendar.getInstance();
+        TimePickerDialog tpd = TimePickerDialog.newInstance(
+                this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                false
+        );
+        tpd.setThemeDark(false);
+        tpd.vibrate(true);
+        tpd.setTimeInterval(1, 30);
+        tpd.dismissOnPause(true);
+        tpd.enableSeconds(false);
+        tpd.enableMinutes(true);
+        tpd.setCancelText("");
+        tpd.setResetText("Cancel");
+        tpd.setTitle("Choose a new Date and Time\nto reschedule the Call");
+        tpd.setAccentColor(((BaseActivity)getActivity()).getAccentColor(getActivity()));
+        tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+            }
+        });
+        tpd.show(getActivity().getFragmentManager(), "Timepickerdialog");
+    }
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+        startDateCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        startDateCalendar.set(Calendar.MINUTE, minute);
+        startDateCalendar.set(Calendar.SECOND, second);
+
+        endDateCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        endDateCalendar.set(Calendar.MINUTE, minute);
+        endDateCalendar.set(Calendar.SECOND, second);
+        endDateCalendar.add(Calendar.MINUTE, 30);
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        startDateCalendar.set(Calendar.YEAR, year);
+        startDateCalendar.set(Calendar.MONTH, (monthOfYear));
+        startDateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        endDateCalendar.set(Calendar.YEAR, year);
+        endDateCalendar.set(Calendar.MONTH, (monthOfYear));
+        endDateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        tvDob.setText(getDateFormat(startDateCalendar));
+//        setMyTime();
+    }
+
+    private String getDateFormat(Calendar selectedCalendarInstance){
+        String date = DateTimeHelper.formatCalendar(selectedCalendarInstance, AppConfigs.DATE_FORMAT);
+        return date;
     }
 }

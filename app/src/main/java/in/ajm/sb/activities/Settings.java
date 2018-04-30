@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,7 +46,6 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         getIntentValues();
         setlanguagetext(tvSelectedLanguage);
         setSelectedTheme(tvSelectedTheme);
-        setTitle(getResources().getString(R.string.switch_user));
         setUi();
     }
 
@@ -185,5 +183,9 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         startActivity(intent);
     }
 
-
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        moveToHomeActivity();
+    }
 }
