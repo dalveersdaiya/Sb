@@ -474,8 +474,8 @@
     <string name="select_class">कक्षा चुनिए</string>
     <string name="select_section">अनुभाग चुनिए</string>
 
-    <string name="first_name">पहला नाम</string>
-    <string name="last_name">अंतिम नाम</string>
+    <string name="firstName">पहला नाम</string>
+    <string name="lastName">अंतिम नाम</string>
     <string name="mob_num">मोबाइल नंबर</string>
     <string name="submit">जमा करें</string>
     <string name="register">रजिस्टर</string>

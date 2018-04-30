@@ -21,12 +21,12 @@ import in.ajm.sb.interfaces.OnUserTypeSelected;
 
 public class UserTypeAdapter extends RecyclerView.Adapter<UserTypeAdapter.Holder> {
     private Context context;
-    private List<UserTypeData> arraylist;
+    private List<UserTypeData> userTypeDataList;
     private OnUserTypeSelected onUserTypeSelected;
 
-    public UserTypeAdapter(Context context, List<UserTypeData> arraylist,  OnUserTypeSelected onUserTypeSelected) {
+    public UserTypeAdapter(Context context, List<UserTypeData> userTypeDataList, OnUserTypeSelected onUserTypeSelected) {
         this.context = context;
-        this.arraylist = arraylist;
+        this.userTypeDataList = userTypeDataList;
         this.onUserTypeSelected = onUserTypeSelected;
     }
 
@@ -39,32 +39,32 @@ public class UserTypeAdapter extends RecyclerView.Adapter<UserTypeAdapter.Holder
     @Override
     public void onBindViewHolder(UserTypeAdapter.Holder holder, int position) {
         Holder viewHolder = (Holder) holder;
-        viewHolder.setItem(arraylist.get(position));
+        viewHolder.setItem(userTypeDataList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return (null != arraylist ? arraylist.size() : 0);
+        return (null != userTypeDataList ? userTypeDataList.size() : 0);
     }
 
     public UserTypeData getItem(int position) {
-        return arraylist.get(position);
+        return userTypeDataList.get(position);
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        TextView tv_option_title;
-        ImageView iv_user_image;
+        TextView tvOptionTitle;
+        ImageView ivUserImage;
         LinearLayout root;
 
         public Holder(View itemView) {
             super(itemView);
-            tv_option_title = (TextView) itemView.findViewById(R.id.tv_user_title);
-            iv_user_image = itemView.findViewById(R.id.image_user);
+            tvOptionTitle = (TextView) itemView.findViewById(R.id.tv_user_title);
+            ivUserImage = itemView.findViewById(R.id.image_user);
             root = (LinearLayout) itemView;
         }
 
         public void setItem(final UserTypeData userTypeData) {
-            tv_option_title.setText(userTypeData.getUserName());
+            tvOptionTitle.setText(userTypeData.getUserName());
             root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

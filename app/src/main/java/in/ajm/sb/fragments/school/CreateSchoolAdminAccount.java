@@ -12,19 +12,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import in.ajm.sb.R;
+import in.ajm.sb.activities.BaseActivity;
 import in.ajm.sb.application.SchoolBook;
 import in.ajm.sb.data.User;
 
 public class CreateSchoolAdminAccount extends Fragment implements View.OnClickListener {
-    TextView tv_account_info;
-    EditText     et_email;
-    EditText et_password;
-    EditText       et_confirm_password;
-    RadioGroup radio_group_role;
-    RadioButton     radio_button_director;
-    RadioButton radio_button_manager;
-    RadioButton        radio_button_principal;
-    Button button_submit;
+    TextView tvAccountInfo;
+    EditText etEmail;
+    EditText etPassword;
+    EditText etConfirmPassword;
+    RadioGroup radioGroupRole;
+    RadioButton radioButtonDirector;
+    RadioButton radioButtonManager;
+    RadioButton radioButtonPrincipal;
+    Button buttonSubmit;
     User user;
 
     @Override
@@ -41,34 +42,35 @@ public class CreateSchoolAdminAccount extends Fragment implements View.OnClickLi
         setUi();
     }
 
-    public void getIntentValues(){
-        user = ((SchoolBook)getActivity().getApplication()).getUser();
+    public void getIntentValues() {
+        user = ((SchoolBook) getActivity().getApplication()).getUser();
     }
 
     public void findViewByIds(View view) {
-        button_submit = view.findViewById(R.id.button_submit);
-        et_email = view.findViewById(R.id.et_email);
-        tv_account_info = view.findViewById(R.id.tv_account_info);
-        radio_button_director = view.findViewById(R.id.radio_button_director);
-        radio_button_manager = view.findViewById(R.id.radio_button_manager);
-        radio_button_principal = view.findViewById(R.id.radio_button_principal);
-        radio_group_role = view.findViewById(R.id.radio_group_role);
-        et_password = view.findViewById(R.id.et_password);
-        et_confirm_password = view.findViewById(R.id.et_confirm_password);
+        buttonSubmit = view.findViewById(R.id.button_submit);
+        etEmail = view.findViewById(R.id.et_email);
+        tvAccountInfo = view.findViewById(R.id.tv_account_info);
+        radioButtonDirector = view.findViewById(R.id.radio_button_director);
+        radioButtonManager = view.findViewById(R.id.radio_button_manager);
+        radioButtonPrincipal = view.findViewById(R.id.radio_button_principal);
+        radioGroupRole = view.findViewById(R.id.radio_group_role);
+        etPassword = view.findViewById(R.id.et_password);
+        etConfirmPassword = view.findViewById(R.id.et_confirm_password);
     }
 
     public void applyClickListeners() {
-        button_submit.setOnClickListener(this);
+        buttonSubmit.setOnClickListener(this);
     }
 
-    public void setUi(){
-        et_email.setText(user.getEmail());
+    public void setUi() {
+        etEmail.setText(user.getEmail());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_submit:
+                ((BaseActivity)getActivity()).hideKeyboard();
                 break;
             case R.id.tv_address_one:
                 break;

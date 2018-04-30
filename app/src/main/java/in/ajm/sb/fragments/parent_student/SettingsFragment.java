@@ -25,14 +25,14 @@ import in.ajm.sb.interfaces.OnUserSwitched;
 
 public class SettingsFragment extends BaseFragment implements View.OnClickListener, OnUserSwitched {
 
-    Button button_select_theme;
-    Button button_select_language;
-    Button button_switch_user;
-    TextView tv_selected_theme;
-    TextView tv_current_user;
-    TextView tv_selected_language;
+    Button buttonSelectTheme;
+    Button buttonSelectLanguage;
+    Button buttonSwitchUser;
+    TextView tvSelectedTheme;
+    TextView tvCurrentUser;
+    TextView tvSelectedLanguage;
     Context context;
-    AlertDialog alert11;
+    AlertDialog alertDialog;
     List<User> userList = new ArrayList<>();
     User user;
     boolean isEdited = false;
@@ -49,32 +49,32 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
         viewByIds(v);
         applyClickListeners();
         ((HomeTestActivity)getActivity()).setHomePageTitle(getResources().getString(R.string.settings));
-        setlanguagetext(tv_selected_language);
-        setSelectedTheme(tv_selected_theme);
+        setlanguagetext(tvSelectedLanguage);
+        setSelectedTheme(tvSelectedTheme);
         return v;
     }
 
     public void viewByIds(View view) {
         context = getActivity();
-        button_select_language = view.findViewById(R.id.button_select_language);
-        button_select_theme = view.findViewById(R.id.button_select_theme);
-        button_switch_user = view.findViewById(R.id.button_switch_user);
-        tv_current_user = view.findViewById(R.id.tv_current_user);
-        tv_selected_theme = view.findViewById(R.id.tv_selected_theme);
-        tv_selected_language = view.findViewById(R.id.tv_selected_language);
+        buttonSelectLanguage = view.findViewById(R.id.button_select_language);
+        buttonSelectTheme = view.findViewById(R.id.button_select_theme);
+        buttonSwitchUser = view.findViewById(R.id.button_switch_user);
+        tvCurrentUser = view.findViewById(R.id.tv_current_user);
+        tvSelectedTheme = view.findViewById(R.id.tv_selected_theme);
+        tvSelectedLanguage = view.findViewById(R.id.tv_selected_language);
     }
 
     public void applyClickListeners() {
-        button_select_theme.setOnClickListener(this);
-        button_select_language.setOnClickListener(this);
-        button_switch_user.setOnClickListener(this);
+        buttonSelectTheme.setOnClickListener(this);
+        buttonSelectLanguage.setOnClickListener(this);
+        buttonSwitchUser.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_select_language:
-                ((BaseActivity) getActivity()).setLanguagedialog(context, tv_selected_language);
+                ((BaseActivity) getActivity()).setLanguagedialog(context, tvSelectedLanguage);
                 break;
             case R.id.button_select_theme:
                 ((BaseActivity) getActivity()).setThemeSelectionDialog(context);
@@ -183,29 +183,29 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
         recyclerView.setAdapter(switchUserAdapter);
 
         builder1.setView(view);
-        alert11 = builder1.create();
+        alertDialog = builder1.create();
 
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alert11.dismiss();
+                alertDialog.dismiss();
             }
         });
         buttonAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alert11.dismiss();
+                alertDialog.dismiss();
             }
         });
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alert11.dismiss();
+                alertDialog.dismiss();
             }
         });
 
 
-        alert11.show();
+        alertDialog.show();
     }
 
 

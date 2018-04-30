@@ -16,20 +16,21 @@ public class LocationObject implements Parcelable {
             return new LocationObject[size];
         }
     };
-    public String address;
-    public String city;
-    public String state;
-    public String address_type;
-    public String country;
-    public String zip;
-    public String first_name;
-    public String last_name;
-    public String phone_num;
-    public String neighbourhood;
-    public String landmark;
-    public String is_default_billing_add;
-    public String customer_id;
-    public String location_id;
+    private String city;
+    private String state;
+    private String address_type;
+    private String country;
+    private String zip;
+    private String firstName;
+    private String lastName;
+    private String phoneNum;
+    private String neighbourhood;
+    private String landmark;
+    private String isDefaultBillingAdd;
+    private String customerId;
+    private String locationId;
+    private String address;
+    private String isPrimary;
 
     public LocationObject() {
     }
@@ -41,14 +42,23 @@ public class LocationObject implements Parcelable {
         address_type = in.readString();
         country = in.readString();
         zip = in.readString();
-        first_name = in.readString();
-        last_name = in.readString();
-        phone_num = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        phoneNum = in.readString();
         neighbourhood = in.readString();
         landmark = in.readString();
-        is_default_billing_add = in.readString();
-        customer_id = in.readString();
-        location_id = in.readString();
+        isDefaultBillingAdd = in.readString();
+        customerId = in.readString();
+        locationId = in.readString();
+        isPrimary = in.readString();
+    }
+
+    public String getIsPrimary() {
+        return isPrimary;
+    }
+
+    public void setIsPrimary(String isPrimary) {
+        this.isPrimary = isPrimary;
     }
 
     public String getAddress() {
@@ -99,28 +109,28 @@ public class LocationObject implements Parcelable {
         this.zip = zip;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPhone_num() {
-        return phone_num;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
     public String getNeighbourhood() {
@@ -139,28 +149,28 @@ public class LocationObject implements Parcelable {
         this.landmark = landmark;
     }
 
-    public String getIs_default_billing_add() {
-        return is_default_billing_add;
+    public String getIsDefaultBillingAdd() {
+        return isDefaultBillingAdd;
     }
 
-    public void setIs_default_billing_add(String is_default_billing_add) {
-        this.is_default_billing_add = is_default_billing_add;
+    public void setIsDefaultBillingAdd(String isDefaultBillingAdd) {
+        this.isDefaultBillingAdd = isDefaultBillingAdd;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public String getLocation_id() {
-        return location_id;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setLocation_id(String location_id) {
-        this.location_id = location_id;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
     @Override
@@ -176,13 +186,14 @@ public class LocationObject implements Parcelable {
         dest.writeString(address_type);
         dest.writeString(country);
         dest.writeString(zip);
-        dest.writeString(first_name);
-        dest.writeString(last_name);
-        dest.writeString(phone_num);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(phoneNum);
         dest.writeString(neighbourhood);
         dest.writeString(landmark);
-        dest.writeString(is_default_billing_add);
-        dest.writeString(customer_id);
-        dest.writeString(location_id);
+        dest.writeString(isDefaultBillingAdd);
+        dest.writeString(customerId);
+        dest.writeString(locationId);
+        dest.writeString(isPrimary);
     }
 }

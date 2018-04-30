@@ -23,15 +23,16 @@ public class LayoutToImageConverter {
     boolean isForRecyclerView = false;
     OnLayoutCaptured onLayoutCaptured;
 
-    public LayoutToImageConverter(Context context, View view) {
+    public LayoutToImageConverter(Context context, View view, boolean isForRecyclerView) {
         this.context = context;
         this.view = view;
+        this.isForRecyclerView = isForRecyclerView;
     }
 
-    public LayoutToImageConverter(Context context, RecyclerView recyclerView) {
+    public LayoutToImageConverter(Context context, RecyclerView recyclerView, boolean isForRecyclerView) {
         this.context = context;
         this.recyclerView = recyclerView;
-        isForRecyclerView = true;
+        this.isForRecyclerView = isForRecyclerView;
     }
 
     public Bitmap getImageFromLayout() {

@@ -107,7 +107,7 @@ public class BaseActivity extends LocalizationActivity {
     private ProgressDialog dialog;
     private AudioRecorder recorder;
     private boolean didRecording = false;
-    private RecordingButton imgBtn_recording;
+    private RecordingButton imgBtnRecording;
 
     public static String getUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
@@ -1447,7 +1447,7 @@ public class BaseActivity extends LocalizationActivity {
     }
 
     public Bitmap getImageBitmapFromLayout(View view) {
-        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, view);
+        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, view, false);
         return layoutToImageConverter.getImageFromLayout();
     }
 

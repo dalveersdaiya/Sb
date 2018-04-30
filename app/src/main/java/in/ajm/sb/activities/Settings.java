@@ -22,21 +22,20 @@ import in.ajm.sb.interfaces.OnUserChanged;
 
 public class Settings extends BaseActivity implements View.OnClickListener, OnUserChanged {
 
-    Button button_select_theme;
-    Button button_select_language;
-    Button button_switch_user;
-    Button button_test_new;
-    TextView tv_selected_theme;
-    TextView tv_current_user;
-    TextView tv_selected_language;
+    Button buttonSelectTheme;
+    Button buttonSelectLanguage;
+    Button buttonSwitchUser;
+    Button buttonTestNew;
+    TextView tvSelectedTheme;
+    TextView tvCurrentUser;
+    TextView tvSelectedLanguage;
     Context context;
-    AlertDialog alert11;
     List<User> userList = new ArrayList<>();
     User user;
     boolean isEdited = false;
     int selectedPosition = 0;
     int userType = 01;
-    String current_fragment = "HomeFragment.class";
+    String currentFragment = "HomeFragment.class";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,33 +45,33 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         viewByIds();
         applyClickListeners();
         getIntentValues();
-        setlanguagetext(tv_selected_language);
-        setSelectedTheme(tv_selected_theme);
+        setlanguagetext(tvSelectedLanguage);
+        setSelectedTheme(tvSelectedTheme);
         setTitle(getResources().getString(R.string.switch_user));
         setUi();
     }
 
     public void getIntentValues() {
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
-        current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
+        currentFragment = getIntent().getExtras().getString("currentFragment", "HomeFragment.class");
     }
 
     public void viewByIds() {
         context = this;
-        button_select_language = findViewById(R.id.button_select_language);
-        button_select_theme = findViewById(R.id.button_select_theme);
-        button_switch_user = findViewById(R.id.button_switch_user);
-        tv_current_user = findViewById(R.id.tv_current_user);
-        tv_selected_theme = findViewById(R.id.tv_selected_theme);
-        tv_selected_language = findViewById(R.id.tv_selected_language);
-        button_test_new = findViewById(R.id.button_test_new);
+        buttonSelectLanguage = findViewById(R.id.button_select_language);
+        buttonSelectTheme = findViewById(R.id.button_select_theme);
+        buttonSwitchUser = findViewById(R.id.button_switch_user);
+        tvCurrentUser = findViewById(R.id.tv_current_user);
+        tvSelectedTheme = findViewById(R.id.tv_selected_theme);
+        tvSelectedLanguage = findViewById(R.id.tv_selected_language);
+        buttonTestNew = findViewById(R.id.button_test_new);
     }
 
     public void applyClickListeners() {
-        button_select_theme.setOnClickListener(this);
-        button_select_language.setOnClickListener(this);
-        button_switch_user.setOnClickListener(this);
-        button_test_new.setOnClickListener(this);
+        buttonSelectTheme.setOnClickListener(this);
+        buttonSelectLanguage.setOnClickListener(this);
+        buttonSwitchUser.setOnClickListener(this);
+        buttonTestNew.setOnClickListener(this);
     }
 
     public void setUi() {
@@ -88,7 +87,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         Intent intent = new Intent(Settings.this, HomeTestActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AppConfigs.USER_TYPE, 01);
-        intent.putExtra("current_fragment", current_fragment);
+        intent.putExtra("currentFragment", currentFragment);
         startActivity(intent);
     }
 
@@ -96,7 +95,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_select_language:
-                setLanguagedialog(context, tv_selected_language);
+                setLanguagedialog(context, tvSelectedLanguage);
                 break;
             case R.id.button_select_theme:
                 setThemeSelectionDialog(context);
@@ -178,7 +177,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     public void onUserSwitched(int pos, String id, String userName) {
         isEdited = true;
         selectedPosition = pos;
-        tv_current_user.setText(userName);
+        tvCurrentUser.setText(userName);
     }
 
     public void openTestActivity(){

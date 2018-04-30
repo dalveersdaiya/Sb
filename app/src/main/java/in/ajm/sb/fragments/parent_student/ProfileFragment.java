@@ -48,7 +48,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     FitChart fitChartOverAll;
     Collection<FitChartValue> values;
     Point point;
-    CircularImageView civ_user_image;
+    CircularImageView civUserImage;
     Context context;
     UserCredentials userCredentials;
 
@@ -85,7 +85,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                     .load(userCredentials.getUserImage())
                     .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .noPlaceholder()
-                    .into(civ_user_image);
+                    .into(civUserImage);
 
         }
     }
@@ -95,7 +95,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         fitChartMonthly = view.findViewById(R.id.fitChart_monthly);
         fitChartYearly = view.findViewById(R.id.fitChart_yearly);
         fitChartOverAll = view.findViewById(R.id.fitChart_over_all);
-        civ_user_image = view.findViewById(R.id.civ_user_image);
+        civUserImage = view.findViewById(R.id.civ_user_image);
         point = GeneralHelper.getInstance(getActivity()).getScreenSize();
         setLayoutParamsForChart(fitChartMonthly);
         setLayoutParamsForChart(fitChartYearly);
@@ -104,7 +104,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     }
 
     public void applyClickListeners() {
-        civ_user_image.setOnClickListener(this);
+        civUserImage.setOnClickListener(this);
     }
 
     private void setChart(Collection<FitChartValue> values, FitChart fitChart) {
@@ -214,7 +214,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                 .load(userCredentials.getUserImage())
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .noPlaceholder()
-                .into(civ_user_image);
+                .into(civUserImage);
     }
 
 

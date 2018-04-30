@@ -44,10 +44,10 @@ public class HomeTestActivity extends BaseActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     TextView textViewTitleHome;
-    String current_fragment = "HomeFragment.class";
-    CoordinatorLayout app_bar_main;
+    String currentFragment = "HomeFragment.class";
+    CoordinatorLayout appBarMain;
     private NetWorkStateReceiver networkStateReceiver;
-    private Stack<Fragment> fragmentstack;
+    private Stack<Fragment> fragmentStack;
     private Fragment fragment;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -62,7 +62,7 @@ public class HomeTestActivity extends BaseActivity
         setUpDrawer();
         setNetworkStateReceiver();
         getIntentValues();
-        if (current_fragment.contains("HomeFragment")) {
+        if (currentFragment.contains("HomeFragment")) {
             openNewFragment(new HomeFragment(), true, savedInstanceState);
         } else {
             openNewFragment(new ProfileFragment(), true, savedInstanceState);
@@ -79,8 +79,8 @@ public class HomeTestActivity extends BaseActivity
         textViewTitleHome = findViewById(R.id.toolbar_title_home);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         setTypeFaceForMenuItems(navigationView.getMenu(), this);
-        fragmentstack = new Stack<>();
-        app_bar_main = findViewById(R.id.app_bar_main);
+        fragmentStack = new Stack<>();
+        appBarMain = findViewById(R.id.app_bar_main);
 
     }
 
@@ -116,7 +116,7 @@ public class HomeTestActivity extends BaseActivity
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-                SlideMenuHelper.setSlideMenu(drawerView, slideOffset, app_bar_main);
+                SlideMenuHelper.setSlideMenu(drawerView, slideOffset, appBarMain);
             }
 
             @Override
@@ -139,7 +139,7 @@ public class HomeTestActivity extends BaseActivity
 
     public void getIntentValues() {
         userType = getIntent().getExtras().getInt(AppConfigs.USER_TYPE, AppConfigs.PARENT_TYPE);
-        current_fragment = getIntent().getExtras().getString("current_fragment", "HomeFragment.class");
+        currentFragment = getIntent().getExtras().getString("currentFragment", "HomeFragment.class");
     }
 
 
@@ -175,14 +175,14 @@ public class HomeTestActivity extends BaseActivity
         if (id == R.id.nav_settings) {
             openSettings();
         } else if (id == R.id.nav_profile) {
-            if (!current_fragment.contains("ProfileFragment")) {
+            if (!currentFragment.contains("ProfileFragment")) {
                 Bundle bundle = new Bundle();
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new ProfileFragment(), true, bundle);
             }
             viewPager.setCurrentItem(1);
         } else if (id == R.id.nav_home) {
-            if (!current_fragment.contains("HomeFragment")) {
+            if (!currentFragment.contains("HomeFragment")) {
                 Bundle bundle = new Bundle();
                 bundle.putString("org_id", getSelectedOrgId());
                 openNewFragment(new HomeFragment(), true, bundle);
@@ -196,7 +196,7 @@ public class HomeTestActivity extends BaseActivity
 
     public void openSettings() {
         Intent intent = new Intent(HomeTestActivity.this, Settings.class);
-        intent.putExtra("current_fragment", current_fragment);
+        intent.putExtra("currentFragment", currentFragment);
         startActivity(intent);
     }
 
@@ -229,7 +229,7 @@ public class HomeTestActivity extends BaseActivity
         if (savedinstack) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-            fragmentstack.push(fragment);
+            fragmentStack.push(fragment);
             f.setArguments(bundle);
             ft.replace(R.id.frame, f);
             fragment = f;
@@ -241,11 +241,11 @@ public class HomeTestActivity extends BaseActivity
             ft.replace(R.id.frame, f);
             ft.commitAllowingStateLoss();
         }
-        current_fragment = f.toString();
+        currentFragment = f.toString();
     }
 
     private void back() {
-        fragment = fragmentstack.pop();
+        fragment = fragmentStack.pop();
         if (fragment.getClass() == SettingsFragment.class) {
         } else if (fragment.getClass() == ProfileFragment.class) {
         }
@@ -265,7 +265,7 @@ public class HomeTestActivity extends BaseActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             try {
-                if (fragmentstack.size() < 0) {
+                if (fragmentStack.size() < 0) {
                     showDialog(context, getResources().getString(R.string.wanna_exit_app), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

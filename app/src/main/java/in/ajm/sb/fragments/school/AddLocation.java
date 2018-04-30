@@ -1,5 +1,6 @@
 package in.ajm.sb.fragments.school;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -19,13 +20,27 @@ import in.ajm.sb.helper.StringHelper;
 import in.ajm.sb_library.fragment_transaction.FragmentTransactionExtended;
 
 public class AddLocation extends Fragment {
-    EditText et_address;
-    EditText et_city;
-    EditText et_state;
-    EditText et_country;
-    EditText et_zip_code;
-    Button button_submit;
+
+    EditText etAddress;
+    EditText etCity;
+    EditText etState;
+    EditText etCountry;
+    EditText etZipCode;
+    Button buttonSubmit;
     LocationObject locationObject;
+    String origin = "";
+    boolean isPrimary = false;
+
+    public AddLocation() {
+
+    }
+
+    @SuppressLint("ValidFragment")
+    public AddLocation(String origin, boolean isPrimary) {
+        this.origin = origin;
+        this.isPrimary = isPrimary;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,67 +52,82 @@ public class AddLocation extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewById(view);
         locationObject = ((SchoolBook) getActivity().getApplication()).getLocationObject();
-        setUi();
-
         applyClickListeners();
+        setUi();
     }
 
     private void applyClickListeners() {
-        button_submit.setOnClickListener(new View.OnClickListener() {
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((BaseActivity)getActivity()).hideKeyboard();
                 checkForEmptyFields();
             }
         });
     }
 
     private void viewById(View convertView) {
-        et_address = convertView.findViewById(R.id.et_address);
-        et_city = convertView.findViewById(R.id.et_city);
-        et_state = convertView.findViewById(R.id.et_state);
-        et_country = convertView.findViewById(R.id.et_country);
-        et_zip_code = convertView.findViewById(R.id.et_zip_code);
-        button_submit = convertView.findViewById(R.id.button_submit);
+        etAddress = convertView.findViewById(R.id.et_address);
+        etCity = convertView.findViewById(R.id.et_city);
+        etState = convertView.findViewById(R.id.et_state);
+        etCountry = convertView.findViewById(R.id.et_country);
+        etZipCode = convertView.findViewById(R.id.et_zip_code);
+        buttonSubmit = convertView.findViewById(R.id.button_submit);
     }
 
     private void setUi() {
         if (locationObject != null) {
-            et_address.setText(locationObject.getAddress());
-            et_city.setText(locationObject.getCity());
-            et_country.setText(locationObject.getCountry());
-            et_state.setText(locationObject.getState());
-            et_zip_code.setText(locationObject.getZip());
+            etAddress.setText(locationObject.getAddress());
+            etCity.setText(locationObject.getCity());
+            etCountry.setText(locationObject.getCountry());
+            etState.setText(locationObject.getState());
+            etZipCode.setText(locationObject.getZip());
         }
     }
 
     private void setLocationObject() {
-        locationObject.address = et_address.getText().toString();
-        locationObject.city = et_city.getText().toString();
-        locationObject.state = et_state.getText().toString();
-        locationObject.country = et_country.getText().toString();
-        locationObject.zip = et_zip_code.getText().toString();
+        locationObject.setAddress( etAddress.getText().toString());
+        locationObject.setCity(etCity.getText().toString());
+        locationObject.setState(etState.getText().toString());
+        locationObject.setCountry(etCountry.getText().toString());
+        locationObject.setZip(etZipCode.getText().toString());
+        if(isPrimary){
+            locationObject.setIsPrimary("1");
+        }
         ((SchoolBook) getActivity().getApplication()).setLocationObject(locationObject);
     }
 
+    /**
+     * Check if any field is empty :
+     * Check the origin and return results to the origin i.e. the initial class fragment
+     */
     private void checkForEmptyFields() {
-        if (StringHelper.isEmpty(et_address.getText().toString())) {
-            showAlertBox(getString(R.string.empty_alert, getString(R.string.address)), et_address);
+        if (StringHelper.isEmpty(etAddress.getText().toString())) {
+            showAlertBox(getString(R.string.empty_alert, getString(R.string.address)), etAddress);
             return;
-        } else if (StringHelper.isEmpty(et_city.getText().toString())) {
-            showAlertBox(getString(R.string.empty_alert, getString(R.string.city)), et_city);
+        } else if (StringHelper.isEmpty(etCity.getText().toString())) {
+            showAlertBox(getString(R.string.empty_alert, getString(R.string.city)), etCity);
             return;
-        } else if (StringHelper.isEmpty(et_state.getText().toString())) {
-            showAlertBox(getString(R.string.empty_alert, getString(R.string.state)), et_state);
+        } else if (StringHelper.isEmpty(etState.getText().toString())) {
+            showAlertBox(getString(R.string.empty_alert, getString(R.string.state)), etState);
             return;
-        } else if (StringHelper.isEmpty(et_country.getText().toString())) {
-            showAlertBox(getString(R.string.empty_alert, getString(R.string.country)), et_country);
+        } else if (StringHelper.isEmpty(etCountry.getText().toString())) {
+            showAlertBox(getString(R.string.empty_alert, getString(R.string.country)), etCountry);
             return;
-        } else if (StringHelper.isEmpty(et_zip_code.getText().toString())) {
-            showAlertBox(getString(R.string.empty_alert, getString(R.string.zip_code)), et_zip_code);
+        } else if (StringHelper.isEmpty(etZipCode.getText().toString())) {
+            showAlertBox(getString(R.string.empty_alert, getString(R.string.zip_code)), etZipCode);
             return;
         } else {
             setLocationObject();
-            ((SchoolDetails) getActivity()).changeFragment(this, new AddSchoolAdminInfo(), FragmentTransactionExtended.TABLE_VERTICAL);
+            switch (origin){
+                case "AddSchoolAdminInfo":
+                    ((SchoolDetails) getActivity()).changeFragment(this, new AddSchoolAdminInfo(), FragmentTransactionExtended.TABLE_VERTICAL);
+                    break;
+                case "AddSchoolInfo":
+                    ((SchoolDetails) getActivity()).changeFragment(this, new AddSchoolInfo(), FragmentTransactionExtended.TABLE_VERTICAL);
+                    break;
+            }
+
         }
     }
 
@@ -117,6 +147,6 @@ public class AddLocation extends Fragment {
 
 
         dialog.show();
-        ((BaseActivity)getActivity()).setTypeFaceForDialog(dialog);
+        ((BaseActivity) getActivity()).setTypeFaceForDialog(dialog);
     }
 }

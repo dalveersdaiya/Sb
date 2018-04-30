@@ -58,14 +58,14 @@ public class SwitchUserAdapter extends RecyclerView.Adapter<SwitchUserAdapter.Ho
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        TextView tv_user_title;
-        ImageView image_user;
+        TextView tvUserTitle;
+        ImageView imageUser;
         LinearLayout root;
 
         public Holder(View itemView) {
             super(itemView);
-            tv_user_title = (TextView) itemView.findViewById(R.id.tv_user_title);
-            image_user = itemView.findViewById(R.id.image_user);
+            tvUserTitle = (TextView) itemView.findViewById(R.id.tv_user_title);
+            imageUser = itemView.findViewById(R.id.image_user);
             root = (LinearLayout) itemView;
         }
 
@@ -84,7 +84,7 @@ public class SwitchUserAdapter extends RecyclerView.Adapter<SwitchUserAdapter.Ho
                     notifyDataSetChanged();
                 }
             });
-            tv_user_title.setText(user.getUserName());
+            tvUserTitle.setText(user.getUserName());
         }
 
     }

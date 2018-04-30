@@ -299,7 +299,7 @@
         </item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
-        <item name="my_text_color_inverse">@color/colorAccentLight</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
         <item name="my_text_color">@color/white_hex_15</item>
         <item name="myColorAccent">@color/colorAccent</item>
         <item name="myColorPrimaryDark">@color/colorPrimary</item>

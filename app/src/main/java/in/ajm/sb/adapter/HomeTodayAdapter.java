@@ -88,29 +88,29 @@ public class HomeTodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public class MyItemViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_student_name;
-        TextView tv_total_marks;
-        TextView tv_result_marks;
+        TextView tvStudentName;
+        TextView tvTotalMarks;
+        TextView tvResultMarks;
 
         LinearLayout root;
 
         public MyItemViewHolder(View itemView) {
             super(itemView);
-            tv_student_name = (TextView) itemView.findViewById(R.id.tv_student_name);
-            tv_total_marks = (TextView) itemView.findViewById(R.id.tv_total_marks);
-            tv_result_marks = (TextView) itemView.findViewById(R.id.tv_result_marks);
+            tvStudentName = (TextView) itemView.findViewById(R.id.tv_student_name);
+            tvTotalMarks = (TextView) itemView.findViewById(R.id.tv_total_marks);
+            tvResultMarks = (TextView) itemView.findViewById(R.id.tv_result_marks);
             root = (LinearLayout) itemView;
         }
 
         public void setItem(final HomeTodayData homeTodayData) {
-            tv_student_name.setText(homeTodayData.getUserName());
-            tv_total_marks.setText(homeTodayData.getTotalMarks());
-            tv_result_marks.setText(homeTodayData.getResult());
+            tvStudentName.setText(homeTodayData.getUserName());
+            tvTotalMarks.setText(homeTodayData.getTotalMarks());
+            tvResultMarks.setText(homeTodayData.getResult());
             if (homeTodayData.isPersonal()) {
                 root.setBackgroundColor(((BaseActivity) context).getColorMyThemelight(context));
-                tv_result_marks.setTextColor(((BaseActivity) context).getTextColor(context));
-                tv_total_marks.setTextColor(((BaseActivity) context).getTextColor(context));
-                tv_student_name.setTextColor(((BaseActivity) context).getTextColor(context));
+                tvResultMarks.setTextColor(((BaseActivity) context).getTextColor(context));
+                tvTotalMarks.setTextColor(((BaseActivity) context).getTextColor(context));
+                tvStudentName.setTextColor(((BaseActivity) context).getTextColor(context));
 
             }
             root.setOnClickListener(new View.OnClickListener() {

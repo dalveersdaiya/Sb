@@ -30,15 +30,15 @@ import in.ajm.sb.interfaces.OnThisDayItemClicked;
 public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, View.OnClickListener, LayoutToImageConverter.OnLayoutCaptured {
 
     TextView tvCurrentYear;
-    TextView tv_selected_school;
-    TextView tv_current_class;
-    TextView tv_current_section;
-    TextView tv_this_day;
-    TextView tv_this_unit_test;
-    TextView tv_this_half_year;
-    TextView tv_this_year;
-    ImageView iv_share_this_day;
-    TextView tv_user_name;
+    TextView tvSelectedSchool;
+    TextView tvCurrentClass;
+    TextView tvCurrentSection;
+    TextView tvThisDay;
+    TextView tvThisUnitTest;
+    TextView tvThisHalfYear;
+    TextView tvThisYear;
+    ImageView ivShareThisDay;
+    TextView tvUserName;
     RecyclerView recyclerViewUnitTest;
     RecyclerView recyclerViewHalfYearly;
     RecyclerView recyclerViewYearly;
@@ -73,13 +73,13 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
     public void viewByIds(View view) {
         context = getActivity();
         tvCurrentYear = view.findViewById(R.id.tv_current_year);
-        tv_selected_school = view.findViewById(R.id.tv_selected_school);
-        tv_current_class = view.findViewById(R.id.tv_current_class);
-        tv_current_section = view.findViewById(R.id.tv_current_section);
-        tv_this_day = view.findViewById(R.id.tv_this_day);
-        tv_this_unit_test = view.findViewById(R.id.tv_this_unit_test);
-        tv_this_half_year = view.findViewById(R.id.tv_this_half_year);
-        tv_this_year = view.findViewById(R.id.tv_this_year);
+        tvSelectedSchool = view.findViewById(R.id.tv_selected_school);
+        tvCurrentClass = view.findViewById(R.id.tv_current_class);
+        tvCurrentSection = view.findViewById(R.id.tv_current_section);
+        tvThisDay = view.findViewById(R.id.tv_this_day);
+        tvThisUnitTest = view.findViewById(R.id.tv_this_unit_test);
+        tvThisHalfYear = view.findViewById(R.id.tv_this_half_year);
+        tvThisYear = view.findViewById(R.id.tv_this_year);
         recyclerViewToday = view.findViewById(R.id.recycler_view_todays);
         recyclerViewHalfYearly = view.findViewById(R.id.recycler_view_half_yearly);
         recyclerViewUnitTest = view.findViewById(R.id.recycler_view_unit_test);
@@ -88,21 +88,21 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
         linearLayoutManagerHalfYearly = new LinearLayoutManager(context);
         linearLayoutManagerUnitTest = new LinearLayoutManager(context);
         linearLayoutManagerYearly = new LinearLayoutManager(context);
-        iv_share_this_day = view.findViewById(R.id.iv_share_this_day);
-        tv_user_name = view.findViewById(R.id.tv_user_name);
+        ivShareThisDay = view.findViewById(R.id.iv_share_this_day);
+        tvUserName = view.findViewById(R.id.tv_user_name);
     }
 
     public void applyClickListeners() {
-        iv_share_this_day.setOnClickListener(this);
+        ivShareThisDay.setOnClickListener(this);
     }
 
     public void setUi() {
         String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         tvCurrentYear.setText(context.getResources().getString(R.string.year) + " 2018");
-        tv_current_class.setText(context.getResources().getString(R.string.classname) + " VII");
-        tv_current_section.setText(context.getResources().getString(R.string.section) + " 2");
-        tv_selected_school.setText(context.getResources().getString(R.string.school) + " " + context.getResources().getString(R.string.name));
-        tv_this_day.setText(context.getResources().getString(R.string.this_day) + "(" + todayDate + ")");
+        tvCurrentClass.setText(context.getResources().getString(R.string.classname) + " VII");
+        tvCurrentSection.setText(context.getResources().getString(R.string.section) + " 2");
+        tvSelectedSchool.setText(context.getResources().getString(R.string.school) + " " + context.getResources().getString(R.string.name));
+        tvThisDay.setText(context.getResources().getString(R.string.this_day) + "(" + todayDate + ")");
     }
 
     public void setRecyclerViewToday(boolean showScreenShotInfo) {
@@ -116,10 +116,10 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
             } else {
                 homeTodayData.setPersonal(false);
             }
-            homeTodayData.setUserName(tv_user_name.getText().toString());
-            homeTodayData.setSchoolName(tv_selected_school.getText().toString());
-            homeTodayData.setClassname(tv_current_class.getText().toString());
-            homeTodayData.setSection(tv_current_section.getText().toString());
+            homeTodayData.setUserName(tvUserName.getText().toString());
+            homeTodayData.setSchoolName(tvSelectedSchool.getText().toString());
+            homeTodayData.setClassname(tvCurrentClass.getText().toString());
+            homeTodayData.setSection(tvCurrentSection.getText().toString());
             homeTodayData.setDate(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
             homeTodayData.setCurrentYear(tvCurrentYear.getText().toString());
             homeTodayData.setUserId(i + "");
@@ -200,9 +200,9 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
 
             }
         }, 500);
-        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, recyclerView);
+        LayoutToImageConverter layoutToImageConverter = new LayoutToImageConverter(context, recyclerView, true);
         layoutToImageConverter.setOnLayoutCapturedListener(HomeFragment.this);
-        layoutToImageConverter.shareLayoutImage(getResources().getString(R.string.share_result), tv_this_day.getText().toString());
+        layoutToImageConverter.shareLayoutImage(getResources().getString(R.string.share_result), tvThisDay.getText().toString());
 
     }
 

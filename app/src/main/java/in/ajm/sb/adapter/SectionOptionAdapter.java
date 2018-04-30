@@ -51,17 +51,17 @@ public class SectionOptionAdapter extends RecyclerView.Adapter<SectionOptionAdap
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        TextView tv_option_title;
+        TextView tvOptionTitle;
         LinearLayout root;
 
         public Holder(View itemView) {
             super(itemView);
-            tv_option_title = (TextView) itemView.findViewById(R.id.tv_option_title);
+            tvOptionTitle = (TextView) itemView.findViewById(R.id.tv_option_title);
             root = (LinearLayout) itemView;
         }
 
         public void setItem(SectionOptions sectionOptions) {
-            tv_option_title.setText(context.getResources().getString(R.string.select_section));
+            tvOptionTitle.setText(context.getResources().getString(R.string.select_section));
             root.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

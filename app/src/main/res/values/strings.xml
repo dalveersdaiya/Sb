@@ -1,7 +1,7 @@
 <resources>
-    <string name="first_name">First Name</string>
+    <string name="firstName">First Name</string>
     <string name="title_activity_web">WebActivity</string>
-    <string name="last_name">Last Name</string>
+    <string name="lastName">Last Name</string>
     <string name="mob_num">Mobile Number</string>
     <string name="submit">Submit</string>
     <string name="register">Register</string>

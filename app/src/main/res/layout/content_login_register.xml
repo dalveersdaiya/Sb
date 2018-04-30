@@ -50,7 +50,7 @@
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
-                    android:hint="@string/first_name"
+                    android:hint="@string/firstName"
                     android:inputType="textEmailAddress"
                     android:textColor="?attr/my_text_color"
                     android:textColorHint="?attr/my_text_color"
@@ -66,7 +66,7 @@
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:hint="@string/first_name"
+            android:hint="@string/firstName"
             android:padding="5dp" />
 
         <in.ajm.sb.customviews.EditTextRegular
@@ -77,7 +77,7 @@
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:hint="@string/last_name"
+            android:hint="@string/lastName"
             android:padding="5dp" />
 
         <in.ajm.sb.customviews.EditTextRegular

@@ -66,7 +66,7 @@
                     android:lines="1"
                     android:gravity="center_vertical"
                     android:imeOptions="actionNext"
-                    android:hint="@string/first_name"
+                    android:hint="@string/firstName"
                     android:textColor="?attr/my_text_color"
                     android:textColorHint="?attr/my_text_color"
                     android:textSize="12sp" />
@@ -100,7 +100,7 @@
                     android:lines="1"
                     android:nextFocusForward="@+id/et_mob_number"
                     android:maxLines="1"
-                    android:hint="@string/last_name"
+                    android:hint="@string/lastName"
                     android:textColor="?attr/my_text_color"
                     android:textColorHint="?attr/my_text_color"
                     android:textSize="12sp" />

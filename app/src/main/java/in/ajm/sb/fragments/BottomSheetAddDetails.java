@@ -28,13 +28,13 @@ import in.ajm.sb.interfaces.OnClickSubmitDetails;
 public class BottomSheetAddDetails extends BottomSheetDialogFragment implements View.OnClickListener {
 
     OnClickSubmitDetails onClickSubmitDetails;
-    EditText et_enrollment;
-    EditText et_aadhar;
+    EditText etEnrollment;
+    EditText etAadhar;
     Button buttonSubmit;
     int userType = 01;
-    EditText et_school_passphrase;
-    EditText et_teacher_code;
-    TextView tv_header;
+    EditText etSchoolPassphrase;
+    EditText etTeacherCode;
+    TextView tvHeader;
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
 
@@ -83,21 +83,21 @@ public class BottomSheetAddDetails extends BottomSheetDialogFragment implements 
 
     private void setUi() {
         if (userType == AppConfigs.PARENT_TYPE) {
-            tv_header.setText(getResources().getString(R.string.enter_enrollment));
-            et_teacher_code.setVisibility(View.GONE);
-            et_school_passphrase.setVisibility(View.GONE);
+            tvHeader.setText(getResources().getString(R.string.enter_enrollment));
+            etTeacherCode.setVisibility(View.GONE);
+            etSchoolPassphrase.setVisibility(View.GONE);
         } else if (userType == AppConfigs.TEACHER_TYPE) {
-            tv_header.setText(getResources().getString(R.string.enter_details));
-            et_school_passphrase.setVisibility(View.GONE);
-            et_enrollment.setVisibility(View.GONE);
+            tvHeader.setText(getResources().getString(R.string.enter_details));
+            etSchoolPassphrase.setVisibility(View.GONE);
+            etEnrollment.setVisibility(View.GONE);
         } else if (userType == AppConfigs.STUDENT_TYPE) {
-            tv_header.setText(getResources().getString(R.string.enter_enrollment));
-            et_teacher_code.setVisibility(View.GONE);
-            et_school_passphrase.setVisibility(View.GONE);
+            tvHeader.setText(getResources().getString(R.string.enter_enrollment));
+            etTeacherCode.setVisibility(View.GONE);
+            etSchoolPassphrase.setVisibility(View.GONE);
         } else if (userType == AppConfigs.SCHOOL_ADMIN_TYPE) {
-            et_enrollment.setVisibility(View.GONE);
-            et_teacher_code.setVisibility(View.GONE);
-            tv_header.setText(getResources().getString(R.string.enter_details));
+            etEnrollment.setVisibility(View.GONE);
+            etTeacherCode.setVisibility(View.GONE);
+            tvHeader.setText(getResources().getString(R.string.enter_details));
         }
 
     }
@@ -136,11 +136,11 @@ public class BottomSheetAddDetails extends BottomSheetDialogFragment implements 
 
     public void viewById(View contentView) {
         buttonSubmit = (Button) contentView.findViewById(R.id.button_submit);
-        et_enrollment = (EditText) contentView.findViewById(R.id.et_enrollment);
-        et_aadhar = (EditText) contentView.findViewById(R.id.et_aadhar);
-        et_school_passphrase = (EditText) contentView.findViewById(R.id.et_school_passphrase);
-        et_teacher_code = (EditText) contentView.findViewById(R.id.et_teacher_code);
-        tv_header = (TextView) contentView.findViewById(R.id.tv_header);
+        etEnrollment = (EditText) contentView.findViewById(R.id.et_enrollment);
+        etAadhar = (EditText) contentView.findViewById(R.id.et_aadhar);
+        etSchoolPassphrase = (EditText) contentView.findViewById(R.id.et_school_passphrase);
+        etTeacherCode = (EditText) contentView.findViewById(R.id.et_teacher_code);
+        tvHeader = (TextView) contentView.findViewById(R.id.tv_header);
 
     }
 
@@ -164,20 +164,20 @@ public class BottomSheetAddDetails extends BottomSheetDialogFragment implements 
     public void onClickSubmit(int userType) {
         if (onClickSubmitDetails != null) {
             if (userType == AppConfigs.PARENT_TYPE) {
-                String enrollmentNumber = et_enrollment.getText().toString();
-                String aadharNumber = et_aadhar.getText().toString();
+                String enrollmentNumber = etEnrollment.getText().toString();
+                String aadharNumber = etAadhar.getText().toString();
                 onClickSubmitDetails.onClickSubmitStudentParent(enrollmentNumber, aadharNumber, AppConfigs.PARENT_TYPE);
             } else if (userType == AppConfigs.TEACHER_TYPE) {
-                String teacherPin = et_teacher_code.getText().toString();
-                String aadharNumber = et_aadhar.getText().toString();
+                String teacherPin = etTeacherCode.getText().toString();
+                String aadharNumber = etAadhar.getText().toString();
                 onClickSubmitDetails.onClickSubmitTeacher(teacherPin, aadharNumber);
             } else if (userType == AppConfigs.STUDENT_TYPE) {
-                String enrollmentNumber = et_enrollment.getText().toString();
-                String aadharNumber = et_aadhar.getText().toString();
+                String enrollmentNumber = etEnrollment.getText().toString();
+                String aadharNumber = etAadhar.getText().toString();
                 onClickSubmitDetails.onClickSubmitStudentParent(enrollmentNumber, aadharNumber, AppConfigs.PARENT_TYPE);
             } else if (userType == AppConfigs.SCHOOL_ADMIN_TYPE) {
-                String shcoolPin = et_school_passphrase.getText().toString();
-                String aadharNumber = et_aadhar.getText().toString();
+                String shcoolPin = etSchoolPassphrase.getText().toString();
+                String aadharNumber = etAadhar.getText().toString();
                 onClickSubmitDetails.onClickSubmitSchoolAdmin(shcoolPin, aadharNumber);
             }
         }
