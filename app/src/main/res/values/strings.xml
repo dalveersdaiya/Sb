@@ -206,7 +206,12 @@
     <string name="hint_email">Email</string>
     <string name="add_address">Add address</string>
     <string name="empty_alert">%1$s cannot be empty.</string>
-    <!--<string name="pe"></string>-->
+    <string name="address_one">Address One</string>
+    <string name="address_two">Address Two</string>
+    <string name="acc_info">Account info</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirmation_school_admin">I here by confirm that the information provided by me is true.</string>
+    <string name="create_account">Create Account</string>
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->

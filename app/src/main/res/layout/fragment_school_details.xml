@@ -39,7 +39,7 @@
             android:orientation="vertical">
 
             <in.ajm.sb.customviews.CircularImageView
-                android:id="@+id/civ_user_image"
+                android:id="@+id/civ_school_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
@@ -75,8 +75,6 @@
                 android:id="@+id/radio_group_academic_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -174,7 +172,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/cbse"
+                    android:text="@string/english"
                     android:textColor="?attr/my_text_color" />
 
                 <RadioButton
@@ -182,49 +180,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/rbse"
+                    android:text="@string/hindi"
                     android:textColor="?attr/my_text_color" />
 
             </RadioGroup>
 
 
-            <in.ajm.sb.customviews.EditTextRegular
-                android:id="@+id/et_mob_number"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:hint="@string/mob_num"
-                android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="?attr/my_text_color"
-                android:textColorHint="?attr/my_text_color" />
-
-            <in.ajm.sb.customviews.EditTextRegular
-                android:id="@+id/et_email"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:hint="@string/hint_email"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="?attr/my_text_color"
-                android:textColorHint="?attr/my_text_color" />
-
-
             <in.ajm.sb.customviews.TextViewRegular
-                android:id="@+id/tv_dob"
+                android:id="@+id/tv_address_one"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
@@ -233,75 +196,11 @@
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/dob"
+                android:text="@string/address_one"
                 android:textColor="?attr/my_text_color" />
 
-            <RadioGroup
-                android:id="@+id/radio_group_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_button_male"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/male"
-                    android:textColor="?attr/my_text_color" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_female"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/female"
-                    android:textColor="?attr/my_text_color" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_other"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/other"
-                    android:textColor="?attr/my_text_color" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/radio_group_marital_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_button_married"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/married"
-                    android:textColor="?attr/my_text_color" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_unmarried"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/unmarried"
-                    android:textColor="?attr/my_text_color" />
-
-            </RadioGroup>
-
             <in.ajm.sb.customviews.TextViewRegular
-                android:id="@+id/tv_address"
+                android:id="@+id/tv_address_two"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
@@ -310,37 +209,20 @@
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="@string/address"
+                android:text="@string/address_two"
                 android:textColor="?attr/my_text_color" />
 
-            <in.ajm.sb.customviews.EditTextRegular
-                android:id="@+id/et_aadhar"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:hint="@string/aadhar_num"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="?attr/my_text_color"
-                android:textColorHint="?attr/my_text_color" />
 
             <in.ajm.sb.customviews.EditTextRegular
-                android:id="@+id/et_pan_num"
+                android:id="@+id/et_school_email"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:hint="@string/pan_card_num"
+                android:hint="@string/school_email"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:maxLength="10"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"

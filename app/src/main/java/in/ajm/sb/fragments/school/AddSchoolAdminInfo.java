@@ -95,6 +95,7 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.button_submit:
                 ((SchoolDetails) getActivity()).changeFragment(this, new AddSchoolInfo());
+                setUserValues();
                 break;
             case R.id.tv_address:
                 ((SchoolDetails) getActivity()).changeFragment(this, new AddLocation(), FragmentTransactionExtended.TABLE_VERTICAL);
@@ -125,5 +126,10 @@ public class AddSchoolAdminInfo extends Fragment implements View.OnClickListener
             address = locationObject.address + ", " + locationObject.city + ", " + locationObject.state + ", " + locationObject.country + ", " + locationObject.zip;
         }
         return address;
+    }
+
+    public void setUserValues(){
+        user.setEmail(et_email.getText().toString());
+        ((SchoolBook)getActivity().getApplication()).setUser(user);
     }
 }

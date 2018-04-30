@@ -591,4 +591,9 @@
     <string name="permission">अनुमति</string>
     <string name="add_address">पता जोड़ें</string>
     <string name="empty_alert">%1$s रिक्त नहीं हो सकता</string>
+    <string name="address_one">पता प्रथम</string>
+    <string name="address_two">पता द्वितीय</string>
+    <string name="acc_info">खाते की जानकारी</string>
+    <string name="confirmation_school_admin">मैं यहां पुष्टि करके कि मेरे द्वारा प्रदान की गई जानकारी सच है।</string>
+    <string name="create_account">खाता बनाएं</string>
 </resources>
