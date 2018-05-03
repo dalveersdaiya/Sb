@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
-import in.ajm.sb.activities.LoginRegister;
+import in.ajm.sb.activities.Register;
 
 public class ReadSmsOtp extends BroadcastReceiver {
     @Override
@@ -28,8 +28,8 @@ public class ReadSmsOtp extends BroadcastReceiver {
                     try {
 
                         if (senderNum.equals("TA-DOCOMO")) {
-                            LoginRegister loginRegister = new LoginRegister();
-                            loginRegister.setOtp(message);
+                            Register register = new Register();
+                            register.setOtp(message);
                         }
                     } catch (Exception e) {
                     }

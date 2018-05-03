@@ -113,6 +113,22 @@ public class BaseActivity extends LocalizationActivity {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_USER_ID);
     }
 
+    public static String getStudentId(Context context) {
+        return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_STUDENT_ID);
+    }
+
+    public static String getTeacherId(Context context) {
+        return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_TEACHER_ID);
+    }
+
+    public static String getParentId(Context context) {
+        return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_PARENT_ID);
+    }
+
+    public static String getSchoolAdminId(Context context) {
+        return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_SCHOOL_ADMIN_ID);
+    }
+
     public static String getLoggedInUserId(Context context) {
         return PreferencesManager.getPreferenceByKey(context, AppConfigs.PREFERENCE_LOGGEDIN_USER_ID);
     }

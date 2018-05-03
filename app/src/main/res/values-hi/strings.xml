@@ -596,4 +596,6 @@
     <string name="acc_info">खाते की जानकारी</string>
     <string name="confirmation_school_admin">मैं यहां पुष्टि करके कि मेरे द्वारा प्रदान की गई जानकारी सच है।</string>
     <string name="create_account">खाता बनाएं</string>
+    <string name="log_in_instead">इसके बजाय लॉग इन करें</string>
+    <string name="dont_have_acc">खाता नहीं है? एक बनाए</string>
 </resources>

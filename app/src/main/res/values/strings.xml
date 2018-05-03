@@ -212,12 +212,14 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="confirmation_school_admin">I here by confirm that the information provided by me is true.</string>
     <string name="create_account">Create Account</string>
+    <string name="title_activity_login">Login</string>
+    <string name="log_in_instead">Log in instead!!</string>
+    <string name="dont_have_acc">Don\'t have account\?. Create one.</string>
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
-
 
 
 </resources>

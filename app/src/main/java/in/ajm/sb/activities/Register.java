@@ -22,13 +22,14 @@ import in.ajm.sb.fragments.BottomSheetAddOtp;
 import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.interfaces.OnClickOtp;
 
-public class LoginRegister extends BaseActivity implements OnClickOtp {
+public class Register extends BaseActivity implements OnClickOtp {
 
     EditText etFirstName;
     EditText etLastname;
     EditText etMobileNumber;
     Button buttonSubmit;
     RelativeLayout root;
+    TextView tvLogIn;
     View.OnFocusChangeListener focuslistener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
@@ -53,7 +54,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkForTheme(this);
-        setContentView(R.layout.login_register_activity);
+        setContentView(R.layout.activity_register);
         viewByIds();
         applyClickListeners();
         setFocuslistener();
@@ -70,6 +71,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         etMobileNumber = (EditText) findViewById(R.id.et_mob_number);
         buttonSubmit = (Button) findViewById(R.id.button_submit);
         root = findViewById(R.id.root);
+        tvLogIn = findViewById(R.id.tv_log_in);
 
     }
 
@@ -86,6 +88,12 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
                 checkForEmptyForm();
             }
         });
+        tvLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToLogin();
+            }
+        });
     }
 
     public void openOtpBottomSheet() {
@@ -95,7 +103,7 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
 
     @Override
     public void onClickOtp() {
-        Intent intent = new Intent(LoginRegister.this, SelectUserType.class);
+        Intent intent = new Intent(Register.this, SelectUserType.class);
         startActivity(intent);
     }
 
@@ -166,6 +174,14 @@ public class LoginRegister extends BaseActivity implements OnClickOtp {
         user.setUserId(firstName + lastName + mobileNum);
         ((SchoolBook) getApplication()).setUser(user);
     }
+
+    public void moveToLogin(){
+        Intent intent = new Intent(this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
 
 
 }

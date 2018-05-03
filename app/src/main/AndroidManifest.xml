@@ -65,7 +65,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginRegister"
+            android:name=".activities.Register"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
@@ -134,6 +134,10 @@
         <activity
             android:name=".activities.school.SchoolDetails"
             android:label="@string/title_activity_school_details"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.Login"
+            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -98,6 +98,10 @@ public class StringHelper {
         return android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
     }
 
+    public static String getPlatform(Context context) {
+        return "Android";
+    }
+
     public static String formatAddress(String address, String city, String state, String zip) {
         String addressStr = StringHelper.isEmpty(address) ? "" : address;
         String cityStr = StringHelper.isEmpty(city) ? "" : city;
@@ -117,24 +121,5 @@ public class StringHelper {
         return formatAddress;
     }
 
-//	public static String formatAddressNewLine(String address, String city, String state, String zip)
-//	{
-//		String addressStr = StringHelper.isEmpty(address) ? "" : address;
-//		String cityStr = StringHelper.isEmpty(city) ? "" : city;
-//		String stateStr = StringHelper.isEmpty(state) ? "" : state;
-//		String zipStr = StringHelper.isEmpty(zip) ? "" : zip;
-//
-//		String formatAddress = addressStr;
-//		if (!StringHelper.isEmpty(cityStr))
-//			formatAddress += "\n" + cityStr;
-//
-//		if (!StringHelper.isEmpty(stateStr))
-//			formatAddress += ", " + stateStr;
-//
-//		if (!StringHelper.isEmpty(zipStr))
-//			formatAddress += ", " + zipStr;
-//
-//		return formatAddress;
-//	}
 
 }

@@ -601,4 +601,6 @@
     <string name="acc_info">Account info</string>
     <string name="confirmation_school_admin">I here by confirm that the information provided by me is true.</string>
     <string name="create_account">Create Account</string>
+    <string name="log_in_instead">Log in instead!!</string>
+
 </resources>

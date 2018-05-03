@@ -8,5 +8,5 @@ import in.ajm.sb.api.enums.ApiType;
  */
 public interface APICallback
 {
-	void onResult(String result, ApiType apitype, int resultCode);
+	void onResult(String result, ApiType apitype, int resultCode, String responseMessage);
 }

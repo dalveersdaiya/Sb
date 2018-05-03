@@ -61,7 +61,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     public void moveToLoginResgister() {
-        Intent intent = new Intent(SplashActivity.this, LoginRegister.class);
+        Intent intent = new Intent(SplashActivity.this, Register.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
