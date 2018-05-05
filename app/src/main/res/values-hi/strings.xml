@@ -598,4 +598,10 @@
     <string name="create_account">खाता बनाएं</string>
     <string name="log_in_instead">इसके बजाय लॉग इन करें</string>
     <string name="dont_have_acc">खाता नहीं है? एक बनाए</string>
+    <string name="please_select_type">कृपया उपयोगकर्ता प्रकार का चयन करें।</string>
+    <string name="please_select_specified">%1$s का चयन करें</string>
+    <string name="medium">माध्यम</string>
+    <string name="date">तारीख</string>
+    <string name="time">समय</string>
+    <string name="password_not_matching">पासवर्ड मैच नहीं कर रहा है</string>
 </resources>

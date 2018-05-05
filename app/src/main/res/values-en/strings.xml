@@ -602,5 +602,11 @@
     <string name="confirmation_school_admin">I here by confirm that the information provided by me is true.</string>
     <string name="create_account">Create Account</string>
     <string name="log_in_instead">Log in instead!!</string>
+    <string name="please_select_type">Please select user type.</string>
+    <string name="please_select_specified">Please select %1$s.</string>
+    <string name="medium">Medium</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="password_not_matching">Password does not match.</string>
 
 </resources>

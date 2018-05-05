@@ -215,6 +215,14 @@
     <string name="title_activity_login">Login</string>
     <string name="log_in_instead">Log in instead!!</string>
     <string name="dont_have_acc">Don\'t have account\?. Create one.</string>
+    <string name="please_select_type">Please select user type.</string>
+    <string name="please_select_specified">Please select %1$s.</string>
+    <string name="medium">Medium</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="password_not_matching">Password does not match.</string>
+
+
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->
     <!--<string name="pe"></string>-->

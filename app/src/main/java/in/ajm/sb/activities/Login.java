@@ -2,11 +2,14 @@ package in.ajm.sb.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,7 +18,9 @@ import java.util.HashMap;
 import in.ajm.sb.R;
 import in.ajm.sb.activities.student_parent.HomeTestActivity;
 import in.ajm.sb.api.callback.APICallback;
+import in.ajm.sb.api.caller.SchoolAdminLoginCaller;
 import in.ajm.sb.api.caller.StudentLoginCaller;
+import in.ajm.sb.api.caller.TeacherLoginCaller;
 import in.ajm.sb.api.enums.ApiType;
 import in.ajm.sb.api.model.UserCredentials;
 import in.ajm.sb.api.params.ApiParams;
@@ -28,6 +33,11 @@ public class Login extends BaseActivity implements APICallback {
     EditText etEmail;
     RelativeLayout root;
     Button buttonSubmit;
+    RadioGroup radio_group_type;
+    RadioButton radio_button_school_admin;
+    RadioButton radio_button_teacher;
+    RadioButton radio_button_student;
+    private int userType= 03;
 
     View.OnFocusChangeListener focuslistener = new View.OnFocusChangeListener() {
         @Override
@@ -49,6 +59,7 @@ public class Login extends BaseActivity implements APICallback {
         applyClickListeners();
         setFocuslistener();
         setEditorAction(etPassword);
+        setCheckChangeListeners();
     }
 
     public void viewByIds() {
@@ -57,6 +68,10 @@ public class Login extends BaseActivity implements APICallback {
         root = findViewById(R.id.root);
         tvRegister = findViewById(R.id.tv_register);
         buttonSubmit = (Button) findViewById(R.id.button_submit);
+        radio_group_type = findViewById(R.id.radio_group_type);
+        radio_button_school_admin = findViewById(R.id.radio_button_school_admin);
+        radio_button_teacher = findViewById(R.id.radio_button_teacher);
+        radio_button_student = findViewById(R.id.radio_button_student);
     }
 
     public void applyClickListeners() {
@@ -104,28 +119,17 @@ public class Login extends BaseActivity implements APICallback {
             etEmail.clearFocus();
             etPassword.requestFocus();
             isValid = false;
-
-        } else {
+        }
+        else if (radio_group_type.getCheckedRadioButtonId() == -1) {
+            showAlertBox(this, getResources().getString(R.string.please_select_type));
+            isValid = false;
+        }else {
             isValid = true;
-            callLoginApi(etEmail.getText().toString(), etPassword.getText().toString());
+            callLoginApi(etEmail.getText().toString(), etPassword.getText().toString(), userType);
         }
         return isValid;
     }
 
-
-    /**
-     * Calling login for student as of now
-     */
-    private void callLoginApi(String email, String password){
-        showLoader();
-        HashMap<String, String> loginHashMap = new HashMap<>();
-        loginHashMap.put("student[email]",email );
-        loginHashMap.put("student[password]",password );
-        ApiParams apiParams = new ApiParams();
-        apiParams.mHashMap = loginHashMap;
-        StudentLoginCaller.getInstance().post(this, apiParams, this, ApiType.LOGIN);
-
-    }
 
     public void moveToRegister() {
         Intent intent = new Intent(this, Register.class);
@@ -137,9 +141,8 @@ public class Login extends BaseActivity implements APICallback {
     @Override
     public void onResult(String result, ApiType apitype, int resultCode, String responseMessage) {
         hideLoader();
-        if(responseMessage.equalsIgnoreCase("You are Successfully Sign in.")){
-            if(apitype.equals(ApiType.LOGIN)){
-
+        if (responseMessage.equalsIgnoreCase("You are Successfully Sign in.")) {
+            if (apitype.equals(ApiType.LOGIN)) {
                 moveToHome();
             }
         }
@@ -162,5 +165,54 @@ public class Login extends BaseActivity implements APICallback {
         userCredentials.setUserType(userType);
         commitAndCloseRealmTransaction(userCredentials);
 
+    }
+
+    private void setCheckChangeListeners() {
+        radio_group_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.radio_button_school_admin) {
+                    userType = AppConfigs.SCHOOL_ADMIN_TYPE;
+                    radio_button_school_admin.setChecked(true);
+                } else if (checkedId == R.id.radio_button_teacher) {
+                    userType = AppConfigs.TEACHER_TYPE;
+                    radio_button_teacher.setChecked(true);
+                } else if (checkedId == R.id.radio_button_student) {
+                    userType = AppConfigs.STUDENT_TYPE;
+                    radio_button_student.setChecked(true);
+                }
+            }
+        });
+    }
+
+    /**
+     * Calling login for student as of now
+     */
+    private void callLoginApi(String email, String password, int userType) {
+        showLoader();
+        HashMap<String, String> loginHashMap = new HashMap<>();
+        if(userType == AppConfigs.SCHOOL_ADMIN_TYPE){
+            loginHashMap.put("admin[email]", email);
+            loginHashMap.put("admin[password]", password);
+        }else if (userType == AppConfigs.TEACHER_TYPE){
+            loginHashMap.put("teacher[email]", email);
+            loginHashMap.put("teacher[password]", password);
+        }else if(userType == AppConfigs.STUDENT_TYPE){
+            loginHashMap.put("student[email]", email);
+            loginHashMap.put("student[password]", password);
+        }
+        ApiParams apiParams = new ApiParams();
+        apiParams.mHashMap = loginHashMap;
+        callLoginAccordingToType(userType, apiParams);
+    }
+
+    public void callLoginAccordingToType(int userType, ApiParams apiParams){
+        if(userType == AppConfigs.SCHOOL_ADMIN_TYPE){
+            SchoolAdminLoginCaller.getInstance().post(this, apiParams, this, ApiType.LOGIN);
+        }else if (userType == AppConfigs.TEACHER_TYPE){
+            TeacherLoginCaller.getInstance().post(this, apiParams, this, ApiType.LOGIN);
+        }else if(userType == AppConfigs.STUDENT_TYPE){
+            StudentLoginCaller.getInstance().post(this, apiParams, this, ApiType.LOGIN);
+        }
     }
 }

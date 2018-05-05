@@ -1571,4 +1571,45 @@ public class BaseActivity extends LocalizationActivity {
             }
         }
     }
+
+    /**
+     * Since the date is in 23/10/2018 and
+     * needs to be shown in 23 september, 2018 format
+     *
+     * @param date
+     * @return
+     */
+    private String getFormattedDate(String date) {
+        String timeSlotStr = date;
+        String[] timeSlotRangeStr = timeSlotStr.split("/");
+        String month = timeSlotRangeStr[0];
+        String day = timeSlotRangeStr[1];
+        String year = timeSlotRangeStr[2];
+        if (month.equals("1") || month.equals("01")) {
+            month = "January";
+        } else if (month.equals("2") || month.equals("02")) {
+            month = "February";
+        } else if (month.equals("3") || month.equals("03")) {
+            month = "March";
+        } else if (month.equals("4") || month.equals("04")) {
+            month = "April";
+        } else if (month.equals("5") || month.equals("05")) {
+            month = "May";
+        } else if (month.equals("6") || month.equals("06")) {
+            month = "June";
+        } else if (month.equals("7") || month.equals("07")) {
+            month = "July";
+        } else if (month.equals("8") || month.equals("08")) {
+            month = "August";
+        } else if (month.equals("9") || month.equals("09")) {
+            month = "September";
+        } else if (month.equals("10") || month.equals("10")) {
+            month = "October";
+        } else if (month.equals("11") || month.equals("11")) {
+            month = "November";
+        } else if (month.equals("12") || month.equals("12")) {
+            month = "December";
+        }
+        return day + " " + month + " " + year;
+    }
 }
