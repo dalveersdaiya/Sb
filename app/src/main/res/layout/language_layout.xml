@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/my_text_color"
+    android:padding="10dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio_btn_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="English" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_hindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="हिंदी" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_japanese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日本語" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_french"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="français" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_german"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deutsche" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_portuguese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Português" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_russian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="русский" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_mandarin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:text="普通话" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_cantonese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:text="廣東話" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_spanish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Español" />
+    </RadioGroup>
+
+
+</LinearLayout>

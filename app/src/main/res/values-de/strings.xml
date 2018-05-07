@@ -1,0 +1,519 @@
+<resources>
+
+    <!--First Page-->
+    <string name="signintocompany">Melden Sie sich bei Ihrem Unternehmen an</string>
+    <string name="termscondition">AGB &amp; Bedingungen</string>
+    <string name="createnewcompany">Neues Unternehmen anlegen</string>
+    <string name="privacypolicy">Datenschutz-Bestimmungen</string>
+    <string name="yourcompanname">Ihr Firmenname</string>
+
+    <!--Login-->
+    <string name="loginwith_email">Einloggen mit Email</string>
+    <string name="loginwith_google">Einloggen mit Google</string>
+    <string name="loginwith_github">Einloggen mit Github</string>
+    <string name="automaticlink">Automatischer Link erhalten</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_youremail">Deine E-Mail</string>
+    <string name="hint_emailverify">E-Mail bestätigen</string>
+    <string name="hint_password">Passwort</string>
+    <string name="err_msg_name">Geben Sie Ihren vollständigen Namen ein</string>
+    <string name="err_msg">Name eingeben</string>
+    <string name="err_msg_email">Gültige E-Mail-Adresse eingeben</string>
+    <string name="err_msg_url">Geben Sie gültige URL ein</string>
+    <string name="err_msg_password">Geben Sie das Passwort ein</string>
+    <string name="err_emailverify">Geben Sie 6-stelligen Code ein</string>
+    <string name="message_email">Überprüfen Sie Ihre E-Mail, um die automatische Verbindung zu
+        erhalten.
+    </string>
+    <string name="title_activity_home">Home Aktivitäten</string>
+    <string name="title_activity_forgotpassword">Passwort vergessen</string>
+    <string name="err_msg_passwordmatch">Passwort stimmt nicht überein</string>
+
+    <string name="title_activity_task_detail">Aufgabe Detail</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sitzen amet, consectetur adipiscing elit.
+        Suspendisse a risus sed nulla faucibus commodo Donec iaculis pretium facilisis Liebling
+        rutrum varius arcu, sed viverra ipsum malesuada id. Suspendisse nec mauris eleifend, maximus
+        elit et, venenatis quam. Duis bei maximus nisi, ein congue sapien Curabitur facilisis bei
+        nisi vitae vulputate Phasellus vel orci et massa scelerisque ultrices Morbi eget ipsum
+        porttitor arcu volutpat convallis Pellentesque velit libero, interdum sed consequat bei,
+        eleifend et nisi. Interdum et malesuada zitiert ac ante ipsum primis im faucibus. Sed
+        convallis massa imperdiet, consectetur lectus sodales, finibus velit. Donec quis tortor vel
+        quam porta hendrerit Vivamus vitae consectetur orci, sed feugiat turpis
+    </string>
+    <string name="expand">Mehr sehen</string>
+    <string name="collapse">Weniger sehen</string>
+
+    //pop up menu
+
+    <!--Task pop menu-->
+    <string name="changetasktype">Aufgabenart ändern</string>
+    <string name="delete">Löschen</string>
+    <string name="assignto">Zuweisen</string>
+    <string name="delivered">Geliefert</string>
+
+
+    <!--Task Detail screen-->
+    <string name="task_settings">Rahmen</string>
+    <string name="task_description">Beschreibung :</string>
+    <string name="changetype">- Aufgabenart ändern</string>
+    <string name="tasktype">Aufgabentyp</string>
+    <string name="archivetask">Archivaufgabe</string>
+
+    <string name="e_starttime">Erwartete Startzeit</string>
+    <string name="e_endtime">Erwartete Endzeit</string>
+    <string name="a_starttime">Tatsächliche Startzeit</string>
+    <string name="a_endtime">Tatsächliche Endzeit</string>
+    <string name="title_activity_knowledge_base_detail">Wissensdatenbank</string>
+    <string name="type_your_message">Geben Sie Nachricht ein</string>
+
+
+    <!--HomePAge-->
+    <string name="noproject_message">Erstellen Sie ein Projekt, um die Exzellenz unseres Produktes zu erleben.
+    </string>
+    <string name="projecthint">Geben Sie den Projektnamen ein</string>
+    <!--<string name="termsandconditon">Terms &amp; Conditions</string>-->
+
+
+    <!--Company Url Screen-->
+    <string name="company_url_message">Der Firmenname existiert bereits. Bitte geben Sie ein anderes Unternehmen ein
+        Name.
+    </string>
+
+    <!--Forgot password-->
+    <string name="forgotpassword">Passwort vergessen</string>
+
+
+    <string name="continue__with_google">Weiter mit Google</string>
+    <string name="continue__with_github">Weiter mit Github</string>
+    <string name="or">Or</string>
+    <string name="enter_your_name">Gib deinen Namen ein</string>
+    <string name="enter_your_email">Geben sie ihre E-Mail Adresse ein</string>
+    <string name="enter_password">Passwort eingeben</string>
+    <string name="have_an_account">Ein Konto haben?</string>
+
+    <string name="github">GitHub</string>
+
+
+    <!--network error-->
+    <string name="api_error">Die Verbindung zum Server kann nicht hergestellt werden. Bitte versuchen Sie es später noch einmal ...
+    </string>
+    <string name="api_error400">Ungültige Anfrage. Bitte versuche es erneut...</string>
+    <string name="api_error404">Benutzer nicht gefunden. Bitte versuchen Sie einen anderen Benutzer ...</string>
+    <string name="api_error404422">Ungültige Anmeldeinformationen. Bitte versuchen Sie einen anderen Benutzer ...</string>
+    <string name="not_network_available">Keine Internetverbindung.</string>
+
+    <!--Profile-->
+    <string name="edit">BEARBEITEN</string>
+    <string name="f_name">Zuerst Name</string>
+    <string name="l_name">letzte Name</string>
+    <string name="profile">Profil</string>
+    <string name="title_activity_project_member">Projektmitglied</string>
+    <string name="edit_menu">Bearbeiten</string>
+    <string name="copy">Kopieren</string>
+    <string name="info">Info</string>
+    <string name="delete_menu">Löschen</string>
+
+    <!--Projectmember-->
+    <string name="add_user">Hinzufügen</string>
+    <string name="projectmembertitle">PROJEKT MITGLIED</string>
+    <string name="compabermembertitle">UNTERNEHMEN MITGLIED</string>
+    <string name="usertitle">BENUTZER HINZUFÜGEN</string>
+    <string name="admin">ADMINISTRATOR</string>
+    <string name="memberp">MITGLIED</string>
+    <string name="client">KLIENT</string>
+
+    <!--Company-->
+    <string name="companyname">Name der Firma</string>
+    <string name="title_activity_project_info">Projekt-Info-Aktivität</string>
+    <string name="title_activity_first_page_email_address">Erste Seite E-Mail-Adresse</string>
+
+    <!--New Design-->
+    <!--First page-->
+    <string name="first_page">Wir empfehlen Ihnen, Ihre E-Mail zu verwenden, wenn Sie ein Team für Ihr Team erstellen
+        Geschäft, Abteilung oder Projekt.
+    </string>
+    <string name="google_button_text">Google-Konten</string>
+    <string name="next_button_text">Nächster</string>
+    <string name="edittext_hint">E-Mail-Addresse</string>
+
+    <!--Second PAge-->
+    <string name="resend_button_text">Code erneut senden</string>
+
+    <!--Third Page-->
+    <string name="editext_hint_companyname">Nennen Sie Ihr Unternehmen</string>
+    <string name="third_page">Wir verwenden das, um Ihr Unternehmen zu nennen. Sie können es immer ändern
+        später.
+    </string>
+
+    <!--Fourth Page-->
+    <string name="fourthpage">Dies ist die Adresse, die Sie und Ihr Firmenmitglied verwenden, um zu unterzeichnen
+        in zu Vracto.
+    </string>
+    <string name="url_hint_first">https://</string>
+    <string name="url_hint_sec">Name der Firma</string>
+    <string name="url_hint_third">.vracto.com</string>
+    <string name="url_validation_errorxist">Das Unternehmen existiert nicht. Bitte versuche es erneut.</string>
+    <string name="url_validation_alreadyexist">Bereits angemeldet.</string>
+    <string name="url_validation_error">Wir haben die folgenden URLs ausprobiert, aber sie waren
+        nicht verfügbar:
+    </string>
+    <string name="url_api">Gute Nachrichten! Ihr Firmenname steht als Vracto URL zur Verfügung. Fühlen sich frei
+        ändere es, wenn du willst.
+    </string>
+    <string name="url_api_exsit">Wir haben eine verfügbare Option ausgefüllt (aber fühlen Sie sich frei, es zu ändern)
+        .Die folgende URL ist nicht verfügbar:
+    </string>
+
+    <!--Fifth page-->
+    <string name="username_hint">Benutzername</string>
+    <string name="fifth_page">Benutzername muss ganz Kleinbuchstaben sein. Es kann nicht länger als 21 Zeichen sein
+        und kann nur Buchstaben, Zahlen, Perioden, Bindestriche und Unterstriche enthalten.
+    </string>
+
+    <!--Sixth page-->
+    <string name="password_hint">Passwort</string>
+    <string name="sixth_page">Passwort muss mindestens 6 Zeichen lang sein, und kann nicht so sein
+        Passwort, 123456 oder abcdef.
+    </string>
+    <string name="agree_message">Wenn ich treffe, stimme ich zu, Sie verstehen und stimmen dem Vertrag zu
+        im Namen unserer AGB &amp; Bedingungen und unsere Datenschutzerklärung.
+    </string>
+    <string name="agree_text">ICH STIMME ZU</string>
+    <string name="new_password">Neues Kennwort</string>
+    <string name="confirm_password">Bestätige das Passwort</string>
+
+    <!--Signin first-->
+    <string name="company_url">Firmen-URL</string>
+    <string name="text">Dies ist die Adresse, die Sie verwenden, um sich bei Vracto anzumelden.</string>
+    <string name="button_text_reminder">Eine Erinnerung senden</string>
+    <string name="reset_password">Passwort zurücksetzen</string>
+    <string name="quick_login">Schnell Einloggen</string>
+    <string name="password_text">Ihr Passwort für die Firma</string>
+
+    <!--Reset password-->
+    <string name="emailsent">Gesendet! Check deine E-Mails</string>
+    <string name="password_is_not_valid">Kennwort ist ungültig</string>
+    <string name="title_activity_terms_and_condition">Geschäftsbedingung</string>
+    <string name="accept">Akzeptieren</string>
+    <string name="no_accept">Nicht akzeptiert</string>
+    <string name="add_new_kb">Neue Wissensbasis</string>
+    <string name="project_txt">Projekt</string>
+    <string name="search">Search</string>
+    <string name="select_org_name">Wählen Sie Organisation</string>
+    <!--<string name="click_to_continue">click to continue </string>-->
+
+    <string name="company_listtitle">Firmenübersicht</string>
+    <string name="reminder">Konten Erinnerung</string>
+    <!--More-->
+    <string name="status">Stellen Sie einen Status ein</string>
+    <string name="activity">Aktivität</string>
+    <string name="snooze">Snooze</string>
+    <string name="settingmore">Einstellungen</string>
+    <string name="pinnedtask">Fixierte Aufgabe</string>
+
+    <string name="loding">Laden...</string>
+    <string name="title_activity_setting_avtivity">Einstellung Avtivity</string>
+
+
+    <!--Setting page-->
+    <string name="editprofile">Profil bearbeiten</string>
+    <string name="notifications">Benachrichtigungen</string>
+    <string name="donotdistrub">Bitte nicht stören</string>
+    <string name="pushnotification">drücken Mitteilungen</string>
+    <string name="sendfeedback">Feedback abschicken</string>
+    <string name="signout">Abmelden</string>
+    <string name="language_c">Sprache</string>
+    <string name="setlanguage_c">Set Sprache</string>
+    <string name="language_english_c">Englisch</string>
+    <string name="language_hindi_c">Hindi</string>
+
+    <string name="enter_description">Beschreibung eingeben</string>
+    <string name="description">Beschreibung</string>
+    <string name="enter_kb_name">Bitte geben Sie Ihren Wissensbasisnamen ein</string>
+
+    <!--Logout-->
+    <string name="delete_text">Möchten Sie löschen?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Stornieren</string>
+    <string name="signout_message">Sind Sie sicher, dass Sie sich abmelden möchten?</string>
+    <string name="signout_button">AUSLOGGEN</string>
+    <string name="signout_cancel">STORNIEREN</string>
+    <string name="signout_title">
+        <b>Ausloggen</b>
+    </string>
+    <string name="exit">
+        <b>Ausfahrt app</b>
+    </string>
+    <string name="exitgroup">
+        <b>Ausfahrt</b>
+    </string>
+    <string name="linl_expire_msg">Es tut uns leid,Der Link ist abgelaufen</string>
+    <string name="login_text">Einloggen</string>
+    <string name="signup_text">Anmelden</string>
+    <string name="not_registered_msg">Ihr Gerät wurde nicht registriert, wenn Sie die App für gestartet haben
+        das erste Mal, da das Internet zu diesem Zeitpunkt nicht freigegeben wurde. Um Ihr Gerät registriert zu bekommen
+        Klicken Sie auf OK und starten Sie erneut.
+    </string>
+
+    <!--Chat list option menu-->
+    <string name="recent">KÜRZLICH</string>
+    <string name="group">GRUPPE</string>
+    <string name="directmsg">DIREKTE MELDUNGEN</string>
+    <string name="title_activity_task_member">TaskMember</string>
+
+    <!--TaskMember-->
+    <string name="taskmember">TASK MITGLIED</string>
+    <string name="emptylist_taskmember">Leere Aufgabe Mitgliederliste</string>
+    <string name="title_activity_home_page">Hauptseite Aktivität</string>
+    <string name="taskmemberuseralreadyexit">Aufgabenmitglied existiert bereits</string>
+
+    <string name="empty_user">leer Benutzerliste</string>
+
+    <string name="activate">AKTIVIEREN</string>
+    <string name="deactivate">DEAKTIVIEREN</string>
+    <string name="user_deactivated">Benutzer ist deaktiviert</string>
+    <string name="projectmemberuseralreadyexit">
+        Projektmitglied existiert bereits</string>
+    <string name="task_not_found">Aufgabe nicht gefunden</string>
+    <string name="member_not_exist">Mitglied existiert nicht</string>
+
+    <string name="uploading_image">Bild hochladen ...</string>
+    <string name="error_in_uploading_image">Fehler beim Hochladen von Bildern ...</string>
+
+    <string name="multiple_task">Mehrfache Aufgabe hinzufügen</string>
+    <string name="file_format_not_supported">Dateiformat nicht unterstützt</string>
+    <string name="file_not_found">Datei nicht gefunden</string>
+    <string name="title_activity_edit_plan">Plan bearbeiten</string>
+    <string name="title_activity_payment">Zahlung</string>
+    <string name="kb_not_found">Wissensdatenbank nicht gefunden</string>
+    <string name="empty_chatList">Leere Chat-Liste</string>
+    <string name="empty_commentList">Leere Kommentarliste</string>
+    <string name="exit_group_message">Du kannst keine Nachricht an diese Gruppe senden, weil du nicht mehr bist
+        ein Teilnehmer.
+    </string>
+
+    <!--New Strings -->
+    <string name="this_comment_has_been_removed">Dieser Kommentar wurde entfernt.</string>
+    <string name="exit_">Ausgang</string>
+    <string name="empty_user_list">Leer Benutzerliste</string>
+    <string name="selected_values">Ausgewählt :</string>
+    <string name="direct_message">Direktnachricht</string>
+    <string name="new_group">Neue Gruppe</string>
+    <string name="empty_group_list">Leere Gruppenliste</string>
+    <!--<string name="springy_head">Springy Heads</string>-->
+    <!--<string name="click_to_configure">Click to configure</string>-->
+    <string name="attach">Anfügen</string>
+    <string name="edit_message_from">Nachricht bearbeiten aus</string>
+    <string name="remove">Entfernen</string>
+    <string name="test_company">test.vracto.com</string>
+    <string name="plan">Planen</string>
+    <string name="organisation">Organisation</string>
+    <string name="add_type">Typ hinzufügen</string>
+    <string name="for_necessary_permissions">Erlauben Chat-Modul, um notwendige Berechtigungen zu erhalten
+    </string>
+    <string name="are_u_sure">Bist du sicher?</string>
+    <string name="deleting_the_type">Wenn Sie den Typ löschen, werden alle zugehörigen Aufgaben gelöscht Daten!
+    </string>
+    <string name="credit_card">Kreditkarte</string>
+    <string name="saved_card">Gespeicherte Karte</string>
+    <string name="comment">Kommentar</string>
+    <string name="knowledgebase">Wissensbasis</string>
+    <string name="not_create_chat">Nicht Chat erstellen</string>
+    <string name="group_admin">Gruppe \ n admin</string>
+    <string name="company_domain">.vracto.com</string>
+    <string name="deactivated">Deaktiviert</string>
+    <string name="like">Mögen</string>
+    <string name="love">Liebe</string>
+    <string name="haha">Haha</string>
+    <string name="cry">Schrei</string>
+    <string name="angry">Wütend</string>
+    <string name="wow">Beeindruckend</string>
+    <string name="add_users">Benutzer hinzufügen</string>
+    <string name="select_existing_user">Wählen Sie den vorhandenen Benutzer aus</string>
+    <string name="remaining">Verbleibend</string>
+    <string name="group_member">Gruppenmitglied</string>
+    <string name="expiry_date">Verfallsdatum</string>
+    <string name="deleting_the_attachment">Löschen des Anhangs!</string>
+    <string name="new_">Neu</string>
+    <string name="scheduled">Geplant</string>
+    <string name="completed">Abgeschlossen</string>
+    <string name="on_going">Auf gehend</string>
+    <string name="closed">Abgeschlossen</string>
+    <string name="board">Tafel</string>
+    <string name="title">Titel</string>
+    <string name="project">Projekt</string>
+    <string name="company">Unternehmen</string>
+    <string name="task_name">Aufgabennname</string>
+    <string name="view_more">Mehr sehen</string>
+    <string name="timing">Zeitliche Koordinierung</string>
+    <string name="now_playing">spielen jetzt </string>
+    <string name="now_playing_">spielen jetzt ...</string>
+    <string name="seek_bw">Rückwärts</string>
+    <string name="play">Spielen</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Halt</string>
+
+    <string name="forward">Vorwärts</string>
+    <string name="track_start_time">00:00:00</string>
+    <string name="team_member">Teammitglied</string>
+    <string name="member_type">Mitgliedstyp</string>
+    <string name="group_name">Gruppenname</string>
+    <string name="android_developers">Android-Entwickler</string>
+    <string name="random_text_line">
+        Ich habe dir die benötigten Details geschickt du hast mich gebeten, zu senden.
+    </string>
+    <string name="ago">vor</string>
+    <string name="after">nach</string>
+    <string name="before">Vor</string>
+    <string name="min_ago">Vor 2 min</string>
+    <string name="new_task">Neue Aufgabe</string>
+    <string name="file">Datei</string>
+    <string name="delete_group">Gruppe löschen</string>
+    <string name="exit_group">Exit-Gruppe</string>
+    <string name="payment">Zahlung</string>
+    <string name="name">Name</string>
+    <string name="random_text">Zufälliger Text</string>
+    <string name="file_name">Dateiname</string>
+    <string name="one">1</string>
+    <string name="sending">Senden</string>
+    <string name="sending_">Senden...</string>
+    <string name="sent">Gesendet</string>
+    <string name="read">Lesen</string>
+    <string name="user">Benutzer</string>
+    <string name="read_by">Lesen durch</string>
+    <string name="remaining_two">Verbleibend 2</string>
+    <string name="delivered_to">Geliefert an</string>
+    <string name="add_member">Mitglied hinzufügen</string>
+    <string name="edit_message_from_">Nachricht von Benutzernamen um 13:00 Uhr bearbeiten</string>
+    <string name="bug">Fehler</string>
+    <string name="update_project">Projekt aktualisieren</string>
+    <string name="member_type_">Mitgliedstyp</string>
+    <string name="subscribe">Abonnieren</string>
+    <string name="request_password">anfordern Passwort</string>
+    <string name="previous_password">Vorheriges Passwort</string>
+    <string name="create_project">Projekt erstellen</string>
+    <string name="create">Erstellen</string>
+    <string name="select_member">Mitglied auswählen</string>
+    <string name="assign">Zuordnen</string>
+    <string name="cvc">CVC</string>
+    <string name="postal_code_">Postleitzahl</string>
+    <string name="card_number">Kartennummer</string>
+    <string name="expiry_date_">Kartennummer</string>
+    <string name="mmy_yy">MM/YY</string>
+    <string name="random_date">31. Juli 2018</string>
+    <string name="take_photo">Foto machen</string>
+    <string name="select_photo">Foto auswählen</string>
+    <string name="select_company">Firma auswählen</string>
+    <string name="wanna_exit">Willst du beenden?</string>
+    <string name="add_task">Aufgabe hinzufügen</string>
+    <string name="random_group_member">Sie, Dev &amp; 2 andere</string>
+    <string name="search_">Suche...</string>
+    <string name="material_title">material Title</string>
+    <string name="message">Nachricht</string>
+    <string name="no_recent_chats">Kein aktueller Chat</string>
+    <string name="please_enter_name">Bitte geben Sie den Namen ghngjhjkjh ein</string>
+    <string name="offline">Offline</string>
+    <string name="connecting">Anschliessen</string>
+    <string name="connecting_">Anschliessen...</string>
+    <string name="current_plan">Derzeitiger Plan :</string>
+    <string name="free">Frei</string>
+    <string name="paid">Bezahlt</string>
+    <string name="lorem_ipsum_short">Lorem ipsum ist lorem ipsum</string>
+    <string name="expiring_notice">Visa 4242 endet am 21.07.2018</string>
+    <string name="task">Aufgabe</string>
+
+    <string name="at">beim</string>
+    <string name="we_have_sent_code">Wir haben einen sechsstelligen Bestätigungscode gesendet</string>
+    <string name="enter_it_here">Geben Sie es hier ein, um Ihre E-Mail-Adresse zu bestätigen.</string>
+    <string name="we_have_sent_an_email">=Wir haben eine E-Mail angeschickt</string>
+    <string name="it_has_instructions">Es hat Anweisungen zum Einstieg.</string>
+    <string name="that_will_help">Das hilft Ihnen, Ihr Passwort zurückzusetzen.</string>
+    <string name="vracto_lower_case">vracto</string>
+    <string name="please_enter_task_name">Bitte geben Sie Ihren Aufgabennamen ein</string>
+    <string name="push_notification">Push-Benachrichtigung:</string>
+    <string name="task_member">Aufgabe Mitglied</string>
+    <string name="is_deactivated">ist deaktiviert.</string>
+    <string name="you_in_brackets">(Sie)</string>
+    <string name="you">Sie</string>
+    <string name="wiki">Wiki</string>
+    <string name="please_wait_downloading">Bitte warten ... \ nDownloading</string>
+    <string name="exp_our_chat_feature">Erleben Sie unser Chatmodul! Klicken Sie einfach auf Zulassen und bekommen
+        notwendige Berechtigungen Es ist ein einmaliger Prozess.
+    </string>
+    <string name="enable_chat_feature">Sie können die Chat-Funktion später jederzeit aktivieren!</string>
+
+    <string name="photo">Foto</string>
+    <string name="attachment">Befestigung</string>
+
+    <string name="copy_text">Text kopiert</string>
+    <string name="copy_url">URL kopiert</string>
+    <string name="retrieving_previous_chat">Vorherige Nachrichten abrufen</string>
+    <string name="retrieving_previous_comments">Vorherige Kommentare abrufen</string>
+
+
+    <!--<string name="title_activity_task_detail_bottom">TaskDetailBottomActivity</string>-->
+
+    <string name="add_kb">Wissensbasis</string>
+    <string name="add_taskmember">Mitglied</string>
+    <string name="add_attachmentt">Befestigung</string>
+    <string name="add_comment">Einen Kommentar hinzufügen</string>
+    <string name="added">hinzugefügt</string>
+
+    <string name="done">ERLEDIGT</string>
+    <string name="new_group_error">Wähle mindestens zwei Mitglieder.</string>
+
+    <!-- Tneme colour-->
+
+    <string name="theme_c">Thema</string>
+    <string name="select_theme">Thema wählen</string>
+
+    <string name="red_theme">Rot</string>
+    <string name="green_theme">Grün</string>
+    <string name="purple_theme">Lila</string>
+    <string name="blue_theme">Blau</string>
+    <string name="yellow_theme">Gelb</string>
+    <string name="orange_theme">Orange</string>
+    <string name="pink_theme">Rosa</string>
+    <string name="cyan_theme">Cyan</string>
+    <string name="brown_theme">Braun</string>
+    <string name="teal_theme">Aquamarin</string>
+    <string name="black_theme">Schwarz</string>
+    <string name="white_theme">Weiß</string>
+    <string name="default_theme_theme">Standard</string>
+
+
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="purple">Purple</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="orange">Orange</string>
+    <string name="pink">Pink</string>
+    <string name="cyan">Cyan</string>
+    <string name="brown">Brown</string>
+    <string name="teal">Teal</string>
+    <string name="black">Black</string>
+    <string name="white">White</string>
+    <string name="default_theme">Default</string>
+
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="setlanguage">Set language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_french">French</string>
+    <string name="language_german">German</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_mandarin">Mandarin</string>
+    <string name="language_cantonese">Cantonese</string>
+    <string name="language_spanish">Spanish</string>
+
+    <string name="add_multiple_kb">Mehrere Wissensbasen hinzufügen</string>
+    <string name="add_multiple">Mehrfach hinzufügen</string>
+    <string name="load_more">Laden Sie mehr</string>
+    <string name="add_knowledgebase">Fügen Sie Wissensdatenbank hinzu</string>
+
+</resources>

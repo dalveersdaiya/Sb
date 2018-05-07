@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.ajm.sb.activities.FindSchool"
+    tools:showIn="@layout/activity_find_school">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_find_school"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/enter_school_code"/>
+
+    <in.ajm.sb.customviews.EditTextRegular
+        android:id="@+id/et_enter_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:hint="@string/enter_code_here"
+        android:layout_margin="10dp"
+        android:maxLength="6"
+        android:padding="5dp" />
+
+    <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_search"
+        android:theme="@style/AppTheme.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="@string/enter" />
+    </LinearLayout>
+</RelativeLayout>

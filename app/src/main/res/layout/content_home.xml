@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.ajm.sb.activities.HomeActivity"
+    tools:showIn="@layout/activity_home">
+
+    <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/profile"
+        android:theme="@style/AppTheme.Button" />
+
+    <in.ajm.sb.customviews.ButtonRegular
+        android:id="@+id/button_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_test"
+        android:layout_centerInParent="true"
+        android:text="@string/settings"
+        android:theme="@style/AppTheme.Button" />
+
+</RelativeLayout>

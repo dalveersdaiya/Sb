@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.ajm.sb.activities.Login"
+    tools:showIn="@layout/activity_login">
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="?android:actionBarSize"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/login_text"
+        android:textColor="?attr/my_text_color_inverse"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/second_card_width"
+            android:layout_height="@dimen/second_card_height"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="?attr/colorAccent"
+            app:cardCornerRadius="@dimen/first_card_radius"
+            app:cardElevation="0dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/first_card_width"
+                android:layout_height="@dimen/first_card_height"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="@dimen/second_card_radius"
+                app:cardElevation="0dp">
+
+                <in.ajm.sb.customviews.EditTextRegular
+                    android:id="@+id/et_email"
+                    android:layout_width="@dimen/edit_text_width"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textWebEmailAddress"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/et_lastName"
+                    android:textColor="?attr/my_text_color"
+                    android:textColorHint="?attr/my_text_color"
+                    android:textSize="12sp" />
+            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/second_card_width"
+            android:layout_height="@dimen/second_card_height"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="?attr/colorAccent"
+            app:cardCornerRadius="@dimen/first_card_radius"
+            app:cardElevation="0dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/first_card_width"
+                android:layout_height="@dimen/first_card_height"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#00ffffff"
+                app:cardCornerRadius="@dimen/second_card_radius"
+                app:cardElevation="0dp">
+
+                <in.ajm.sb.customviews.EditTextRegular
+                    android:id="@+id/et_password"
+                    android:layout_width="@dimen/edit_text_width"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/password_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textWebPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="?attr/my_text_color"
+                    android:textColorHint="?attr/my_text_color"
+                    android:textSize="12sp" />
+            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
+
+
+        <RadioGroup
+            android:id="@+id/radio_group_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_school_admin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/school_admin"
+                android:textColor="?attr/my_text_color_inverse" />
+
+            <RadioButton
+                android:id="@+id/radio_button_teacher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/teacher"
+                android:textColor="?attr/my_text_color_inverse" />
+
+            <RadioButton
+                android:id="@+id/radio_button_student"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/student"
+                android:textColor="?attr/my_text_color_inverse" />
+
+        </RadioGroup>
+
+        <in.ajm.sb.customviews.TextViewRegularlight
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:selectableItemBackground"
+            android:id="@+id/tv_register"
+            android:text="@string/dont_have_acc"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:textColor="?attr/colorAccent"
+            />
+
+
+        <in.ajm.sb.customviews.ButtonRegular
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:text="@string/submit"
+            android:theme="@style/AppTheme.Button" />
+    </LinearLayout>
+
+</RelativeLayout>

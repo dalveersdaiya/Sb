@@ -1,0 +1,324 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--&lt;!&ndash; you should set typeface which you want to override with TypefaceUtil &ndash;&gt;-->
+    <!--&lt;!&ndash;<item name="android:typeface">serif</item>&ndash;&gt;-->
+    <!--</style>-->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
+        </item>
+
+        <item name="my_theme_light">@color/colorAccentLight</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="myColorAccent">@color/colorAccent</item>
+        <item name="myColorPrimaryDark">@color/colorPrimary</item>
+        <item name="myColorPrimary">@color/colorPrimary</item>
+
+
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!--CUSTOM THEMES-->
+    <style name="MyTheme.Black" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/black_hex_15</item>
+        <item name="colorPrimary">@color/black_hex_15</item>
+        <item name="colorAccent">@color/black_hex_10</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/black_hex_15</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/black_hex_15
+        </item>
+
+        <item name="my_theme_light">@color/black_hex_4</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="myColorPrimaryDark">@color/black_hex_15</item>
+        <item name="myColorPrimary">@color/black_hex_15</item>
+        <item name="myColorAccent">@color/black_hex_10</item>
+
+    </style>
+
+    <style name="MyTheme.Red" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/red_900</item>
+        <item name="colorPrimary">@color/red_700</item>
+        <item name="colorAccent">@color/red_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/red_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/red_900</item>
+
+        <item name="my_theme_light">@color/red_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/red_900</item>
+        <item name="myColorPrimary">@color/red_700</item>
+        <item name="myColorAccent">@color/red_500</item>
+    </style>
+
+    <style name="MyTheme.Green" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/green_900</item>
+        <item name="colorPrimary">@color/green_700</item>
+        <item name="colorAccent">@color/green_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/green_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/green_900</item>
+
+        <item name="my_theme_light">@color/green_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/green_900</item>
+        <item name="myColorPrimary">@color/green_700</item>
+        <item name="myColorAccent">@color/green_500</item>
+    </style>
+
+    <style name="MyTheme.Purple" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/deep_purple_900</item>
+        <item name="colorPrimary">@color/deep_purple_700</item>
+        <item name="colorAccent">@color/deep_purple_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_purple_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_purple_900
+        </item>
+
+        <item name="my_theme_light">@color/deep_purple_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/deep_purple_900</item>
+        <item name="myColorPrimary">@color/deep_purple_700</item>
+        <item name="myColorAccent">@color/deep_purple_500</item>
+
+    </style>
+
+    <style name="MyTheme.Blue" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/light_blue_900</item>
+        <item name="colorPrimary">@color/light_blue_700</item>
+        <item name="colorAccent">@color/light_blue_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/light_blue_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/light_blue_900
+        </item>
+
+        <item name="my_theme_light">@color/light_blue_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/light_blue_900</item>
+        <item name="myColorPrimary">@color/light_blue_700</item>
+        <item name="myColorAccent">@color/light_blue_500</item>
+
+    </style>
+
+    <style name="MyTheme.Yellow" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/yellow_900</item>
+        <item name="colorPrimary">@color/yellow_700</item>
+        <item name="colorAccent">@color/yellow_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/yellow_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/yellow_900</item>
+
+        <item name="my_theme_light">@color/yellow_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/yellow_900</item>
+        <item name="myColorPrimary">@color/yellow_700</item>
+        <item name="myColorAccent">@color/yellow_500</item>
+
+
+    </style>
+
+    <style name="MyTheme.Orange" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/deep_orange_900</item>
+        <item name="colorPrimary">@color/deep_orange_700</item>
+        <item name="colorAccent">@color/deep_orange_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_orange_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_orange_900
+        </item>
+
+        <item name="my_theme_light">@color/deep_orange_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/deep_orange_900</item>
+        <item name="myColorPrimary">@color/deep_orange_700</item>
+        <item name="myColorAccent">@color/deep_orange_500</item>
+
+    </style>
+
+    <style name="MyTheme.Pink" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/pink_900</item>
+        <item name="colorPrimary">@color/pink_700</item>
+        <item name="colorAccent">@color/pink_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/pink_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/pink_900</item>
+
+        <item name="my_theme_light">@color/pink_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/pink_900</item>
+        <item name="myColorPrimary">@color/pink_700</item>
+        <item name="myColorAccent">@color/pink_500</item>
+    </style>
+
+    <style name="MyTheme.Cyan" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/cyan_900</item>
+        <item name="colorPrimary">@color/cyan_700</item>
+        <item name="colorAccent">@color/cyan_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/cyan_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/cyan_900</item>
+
+        <item name="my_theme_light">@color/cyan_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/cyan_900</item>
+        <item name="myColorPrimary">@color/cyan_700</item>
+        <item name="myColorAccent">@color/cyan_500</item>
+    </style>
+
+    <style name="MyTheme.Brown" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/brown_900</item>
+        <item name="colorPrimary">@color/brown_700</item>
+        <item name="colorAccent">@color/brown_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/brown_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/brown_900</item>
+
+        <item name="my_theme_light">@color/brown_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/brown_900</item>
+        <item name="myColorPrimary">@color/brown_700</item>
+        <item name="myColorAccent">@color/brown_500</item>
+
+    </style>
+
+    <style name="MyTheme.Teal" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/teal_900</item>
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorAccent">@color/teal_500</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/teal_900</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/teal_900</item>
+
+        <item name="my_theme_light">@color/teal_200</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/teal_900</item>
+        <item name="myColorPrimary">@color/teal_700</item>
+        <item name="myColorAccent">@color/teal_500</item>
+    </style>
+
+    <style name="MyTheme.White" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/white_hex_15</item>
+        <item name="colorPrimary">@color/white_overlay</item>
+        <item name="colorAccent">@color/white_hex_6</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white_hex_15</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white_hex_15
+        </item>
+
+        <item name="my_theme_light">@color/white_hex_5</item>
+        <item name="my_text_color">@color/black_hex_15</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="myColorPrimaryDark">@color/white_hex_15</item>
+        <item name="myColorPrimary">@color/white_overlay</item>
+        <item name="myColorAccent">@color/white_hex_6</item>
+    </style>
+
+    <style name="MyTheme.Default" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBarOverlay">true</item>
+
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
+        </item>
+
+        <item name="my_theme_light">@color/colorAccentLight</item>
+        <item name="my_text_color_inverse">@color/black_hex_15</item>
+        <item name="my_text_color">@color/white_hex_15</item>
+        <item name="myColorAccent">@color/colorAccent</item>
+        <item name="myColorPrimaryDark">@color/colorPrimary</item>
+        <item name="myColorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/action_button_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/action_button_padding_horizontal</item>
+        <item name="android:textSize">@dimen/action_button_text_size</item>
+        <item name="android:colorButtonNormal" tools:targetApi="lollipop">?attr/colorPrimary</item>
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/my_text_color</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/my_text_color</item>
+    </style>
+</resources>

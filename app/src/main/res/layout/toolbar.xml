@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:theme="@style/AppTheme.AppBarOverlay">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?attr/colorPrimary"
+		app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+		app:popupTheme="@style/AppTheme.PopupOverlay">
+
+		<in.ajm.sb.customviews.TextViewMedium
+			android:id="@+id/toolbar_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:layout_gravity="center"
+			android:ellipsize="end"
+			android:gravity="center"
+			android:maxLines="1"
+			android:singleLine="true"
+			android:text="@string/app_name"
+			android:textColor="?attr/my_text_color"
+			android:textSize="16sp" />
+
+		<ImageView
+			android:id="@+id/iv_add_call"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="5dp"
+			android:visibility="gone"
+			android:layout_marginRight="10dp"
+			android:layout_gravity="center_vertical|right"/>
+
+		<ImageView
+			android:id="@+id/iv_options"
+			android:layout_width="30dp"
+			android:layout_height="30dp"
+			android:padding="5dp"
+			android:visibility="gone"
+			android:layout_marginRight="10dp"
+			android:layout_gravity="center_vertical|right"/>
+
+
+
+	</android.support.v7.widget.Toolbar>
+
+</android.support.design.widget.AppBarLayout>

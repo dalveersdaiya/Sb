@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:clickable="true"
+    android:background="?android:selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <in.ajm.sb.customviews.CircularImageView
+        android:layout_width="60dp"
+        android:id="@+id/image_user"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="fitXY"
+        android:layout_height="60dp" />
+
+    <in.ajm.sb.customviews.TextViewBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/classname"
+        android:gravity="center"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:textSize="18sp"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/tv_user_title"
+        tools:targetApi="lollipop" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,509 @@
+<resources>
+
+    <!--First Page-->
+    <string name="signintocompany">登錄您的公司</string>
+    <string name="termscondition">條款 &amp;條件</string>
+    <string name="createnewcompany">創建新公司</string>
+    <string name="privacypolicy">隱私政策</string>
+    <string name="yourcompanname">您的公司名稱</string>
+
+    <!--Login-->
+    <string name="loginwith_email">用電子郵件登錄</string>
+    <string name="loginwith_google">用Google登錄</string>
+    <string name="loginwith_github">用Github登錄</string>
+    <string name="automaticlink">獲取自動鏈接</string>
+    <string name="hint_name">名稱</string>
+    <string name="hint_email">電子郵件</string>
+    <string name="hint_youremail">你的郵件</string>
+    <string name="hint_emailverify">電子郵件驗證</string>
+    <string name="hint_password">密碼</string>
+    <string name="err_msg_name">輸入您的全名</string>
+    <string name="err_msg">輸入名字</string>
+    <string name="err_msg_email">輸入有效的電郵地址</string>
+    <string name="err_msg_url">輸入有效的網址</string>
+    <string name="err_msg_password">輸入密碼</string>
+    <string name="err_emailverify">輸入6位數字代碼</string>
+    <string name="message_email">檢查您的電子郵件以獲得自動鏈接。</string>
+    <string name="title_activity_home">家庭活動</string>
+    <string name="title_activity_forgotpassword">忘記密碼</string>
+    <string name="err_msg_passwordmatch">密碼不匹配</string>
+
+    <string name="title_activity_task_detail">任務細節</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        a risus sed nulla faucibus commodo. Donec iaculis pretium facilisis. Praesent rutrum varius
+        arcu, sed viverra ipsum malesuada id. Suspendisse nec mauris eleifend, maximus elit et,
+        venenatis quam. Duis at maximus nisi, a congue sapien. Curabitur facilisis at nisi vitae
+        vulputate. Phasellus vel orci et massa scelerisque ultrices. Morbi eget ipsum porttitor arcu
+        volutpat convallis. Pellentesque velit libero, interdum sed consequat at, eleifend et nisi.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed convallis massa imperdiet,
+        consectetur lectus sodales, finibus velit. Donec quis tortor vel quam porta hendrerit.
+        Vivamus vitae consectetur orci, sed feugiat turpis.
+    </string>
+
+    <string name="expand">查看更多</string>
+    <string name="collapse">查看較少</string>
+
+    //pop up menu
+
+    <!--Task pop menu-->
+    <string name="changetasktype">更改任務類型</string>
+    <string name="delete">刪除</string>
+    <string name="assignto">分配給</string>
+    <string name="delivered">交付</string>
+
+
+    <!--Task Detail screen-->
+    <string name="task_settings">設置</string>
+    <string name="task_description">描述 :</string>
+    <string name="changetype">- 更改任務類型</string>
+    <string name="tasktype">任務類型</string>
+    <string name="archivetask">存檔任務</string>
+
+    <string name="e_starttime">預計開始時間</string>
+    <string name="e_endtime">預期結束時間</string>
+    <string name="a_starttime">實際開始時間</string>
+    <string name="a_endtime">實際結束時間</string>
+    <string name="title_activity_knowledge_base_detail">知識庫細節</string>
+    <string name="type_your_message">鍵入消息</string>
+
+
+    <!--HomePAge-->
+    <string name="noproject_message">創建一個項目，以體驗我們的產品的卓越。
+    </string>
+    <string name="projecthint">輸入項目名稱</string>
+    <!--<string name="termsandconditon">Terms &amp; Conditions</string>-->
+
+
+    <!--Company Url Screen-->
+    <string name="company_url_message">公司名稱已存在。請進入另一家公司
+        名稱。
+    </string>
+
+    <!--Forgot password-->
+    <string name="forgotpassword">忘記密碼</string>
+
+
+    <string name="continue__with_google">繼續使用Google</string>
+    <string name="continue__with_github">繼續Github</string>
+    <string name="or">要么</string>
+    <string name="enter_your_name">輸入你的名字</string>
+    <string name="enter_your_email">輸入你的電子郵箱</string>
+    <string name="enter_password">輸入密碼</string>
+    <string name="have_an_account">有一個賬戶？</string>
+
+    <string name="github">GitHub</string>
+
+
+    <!--network error-->
+    <string name="api_error">無法建立與服務器的連接。請稍後再試...
+    </string>
+    <string name="api_error400">無效的請求。請再試一次...</string>
+    <string name="api_error404">找不到用戶請嘗試其他用戶...</string>
+    <string name="api_error404422">無效證件。請嘗試其他用戶...</string>
+    <string name="not_network_available">沒有網絡連接。</string>
+
+    <!--Profile-->
+    <string name="edit">編輯</string>
+    <string name="f_name">名字</string>
+    <string name="l_name">末名稱</string>
+    <string name="profile">輪廓</string>
+    <string name="title_activity_project_member">項目成員</string>
+    <string name="edit_menu">編輯</string>
+    <string name="copy">複製</string>
+    <string name="info">信息</string>
+    <string name="delete_menu">刪除</string>
+
+    <!--Projectmember-->
+    <string name="add_user">加</string>
+    <string name="projectmembertitle">項目會員</string>
+    <string name="compabermembertitle">公司會員</string>
+    <string name="usertitle">添加用戶</string>
+    <string name="admin">管理員</string>
+    <string name="memberp">會員</string>
+    <string name="client">客戶</string>
+
+    <!--Company-->
+    <string name="companyname">公司名</string>
+    <string name="title_activity_project_info">項目信息活動</string>
+    <string name="title_activity_first_page_email_address">第一頁電子郵件地址</string>
+
+    <!--New Design-->
+    <!--First page-->
+    <string name="first_page">
+        如果您為您的業務，部門或項目創建了一個團隊，我們建議您使用工作電子郵件。
+    </string>
+    <string name="google_button_text">Google帳戶</string>
+    <string name="next_button_text">下一個</string>
+    <string name="edittext_hint">電子郵件地址</string>
+
+    <!--Second PAge-->
+    <string name="resend_button_text">重新發送驗證碼</string>
+
+    <!--Third Page-->
+    <string name="editext_hint_companyname">給你的公司命名</string>
+    <string name="third_page">我們會用這個來命名你的公司。你可以隨時改變它。
+
+    </string>
+
+    <!--Fourth Page-->
+    <string name="fourthpage">這是您和您的公司會員將用於登錄Vracto的地址。
+    </string>
+    <string name="url_hint_first">https://</string>
+    <string name="url_hint_sec">公司名</string>
+    <string name="url_hint_third">.vracto.com</string>
+    <string name="url_validation_errorxist">該公司不存在。請再試一次。</string>
+    <string name="url_validation_alreadyexist">已經登錄</string>
+    <string name="url_validation_error">我們嘗試了以下URL，但不可用：
+    </string>
+    <string name="url_api">好消息！您的公司名稱可作為Vracto URL使用。隨意地改變它，如果你喜歡。
+    </string>
+    <string name="url_api_exsit">我們預先填寫了一個可用的選項（但是隨意更改它）
+        以下網址不可用：
+    </string>
+
+    <!--Fifth page-->
+    <string name="username_hint">用戶名</string>
+    <string name="fifth_page">用戶名必須全部小寫。它不能超過21個字符
+        並且只能包含字母，數字，句點，連字符和下劃線。
+    </string>
+
+    <!--Sixth page-->
+    <string name="password_hint">密碼</string>
+    <string name="sixth_page">密碼長度必須至少為6個字符，不可以密碼，123456或abcdef。
+    </string>
+    <string name="agree_message">通過點擊我同意，您了解並同意合同
+        代表我們的條款＆amp;條件和我們的隱私政策。
+    </string>
+    <string name="agree_text">我同意</string>
+    <string name="new_password">新密碼</string>
+    <string name="confirm_password">確認密碼</string>
+
+    <!--Signin first-->
+    <string name="company_url">公司 URL</string>
+    <string name="text">這是您用於登錄Vracto的地址。</string>
+    <string name="button_text_reminder">發送提醒</string>
+    <string name="reset_password">重設密碼</string>
+    <string name="quick_login">快速登錄</string>
+    <string name="password_text">您公司的密碼</string>
+
+    <!--Reset password-->
+    <string name="emailsent">已發送！查看你的電子郵件</string>
+    <string name="password_is_not_valid">密碼無效</string>
+    <string name="title_activity_terms_and_condition">條款和條件</string>
+    <string name="accept">接受</string>
+    <string name="no_accept">不接受</string>
+    <string name="add_new_kb">新知識庫</string>
+    <string name="project_txt">項目</string>
+    <string name="search">搜索</string>
+    <string name="select_org_name">選擇組織</string>
+    <!--<string name="click_to_continue">click to continue </string>-->
+
+    <string name="company_listtitle">公司名單</string>
+    <string name="reminder">帳號提醒</string>
+    <!--More-->
+    <string name="status">設置狀態</string>
+    <string name="activity">活動</string>
+    <string name="snooze">打盹</string>
+    <string name="settingmore">設置</string>
+    <string name="pinnedtask">固定任務</string>
+
+    <string name="loding">載入中...</string>
+    <string name="title_activity_setting_avtivity">設置活動</string>
+
+
+    <!--Setting page-->
+    <string name="editprofile">編輯個人資料</string>
+    <string name="notifications">通知</string>
+    <string name="donotdistrub">請勿打擾</string>
+    <string name="pushnotification">推送通知</string>
+    <string name="sendfeedback">發送反饋</string>
+    <string name="signout">退出</string>
+
+    <string name="language_c">語言</string>
+    <string name="setlanguage_c">設置語言</string>
+    <string name="language_english_c">英語</string>
+    <string name="language_hindi_c">印地語</string>
+
+    <string name="enter_description">輸入說明</string>
+    <string name="description">描述</string>
+    <string name="enter_kb_name">請輸入您的知識庫名稱</string>
+
+    <!--Logout-->
+    <string name="delete_text">要刪除嗎？</string>
+    <string name="ok">好</string>
+    <string name="cancel">取消</string>
+    <string name="signout_message">你確定要退出嗎？</string>
+    <string name="signout_button">登出</string>
+    <string name="signout_cancel">取消</string>
+    <string name="signout_title">
+        <b>登出</b>
+    </string>
+    <string name="exit">
+        <b>退出應用程式</b>
+    </string>
+    <string name="exitgroup">
+        <b>出口</b>
+    </string>
+    <string name="linl_expire_msg">對不起，鏈接已過期</string>
+    <string name="login_text">登錄</string>
+    <string name="signup_text">註冊</string>
+    <string name="not_registered_msg">您的設備在您啟動應用程序時未註冊第一次，互聯網當時沒有啟用。讓您的設備註冊單擊確定並重新開始。
+    </string>
+
+    <!--Chat list option menu-->
+    <string name="recent">最近</string>
+    <string name="group">組</string>
+    <string name="directmsg">直接信息</string>
+    <string name="title_activity_task_member">任務成員</string>
+
+    <!--TaskMember-->
+    <string name="taskmember">任務成員</string>
+    <string name="emptylist_taskmember">空任務成員列表</string>
+    <string name="title_activity_home_page">主頁活動</string>
+    <string name="taskmemberuseralreadyexit">任務成員已經存在</string>
+
+    <string name="empty_user">空用戶列表</string>
+
+    <string name="activate">啟用</string>
+    <string name="deactivate">未啟用</string>
+    <string name="user_deactivated">用戶未啟用</string>
+    <string name="projectmemberuseralreadyexit">項目成員已經存在</string>
+    <string name="task_not_found">找不到任務</string>
+    <string name="member_not_exist">會員不存在</string>
+
+    <string name="uploading_image">上傳圖片...</string>
+    <string name="error_in_uploading_image">錯誤在上傳圖像...</string>
+
+    <string name="multiple_task">添加多個任務</string>
+    <string name="file_format_not_supported">不支持文件格式</string>
+    <string name="file_not_found">文件未找到</string>
+    <string name="title_activity_edit_plan">編輯計劃</string>
+    <string name="title_activity_payment">付款</string>
+    <string name="kb_not_found">知識庫未找到</string>
+    <string name="empty_chatList">空聊天列表</string>
+    <string name="empty_commentList">空註釋列表</string>
+    <string name="exit_group_message">
+        您不能向此群組發送消息因為你不再是參與者。
+    </string>
+
+    <!--New Strings -->
+    <string name="this_comment_has_been_removed">此評論已被刪除。</string>
+    <string name="exit_">出口</string>
+    <string name="empty_user_list">空用戶列表</string>
+    <string name="selected_values">選擇：</string>
+    <string name="direct_message">直接留言</string>
+    <string name="new_group">新組</string>
+    <string name="empty_group_list">空組列表</string>
+    <!--<string name="springy_head">Springy Heads</string>-->
+    <!--<string name="click_to_configure">Click to configure</string>-->
+    <string name="attach">連接</string>
+    <string name="edit_message_from">編輯消息</string>
+    <string name="remove">去掉</string>
+    <string name="test_company">test.vracto.com</string>
+    <string name="plan">計劃</string>
+    <string name="organisation">組織</string>
+    <string name="add_type">添加類型</string>
+    <string name="for_necessary_permissions">允許聊天模塊獲取必要的權限。
+    </string>
+    <string name="are_u_sure">你確定？</string>
+    <string name="deleting_the_type">刪除類型將刪除所有相關任務和相關數據！
+    </string>
+    <string name="credit_card">信用卡</string>
+    <string name="saved_card">保存卡</string>
+    <string name="comment">評論</string>
+    <string name="knowledgebase">知識庫</string>
+    <string name="not_create_chat">不創建聊天</string>
+    <string name="group_admin">組\ n管理員</string>
+    <string name="company_domain">.vracto.com</string>
+    <string name="deactivated">停用</string>
+    <string name="like">喜歡</string>
+    <string name="love">愛</string>
+    <string name="haha">哈哈</string>
+    <string name="cry">哭</string>
+    <string name="angry">憤怒</string>
+    <string name="wow">哇</string>
+    <string name="add_users">添加用戶</string>
+    <string name="select_existing_user">選擇現有用戶</string>
+    <string name="remaining">剩餘</string>
+    <string name="group_member">集團成員</string>
+    <string name="expiry_date">到期日</string>
+    <string name="deleting_the_attachment">刪除附件！</string>
+    <string name="new_">新</string>
+    <string name="scheduled">計劃</string>
+    <string name="completed">已完成</string>
+    <string name="on_going">已完成</string>
+    <string name="closed">關閉</string>
+    <string name="board">板</string>
+    <string name="title">標題</string>
+    <string name="project">項目</string>
+    <string name="company">公司</string>
+    <string name="task_name">任務名稱</string>
+    <string name="view_more">查看更多</string>
+    <string name="timing">定時</string>
+    <string name="now_playing">現在玩</string>
+    <string name="now_playing_">現在玩...</string>
+    <string name="seek_bw">落後</string>
+    <string name="play">玩</string>
+    <string name="pause">暫停</string>
+    <string name="stop">停止</string>
+
+    <string name="forward">前鋒</string>
+    <string name="track_start_time">00:00:00</string>
+    <string name="team_member">隊員</string>
+    <string name="member_type">會員類型</string>
+    <string name="group_name">組名</string>
+    <string name="android_developers">Android開發者</string>
+    <string name="random_text_line">我已經向您發送要求我發送的詳細信息。
+    </string>
+    <string name="ago">前</string>
+    <string name="after">後</string>
+    <string name="before">之前</string>
+    <string name="min_ago">2分鐘前</string>
+    <string name="new_task">新任務</string>
+    <string name="file">文件</string>
+    <string name="delete_group">刪除組</string>
+    <string name="exit_group">退出組</string>
+    <string name="payment">付款</string>
+    <string name="name">名稱</string>
+    <string name="random_text">隨機文字</string>
+    <string name="file_name">文件名</string>
+    <string name="one">1</string>
+    <string name="sending">發出</string>
+    <string name="sending_">發出...</string>
+    <string name="sent">發送</string>
+    <string name="read">讀</string>
+    <string name="user">用戶</string>
+    <string name="read_by">閱讀</string>
+    <string name="remaining_two">剩餘2</string>
+    <string name="delivered_to">送到了（送去了</string>
+    <string name="add_member">添加會員</string>
+    <string name="edit_message_from_">在1:00 PM從用戶名編輯郵件</string>
+    <string name="bug">錯誤</string>
+    <string name="update_project">更新項目</string>
+    <string name="member_type_">會員類型</string>
+    <string name="subscribe">訂閱</string>
+    <string name="request_password">要求密碼</string>
+    <string name="previous_password">以前的密碼</string>
+    <string name="create_project">創建項目</string>
+    <string name="create">創建</string>
+    <string name="select_member">選擇會員</string>
+    <string name="assign">分配</string>
+    <string name="cvc">CVC</string>
+    <string name="postal_code_">郵政編碼</string>
+    <string name="card_number">卡號</string>
+    <string name="expiry_date_">卡號</string>
+    <string name="mmy_yy">MM/YY</string>
+    <string name="random_date">31日，2018年7月</string>
+    <string name="take_photo">拍照</string>
+    <string name="select_photo">選擇照片</string>
+    <string name="select_company">選擇公司</string>
+    <string name="wanna_exit">想退出？</string>
+    <string name="add_task">添加任務</string>
+    <string name="random_group_member">你，開發商2其他</string>
+    <string name="search_">搜索...</string>
+    <string name="material_title">材料標題</string>
+    <string name="message">信息</string>
+    <string name="no_recent_chats">沒有最近的聊天</string>
+    <string name="please_enter_name">請輸入名稱</string>
+    <string name="offline">離線</string>
+    <string name="connecting">連</string>
+    <string name="connecting_">連...</string>
+    <string name="current_plan">當前計劃:</string>
+    <string name="free">自由</string>
+    <string name="paid">付費</string>
+    <string name="lorem_ipsum_short">Lorem ipsum is lorem ipsum</string>
+    <string name="expiring_notice">Visa 4242於21/07/2018過期</string>
+    <string name="task">任務</string>
+
+    <string name="at">在</string>
+    <string name="we_have_sent_code">我們發送了一個六位數確認碼</string>
+    <string name="enter_it_here">在此輸入確認您的電子郵件地址。</string>
+    <string name="we_have_sent_an_email">我們發送了一封電子郵件</string>
+    <string name="it_has_instructions">它有開始的說明。</string>
+    <string name="that_will_help">這將有助於您重置密碼。</string>
+    <string name="vracto_lower_case">vracto</string>
+    <string name="please_enter_task_name">請輸入您的任務名稱</string>
+    <string name="push_notification">推送通知：</string>
+    <string name="task_member">任務成員</string>
+    <string name="is_deactivated">被禁用。</string>
+    <string name="you_in_brackets">(您)</string>
+    <string name="you">您</string>
+    <string name="wiki">維基</string>
+    <string name="please_wait_downloading">請稍候... \ n下載</string>
+    <string name="exp_our_chat_feature">體驗我們的聊天模塊！只需點擊allow和get必要的權限。它是一次性的過程。
+    </string>
+    <string name="enable_chat_feature">隨時可以啟用聊天功能！</string>
+
+    <string name="photo">照片</string>
+    <string name="attachment">附件</string>
+
+    <string name="copy_text">已復製文字</string>
+    <string name="copy_url">網址已復制</string>
+    <string name="retrieving_previous_chat">檢索以前的消息</string>
+    <string name="retrieving_previous_comments">檢索以前的評論</string>
+
+
+    <!--<string name="title_activity_task_detail_bottom">TaskDetailBottomActivity</string>-->
+
+    <string name="add_kb">知識庫</string>
+    <string name="add_taskmember">會員</string>
+    <string name="add_attachmentt">附件</string>
+    <string name="add_comment">添加評論</string>
+    <string name="added">添加</string>
+
+    <string name="done">完成</string>
+    <string name="new_group_error">選擇至少兩個成員。</string>
+    <string name="theme_c">主題</string>
+    <string name="select_theme">選擇主題</string>
+
+    <string name="red_theme">紅</string>
+    <string name="green_theme">綠色</string>
+    <string name="purple_theme">紫色</string>
+    <string name="blue_theme">藍色</string>
+    <string name="yellow_theme">黃色</string>
+    <string name="orange_theme">橙子</string>
+    <string name="pink_theme">粉</string>
+    <string name="cyan_theme">青色</string>
+    <string name="brown_theme">棕色</string>
+    <string name="teal_theme">蒂爾</string>
+    <string name="black_theme">黑色</string>
+    <string name="white_theme">白色</string>
+    <string name="default_theme_theme">默認</string>
+
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="purple">Purple</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="orange">Orange</string>
+    <string name="pink">Pink</string>
+    <string name="cyan">Cyan</string>
+    <string name="brown">Brown</string>
+    <string name="teal">Teal</string>
+    <string name="black">Black</string>
+    <string name="white">White</string>
+    <string name="default_theme">Default</string>
+
+    <string name="language">Language</string>
+    <string name="setlanguage">Set language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_french">French</string>
+    <string name="language_german">German</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_mandarin">Mandarin</string>
+    <string name="language_cantonese">Cantonese</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="theme">Theme</string>
+
+    <string name="add_multiple_kb">添加多個知識庫</string>
+    <string name="add_multiple">添加多個</string>
+    <string name="load_more">裝載更多</string>
+    <string name="add_knowledgebase">添加知識庫</string>
+
+
+
+
+</resources>
