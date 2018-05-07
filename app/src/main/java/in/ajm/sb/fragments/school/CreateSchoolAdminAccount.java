@@ -177,6 +177,10 @@ public class CreateSchoolAdminAccount extends Fragment implements View.OnClickLi
         loginHashMap.put("admin[academic_status]", user.getAcademicStatus());
         loginHashMap.put("admin[roles]", user.getRoles());
         loginHashMap.put("admin[permission]", user.getPermission());
+        loginHashMap.put("admin[facebook_link]", "www.facebook.com");
+        loginHashMap.put("admin[twitter_link]", "www.twitter.com");
+        loginHashMap.put("admin[linkedin_link]", "www.linkedin.com");
+        loginHashMap.put("admin[instagram_link]", "www.instagram.com");
         ApiParams apiParams = new ApiParams();
         apiParams.mHashMap = loginHashMap;
         SchoolAdminSignUpCaller.getInstance().post(getActivity(), apiParams, this, ApiType.REGISTER);

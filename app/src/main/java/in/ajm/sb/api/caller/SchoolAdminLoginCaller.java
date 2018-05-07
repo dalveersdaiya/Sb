@@ -42,16 +42,18 @@ public class SchoolAdminLoginCaller extends BaseCaller {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 try {
-                    final JsonObject responseObject = response.body();
-                    if (responseObject.get("type").getAsString().equalsIgnoreCase("success")) {
-                        responseMessage = responseObject.get("message").getAsString();
+                    final JsonObject jsonObject = response.body();
+                    final JsonObject response_Status = jsonObject.get("response_status").getAsJsonObject();
+                    if (response_Status.get("response_type").getAsString().equalsIgnoreCase("success")) {
+                        responseMessage = response_Status.get("response_message").getAsString();
+                        responseCode = response_Status.get("response_code").getAsInt();
 
                         Realm realm = Realm.getDefaultInstance();
                         realm.executeTransactionAsync(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 Gson gson = generateGsonObj();
-                                JsonObject schoolAdminDataObject = responseObject.getAsJsonObject("data");
+                                JsonObject schoolAdminDataObject = jsonObject.getAsJsonObject("response_data");
                                 SchoolAdmin schoolAdmin = gson.fromJson(schoolAdminDataObject, SchoolAdmin.class);
                                 realm.copyToRealmOrUpdate(schoolAdmin);
 
@@ -62,13 +64,13 @@ public class SchoolAdminLoginCaller extends BaseCaller {
                         }, new Realm.Transaction.OnSuccess() {
                             @Override
                             public void onSuccess() {
-                                callback.onResult("", apiType, 0, responseMessage);
+                                callback.onResult("", apiType, responseCode, responseMessage);
                             }
                         }, new Realm.Transaction.OnError() {
                             @Override
                             public void onError(Throwable error) {
                                 LoggerCustom.printStackTrace(error);
-                                callback.onResult("", apiType, 0, responseMessage);
+                                callback.onResult("", apiType, responseCode, responseMessage);
                             }
                         });
 

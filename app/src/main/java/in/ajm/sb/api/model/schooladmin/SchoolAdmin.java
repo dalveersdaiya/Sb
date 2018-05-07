@@ -12,87 +12,87 @@ public class SchoolAdmin extends RealmObject {
     @PrimaryKey
     @SerializedName("id")
     @Expose
-    String studentId;
+    String studentId = "";
 
     @SerializedName("email")
     @Expose
-    String studentEmail;
+    String studentEmail= "";
 
     @SerializedName("created_at")
     @Expose
-    String createdAt;
+    String createdAt= "";
 
     @SerializedName("updated_at")
     @Expose
-    String updatedAt;
+    String updatedAt= "";
 
     @SerializedName("fname")
     @Expose
-    String fName;
+    String fName= "";
 
     @SerializedName("lname")
     @Expose
-    String lName;
+    String lName= "";
 
     @SerializedName("gender")
     @Expose
-    String gender;
+    String gender= "";
 
     @SerializedName("dob")
     @Expose
-    String dob;
+    String dob= "";
 
     @SerializedName("is_married")
     @Expose
-    String isMarried;
+    String isMarried= "";
 
     @SerializedName("main_mobile")
     @Expose
-    String mainMobile;
+    String mainMobile= "";
 
     @SerializedName("other_contact")
     @Expose
-    String otherContact;
+    String otherContact= "";
 
     @SerializedName("address")
     @Expose
-    String address;
+    String address= "";
 
     @SerializedName("city")
     @Expose
-    String city;
+    String city= "";
 
     @SerializedName("state")
     @Expose
-    String state;
+    String state= "";
 
     @SerializedName("zip")
     @Expose
-    String zip;
+    String zip= "";
 
     @SerializedName("personal_email")
     @Expose
-    String personalEmail;
+    String personalEmail= "";
 
     @SerializedName("facebook_link")
     @Expose
-    String facebookLink;
+    String facebookLink= "";
 
     @SerializedName("twitter_link")
     @Expose
-    String twitterLink;
+    String twitterLink= "";
 
     @SerializedName("linkedin_link")
     @Expose
-    String linkedinLink;
+    String linkedinLink= "";
 
     @SerializedName("instagram_link")
     @Expose
-    String instagramLink;
+    String instagramLink= "";
 
     @SerializedName("pan_no")
     @Expose
-    String pan_no;
+    String pan_no= "";
 
     @SerializedName("addhar_no")
     @Expose
@@ -100,32 +100,32 @@ public class SchoolAdmin extends RealmObject {
 
     @SerializedName("inistitute")
     @Expose
-    String inistitute;
+    String inistitute= "";
 
     @SerializedName("academic_status")
     @Expose
-    String academic_status;
+    String academic_status= "";
 
     @SerializedName("addhar_no")
     @Expose
-    String addhar_no;
+    String addhar_no= "";
 
     @SerializedName("roles")
     @Expose
-    String roles;
+    String roles= "";
 
     @SerializedName("permission")
     @Expose
-    String permission;
+    String permission= "";
 
     @SerializedName("last_access_time")
     @Expose
-    String last_access_time;
+    String last_access_time= "";
 
 
     @SerializedName("authentication_token")
     @Expose
-    String authentication_token;
+    String authentication_token= "";
 
 
 }
