@@ -33,6 +33,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.JobIntentService;
 
+import in.ajm.sb_library.jobscheduling_one.JobIdsInternal;
+import in.ajm.sb_library.jobscheduling_one.JobProxy;
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
+
 
 /**
  * @author rwondratschek

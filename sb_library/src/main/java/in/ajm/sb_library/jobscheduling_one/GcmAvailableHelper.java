@@ -6,8 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.List;
+
+import in.ajm.sb_library.BuildConfig;
+import in.ajm.sb_library.jobscheduling_one.gcm.JobProxyGcm;
+import in.ajm.sb_library.jobscheduling_one.gcm.PlatformGcmService;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
 
 /**
  * @author rwondratschek

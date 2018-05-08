@@ -221,6 +221,10 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="password_not_matching">Password does not match.</string>
+    <string name="title_activity_expandable_class_example">ExpandableClassExample</string>
+    <string name="title_activity_test_new_modules">TestNewModules</string>
+    <string name="add_class">Add Class</string>
+    <string name="add_section">Add Section</string>
 
 
     <!--<string name="pe"></string>-->

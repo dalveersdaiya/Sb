@@ -28,7 +28,6 @@ package in.ajm.sb_library.jobscheduling_one.util.support;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 
-
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.ByteArrayInputStream;
@@ -37,6 +36,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
 
 /**
  * Compat class which provides similar features like {@link PersistableBundle}. Besides a boolean array

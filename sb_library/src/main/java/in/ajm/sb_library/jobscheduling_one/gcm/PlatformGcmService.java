@@ -25,6 +25,17 @@
  */
 package in.ajm.sb_library.jobscheduling_one.gcm;
 
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.GcmTaskService;
+import com.google.android.gms.gcm.TaskParams;
+
+import in.ajm.sb_library.jobscheduling_one.Job;
+import in.ajm.sb_library.jobscheduling_one.JobManager;
+import in.ajm.sb_library.jobscheduling_one.JobManagerCreateException;
+import in.ajm.sb_library.jobscheduling_one.JobProxy;
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
+
 /**
  * @author rwondratschek
  */

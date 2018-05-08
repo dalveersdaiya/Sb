@@ -31,6 +31,8 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+import in.ajm.sb_library.jobscheduling_one.v21.JobProxy21;
 
 
 /**

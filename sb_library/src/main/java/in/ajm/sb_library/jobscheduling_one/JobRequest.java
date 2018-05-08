@@ -37,6 +37,10 @@ import android.text.TextUtils;
 
 import java.util.concurrent.TimeUnit;
 
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
+import in.ajm.sb_library.jobscheduling_one.util.JobPreconditions;
+import in.ajm.sb_library.jobscheduling_one.util.support.PersistableBundleCompat;
+
 /**
  * Holds information about the pending {@link Job}. Use the {@link Builder} to create an instance.
  * Once built you can either call {@link #schedule()} or {@link JobManager#schedule(JobRequest)}
