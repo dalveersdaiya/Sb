@@ -604,4 +604,7 @@
     <string name="date">तारीख</string>
     <string name="time">समय</string>
     <string name="password_not_matching">पासवर्ड मैच नहीं कर रहा है</string>
+
+    <string name="add_class">कक्षा जोड़ें</string>
+    <string name="add_section">अनुभाग जोड़ें</string>
 </resources>

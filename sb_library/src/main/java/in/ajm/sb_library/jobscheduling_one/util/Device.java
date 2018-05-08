@@ -37,6 +37,8 @@ import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.v4.net.ConnectivityManagerCompat;
 
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+
 
 /**
  * Helper for checking the device state.

@@ -35,8 +35,20 @@ import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
+import com.google.android.gms.gcm.GcmNetworkManager;
 
 import java.util.List;
+
+import in.ajm.sb_library.jobscheduling_one.gcm.JobProxyGcm;
+import in.ajm.sb_library.jobscheduling_one.v14.JobProxy14;
+import in.ajm.sb_library.jobscheduling_one.v14.PlatformAlarmReceiver;
+import in.ajm.sb_library.jobscheduling_one.v14.PlatformAlarmService;
+import in.ajm.sb_library.jobscheduling_one.v14.PlatformAlarmServiceExact;
+import in.ajm.sb_library.jobscheduling_one.v19.JobProxy19;
+import in.ajm.sb_library.jobscheduling_one.v21.JobProxy21;
+import in.ajm.sb_library.jobscheduling_one.v21.PlatformJobService;
+import in.ajm.sb_library.jobscheduling_one.v24.JobProxy24;
+import in.ajm.sb_library.jobscheduling_one.v26.JobProxy26;
 
 /**
  * All available APIs.

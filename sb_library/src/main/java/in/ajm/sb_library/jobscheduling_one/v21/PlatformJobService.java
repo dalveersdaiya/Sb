@@ -31,6 +31,13 @@ import android.app.job.JobService;
 import android.os.Build;
 import android.os.Bundle;
 
+import in.ajm.sb_library.jobscheduling_one.Job;
+import in.ajm.sb_library.jobscheduling_one.JobConfig;
+import in.ajm.sb_library.jobscheduling_one.JobManager;
+import in.ajm.sb_library.jobscheduling_one.JobProxy;
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
+
 
 /**
  * @author rwondratschek

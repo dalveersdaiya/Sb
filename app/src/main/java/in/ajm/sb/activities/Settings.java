@@ -18,6 +18,7 @@ import in.ajm.sb.fragments.BottomSheetSwitchUser;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.PreferencesManager;
 import in.ajm.sb.interfaces.OnUserChanged;
+import in.ajm.sb.testpackages.TestNewModules;
 
 public class Settings extends BaseActivity implements View.OnClickListener, OnUserChanged {
 
@@ -179,7 +180,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     }
 
     public void openTestActivity(){
-        Intent intent = new Intent(this, ChipTestActivity.class);
+        Intent intent = new Intent(this, TestNewModules.class);
         startActivity(intent);
     }
 
