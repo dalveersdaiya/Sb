@@ -16,6 +16,8 @@ public class AppConfigs {
     public static int TEACHER_TYPE = 02;
     public static int PARENT_TYPE = 01;
     public static int SCHOOL_ADMIN_TYPE = 04;
+    public static int ADD_CLASS = 05;
+    public static int ADD_SECTION = 06;
     public static String PREFERENCE_STUDENT_ID = "STUDENT_ID";
     public static String PREFERENCE_TEACHER_ID = "TEACHER_ID";
     public static String PREFERENCE_PARENT_ID = "PARENT_ID";

@@ -32,9 +32,12 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-
 import java.util.HashSet;
 import java.util.Set;
+
+import in.ajm.sb_library.jobscheduling_one.JobConfig;
+import in.ajm.sb_library.jobscheduling_one.JobProxy;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
 
 /**
  * @author rwondratschek

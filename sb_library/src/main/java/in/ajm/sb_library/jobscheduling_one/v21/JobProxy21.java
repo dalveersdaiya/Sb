@@ -36,6 +36,12 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
+import in.ajm.sb_library.jobscheduling_one.JobProxy;
+import in.ajm.sb_library.jobscheduling_one.JobProxyIllegalStateException;
+import in.ajm.sb_library.jobscheduling_one.JobRequest;
+import in.ajm.sb_library.jobscheduling_one.util.JobCat;
+import in.ajm.sb_library.jobscheduling_one.util.JobUtil;
+
 
 /**
  * @author rwondratschek
