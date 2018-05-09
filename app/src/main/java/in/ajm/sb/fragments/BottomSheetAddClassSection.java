@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import in.ajm.sb.R;
 import in.ajm.sb.helper.AppConfigs;
@@ -31,6 +32,7 @@ public class BottomSheetAddClassSection extends BottomSheetDialogFragment implem
     Button buttonSubmitOtp;
     int type = AppConfigs.ADD_CLASS;
     String className = "";
+    TextView tvHeader;
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
 
@@ -113,6 +115,7 @@ public class BottomSheetAddClassSection extends BottomSheetDialogFragment implem
     public void viewById(View contentView) {
         buttonSubmitOtp = (Button) contentView.findViewById(R.id.button_submit);
         etAdd = (EditText) contentView.findViewById(R.id.et_add);
+        tvHeader =  contentView.findViewById(R.id.tv_header);
     }
 
     public void applyClickListeners() {
@@ -122,8 +125,10 @@ public class BottomSheetAddClassSection extends BottomSheetDialogFragment implem
     private void setUi(int type){
         if(type == AppConfigs.ADD_CLASS){
             etAdd.setHint(getString(R.string.add_class));
+            tvHeader.setText(getResources().getString(R.string.add_class));
         }else{
             etAdd.setHint(getString(R.string.add_section));
+            tvHeader.setText(getResources().getString(R.string.add_section));
         }
     }
 
@@ -136,7 +141,7 @@ public class BottomSheetAddClassSection extends BottomSheetDialogFragment implem
                     if(type == AppConfigs.ADD_CLASS){
                         onClickAddClassSection.onAddClass(etAdd.getText().toString());
                     }else{
-                        onClickAddClassSection.onAddSection(etAdd.getText().toString(), className);
+                        onClickAddClassSection.onAddSection(className, etAdd.getText().toString() );
                     }
                 }
                 break;
