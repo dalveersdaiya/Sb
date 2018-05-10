@@ -11,6 +11,7 @@
         android:padding="10dp"
         android:textStyle="bold"
         android:layout_gravity="center"
+        android:id="@+id/tv_header"
         android:textSize="16dp"
         android:gravity="center"
         android:text="@string/add_class"/>
