@@ -99,6 +99,10 @@ public class HomeTestActivity extends BaseActivity
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    public void setViewPagerPosition(int position){
+        viewPager.setCurrentItem(position);
+    }
+
     public void setHomePageTitle(String title) {
         textViewTitleHome.setText(title);
     }
