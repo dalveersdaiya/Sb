@@ -171,6 +171,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
         Bundle bundle = new Bundle();
         bundle.putString("org_id", getSelectedOrgId());
         ((HomeTestActivity) getActivity()).openNewFragment(new ProfileFragment(), true, bundle);
+        ((HomeTestActivity) getActivity()).setViewPagerPosition(1);
     }
 
     @Override
