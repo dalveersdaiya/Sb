@@ -31,6 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
+                android:layout_gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
                 android:paddingTop="10dp"
                 />

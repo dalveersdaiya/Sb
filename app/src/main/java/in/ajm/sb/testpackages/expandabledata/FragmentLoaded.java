@@ -42,9 +42,6 @@ public  class FragmentLoaded extends android.support.v4.app.Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment, container, false);
         classes = getArguments().getParcelable("classes");
-//        ((TextView) findById(v, R.id.name_txt)).setText(dog.getName());
-//        ((TextView) findById(v, R.id.favorite_txt)).setText(dog.getFavoriteFood());
-//        ((TextView) findById(v, R.id.age_txt)).setText(String.valueOf(dog.getAge()));
         return view;
     }
 
@@ -70,6 +67,8 @@ public  class FragmentLoaded extends android.support.v4.app.Fragment {
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                ((ExpandableWithSlide)getActivity()).setCurrentSectionPosition(groupPosition);
+
                 return false;
             }
         });
@@ -84,5 +83,9 @@ public  class FragmentLoaded extends android.support.v4.app.Fragment {
         sectionAdapter = new SectionAdapter(getActivity(), sectionsList);
         recyclerView.setAdapter(sectionAdapter);
         recyclerView.setVisibility(View.GONE);
+    }
+
+    public void keepGroupExpanded(int groupPosition){
+        expandableListView.setSelectedGroup(groupPosition);
     }
 }
