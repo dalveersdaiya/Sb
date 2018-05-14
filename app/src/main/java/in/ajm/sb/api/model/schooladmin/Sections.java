@@ -16,6 +16,14 @@ public class Sections extends RealmObject {
     @Expose
     String sectionName;
 
+    @SerializedName("className")
+    @Expose
+    String className;
+
+    @SerializedName("class_id")
+    @Expose
+    String classID;
+
 
     public static Sections getBySectionName(String sectionName) {
         return Realm.getDefaultInstance().where(Sections.class).equalTo("sectionName", sectionName).findFirst();

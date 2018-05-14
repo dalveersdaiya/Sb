@@ -140,12 +140,16 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.expandabledata.ExpandableClassExample"
+            android:name=".testpackages.ExpandableClassExample"
             android:label="@string/title_activity_expandable_class_example"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".testpackages.TestNewModules"
             android:label="@string/title_activity_test_new_modules"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".testpackages.expandabledata.ExpandableWithSlide"
+            android:label="@string/title_activity_expandable_with_slide"
             android:theme="@style/AppTheme"></activity>
     </application>
 

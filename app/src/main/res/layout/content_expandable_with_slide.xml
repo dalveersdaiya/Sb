@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.ajm.sb.testpackages.expandabledata.ExpandableWithSlide"
+    tools:showIn="@layout/activity_expandable_with_slide">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/my_text_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <in.ajm.sb.customviews.ButtonRegular
+            android:id="@+id/button_class"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/add_class"
+            android:theme="@style/AppTheme.Button" />
+
+        <in.ajm.sb.customviews.ButtonRegular
+            android:id="@+id/button_section"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/add_section"
+            android:theme="@style/AppTheme.Button" />
+
+        <in.ajm.sb.customviews.ButtonRegular
+            android:id="@+id/button_student"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/add_student"
+            android:theme="@style/AppTheme.Button" />
+    </LinearLayout>
+
+
+</RelativeLayout>

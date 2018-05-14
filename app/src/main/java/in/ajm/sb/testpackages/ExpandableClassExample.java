@@ -1,4 +1,4 @@
-package in.ajm.sb.activities.expandabledata;
+package in.ajm.sb.testpackages;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -16,7 +16,6 @@ import in.ajm.sb.fragments.BottomSheetAddClassSection;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.interfaces.OnClickAddClassSection;
 import in.ajm.sb.interfaces.OnClickAddSection;
-import in.ajm.sb.testpackages.CustomExpandableListAdapterTest;
 
 public class ExpandableClassExample extends BaseActivity implements OnClickAddClassSection, View.OnClickListener, OnClickAddSection {
 
