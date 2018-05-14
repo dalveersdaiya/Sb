@@ -1,6 +1,7 @@
 package in.ajm.sb.testpackages.expandabledata;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import in.ajm.sb_library.expandableadapter.ArrayFragmentStatePagerAdapter;
 
 
 public class ExpandableWithSlide extends AppCompatActivity {
+
     Toolbar toolbar;
     Button buttonClass;
     Button buttonStudent;
@@ -28,6 +30,9 @@ public class ExpandableWithSlide extends AppCompatActivity {
     MyStatePagerAdapter adapter;
     Button buttonSection;
     int currentClassPosition = 0;
+    int currentSectionPosition = 0;
+
+
 
 
     @Override
@@ -64,7 +69,6 @@ public class ExpandableWithSlide extends AppCompatActivity {
                 addSection();
             }
         });
-
         buttonStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +109,7 @@ public class ExpandableWithSlide extends AppCompatActivity {
         adapter = new MyStatePagerAdapter(getSupportFragmentManager(), classesArrayList);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        buttonStudent.setEnabled(false);
 
     }
 
@@ -135,6 +140,7 @@ public class ExpandableWithSlide extends AppCompatActivity {
         adapter = new MyStatePagerAdapter(getSupportFragmentManager(), classesArrayList);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(classesArrayList.size() -1, true);
+        buttonStudent.setEnabled(false);
     }
 
     private void addSection() {
@@ -156,21 +162,30 @@ public class ExpandableWithSlide extends AppCompatActivity {
         adapter = new MyStatePagerAdapter(getSupportFragmentManager(), classesArrayList);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(currentClassPosition, true);
+        buttonStudent.setEnabled(false);
+
     }
 
     private void addStudent() {
         currentClassPosition = viewPager.getCurrentItem();
         Classes classes = classesArrayList.get(viewPager.getCurrentItem());
         classes.sectionsList = classesArrayList.get(viewPager.getCurrentItem()).sectionsList;
-        Sections sections = classesArrayList.get(viewPager.getCurrentItem()).sectionsList.get(classes.sectionsList.size() - 1);
+        Sections sections = classesArrayList.get(viewPager.getCurrentItem()).sectionsList.get(currentSectionPosition);
         StudentsList studentsList = new StudentsList();
-        studentsList.setRollNum(String.valueOf((classes.sectionsList.get(classes.sectionsList.size() - 1).studentsLists.size() + 1)));
+        studentsList.setRollNum(String.valueOf((classes.sectionsList.get(currentSectionPosition).studentsLists.size() + 1)));
         studentsList.setSectionName(sections.getSectionName());
-        studentsList.setStudentName("Student " + ((classes.sectionsList.get(classes.sectionsList.size() - 1).studentsLists.size() )));
-        classes.getSectionsList().get(classes.sectionsList.size() - 1).studentsLists.add(studentsList);
+        studentsList.setStudentName("Student " + ((classes.sectionsList.get(currentSectionPosition).studentsLists.size() )));
+        classes.getSectionsList().get(currentSectionPosition).studentsLists.add(studentsList);
         adapter = new MyStatePagerAdapter(getSupportFragmentManager(), classesArrayList);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(currentClassPosition, true);
+        buttonStudent.setEnabled(false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                ((FragmentLoaded) adapter.getFragment(classesArrayList.get(currentClassPosition), currentClassPosition)).keepGroupExpanded(currentSectionPosition);
+            }
+        }, 500);
     }
 
     private class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<Classes> {
@@ -191,6 +206,11 @@ public class ExpandableWithSlide extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return classesList.get(position).getClassName();
         }
+    }
+
+    public void setCurrentSectionPosition(int currentSectionPosition) {
+        this.currentSectionPosition = currentSectionPosition;
+        buttonStudent.setEnabled(true);
     }
 
 }
