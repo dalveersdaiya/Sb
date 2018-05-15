@@ -32,9 +32,6 @@ public class ExpandableWithSlide extends AppCompatActivity {
     int currentClassPosition = 0;
     int currentSectionPosition = 0;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +41,6 @@ public class ExpandableWithSlide extends AppCompatActivity {
         applyClickListeners();
         setViewPager();
     }
-
 
     public void viewByIds() {
         toolbar = findViewById(R.id.toolbar);

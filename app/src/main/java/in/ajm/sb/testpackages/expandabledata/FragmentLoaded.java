@@ -74,7 +74,6 @@ public  class FragmentLoaded extends android.support.v4.app.Fragment {
         });
     }
 
-
     public void setRecyclerView(){
         sectionsList = classes.getSectionsList();
         recyclerView.setHasFixedSize(true);
