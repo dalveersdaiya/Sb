@@ -1,4 +1,4 @@
-package in.ajm.sb.activities.expandabledata;
+package in.ajm.sb.testpackages;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -8,28 +8,25 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
-import in.ajm.sb.adapter.ClassSectionAdapter;
-import in.ajm.sb.api.model.schooladmin.Classes;
-import in.ajm.sb.api.model.schooladmin.Sections;
 import in.ajm.sb.data.ClassSectionData;
 import in.ajm.sb.fragments.BottomSheetAddClassSection;
 import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.interfaces.OnClickAddClassSection;
-import io.realm.RealmList;
+import in.ajm.sb.interfaces.OnClickAddSection;
 
-public class ExpandableClassExample extends BaseActivity implements OnClickAddClassSection, View.OnClickListener {
+public class ExpandableClassExample extends BaseActivity implements OnClickAddClassSection, View.OnClickListener, OnClickAddSection {
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     FloatingActionButton fab;
     ArrayList<ClassSectionData> allTeams;
-    List<Classes> classesList;
-    List<Sections> sectionsList;
     String className = "";
+    int selectedClassPosition = 0;
+    int selectedSectionPosition = 0;
+    CustomExpandableListAdapterTest myAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,15 +46,13 @@ public class ExpandableClassExample extends BaseActivity implements OnClickAddCl
     }
 
     private void setExpandableListView() {
-//        final ArrayList<ClassSectionData> team = getData();
-        classesList = new ArrayList<>();
-        sectionsList = new ArrayList<>();
-        expandableListAdapter = new ClassSectionAdapter(this, classesList);
+        final ArrayList<ClassSectionData> team = getData();
+        expandableListAdapter = new CustomExpandableListAdapterTest(this, team, this);
+        myAdapter = (CustomExpandableListAdapterTest) expandableListAdapter;
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                className = classesList.get(groupPosition).getClassName();
                 return false;
             }
         });
@@ -106,58 +101,33 @@ public class ExpandableClassExample extends BaseActivity implements OnClickAddCl
         bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
     }
 
-//    private void addNewClass(String className){
-//        ClassSectionData classSectionData = new ClassSectionData(className);
-//        allTeams.add(classSectionData);
-//        expandableListAdapter.notify();
-//    }
-
-//    private void addNewSection(String className){
-//        ClassSectionData classSectionData;
-//        for (int i = 0; i < allTeams.size(); i++) {
-//            allTeams.get(i).classImage
+    private void addNewClass(String className) {
+        ClassSectionData classSectionData = new ClassSectionData(className);
+        allTeams.add(classSectionData);
+//        synchronized (expandableListAdapter){
+//            expandableListAdapter.notify();
 //        }
-//        allTeams.add(classSectionData);
-//        expandableListAdapter.notify();
-//    }
+        myAdapter.setList(allTeams);
 
 
-//    FIXME
-    private void addClasses(String className) {
-        beginRealmTransaction();
-        Classes classes = new Classes();
-        classes.setClassName(className);
-        commitAndCloseRealmTransaction(classes);
-        classesList.add(classes);
-        synchronized(expandableListAdapter){
-            expandableListAdapter.notify();
-        }
     }
-    //    FIXME NOTE
-    private void addSections(String className, String sectionName) {
-        Classes classes = Classes.getByClassName(className);
-        beginRealmTransaction();
-        Sections sections = new Sections();
-        sections.setSectionName(sectionName);
-        sectionsList.add(sections);
-        realm.copyToRealmOrUpdate(sections);
-        RealmList<Sections> sectionsRealmList = new RealmList<>();
-        sectionsRealmList.set(sectionsRealmList.size() -1 , sections);
-        classes.setSections(sectionsRealmList);
-        commitAndCloseRealmTransaction(classes);
-        synchronized(expandableListAdapter){
-            expandableListAdapter.notify();
-        }
+
+    private void addNewSection(String className, String sectionName, int classPosition, int sectionPosition) {
+        allTeams.get(classPosition).sections.add(sectionName);
+        //        synchronized (expandableListAdapter){
+//            expandableListAdapter.notify();
+//        }
+        myAdapter.setList(allTeams);
     }
 
     @Override
     public void onAddClass(String classname) {
-        addClasses(classname);
+        addNewClass(classname);
     }
 
     @Override
     public void onAddSection(String classname, String sectionName) {
-        addSections(classname, sectionName);
+        addNewSection(classname, sectionName, selectedClassPosition, selectedSectionPosition);
     }
 
     @Override
@@ -167,5 +137,14 @@ public class ExpandableClassExample extends BaseActivity implements OnClickAddCl
                 openOtpBottomSheet(AppConfigs.ADD_CLASS);
                 break;
         }
+    }
+
+    @Override
+    public void onClickAddSection(String classname, int classPosition, int sectionPosition) {
+        selectedClassPosition = classPosition;
+        selectedSectionPosition = sectionPosition;
+        openOtpBottomSheet(AppConfigs.ADD_SECTION);
+        className = classname;
+
     }
 }

@@ -19,6 +19,7 @@ import in.ajm.sb.helper.AppConfigs;
 import in.ajm.sb.helper.PreferencesManager;
 import in.ajm.sb.interfaces.OnUserChanged;
 import in.ajm.sb.testpackages.TestNewModules;
+import in.ajm.sb.testpackages.expandabledata.ExpandableWithSlide;
 
 public class Settings extends BaseActivity implements View.OnClickListener, OnUserChanged {
 
@@ -26,6 +27,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
     Button buttonSelectLanguage;
     Button buttonSwitchUser;
     Button buttonTestNew;
+    Button buttonTestExpandable;
     TextView tvSelectedTheme;
     TextView tvCurrentUser;
     TextView tvSelectedLanguage;
@@ -64,6 +66,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         tvSelectedTheme = findViewById(R.id.tv_selected_theme);
         tvSelectedLanguage = findViewById(R.id.tv_selected_language);
         buttonTestNew = findViewById(R.id.button_test_new);
+        buttonTestExpandable = findViewById(R.id.button_test_expandable);
     }
 
     public void applyClickListeners() {
@@ -71,6 +74,7 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
         buttonSelectLanguage.setOnClickListener(this);
         buttonSwitchUser.setOnClickListener(this);
         buttonTestNew.setOnClickListener(this);
+        buttonTestExpandable.setOnClickListener(this);
     }
 
     public void setUi() {
@@ -105,6 +109,10 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
             case R.id.button_test_new:
                 openTestActivity();
                 break;
+            case R.id.button_test_expandable:
+                openTestExpandables();
+                break;
+
             default:
                 break;
 
@@ -181,6 +189,11 @@ public class Settings extends BaseActivity implements View.OnClickListener, OnUs
 
     public void openTestActivity(){
         Intent intent = new Intent(this, TestNewModules.class);
+        startActivity(intent);
+    }
+
+    public void openTestExpandables(){
+        Intent intent = new Intent(this, ExpandableWithSlide.class);
         startActivity(intent);
     }
 

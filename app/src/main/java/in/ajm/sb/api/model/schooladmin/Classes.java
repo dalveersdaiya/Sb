@@ -21,6 +21,12 @@ public class Classes extends RealmObject {
     @Expose
     String classImage;
 
+    @SerializedName("school_id")
+    @Expose
+    String schoolId;
+
+
+
     private RealmList<Sections> sections;
 
     public RealmList<Sections> getSections() {

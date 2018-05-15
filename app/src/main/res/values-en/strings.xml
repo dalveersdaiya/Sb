@@ -610,5 +610,6 @@
     <string name="password_not_matching">Password does not match.</string>
     <string name="add_class">Add Class</string>
     <string name="add_section">Add Section</string>
+    <string name="add_student">Add Student</string>
 
 </resources>

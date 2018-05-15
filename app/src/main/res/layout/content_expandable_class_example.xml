@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="in.ajm.sb.activities.expandabledata.ExpandableClassExample"
+    tools:context="in.ajm.sb.testpackages.ExpandableClassExample"
     tools:showIn="@layout/activity_expandable_class_example">
 
     <ExpandableListView

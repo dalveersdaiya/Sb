@@ -8,7 +8,6 @@ import android.widget.Button;
 import in.ajm.sb.R;
 import in.ajm.sb.activities.BaseActivity;
 import in.ajm.sb.activities.ChipTestActivity;
-import in.ajm.sb.activities.expandabledata.ExpandableClassExample;
 
 
 public class TestNewModules extends BaseActivity implements View.OnClickListener {
