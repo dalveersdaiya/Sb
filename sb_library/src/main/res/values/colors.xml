@@ -96,4 +96,5 @@
 
     <color name="blinkingColor">#00a9ce</color>
     <color name="neutralColor">#3300a9ce</color>
+    <color name="criar_pasta_input_out_range">#fff44336</color>
 </resources>

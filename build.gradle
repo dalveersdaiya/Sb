@@ -33,7 +33,7 @@ ext {
 
     buildToolsVersion = '27.0.3'
 
-    supportLibVersion = '26.0.2'
+    supportLibVersion = '27.1.1'
     playServicesVersion = '11.0.2'
     stethoVersion = '1.5.0'
     junitVersion = '4.12'

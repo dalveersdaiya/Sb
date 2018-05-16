@@ -45,7 +45,7 @@ public class Register extends BaseActivity implements OnClickOtp {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equalsIgnoreCase("otp")) {
                 final String message = intent.getStringExtra("message");
-                LoggerCustom.logD("Daiya", message);
+                LoggerCustom.logD(TAG, message);
             }
         }
     };
@@ -137,7 +137,7 @@ public class Register extends BaseActivity implements OnClickOtp {
     }
 
     public void setOtp(String string) {
-        LoggerCustom.logD("Daiya", string);
+        LoggerCustom.logD(TAG, string);
     }
 
     @Override

@@ -22,7 +22,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.util.Log;
+
+import in.ajm.sb.helper.LoggerCustom;
 
 class SmsReceiver extends BroadcastReceiver {
     private OnSmsCatchListener<String> callback;
@@ -62,7 +63,7 @@ class SmsReceiver extends BroadcastReceiver {
             } // bundle is null
 
         } catch (Exception e) {
-            Log.e("SmsReceiver", "Exception smsReceiver" + e);
+            LoggerCustom.logE("SmsReceiver", "Exception smsReceiver" + e);
         }
     }
 
