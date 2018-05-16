@@ -27,10 +27,11 @@ package in.ajm.sb.customviews;
 
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.CycleInterpolator;
+
+import in.ajm.sb.helper.LoggerCustom;
 
 public class ElasticAction {
 
@@ -57,7 +58,7 @@ public class ElasticAction {
             }
         }
         catch (Exception e){
-            Log.e(TAG, "only ViewGroups : likes RelativeLayout, LinearLayout, etc could doAction");
+            LoggerCustom.logE(TAG, "only ViewGroups : likes RelativeLayout, LinearLayout, etc could doAction");
         }
     }
 
@@ -101,7 +102,7 @@ public class ElasticAction {
             }
         }
         catch (Exception e){
-            Log.e(TAG, "only ViewGroups : likes RelativeLayout, LinearLayout, etc could doAction");
+            LoggerCustom.logE(TAG, "only ViewGroups : likes RelativeLayout, LinearLayout, etc could doAction");
         }
     }
 }

@@ -197,7 +197,7 @@ public class SwipeMenuLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        //Log.d(TAG, "onMeasure() called with: " + "widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
+        //LoggerCustom.logV(TAG, "onMeasure() called with: " + "widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         setClickable(true);//令自己可点击，从而获取触摸事件
@@ -235,7 +235,7 @@ public class SwipeMenuLayout extends ViewGroup {
         setMeasuredDimension(getPaddingLeft() + getPaddingRight() + contentWidth,
                 mHeight + getPaddingTop() + getPaddingBottom());//宽度取第一个Item(Content)的宽度
         mLimit = mRightMenuWidths * 4 / 10;//滑动判断的临界值
-        //Log.d(TAG, "onMeasure() called with: " + "mRightMenuWidths = [" + mRightMenuWidths);
+        //LoggerCustom.logV(TAG, "onMeasure() called with: " + "mRightMenuWidths = [" + mRightMenuWidths);
         if (isNeedMeasureChildHeight) {//如果子View的height有MatchParent属性的，设置子View高度
             forceUniformHeight(childCount, widthMeasureSpec);
         }
@@ -300,7 +300,7 @@ public class SwipeMenuLayout extends ViewGroup {
                 }
             }
         }
-        //Log.d(TAG, "onLayout() called with: " + "maxScrollGap = [" + maxScrollGap + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
+        //LoggerCustom.logV(TAG, "onLayout() called with: " + "maxScrollGap = [" + maxScrollGap + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
     }
 
     @Override
@@ -430,7 +430,7 @@ public class SwipeMenuLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        //Log.d(TAG, "onInterceptTouchEvent() called with: ev = [" + ev + "]");
+        //LoggerCustom.logV(TAG, "onInterceptTouchEvent() called with: ev = [" + ev + "]");
         //add by zhangxutong 2016 12 07 begin:
         //禁止侧滑时，点击事件不受干扰。
         if (isSwipeEnable) {
@@ -488,7 +488,7 @@ public class SwipeMenuLayout extends ViewGroup {
     }
 
     public void smoothExpand() {
-        //Log.d(TAG, "smoothExpand() called" + this);
+        //LoggerCustom.logV(TAG, "smoothExpand() called" + this);
         /*mScroller.startScroll(getScrollX(), 0, mRightMenuWidths - getScrollX(), 0);
         invalidate();*/
         //展开就加入ViewCache：
@@ -533,7 +533,7 @@ public class SwipeMenuLayout extends ViewGroup {
      * 平滑关闭
      */
     public void smoothClose() {
-        //Log.d(TAG, "smoothClose() called" + this);
+        //LoggerCustom.logV(TAG, "smoothClose() called" + this);
 /*        mScroller.startScroll(getScrollX(), 0, -getScrollX(), 0);
         invalidate();*/
         mViewCache = null;

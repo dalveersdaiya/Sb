@@ -23,7 +23,7 @@ public class TypefaceUtil {
             defaultFontTypefaceField.setAccessible(true);
             defaultFontTypefaceField.set(null, customFontTypeface);
         } catch (Exception e) {
-            Log.e("" ,"Can not set custom font " + customFontFileNameInAssets + " instead of " + defaultFontNameToOverride);
+            LoggerCustom.logE("" ,"Can not set custom font " + customFontFileNameInAssets + " instead of " + defaultFontNameToOverride);
         }
     }
 }

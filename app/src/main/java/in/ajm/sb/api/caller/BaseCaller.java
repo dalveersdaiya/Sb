@@ -42,6 +42,7 @@ public abstract class BaseCaller {
     int responseCode = V_INTERNAL_ERROR_FOR_NO_RECORDFOUND;
     String responseMessage = "Error";
     String result = "Result";
+    String TAG = "Daiya";
 
 
     BaseCaller() {

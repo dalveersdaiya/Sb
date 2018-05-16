@@ -253,14 +253,14 @@ public class CheckText extends LinearLayout {
                 if (hasFocus) {
                     showIcons();
                     ifhasFocus = true;
-//                    Log.d("vracto", "has focus editext initialstring : " + initialString);
-//                    Log.d("vracto", "has focus editext finalString : " + finalString);
+//                    LoggerCustom.logV("vracto", "has focus editext initialstring : " + initialString);
+//                    LoggerCustom.logV("vracto", "has focus editext finalString : " + finalString);
                 } else {
                     hideIcons();
                     ifhasFocus = false;
                     set_mycustom_text(finalString);
-//                    Log.d("vracto", "no focus focus editext initialstring : " + initialString);
-//                    Log.d("vracto", "no focus focus editext finalString : " + finalString);
+//                    LoggerCustom.logV("vracto", "no focus focus editext initialstring : " + initialString);
+//                    LoggerCustom.logV("vracto", "no focus focus editext finalString : " + finalString);
 
                 }
             }

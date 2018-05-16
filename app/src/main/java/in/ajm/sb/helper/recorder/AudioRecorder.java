@@ -6,10 +6,11 @@ import android.media.MediaRecorder;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
+
+import in.ajm.sb.helper.LoggerCustom;
 
 /**
  * @author Nikolai Doronin {@literal <lassana.nd@gmail.com>}
@@ -154,11 +155,11 @@ public class AudioRecorder {
     }
 
     private void debug(@NonNull final String msg, @Nullable final Exception e) {
-        if (mIsLoggable) Log.d(TAG, msg, e);
+        if (mIsLoggable) LoggerCustom.logV(TAG, msg + e);
     }
 
     private void error(@NonNull final String msg, @Nullable final Exception e) {
-        if (mIsLoggable) Log.e(TAG, msg, e);
+        if (mIsLoggable) LoggerCustom.logE(TAG, msg + e);
     }
 
     enum Status {

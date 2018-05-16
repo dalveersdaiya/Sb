@@ -37,7 +37,7 @@ public class TeacherLoginCaller extends BaseCaller {
 
         final TeacherService teacherService = retrofit.create(TeacherService.class);
         call = teacherService.login(getHeaders(), apiParams.mHashMap);
-        LoggerCustom.logE("Daiya", call.toString());
+        LoggerCustom.logE(TAG, call.toString());
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {

@@ -31,4 +31,14 @@
     <string name="mdtp_date_v1_monthyear">MMMM yyyy</string>
 
     <string name="mdtp_reset" translatable="false">"रद्द</string>
+
+    <string name="quantidade_itens_pasta_singular">%d वस्तु</string>
+    <string name="quantidade_itens_pasta_plural">%d वस्तु</string>
+    <string name="quantidade_itens_selecionados_singular">%d चयनित वस्तु (%s)</string>
+    <string name="quantidade_itens_selecionados_plural">%d चयनित वस्तु (%s)</string>
+    <string name="criar_pasta_edittext_hint">यहां फ़ोल्डर का नाम टाइप करें</string>
+    <string name="criar_pasta_title">एक नया फ़ोल्डर बनाएं</string>
+    <string name="nome_botao_voltar">वापस</string>
+    <string name="nome_botao_home">होम</string>
+    <string name="nome_botao_pesquisar">खोजें</string>
 </resources>

@@ -257,7 +257,7 @@ public class HomeTestActivity extends BaseActivity
         ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.frame, fragment);
         ft.commitAllowingStateLoss();
-        LoggerCustom.logD("Daiya", "back " + fragment.getClass().toString());
+        LoggerCustom.logD(TAG, "back " + fragment.getClass().toString());
     }
 
 
@@ -302,7 +302,7 @@ public class HomeTestActivity extends BaseActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 2:
-                Log.d(TAG, "External storage2");
+                LoggerCustom.logV(TAG, "External storage2");
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
@@ -313,7 +313,7 @@ public class HomeTestActivity extends BaseActivity
                 break;
 
             case 3:
-                Log.d(TAG, "External storage1");
+                LoggerCustom.logV(TAG, "External storage1");
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
