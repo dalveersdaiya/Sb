@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="in.ajm.sb">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -48,8 +49,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.BaseActivity"></activity>
+
+
         <activity android:name=".activities.SplashActivity">
+            <tools:validation testUrl="https://aractos.herokuapp.com/" />
+            <tools:validation testUrl="https://aractos.herokuapp.com/student" />
+            <tools:validation testUrl="https://aractos.herokuapp.com/school" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,9 +68,49 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="sb" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:host="aractos.herokuapp.com"
+                    android:pathPrefix="/student"
+                    android:scheme="https" />
+                <!-- Note that the leading "/" is required for pathPrefix-->
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="aractos.herokuapp.com"
+                    android:pathPattern="/school" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="aractos.herokuapp.com" />
+            </intent-filter>
+
+            <!--<intent-filter android:label="@string/filter_view_example_gizmos">-->
+            <!--<action android:name="android.intent.action.VIEW" />-->
+
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!--&lt;!&ndash; Accepts URIs that begin with "example://gizmos” &ndash;&gt;-->
+            <!--<data-->
+            <!--android:host="gizmos"-->
+            <!--android:scheme="example" />-->
+            <!--</intent-filter>-->
+            <!--Hack : Use this code and you can link app activity to certain search results-->
         </activity>
+
+
         <activity
             android:name=".activities.Register"
             android:theme="@style/AppTheme"
