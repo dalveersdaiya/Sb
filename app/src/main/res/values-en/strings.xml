@@ -612,5 +612,6 @@
     <string name="add_section">Add Section</string>
     <string name="add_student">Add Student</string>
     <string name="add_widget">SB News</string>
+    <string name="loading">Loading... Please wait..</string>
 
 </resources>

@@ -548,6 +548,7 @@ public class BaseActivity extends LocalizationActivity {
         if (dialog == null) {
             dialog = new ProgressDialog(this);
             dialog.setCancelable(false);
+            dialog.setMessage(getResources().getString(R.string.loading));
             dialog.show();
         } else if (!dialog.isShowing()) {
             dialog.show();
