@@ -227,6 +227,8 @@
     <string name="add_section">Add Section</string>
     <string name="add_student">Add Student</string>
     <string name="title_activity_expandable_with_slide">ExpandableWithSlide</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">SB News</string>
 
 
     <!--<string name="pe"></string>-->
