@@ -150,7 +150,24 @@
         <activity
             android:name=".testpackages.expandabledata.ExpandableWithSlide"
             android:label="@string/title_activity_expandable_with_slide"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <!--Testing the widget : First Test-->
+
+        <receiver android:name=".schoolwidget.TestWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/test_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".schoolwidget.TestWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
     </application>
 
 </manifest>
