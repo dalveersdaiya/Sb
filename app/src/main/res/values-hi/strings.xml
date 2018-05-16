@@ -609,4 +609,5 @@
     <string name="add_section">अनुभाग जोड़ें</string>
     <string name="add_student">विद्यार्थी जोड़ें</string>
     <string name="add_widget">एस.बी. समाचार</string>
+    <string name="loading">लोड हो रहा है कृपया प्रतीक्षा करें..</string>
 </resources>

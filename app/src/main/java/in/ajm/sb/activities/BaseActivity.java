@@ -40,7 +40,6 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.transition.Slide;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -548,6 +547,7 @@ public class BaseActivity extends LocalizationActivity {
         if (dialog == null) {
             dialog = new ProgressDialog(this);
             dialog.setCancelable(false);
+            dialog.setMessage(getResources().getString(R.string.loading));
             dialog.show();
         } else if (!dialog.isShowing()) {
             dialog.show();
@@ -1471,16 +1471,16 @@ public class BaseActivity extends LocalizationActivity {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "Permission is granted1");
+                LoggerCustom.logV(TAG, "Permission is granted1");
                 return true;
             } else {
 
-                Log.v(TAG, "Permission is revoked1");
+                LoggerCustom.logV(TAG, "Permission is revoked1");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
                 return false;
             }
         } else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG, "Permission is granted1");
+            LoggerCustom.logV(TAG, "Permission is granted1");
             return true;
         }
     }
@@ -1489,16 +1489,16 @@ public class BaseActivity extends LocalizationActivity {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "Permission is granted2");
+                LoggerCustom.logV(TAG, "Permission is granted2");
                 return true;
             } else {
 
-                Log.v(TAG, "Permission is revoked2");
+                LoggerCustom.logV(TAG, "Permission is revoked2");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
                 return false;
             }
         } else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG, "Permission is granted2");
+            LoggerCustom.logV(TAG, "Permission is granted2");
             return true;
         }
     }

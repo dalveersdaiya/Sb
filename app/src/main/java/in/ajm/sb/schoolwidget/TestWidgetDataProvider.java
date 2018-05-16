@@ -78,7 +78,7 @@ public class TestWidgetDataProvider implements RemoteViewsService.RemoteViewsFac
         view.setTextViewText(R.id.name_txt, mCollection.get(position));
 
         Intent fillInIntent = new Intent();
-        fillInIntent.putExtra("Daiya", mCollection.get(position));
+        fillInIntent.putExtra(TAG, mCollection.get(position));
         view.setOnClickFillInIntent(R.id.linear_container, fillInIntent);
 
         return view;

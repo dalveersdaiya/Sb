@@ -183,4 +183,22 @@
         <attr format="color" name="du_color"/>
         <attr format="boolean" name="du_filled"/>
     </declare-styleable>
+
+    <attr name="mfc_theme_background" format="reference" />
+    <attr name="mfc_theme_foreground" format="reference" />
+    <attr name="mfc_theme_title" format="reference" />
+    <attr name="mfc_theme_breadcrumb" format="reference" />
+    <attr name="mfc_theme_toolbox" format="reference" />
+    <attr name="mfc_theme_search_text" format="reference" />
+    <attr name="mfc_theme_search_hint" format="reference" />
+    <attr name="mfc_theme_status" format="reference" />
+    <attr name="mfc_theme_file_icon" format="reference" />
+    <attr name="mfc_theme_file_name" format="reference" />
+    <attr name="mfc_theme_file_information" format="reference" />
+    <attr name="mfc_theme_file_asterisk" format="reference" />
+    <attr name="mfc_theme_file_flag" format="reference" />
+    <attr name="mfc_theme_checkbox" format="reference" />
+    <attr name="mfc_theme_cancel_button" format="reference" />
+    <attr name="mfc_theme_ok_button" format="reference" />
+    <attr name="mfc_theme_create_folder_button" format="reference" />
 </resources>

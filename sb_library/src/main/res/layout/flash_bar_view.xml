@@ -50,7 +50,7 @@
                 android:layout_weight="8"
                 android:orientation="vertical">
 
-                <TextView
+                <in.ajm.sb_library.customviews.TextViewRegular
                     android:id="@+id/fbTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     tools:text="Title"
                     tools:visibility="visible" />
 
-                <TextView
+                <in.ajm.sb_library.customviews.TextViewRegular
                     android:id="@+id/fbMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

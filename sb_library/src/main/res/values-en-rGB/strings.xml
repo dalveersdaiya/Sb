@@ -31,4 +31,14 @@
     <string name="mdtp_date_v1_monthyear">MMMM yyyy</string>
 
     <string name="mdtp_reset" translatable="false">"Cancel</string>
+
+    <string name="quantidade_itens_pasta_singular">%d item</string>
+    <string name="quantidade_itens_pasta_plural">%d items</string>
+    <string name="quantidade_itens_selecionados_singular">%d selected item (%s)</string>
+    <string name="quantidade_itens_selecionados_plural">%d selected items (%s)</string>
+    <string name="criar_pasta_edittext_hint">Type the folder name here</string>
+    <string name="criar_pasta_title">Create a new folder</string>
+    <string name="nome_botao_voltar">Back</string>
+    <string name="nome_botao_home">Home</string>
+    <string name="nome_botao_pesquisar">Search</string>
 </resources>

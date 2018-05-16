@@ -25,6 +25,7 @@ import in.ajm.sb.adapter.HomeTodayAdapter;
 import in.ajm.sb.data.HomeTodayData;
 import in.ajm.sb.fragments.BaseFragment;
 import in.ajm.sb.helper.LayoutToImageConverter;
+import in.ajm.sb.helper.LoggerCustom;
 import in.ajm.sb.interfaces.OnThisDayItemClicked;
 
 public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, View.OnClickListener, LayoutToImageConverter.OnLayoutCaptured {
@@ -218,7 +219,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 2:
-                Log.d(TAG, "External storage2");
+                LoggerCustom.logV(TAG, "External storage2");
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
@@ -229,7 +230,7 @@ public class HomeFragment extends BaseFragment implements OnThisDayItemClicked, 
                 break;
 
             case 3:
-                Log.d(TAG, "External storage1");
+                LoggerCustom.logV(TAG, "External storage1");
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
                     //resume tasks needing this permission
