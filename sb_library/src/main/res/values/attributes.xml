@@ -201,4 +201,15 @@
     <attr name="mfc_theme_cancel_button" format="reference" />
     <attr name="mfc_theme_ok_button" format="reference" />
     <attr name="mfc_theme_create_folder_button" format="reference" />
+
+
+    <!--<Hack : My Theme Colors-->
+    <attr name="my_text_color" format="reference|color" />
+    <attr name="my_text_color_inverse" format="reference|color" />
+    <attr name="my_theme_light" format="reference|color" />
+    <attr name="myColorAccent" format="reference|color" />.
+    <attr name="myColorPrimaryDark" format="reference|color" />
+    <attr name="myColorPrimary" format="reference|color" />
+
+
 </resources>

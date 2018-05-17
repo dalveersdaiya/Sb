@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
@@ -16,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import in.ajm.sb_library.R;
+import in.ajm.sb_library.Utils.ThemeUtils;
 
 /**
  * Copyright © 2017 Tyler Suehr
@@ -164,8 +164,9 @@ public class ChipDetailsView extends FrameLayout implements ChipComponent {
     private int getBackgroundColor() {
         final Drawable dr = mContentLayout.getBackground();
         if (dr == null || !(dr instanceof ColorDrawable)) {
-            return ContextCompat.getColor(getContext(),
-                    R.color.chip_details_background);
+//            return ContextCompat.getColor(getContext(),
+//                    R.color.chip_details_background);
+            return ThemeUtils.getAccentColor(getContext());
         } else {
             return ((ColorDrawable)dr).getColor();
         }
