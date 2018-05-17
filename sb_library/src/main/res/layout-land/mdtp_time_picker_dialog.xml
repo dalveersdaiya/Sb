@@ -17,7 +17,7 @@
     android:id="@+id/time_picker_dialog"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/mdtp_background_color"
+    android:background="?attr/my_text_color"
     android:focusable="true"
     android:orientation="horizontal">
 
@@ -26,7 +26,7 @@
         android:layout_width="@dimen/mdtp_picker_dimen"
         android:layout_height="@dimen/mdtp_time_picker_height"
         android:layout_gravity="center"
-        android:background="@color/mdtp_circle_background"
+        android:background="?attr/my_text_color"
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
@@ -42,7 +42,7 @@
             android:layout_width="@dimen/mdtp_left_side_width"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/mdtp_accent_color">
+            android:background="?attr/colorAccent">
 
             <include
                 layout="@layout/mdtp_time_header_label"

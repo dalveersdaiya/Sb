@@ -19,7 +19,7 @@
           android:drawable="@color/mdtp_accent_color_focused" />
 
     <item android:state_pressed="true"
-          android:drawable="@color/mdtp_accent_color" />
+          android:drawable="?attr/colorAccent" />
 
     <item android:drawable="@color/mdtp_white" />
 </selector>

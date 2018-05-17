@@ -18,7 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/mdtp_accent_color"
+    android:background="?attr/colorAccent"
     android:clipChildren="false">
 
     <View
@@ -59,7 +59,7 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:text="@string/mdtp_time_placeholder"
-            android:textColor="@color/mdtp_white" />
+            android:textColor="?attr/my_text_color" />
     </FrameLayout>
 
     <in.ajm.sb_library.customviews.TextViewRegular

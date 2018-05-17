@@ -26,11 +26,11 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.AttrRes;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
 
 import in.ajm.sb_library.R;
+import in.ajm.sb_library.Utils.ThemeUtils;
 
 /**
  * Utility helper functions for time and date pickers.
@@ -157,7 +157,8 @@ public class Utils {
             return typedValue.data;
         }
         // Return the value in mdtp_accent_color
-        return ContextCompat.getColor(context, R.color.mdtp_accent_color);
+//        return ContextCompat.getColor(context, R.color.mdtp_accent_color);
+        return ThemeUtils.getAccentColor(context);
     }
 
     /**

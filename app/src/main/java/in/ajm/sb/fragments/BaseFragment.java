@@ -28,11 +28,23 @@ public class BaseFragment extends Fragment {
 
     public String TAG = "Daiya";
     public String APPNAME = "sb";
-    public  Context context = ((BaseActivity)getActivity());
-    public  Realm realm;
-
+    public Context context = ((BaseActivity) getActivity());
+    public Realm realm;
 
     public BaseFragment() {
+
+    }
+
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
     public String getStringRes(@StringRes int resId) {
@@ -47,7 +59,7 @@ public class BaseFragment extends Fragment {
         return "";
     }
 
-    public  String getSelectedOrgId() {
+    public String getSelectedOrgId() {
         return PreferencesManager.getPreferenceByKey(getContext(), AppConfigs.PREFERENCE_ORG_ID);
     }
 
@@ -81,40 +93,36 @@ public class BaseFragment extends Fragment {
         }
     }
 
-    public  boolean isReadStoragePermissionGranted() {
+    public boolean isReadStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted1");
+                Log.v(TAG, "Permission is granted1");
                 return true;
             } else {
 
-                Log.v(TAG,"Permission is revoked1");
+                Log.v(TAG, "Permission is revoked1");
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted1");
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted1");
             return true;
         }
     }
 
-    public  boolean isWriteStoragePermissionGranted() {
+    public boolean isWriteStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted2");
+            if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG, "Permission is granted2");
                 return true;
             } else {
-
-                Log.v(TAG,"Permission is revoked2");
+                Log.v(TAG, "Permission is revoked2");
                 ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted2");
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted2");
             return true;
         }
     }
@@ -141,18 +149,6 @@ public class BaseFragment extends Fragment {
     public void closeRealmTransaction() {
         if (!realm.isClosed())
             realm.close();
-    }
-
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
     public int getAccentColor(Context context) {

@@ -18,9 +18,9 @@
     android:id="@+id/date_picker_header"
     android:layout_width="@dimen/mdtp_date_picker_component_width"
     android:layout_height="@dimen/mdtp_date_picker_header_height"
-    android:background="@color/mdtp_calendar_header"
+    android:background="?attr/colorAccent"
     android:gravity="center"
     android:includeFontPadding="false"
-    android:textColor="@color/mdtp_white"
+    android:textColor="?attr/my_text_color"
     android:textSize="@dimen/mdtp_date_picker_header_text_size"
     android:importantForAccessibility="no" />

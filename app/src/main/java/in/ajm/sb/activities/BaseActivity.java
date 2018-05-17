@@ -458,15 +458,18 @@ public class BaseActivity extends LocalizationActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
     public void validationForPhoneNumber(final EditText edittext) {
 
         edittext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
@@ -478,7 +481,6 @@ public class BaseActivity extends LocalizationActivity {
                             return;
                         }
                         len = edittext.getText().length();
-
                         if (edittext.getText().toString().charAt(edittext.getText().toString().length() - 1) != '-') {
                             if (len == 4 || len == 8) {
                                 String number = edittext.getText().toString();
@@ -949,19 +951,15 @@ public class BaseActivity extends LocalizationActivity {
     }
 
     public void showAddBButton(ImageButton addtypebutton) {
-
         addtypebutton.setVisibility(View.VISIBLE);
         addtypebutton.animate().translationX(0 - dpToPixels(0, this)).setInterpolator(new DecelerateInterpolator()).setDuration(200).start();
-
     }
 
     public void hideAddButton(boolean delay, final ImageButton addtypebutton) {
-
         long duration = 0;
         if (delay) {
             duration = 250;
         }
-
         addtypebutton.animate().translationX(addtypebutton.getBottom() + dpToPixels(5, this)).setInterpolator
                 (new AccelerateInterpolator()).setDuration(duration).setListener(new Animator.AnimatorListener() {
             @Override
