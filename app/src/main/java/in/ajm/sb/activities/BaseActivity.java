@@ -564,16 +564,12 @@ public class BaseActivity extends LocalizationActivity {
     public void animateOnFocus(View v, ViewGroup rootLayout) {
         final CardView first_container = (CardView) v.getParent();
         final CardView second_container = (CardView) first_container.getParent();
-
         final int first_curr_radius = (int) getResources().getDimension(R.dimen.first_card_radius);
         final int first_target_radius = (int) getResources().getDimension(R.dimen.first_card_radius_on_focus);
-
         final int second_curr_radius = (int) getResources().getDimension(R.dimen.second_card_radius);
         final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
-
         final int first_curr_color = ContextCompat.getColor(this, android.R.color.transparent);
         final int first_target_color = getAccentColor(this);
-
         final int second_curr_color = getAccentColor(this);
         final int second_target_color = getAccentColor(this);
 
