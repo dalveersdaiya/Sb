@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:tabTextColor="?attr/my_text_color"
-        app:tabIndicatorColor="?attr/colorAccent"
+        app:tabTextColor="?attr/my_theme_light"
+        app:tabIndicatorColor="?attr/my_theme_light"
         app:tabSelectedTextColor="?attr/my_text_color"
+        app:tabIndicatorHeight="3dp"
         app:tabGravity="fill"
         app:tabMode="fixed" />
 

@@ -20,8 +20,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
@@ -54,8 +53,7 @@
         <item name="colorPrimary">@color/black_hex_15</item>
         <item name="colorAccent">@color/black_hex_10</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/black_hex_15</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/black_hex_15
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/black_hex_15</item>
 
         <item name="my_theme_light">@color/black_hex_4</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>
@@ -113,8 +111,7 @@
         <item name="colorPrimary">@color/deep_purple_700</item>
         <item name="colorAccent">@color/deep_purple_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_purple_900</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_purple_900
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_purple_900</item>
 
         <item name="my_theme_light">@color/deep_purple_200</item>
         <item name="my_text_color">@color/white_hex_15</item>
@@ -134,8 +131,7 @@
         <item name="colorPrimary">@color/light_blue_700</item>
         <item name="colorAccent">@color/light_blue_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/light_blue_900</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/light_blue_900
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/light_blue_900</item>
 
         <item name="my_theme_light">@color/light_blue_200</item>
         <item name="my_text_color">@color/white_hex_15</item>
@@ -176,8 +172,7 @@
         <item name="colorPrimary">@color/deep_orange_700</item>
         <item name="colorAccent">@color/deep_orange_500</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/deep_orange_900</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_orange_900
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/deep_orange_900</item>
 
         <item name="my_theme_light">@color/deep_orange_200</item>
         <item name="my_text_color">@color/white_hex_15</item>
@@ -275,8 +270,7 @@
         <item name="colorPrimary">@color/white_overlay</item>
         <item name="colorAccent">@color/white_hex_6</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white_hex_15</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white_hex_15
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white_hex_15</item>
 
         <item name="my_theme_light">@color/white_hex_5</item>
         <item name="my_text_color">@color/black_hex_15</item>
@@ -295,8 +289,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
-        </item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
 
         <item name="my_theme_light">@color/colorAccentLight</item>
         <item name="my_text_color_inverse">@color/black_hex_15</item>

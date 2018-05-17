@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2016-present, Facebook, Inc.
  * All rights reserved.
- *
+ * <p>
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
@@ -23,41 +23,37 @@ import in.ajm.sb_library.keyframes.model.KFFeatureFrame;
  */
 public class KeyFramedPath extends KeyFramedObject<KFFeatureFrame, KFPath> {
 
-  /**
-   * Constructs a KeyFramedPath from a {@link KFFeature}.
-   */
-  public static KeyFramedPath fromFeature(KFFeature feature) {
-    return new KeyFramedPath(feature.getKeyFrames(), feature.getTimingCurves());
-  }
-
-  private KeyFramedPath(List<KFFeatureFrame> featureFrames, float[][][] timingCurves) {
-    super(featureFrames, timingCurves);
-  }
-
-  /**
-   * Applies the current state, given by interpolationValue, to the supplied Path object.
-   * @param stateA Initial state
-   * @param stateB End state
-   * @param interpolationValue Progress [0..1] between stateA and stateB
-   * @param modifiable The modifiable object to apply the values to
-   */
-  @Override
-  protected void applyImpl(
-      KFFeatureFrame stateA,
-      KFFeatureFrame stateB,
-      float interpolationValue,
-      KFPath modifiable) {
-    if (stateB == null || interpolationValue == 0) {
-      stateA.getShapeData().applyFeature(modifiable);
-      return;
+    private KeyFramedPath(List<KFFeatureFrame> featureFrames, float[][][] timingCurves) {
+        super(featureFrames, timingCurves);
     }
-    KFFeatureFrame.ShapeMoveListData thisMoveList = stateA.getShapeData();
-    KFFeatureFrame.ShapeMoveListData nextMoveList = stateB.getShapeData();
-    for (int i = 0, len = thisMoveList.getVectorCommands().size(); i < len; i++) {
-      thisMoveList.getVectorCommands().get(i).interpolate(
-          nextMoveList.getVectorCommands().get(i),
-          interpolationValue,
-          modifiable);
+
+    /**
+     * Constructs a KeyFramedPath from a {@link KFFeature}.
+     */
+    public static KeyFramedPath fromFeature(KFFeature feature) {
+        return new KeyFramedPath(feature.getKeyFrames(), feature.getTimingCurves());
     }
-  }
+
+    /**
+     * Applies the current state, given by interpolationValue, to the supplied Path object.
+     * @param stateA Initial state
+     * @param stateB End state
+     * @param interpolationValue Progress [0..1] between stateA and stateB
+     * @param modifiable The modifiable object to apply the values to
+     */
+    @Override
+    protected void applyImpl(KFFeatureFrame stateA, KFFeatureFrame stateB, float interpolationValue, KFPath modifiable) {
+        if (stateB == null || interpolationValue == 0) {
+            stateA.getShapeData().applyFeature(modifiable);
+            return;
+        }
+        KFFeatureFrame.ShapeMoveListData thisMoveList = stateA.getShapeData();
+        KFFeatureFrame.ShapeMoveListData nextMoveList = stateB.getShapeData();
+        for (int i = 0, len = thisMoveList.getVectorCommands().size(); i < len; i++) {
+            thisMoveList.getVectorCommands().get(i).interpolate(
+                    nextMoveList.getVectorCommands().get(i),
+                    interpolationValue,
+                    modifiable);
+        }
+    }
 }
