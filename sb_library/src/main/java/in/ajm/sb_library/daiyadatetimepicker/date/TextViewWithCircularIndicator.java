@@ -29,6 +29,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import in.ajm.sb_library.R;
+import in.ajm.sb_library.Utils.ThemeUtils;
 
 
 /**
@@ -47,7 +48,8 @@ public class TextViewWithCircularIndicator extends TextView {
 
     public TextViewWithCircularIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mCircleColor = ContextCompat.getColor(context, R.color.mdtp_accent_color);
+//        mCircleColor = ContextCompat.getColor(context, R.color.mdtp_accent_color);
+        mCircleColor = ThemeUtils.getAccentColor(context);
         mItemIsSelectedText = context.getResources().getString(R.string.mdtp_item_is_selected);
 
         init();

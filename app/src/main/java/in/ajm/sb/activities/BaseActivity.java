@@ -458,11 +458,6 @@ public class BaseActivity extends LocalizationActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public String isNetWorkAvailable(){
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return "";
-    }
 
     public void validationForPhoneNumber(final EditText edittext) {
 
@@ -956,19 +951,15 @@ public class BaseActivity extends LocalizationActivity {
     }
 
     public void showAddBButton(ImageButton addtypebutton) {
-
         addtypebutton.setVisibility(View.VISIBLE);
         addtypebutton.animate().translationX(0 - dpToPixels(0, this)).setInterpolator(new DecelerateInterpolator()).setDuration(200).start();
-
     }
 
     public void hideAddButton(boolean delay, final ImageButton addtypebutton) {
-
         long duration = 0;
         if (delay) {
             duration = 250;
         }
-
         addtypebutton.animate().translationX(addtypebutton.getBottom() + dpToPixels(5, this)).setInterpolator
                 (new AccelerateInterpolator()).setDuration(duration).setListener(new Animator.AnimatorListener() {
             @Override

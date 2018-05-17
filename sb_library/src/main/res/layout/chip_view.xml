@@ -25,7 +25,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="4dp"
         android:layout_marginStart="8dp"
-        android:textColor="@color/chip_text_color"
+        android:textColor="?attr/my_text_color"
         android:textSize="@dimen/chip_label_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/avatar"

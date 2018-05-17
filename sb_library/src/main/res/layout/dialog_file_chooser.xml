@@ -258,5 +258,6 @@
         android:tint="?attr/mfc_theme_background"
         app:backgroundTint="?attr/mfc_theme_create_folder_button"
         app:elevation="0dp"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
