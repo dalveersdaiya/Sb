@@ -458,15 +458,23 @@ public class BaseActivity extends LocalizationActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    public String isNetWorkAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return "";
+    }
+
     public void validationForPhoneNumber(final EditText edittext) {
 
         edittext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
@@ -478,7 +486,6 @@ public class BaseActivity extends LocalizationActivity {
                             return;
                         }
                         len = edittext.getText().length();
-
                         if (edittext.getText().toString().charAt(edittext.getText().toString().length() - 1) != '-') {
                             if (len == 4 || len == 8) {
                                 String number = edittext.getText().toString();
