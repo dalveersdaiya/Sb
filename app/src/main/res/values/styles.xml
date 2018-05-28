@@ -29,7 +29,6 @@
         <item name="myColorPrimaryDark">@color/colorPrimary</item>
         <item name="myColorPrimary">@color/colorPrimary</item>
 
-
     </style>
 
 
