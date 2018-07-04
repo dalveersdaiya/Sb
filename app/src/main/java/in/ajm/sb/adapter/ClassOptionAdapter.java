@@ -14,11 +14,13 @@ import in.ajm.sb.R;
 import in.ajm.sb.data.ClassOptions;
 import in.ajm.sb.interfaces.OnClassItemClick;
 
+
 /**
  * Created by DSD on 26/03/18.
  */
 
 public class ClassOptionAdapter extends RecyclerView.Adapter<ClassOptionAdapter.Holder> {
+
     private Context context;
     private List<ClassOptions> arraylist;
     private OnClassItemClick onClassItemClick;

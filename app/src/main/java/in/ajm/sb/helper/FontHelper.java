@@ -16,11 +16,6 @@ public class FontHelper {
 
     public static FontHelper getInstance(Context context) {
         if (_self == null) {
-//			_self = new FontHelper();
-//			_self.setRegularFont(Typeface.createFromAsset(context.getAssets(), "fonts/AvenirNext-Regular.ttf"));
-//			_self.setBoldFont(Typeface.createFromAsset(context.getAssets(), "fonts/AvenirNext-DemiBold.ttf"));
-//			_self.setMedium(Typeface.createFromAsset(context.getAssets(), "fonts/AvenirNext-Medium.ttf"));
-//			_self.setRegularLight(Typeface.createFromAsset(context.getAssets(), "fonts/AvenirNext-UltraLight.ttf"));
 
             _self = new FontHelper();
             _self.setRegularFont(Typeface.createFromAsset(context.getAssets(), "fonts/Mark Simonson - Proxima Nova Alt Regular-webfont.ttf"));

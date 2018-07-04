@@ -14,64 +14,64 @@
 
         android:orientation="vertical">
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_english"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="English" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_hindi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="हिंदी" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_japanese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="日本語" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_french"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="français" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_german"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deutsche" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_portuguese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Português" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_russian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="русский" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_mandarin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:text="普通话" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_cantonese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:text="廣東話" />
 
-        <RadioButton
+        <in.ajm.sb.customviews.RadioButtonMedium
             android:id="@+id/radio_btn_spanish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
