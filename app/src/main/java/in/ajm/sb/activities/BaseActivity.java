@@ -62,9 +62,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import in.ajm.sb.R;
@@ -564,16 +569,12 @@ public class BaseActivity extends LocalizationActivity {
     public void animateOnFocus(View v, ViewGroup rootLayout) {
         final CardView first_container = (CardView) v.getParent();
         final CardView second_container = (CardView) first_container.getParent();
-
         final int first_curr_radius = (int) getResources().getDimension(R.dimen.first_card_radius);
         final int first_target_radius = (int) getResources().getDimension(R.dimen.first_card_radius_on_focus);
-
         final int second_curr_radius = (int) getResources().getDimension(R.dimen.second_card_radius);
         final int second_target_radius = (int) getResources().getDimension(R.dimen.second_card_radius_on_focus);
-
         final int first_curr_color = ContextCompat.getColor(this, android.R.color.transparent);
         final int first_target_color = getAccentColor(this);
-
         final int second_curr_color = getAccentColor(this);
         final int second_target_color = getAccentColor(this);
 
@@ -1570,44 +1571,22 @@ public class BaseActivity extends LocalizationActivity {
         }
     }
 
-    /**
-     * Since the date is in 23/10/2018 and
-     * needs to be shown in 23 september, 2018 format
-     *
-     * @param date
-     * @return
-     */
-    private String getFormattedDate(String date) {
-        String timeSlotStr = date;
-        String[] timeSlotRangeStr = timeSlotStr.split("/");
-        String month = timeSlotRangeStr[0];
-        String day = timeSlotRangeStr[1];
-        String year = timeSlotRangeStr[2];
-        if (month.equals("1") || month.equals("01")) {
-            month = "January";
-        } else if (month.equals("2") || month.equals("02")) {
-            month = "February";
-        } else if (month.equals("3") || month.equals("03")) {
-            month = "March";
-        } else if (month.equals("4") || month.equals("04")) {
-            month = "April";
-        } else if (month.equals("5") || month.equals("05")) {
-            month = "May";
-        } else if (month.equals("6") || month.equals("06")) {
-            month = "June";
-        } else if (month.equals("7") || month.equals("07")) {
-            month = "July";
-        } else if (month.equals("8") || month.equals("08")) {
-            month = "August";
-        } else if (month.equals("9") || month.equals("09")) {
-            month = "September";
-        } else if (month.equals("10") || month.equals("10")) {
-            month = "October";
-        } else if (month.equals("11") || month.equals("11")) {
-            month = "November";
-        } else if (month.equals("12") || month.equals("12")) {
-            month = "December";
+    public  String formatDate(String originalDateFormat, String targetDateFormat, String strDate) {
+        DateFormat originalFormat = new SimpleDateFormat(originalDateFormat, Locale.getDefault());
+        DateFormat targetFormat = new SimpleDateFormat(targetDateFormat);
+
+
+        Date date = null;
+
+        try {
+            date = originalFormat.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        return day + " " + month + " " + year;
+        if (date == null)
+            return "";
+
+        String formattedDate = targetFormat.format(date);
+        return formattedDate;
     }
 }
