@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
-def versionMajor = 0
-def versionMinor = 1
+def versionMajor = 1
+def versionMinor = 0
 def versionPatch = 0
 def versionDebug = new Date().format('ddMMyyyy')
 def appPackageId = 'in.ajm.sb'
